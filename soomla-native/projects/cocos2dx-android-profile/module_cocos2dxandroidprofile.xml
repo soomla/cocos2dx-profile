@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_cocos2dxandroidprofile" default="compile.module.cocos2dxandroidprofile">
+  <dirname property="module.cocos2dxandroidprofile.basedir" file="${ant.file.module_cocos2dxandroidprofile}"/>
+
+  <property name="module.jdk.home.cocos2dxandroidprofile" value="${jdk.home.android}"/>
+  <property name="module.jdk.bin.cocos2dxandroidprofile" value="${jdk.bin.android}"/>
+  <property name="module.jdk.classpath.cocos2dxandroidprofile" value="jdk.classpath.android"/>
+
+  <property name="compiler.args.cocos2dxandroidprofile" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+
+  <property name="cocos2dxandroidprofile.output.dir" value="${module.cocos2dxandroidprofile.basedir}/out/production/cocos2dxandroidprofile"/>
+
+  <path id="cocos2dxandroidprofile.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+
+  <path id="cocos2dxandroidprofile.module.production.classpath">
+    <path refid="${module.jdk.classpath.cocos2dxandroidprofile}"/>
+    <pathelement location="${basedir}/../../compilations/android/AndroidProfile.jar"/>
+    <pathelement location="${basedir}/../../compilations/android/Cocos2dxAndroidCore.jar"/>
+    <pathelement location="${basedir}/../../compilations/android/SoomlaAndroidCore.jar"/>
+    <pathelement location="${basedir}/libs/square-otto-1.3.2.jar"/>
+  </path>
+
+  <path id="cocos2dxandroidprofile.runtime.production.module.classpath">
+    <pathelement location="${cocos2dxandroidprofile.output.dir}"/>
+    <pathelement location="${basedir}/../../compilations/android/AndroidProfile.jar"/>
+    <pathelement location="${basedir}/../../compilations/android/Cocos2dxAndroidCore.jar"/>
+    <pathelement location="${basedir}/../../compilations/android/SoomlaAndroidCore.jar"/>
+    <pathelement location="${basedir}/libs/square-otto-1.3.2.jar"/>
+  </path>
+
+  <path id="cocos2dxandroidprofile.module.classpath">
+    <path refid="${module.jdk.classpath.cocos2dxandroidprofile}"/>
+    <pathelement location="${cocos2dxandroidprofile.output.dir}"/>
+    <pathelement location="${basedir}/../../compilations/android/AndroidProfile.jar"/>
+    <pathelement location="${basedir}/../../compilations/android/Cocos2dxAndroidCore.jar"/>
+    <pathelement location="${basedir}/../../compilations/android/SoomlaAndroidCore.jar"/>
+    <pathelement location="${basedir}/libs/square-otto-1.3.2.jar"/>
+  </path>
+
+  <path id="cocos2dxandroidprofile.runtime.module.classpath">
+    <pathelement location="${cocos2dxandroidprofile.output.dir}"/>
+    <pathelement location="${basedir}/../../compilations/android/AndroidProfile.jar"/>
+    <pathelement location="${basedir}/../../compilations/android/Cocos2dxAndroidCore.jar"/>
+    <pathelement location="${basedir}/../../compilations/android/SoomlaAndroidCore.jar"/>
+    <pathelement location="${basedir}/libs/square-otto-1.3.2.jar"/>
+  </path>
+
+
+  <patternset id="excluded.from.module.cocos2dxandroidprofile">
+    <patternset refid="ignored.files"/>
+  </patternset>
+
+  <patternset id="excluded.from.compilation.cocos2dxandroidprofile">
+    <patternset refid="compiler.excluded"/>
+    <patternset refid="excluded.from.module.cocos2dxandroidprofile"/>
+  </patternset>
+
+  <path id="cocos2dxandroidprofile.module.sourcepath">
+    <dirset dir="${module.cocos2dxandroidprofile.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+
+  <target name="compile.module.cocos2dxandroidprofile" depends="compile.module.cocos2dxandroidprofile.production" description="Compile module cocos2dxandroidprofile"/>
+
+  <target name="compile.module.cocos2dxandroidprofile.production" description="Compile module cocos2dxandroidprofile; production classes">
+    <mkdir dir="${cocos2dxandroidprofile.output.dir}"/>
+    <javac destdir="${cocos2dxandroidprofile.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.cocos2dxandroidprofile}/javac">
+      <compilerarg line="${compiler.args.cocos2dxandroidprofile}"/>
+      <bootclasspath refid="cocos2dxandroidprofile.module.bootclasspath"/>
+      <classpath refid="cocos2dxandroidprofile.module.production.classpath"/>
+      <src refid="cocos2dxandroidprofile.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.cocos2dxandroidprofile"/>
+    </javac>
+
+    <copy todir="${cocos2dxandroidprofile.output.dir}">
+      <fileset dir="${module.cocos2dxandroidprofile.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+        <patternset refid="excluded.from.compilation.cocos2dxandroidprofile"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="clean.module.cocos2dxandroidprofile" description="cleanup module">
+    <delete dir="${cocos2dxandroidprofile.output.dir}"/>
+  </target>
+</project>

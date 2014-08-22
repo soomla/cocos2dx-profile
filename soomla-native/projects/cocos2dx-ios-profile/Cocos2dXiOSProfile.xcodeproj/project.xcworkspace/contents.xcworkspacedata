@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Cocos2dXiOSStore.xcodeproj">
+      location = "self:Cocos2dXiOSProfile.xcodeproj">
    </FileRef>
 </Workspace>

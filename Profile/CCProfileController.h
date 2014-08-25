@@ -9,6 +9,8 @@
 #include "CCError.h"
 #include "CCReward.h"
 #include "CCUserProfile.h"
+#include "CCSocialActionUtils.h"
+#include "CCUserProfileUtils.h"
 
 namespace soomla {
 	/** \class CCProfileController
@@ -29,24 +31,26 @@ namespace soomla {
         CCProfileController();
         virtual bool init();
 
-        void login(const char *provider, CCReward *reward, CCError **soomlaError);
+        void login(CCProvider provider, CCReward *reward, CCError **soomlaError);
 
-        void login(const char *provider, CCError **soomlaError);
+        void login(CCProvider provider, CCError **soomlaError);
 
-        void logout(const char *provider, CCError **soomlaError);
+        void logout(CCProvider provider, CCError **soomlaError);
 
-        CCUserProfile *getStoredUserProfile(const char *provider, CCError **soomlaError);
+        CCUserProfile *getStoredUserProfile(CCProvider provider, CCError **soomlaError);
 
-        void updateStatus(const char *provider, const char *status, CCReward *reward, CCError **soomlaError);
+        void updateStatus(CCProvider provider, const char *status, CCReward *reward, CCError **soomlaError);
 
-        void updateStory(const char *provider, const char *message, const char *name, const char *caption,
+        void updateStory(CCProvider provider, const char *message, const char *name, const char *caption,
                 const char *description, const char *link, const char *picture,
                 CCReward *reward, CCError **soomlaError);
 
-        void uploadImage(const char *provider, const char *message, const char *filePath,
+        void uploadImage(CCProvider provider, const char *message, const char *filePath,
                 CCReward *reward, CCError **soomlaError);
 
-        void getContacts(const char *provider, CCReward *reward, CCError **soomlaError);
+        void getContacts(CCProvider provider, CCReward *reward, CCError **soomlaError);
+        
+        void getFeed(CCProvider provider, CCReward *reward, CCError **soomlaError);
 
     };
 };

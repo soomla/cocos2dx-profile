@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F1D86B29-77D6-47B0-8AC8-F2AB5FD862E2</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Cocos2dXProfile</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>9E9943D8-4A26-4159-A82A-0640416D711F</key>
+		<string>https://github.com/soomla/cocos2dx-profile.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Cocos2dXProfile.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>9E9943D8-4A26-4159-A82A-0640416D711F</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/soomla/cocos2dx-profile.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>9E9943D8-4A26-4159-A82A-0640416D711F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9E9943D8-4A26-4159-A82A-0640416D711F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>cocos2dx-profile</string>
+		</dict>
+	</array>
+</dict>
+</plist>

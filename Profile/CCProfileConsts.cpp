@@ -27,6 +27,10 @@ namespace soomla {
     char const *CCProfileConsts::EVENT_GET_CONTACTS_FAILED = "com.soomla.profile.events.social.GetContactsFailedEvent";
     char const *CCProfileConsts::EVENT_GET_CONTACTS_FINISHED = "com.soomla.profile.events.social.GetContactsFinishedEvent";
     char const *CCProfileConsts::EVENT_GET_CONTACTS_STARTED = "com.soomla.profile.events.social.GetContactsStartedEvent";
+    
+    char const *CCProfileConsts::EVENT_GET_FEED_FAILED = "com.soomla.profile.events.social.GetFeedFailedEvent";
+    char const *CCProfileConsts::EVENT_GET_FEED_FINISHED = "com.soomla.profile.events.social.GetFeedFinishedEvent";
+    char const *CCProfileConsts::EVENT_GET_FEED_STARTED = "com.soomla.profile.events.social.GetFeedStartedEvent";
 
     char const *CCProfileConsts::EVENT_SOCIAL_ACTION_FAILED = "com.soomla.profile.events.social.SocialActionFailedEvent";
     char const *CCProfileConsts::EVENT_SOCIAL_ACTION_FINISHED = "com.soomla.profile.events.social.SocialActionFinishedEvent";

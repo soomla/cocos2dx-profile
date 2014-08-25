@@ -27,14 +27,16 @@ namespace soomla {
         CCSoomlaEventDispatcher *eventDispatcher = CCSoomlaEventDispatcher::getInstance();
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_LOGIN_CANCELLED,
-                [this](__Dictionary *) {
-                    this->onLoginCancelledEvent();
+                [this](__Dictionary *parameters) {
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
+                    this->onLoginCancelledEvent(CCProvider(provider->getValue()));
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_LOGIN_FAILED,
                 [this](__Dictionary *parameters) {
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
                     __String *errorDescription = dynamic_cast<__String *>(parameters->objectForKey("errorDescription"));
-                    this->onLoginFailed(errorDescription);
+                    this->onLoginFailed(CCProvider(provider->getValue()), errorDescription);
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_LOGIN_FINISHED,
@@ -45,65 +47,89 @@ namespace soomla {
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_LOGIN_STARTED,
                 [this](__Dictionary *parameters) {
-                    __String *provider = dynamic_cast<__String *>(parameters->objectForKey("provider"));
-                    this->onLoginStarted(provider);
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
+                    this->onLoginStarted(CCProvider(provider->getValue()));
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_LOGOUT_FAILED,
                 [this](__Dictionary *parameters) {
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
                     __String *errorDescription = dynamic_cast<__String *>(parameters->objectForKey("errorDescription"));
-                    this->onLogoutFailed(errorDescription);
+                    this->onLogoutFailed(CCProvider(provider->getValue()), errorDescription);
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_LOGOUT_FINISHED,
                 [this](__Dictionary *parameters) {
-                    CCUserProfile *userProfile = this->extractUserProfile(parameters->objectForKey("userProfile"));
-                    this->onLogoutFinished(userProfile);
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
+                    this->onLogoutFinished(CCProvider(provider->getValue()));
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_LOGOUT_STARTED,
                 [this](__Dictionary *parameters) {
-                    __String *provider = dynamic_cast<__String *>(parameters->objectForKey("provider"));
-                    this->onLogoutStarted(provider);
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
+                    this->onLogoutStarted(CCProvider(provider->getValue()));
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_GET_CONTACTS_FAILED,
                 [this](__Dictionary *parameters) {
-                    __String *socialActionType = dynamic_cast<__String *>(parameters->objectForKey("socialActionType"));
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
                     __String *errorDescription = dynamic_cast<__String *>(parameters->objectForKey("errorDescription"));
-                    this->onGetContactsFailed(socialActionType, errorDescription);
+                    this->onGetContactsFailed(CCProvider(provider->getValue()), errorDescription);
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_GET_CONTACTS_FINISHED,
                 [this](__Dictionary *parameters) {
-                    __String *socialActionType = dynamic_cast<__String *>(parameters->objectForKey("socialActionType"));
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
                     __Array *contacts = this->extractUserProfileArray(parameters->objectForKey("contacts"));
-                    this->onGetContactsFinished(socialActionType, contacts);
+                    this->onGetContactsFinished(CCProvider(provider->getValue()), contacts);
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_GET_CONTACTS_STARTED,
                 [this](__Dictionary *parameters) {
-                    __String *socialActionType = dynamic_cast<__String *>(parameters->objectForKey("socialActionType"));
-                    this->onGetContactsStarted(socialActionType);
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
+                    this->onGetContactsStarted(CCProvider(provider->getValue()));
+                });
+        
+        eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_GET_FEED_FAILED,
+                [this](__Dictionary *parameters) {
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
+                    __String *errorDescription = dynamic_cast<__String *>(parameters->objectForKey("errorDescription"));
+                    this->onGetFeedFailed(CCProvider(provider->getValue()), errorDescription);
+                });
+        
+        eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_GET_FEED_FINISHED,
+                [this](__Dictionary *parameters) {
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
+                    __Array *feed = dynamic_cast<__Array *>(parameters->objectForKey("feed"));
+                    this->onGetFeedFinished(CCProvider(provider->getValue()), feed);
+                });
+        
+        eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_GET_FEED_STARTED,
+                [this](__Dictionary *parameters) {
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
+                    this->onGetFeedStarted(CCProvider(provider->getValue()));
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_SOCIAL_ACTION_FAILED,
                 [this](__Dictionary *parameters) {
-                    __String *socialActionType = dynamic_cast<__String *>(parameters->objectForKey("socialActionType"));
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
+                    __Integer *socialActionType = dynamic_cast<__Integer *>(parameters->objectForKey("socialActionType"));
                     __String *errorDescription = dynamic_cast<__String *>(parameters->objectForKey("errorDescription"));
-                    this->onSocialActionFailedEvent(socialActionType, errorDescription);
+                    this->onSocialActionFailedEvent(CCProvider(provider->getValue()), CCSocialActionType(socialActionType->getValue()), errorDescription);
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_SOCIAL_ACTION_FINISHED,
                 [this](__Dictionary *parameters) {
-                    __String *socialActionType = dynamic_cast<__String *>(parameters->objectForKey("socialActionType"));
-                    this->onSocialActionFinishedEvent(socialActionType);
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
+                    __Integer *socialActionType = dynamic_cast<__Integer *>(parameters->objectForKey("socialActionType"));
+                    this->onSocialActionFinishedEvent(CCProvider(provider->getValue()), CCSocialActionType(socialActionType->getValue()));
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_SOCIAL_ACTION_STARTED,
                 [this](__Dictionary *parameters) {
-                    __String *socialActionType = dynamic_cast<__String *>(parameters->objectForKey("socialActionType"));
-                    this->onSocialActionStartedEvent(socialActionType);
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
+                    __Integer *socialActionType = dynamic_cast<__Integer *>(parameters->objectForKey("socialActionType"));
+                    this->onSocialActionStartedEvent(CCProvider(provider->getValue()), CCSocialActionType(socialActionType->getValue()));
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_REWARD_GIVEN,
@@ -139,9 +165,9 @@ namespace soomla {
         return CCDomainHelper::getInstance()->getDomainsFromDictArray(contactsDict, CCProfileConsts::JSON_JSON_TYPE_USER_PROFILE);
     }
 
-    void CCProfileEventDispatcher::onLoginFailed(cocos2d::__String *errorDescription) {
+    void CCProfileEventDispatcher::onLoginFailed(CCProvider provider, cocos2d::__String *errorDescription) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onLoginFailed(errorDescription);
+            eventHandler->onLoginFailed(provider, errorDescription);
         }
     }
 
@@ -151,81 +177,99 @@ namespace soomla {
         }
     }
 
-    void CCProfileEventDispatcher::onLoginStarted(cocos2d::__String *provider) {
+    void CCProfileEventDispatcher::onLoginStarted(CCProvider provider) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
             eventHandler->onLoginStarted(provider);
         }
     }
 
-    void CCProfileEventDispatcher::onLogoutFailed(cocos2d::__String *errorDescription) {
+    void CCProfileEventDispatcher::onLogoutFailed(CCProvider provider, cocos2d::__String *errorDescription) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onLogoutFailed(errorDescription);
+            eventHandler->onLogoutFailed(provider, errorDescription);
         }
     }
 
-    void CCProfileEventDispatcher::onLogoutFinished(CCUserProfile *userProfile) {
+    void CCProfileEventDispatcher::onLogoutFinished(CCProvider provider) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onLogoutFinished(userProfile);
+            eventHandler->onLogoutFinished(provider);
         }
     }
 
-    void CCProfileEventDispatcher::onLogoutStarted(cocos2d::__String *provider) {
+    void CCProfileEventDispatcher::onLogoutStarted(CCProvider provider) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
             eventHandler->onLogoutStarted(provider);
         }
     }
 
-    void CCProfileEventDispatcher::onGetContactsFailed(cocos2d::__String *socialActionType, cocos2d::__String *errorDescription) {
+    void CCProfileEventDispatcher::onGetContactsFailed(CCProvider provider, cocos2d::__String *errorDescription) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onGetContactsFailed(socialActionType, errorDescription);
+            eventHandler->onGetContactsFailed(provider, errorDescription);
         }
     }
 
-    void CCProfileEventDispatcher::onGetContactsFinished(cocos2d::__String *socialActionType, cocos2d::__Array *contactsDict) {
+    void CCProfileEventDispatcher::onGetContactsFinished(CCProvider provider, cocos2d::__Array *contactsDict) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onGetContactsFinished(socialActionType, contactsDict);
+            eventHandler->onGetContactsFinished(provider, contactsDict);
         }
     }
 
-    void CCProfileEventDispatcher::onGetContactsStarted(cocos2d::__String *socialActionType) {
+    void CCProfileEventDispatcher::onGetContactsStarted(CCProvider provider) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onGetContactsStarted(socialActionType);
+            eventHandler->onGetContactsStarted(provider);
         }
     }
 
-    void CCProfileEventDispatcher::onSocialActionFailedEvent(cocos2d::__String *socialActionType, cocos2d::__String *errorDescription) {
+    void CCProfileEventDispatcher::onGetFeedFailed(CCProvider provider, cocos2d::__String *errorDescription){
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onSocialActionFailedEvent(socialActionType, errorDescription);
+            eventHandler->onGetFeedFailed(provider, errorDescription);
         }
     }
 
-    void CCProfileEventDispatcher::onSocialActionFinishedEvent(cocos2d::__String *socialActionType) {
+    void CCProfileEventDispatcher::onGetFeedFinished(CCProvider provider, cocos2d::__Array *feedList) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onSocialActionFinishedEvent(socialActionType);
+            eventHandler->onGetFeedFinished(provider, feedList);
         }
     }
 
-    void CCProfileEventDispatcher::onSocialActionStartedEvent(cocos2d::__String *socialActionType) {
+    void CCProfileEventDispatcher::onGetFeedStarted(CCProvider provider) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onSocialActionStartedEvent(socialActionType);
+            eventHandler->onGetFeedStarted(provider);
         }
     }
 
-    void CCProfileEventDispatcher::onLoginCancelledEvent() {
+    void CCProfileEventDispatcher::onSocialActionFailedEvent(CCProvider provider, CCSocialActionType  socialActionType, cocos2d::__String *errorDescription) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onLoginCancelledEvent();
+            eventHandler->onSocialActionFailedEvent(provider, socialActionType, errorDescription);
         }
     }
 
-    void CCProfileEventDispatcher::onRewardGivenEvent(CCReward *reward) {
+    void CCProfileEventDispatcher::onSocialActionFinishedEvent(CCProvider provider, CCSocialActionType socialActionType) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onRewardGivenEvent(reward);
+            eventHandler->onSocialActionFinishedEvent(provider, socialActionType);
+        }
+    }
+
+    void CCProfileEventDispatcher::onSocialActionStartedEvent(CCProvider provider, CCSocialActionType socialActionType) {
+        FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
+            eventHandler->onSocialActionStartedEvent(provider, socialActionType);
+        }
+    }
+
+    void CCProfileEventDispatcher::onLoginCancelledEvent(CCProvider provider) {
+        FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
+            eventHandler->onLoginCancelledEvent(provider);
         }
     }
 
     void CCProfileEventDispatcher::onUserProfileUpdatedEvent(CCUserProfile *userProfile) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
             eventHandler->onUserProfileUpdatedEvent(userProfile);
+        }
+    }
+
+    void CCProfileEventDispatcher::onRewardGivenEvent(CCReward *reward) {
+        FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
+            eventHandler->onRewardGivenEvent(reward);
         }
     }
 

@@ -32,6 +32,10 @@ namespace soomla {
         static char const *EVENT_GET_CONTACTS_FAILED;
         static char const *EVENT_GET_CONTACTS_FINISHED;
         static char const *EVENT_GET_CONTACTS_STARTED;
+        
+        static char const *EVENT_GET_FEED_FAILED;
+        static char const *EVENT_GET_FEED_FINISHED;
+        static char const *EVENT_GET_FEED_STARTED;
 
         static char const *EVENT_SOCIAL_ACTION_FAILED;
         static char const *EVENT_SOCIAL_ACTION_FINISHED;

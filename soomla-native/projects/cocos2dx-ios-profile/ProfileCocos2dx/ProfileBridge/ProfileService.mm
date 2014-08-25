@@ -32,6 +32,7 @@
 + (void)initialize {
     [super initialize];
     [self initGlue];
+    [self initDomainHelper];
 }
 
 
@@ -43,6 +44,11 @@
     }
 
     return self;
+}
+
++ (void)initDomainHelper {
+    [[DomainHelper sharedDomainHelper] registerType:@"userProfile"
+                                      withClassName:NSStringFromClass([UserProfile class])];
 }
 
 + (void)initGlue {
@@ -170,23 +176,19 @@
     }];
     
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_GET_CONTACTS_FAILED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
-        NSLog(@"HELOOOO CON FAIL");
         [parameters setObject:@"com.soomla.profile.events.social.GetContactsFailedEvent" forKey:@"method"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PROVIDER] forKey:@"provider"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_SOCIAL_ACTION_TYPE] forKey:@"socialActionType"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_MESSAGE] forKey:@"errorDescription"];
     }];
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_GET_CONTACTS_FINISHED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
-         NSLog(@"HELOOOO CON FINISH");
         [parameters setObject:@"com.soomla.profile.events.social.GetContactsFinishedEvent" forKey:@"method"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PROVIDER] forKey:@"provider"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_SOCIAL_ACTION_TYPE] forKey:@"socialActionType"];
         id contacts = [notification.userInfo objectForKey:DICT_ELEMENT_CONTACTS];
         [parameters setObject:[[DomainHelper sharedDomainHelper] getDictListFromDomains:contacts] forKey:@"contacts"];
-                 NSLog(@"HELOOOO CON FINISH 2");
     }];
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_GET_CONTACTS_STARTED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
-         NSLog(@"HELOOOO CON START");
         [parameters setObject:@"com.soomla.profile.events.social.GetContactsStartedEvent" forKey:@"method"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PROVIDER] forKey:@"provider"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_SOCIAL_ACTION_TYPE] forKey:@"socialActionType"];

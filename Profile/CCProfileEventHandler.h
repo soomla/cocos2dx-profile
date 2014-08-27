@@ -42,7 +42,6 @@ namespace soomla {
         virtual void onSocialActionStartedEvent(CCProvider provider, CCSocialActionType socialActionType) = 0;
         virtual void onLoginCancelledEvent(CCProvider provider) = 0;
         virtual void onUserProfileUpdatedEvent(CCUserProfile *userProfile) = 0;
-        virtual void onRewardGivenEvent(CCReward *reward) = 0;
     };
 
 };

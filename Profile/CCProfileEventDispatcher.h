@@ -58,8 +58,6 @@ namespace soomla {
         virtual void onLoginCancelledEvent(CCProvider provider);
 
         virtual void onUserProfileUpdatedEvent(CCUserProfile *userProfile);
-        
-        virtual void onRewardGivenEvent(CCReward *reward);
 
     private:
         CCUserProfile *extractUserProfile(Ref *userProfileRef);

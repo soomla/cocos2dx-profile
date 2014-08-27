@@ -229,12 +229,6 @@
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_SOCIAL_ACTION_TYPE] forKey:@"socialActionType"];
     }];
     
-    [ndkGlue registerCallbackHandlerForKey:EVENT_BP_REWARD_GIVEN withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
-        [parameters setObject:@"com.soomla.profile.events.RewardGivenEvent" forKey:@"method"];
-        Reward *reward = [notification.userInfo objectForKey:DICT_ELEMENT_REWARD];
-        [parameters setObject:[reward toDictionary] forKey:@"reward"];
-    }];
-    
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_USER_PROFILE_UPDATED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
         [parameters setObject:@"com.soomla.profile.events.UserProfileUpdatedEvent" forKey:@"method"];
         UserProfile *userProfile = [notification.userInfo objectForKey:DICT_ELEMENT_USER_PROFILE];

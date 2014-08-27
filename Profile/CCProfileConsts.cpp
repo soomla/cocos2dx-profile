@@ -36,8 +36,6 @@ namespace soomla {
     char const *CCProfileConsts::EVENT_SOCIAL_ACTION_FINISHED = "com.soomla.profile.events.social.SocialActionFinishedEvent";
     char const *CCProfileConsts::EVENT_SOCIAL_ACTION_STARTED = "com.soomla.profile.events.social.SocialActionStartedEvent";
 
-    char const *CCProfileConsts::EVENT_REWARD_GIVEN = "com.soomla.profile.events.RewardGivenEvent";
-
     char const *CCProfileConsts::EVENT_USER_PROFILE_UPDATED = "com.soomla.profile.events.UserProfileUpdatedEvent";
 
 }

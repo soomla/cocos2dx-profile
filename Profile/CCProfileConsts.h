@@ -1,8 +1,6 @@
 #ifndef __CCProfileConsts_H__
 #define __CCProfileConsts_H__
 
-#include "CCCommonConsts.h"
-
 namespace soomla {
     class CCProfileConsts {
     public:
@@ -40,8 +38,6 @@ namespace soomla {
         static char const *EVENT_SOCIAL_ACTION_FAILED;
         static char const *EVENT_SOCIAL_ACTION_FINISHED;
         static char const *EVENT_SOCIAL_ACTION_STARTED;
-
-        static char const *EVENT_REWARD_GIVEN;
 
         static char const *EVENT_USER_PROFILE_UPDATED;
     };

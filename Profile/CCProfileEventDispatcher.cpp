@@ -132,15 +132,6 @@ namespace soomla {
                     this->onSocialActionStartedEvent(CCProvider(provider->getValue()), CCSocialActionType(socialActionType->getValue()));
                 });
 
-        eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_REWARD_GIVEN,
-                [this](__Dictionary *parameters) {
-                    __Dictionary *rewardDict = dynamic_cast<__Dictionary *>(parameters->objectForKey("reward"));
-                    CC_ASSERT(rewardDict);
-                    CCReward *reward  = dynamic_cast<CCReward *>(CCDomainFactory::getInstance()->createWithDictionary(rewardDict));
-                    CC_ASSERT(reward);
-                    this->onRewardGivenEvent(reward);
-                });
-
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_USER_PROFILE_UPDATED,
                 [this](__Dictionary *parameters) {
                     CCUserProfile *userProfile = this->extractUserProfile(parameters->objectForKey("userProfile"));
@@ -264,12 +255,6 @@ namespace soomla {
     void CCProfileEventDispatcher::onUserProfileUpdatedEvent(CCUserProfile *userProfile) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
             eventHandler->onUserProfileUpdatedEvent(userProfile);
-        }
-    }
-
-    void CCProfileEventDispatcher::onRewardGivenEvent(CCReward *reward) {
-        FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onRewardGivenEvent(reward);
         }
     }
 

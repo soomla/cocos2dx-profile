@@ -278,26 +278,7 @@
 					"$(SRCROOT)/soomla-native/compilations/ios/headers/**",
 					"$(SRCROOT)/../soomla-cocos2dx-core/Soomla/**",
 				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/soomla-native/compilations/ios",
-					"$(PROJECT_DIR)/submodules/ios-store/build",
-					"$(PROJECT_DIR)/soomla-native/projects/cocos2dx-ios-profile/build",
-					"$(PROJECT_DIR)/out/Cocos2dXProfile.build/Debug-iphoneos/Cocos2dXProfile.build/Objects-normal/arm64",
-					"$(PROJECT_DIR)/out/Cocos2dXProfile.build/Debug-iphoneos/Cocos2dXProfile.build/Objects-normal/armv7",
-					"$(PROJECT_DIR)/out/Cocos2dXProfile.build/Debug-iphoneos/Cocos2dXProfile.build/Objects-normal/armv7s",
-					"$(PROJECT_DIR)/out/Debug-iphoneos",
-					"$(PROJECT_DIR)/soomla-native/projects/cocos2dx-ios-profile/out/Cocos2dXiOSProfile.build/Release-iphoneos/Cocos2dXiOSProfile.build/Objects-normal/arm64",
-					"$(PROJECT_DIR)/soomla-native/projects/cocos2dx-ios-profile/out/Cocos2dXiOSProfile.build/Release-iphoneos/Cocos2dXiOSProfile.build/Objects-normal/armv7",
-					"$(PROJECT_DIR)/soomla-native/projects/cocos2dx-ios-profile/out/Cocos2dXiOSProfile.build/Release-iphoneos/Cocos2dXiOSProfile.build/Objects-normal/armv7s",
-					"$(PROJECT_DIR)/soomla-native/projects/cocos2dx-ios-profile/out/Cocos2dXiOSProfile.build/Release-iphonesimulator/Cocos2dXiOSProfile.build/Objects-normal/i386",
-					"$(PROJECT_DIR)/soomla-native/projects/cocos2dx-ios-profile/out/Cocos2dXiOSProfile.build/Release-iphonesimulator/Cocos2dXiOSProfile.build/Objects-normal/x86_64",
-					"$(PROJECT_DIR)/soomla-native/projects/cocos2dx-ios-profile/out/Debug-iphoneos",
-					"$(PROJECT_DIR)/soomla-native/projects/cocos2dx-ios-profile/out/Debug-iphonesimulator",
-					"$(PROJECT_DIR)/soomla-native/projects/cocos2dx-ios-profile/out/Debug-universal",
-					"$(PROJECT_DIR)/soomla-native/projects/cocos2dx-ios-profile/out/Release-iphoneos",
-					"$(PROJECT_DIR)/soomla-native/projects/cocos2dx-ios-profile/out/Release-iphonesimulator",
-					"$(PROJECT_DIR)/submodules/ios-profile/build",
-				);
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/soomla-native/compilations/ios";
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -329,26 +310,7 @@
 					"$(SRCROOT)/soomla-native/compilations/ios/headers/**",
 					"$(SRCROOT)/../soomla-cocos2dx-core/Soomla/**",
 				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/soomla-native/compilations/ios",
-					"$(PROJECT_DIR)/submodules/ios-store/build",
-					"$(PROJECT_DIR)/soomla-native/projects/cocos2dx-ios-profile/build",
-					"$(PROJECT_DIR)/out/Cocos2dXProfile.build/Debug-iphoneos/Cocos2dXProfile.build/Objects-normal/arm64",
-					"$(PROJECT_DIR)/out/Cocos2dXProfile.build/Debug-iphoneos/Cocos2dXProfile.build/Objects-normal/armv7",
-					"$(PROJECT_DIR)/out/Cocos2dXProfile.build/Debug-iphoneos/Cocos2dXProfile.build/Objects-normal/armv7s",
-					"$(PROJECT_DIR)/out/Debug-iphoneos",
-					"$(PROJECT_DIR)/soomla-native/projects/cocos2dx-ios-profile/out/Cocos2dXiOSProfile.build/Release-iphoneos/Cocos2dXiOSProfile.build/Objects-normal/arm64",
-					"$(PROJECT_DIR)/soomla-native/projects/cocos2dx-ios-profile/out/Cocos2dXiOSProfile.build/Release-iphoneos/Cocos2dXiOSProfile.build/Objects-normal/armv7",
-					"$(PROJECT_DIR)/soomla-native/projects/cocos2dx-ios-profile/out/Cocos2dXiOSProfile.build/Release-iphoneos/Cocos2dXiOSProfile.build/Objects-normal/armv7s",
-					"$(PROJECT_DIR)/soomla-native/projects/cocos2dx-ios-profile/out/Cocos2dXiOSProfile.build/Release-iphonesimulator/Cocos2dXiOSProfile.build/Objects-normal/i386",
-					"$(PROJECT_DIR)/soomla-native/projects/cocos2dx-ios-profile/out/Cocos2dXiOSProfile.build/Release-iphonesimulator/Cocos2dXiOSProfile.build/Objects-normal/x86_64",
-					"$(PROJECT_DIR)/soomla-native/projects/cocos2dx-ios-profile/out/Debug-iphoneos",
-					"$(PROJECT_DIR)/soomla-native/projects/cocos2dx-ios-profile/out/Debug-iphonesimulator",
-					"$(PROJECT_DIR)/soomla-native/projects/cocos2dx-ios-profile/out/Debug-universal",
-					"$(PROJECT_DIR)/soomla-native/projects/cocos2dx-ios-profile/out/Release-iphoneos",
-					"$(PROJECT_DIR)/soomla-native/projects/cocos2dx-ios-profile/out/Release-iphonesimulator",
-					"$(PROJECT_DIR)/submodules/ios-profile/build",
-				);
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/soomla-native/compilations/ios";
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";

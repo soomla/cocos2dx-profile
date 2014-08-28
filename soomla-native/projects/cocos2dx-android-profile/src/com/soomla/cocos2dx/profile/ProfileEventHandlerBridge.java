@@ -2,14 +2,19 @@ package com.soomla.cocos2dx.profile;
 
 import android.opengl.GLSurfaceView;
 import com.soomla.BusProvider;
+import com.soomla.SoomlaUtils;
 import com.soomla.cocos2dx.common.DomainHelper;
 import com.soomla.cocos2dx.common.NdkGlue;
 import com.soomla.profile.events.UserProfileUpdatedEvent;
 import com.soomla.profile.events.auth.*;
 import com.soomla.profile.events.social.*;
 import com.squareup.otto.Subscribe;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.List;
 
 /**
  * This bridge is used to populate events from the store to cocos2dx (through JNI).
@@ -30,7 +35,7 @@ public class ProfileEventHandlerBridge {
                 try {
                     JSONObject parameters = new JSONObject();
                     parameters.put("method", ProfileConsts.EVENT_AUTH_LOGIN_FAILED);
-                    parameters.put("provider", loginFailedEvent.Provider);
+                    parameters.put("provider", loginFailedEvent.Provider.getValue());
                     parameters.put("errorDescription", loginFailedEvent.ErrorDescription);
                     NdkGlue.getInstance().sendMessageWithParameters(parameters);
                 } catch (JSONException e) {
@@ -65,7 +70,7 @@ public class ProfileEventHandlerBridge {
                 try {
                     JSONObject parameters = new JSONObject();
                     parameters.put("method", ProfileConsts.EVENT_AUTH_LOGIN_STARTED);
-                    parameters.put("provider", loginStartedEvent.Provider);
+                    parameters.put("provider", loginStartedEvent.Provider.getValue());
                     NdkGlue.getInstance().sendMessageWithParameters(parameters);
                 } catch (JSONException e) {
                     throw new IllegalStateException(e);
@@ -82,7 +87,7 @@ public class ProfileEventHandlerBridge {
                 try {
                     JSONObject parameters = new JSONObject();
                     parameters.put("method", ProfileConsts.EVENT_AUTH_LOGOUT_FAILED);
-                    parameters.put("provider", logoutFailedEvent.Provider);
+                    parameters.put("provider", logoutFailedEvent.Provider.getValue());
                     parameters.put("errorDescription", logoutFailedEvent.ErrorDescription);
                     NdkGlue.getInstance().sendMessageWithParameters(parameters);
                 } catch (JSONException e) {
@@ -100,7 +105,7 @@ public class ProfileEventHandlerBridge {
                 try {
                     JSONObject parameters = new JSONObject();
                     parameters.put("method", ProfileConsts.EVENT_AUTH_LOGOUT_FINISHED);
-                    parameters.put("provider", logoutFinishedEvent.Provider);
+                    parameters.put("provider", logoutFinishedEvent.Provider.getValue());
                     NdkGlue.getInstance().sendMessageWithParameters(parameters);
                 } catch (JSONException e) {
                     throw new IllegalStateException(e);
@@ -117,7 +122,7 @@ public class ProfileEventHandlerBridge {
                 try {
                     JSONObject parameters = new JSONObject();
                     parameters.put("method", ProfileConsts.EVENT_AUTH_LOGOUT_STARTED);
-                    parameters.put("provider", logoutStartedEvent.Provider);
+                    parameters.put("provider", logoutStartedEvent.Provider.getValue());
                     NdkGlue.getInstance().sendMessageWithParameters(parameters);
                 } catch (JSONException e) {
                     throw new IllegalStateException(e);
@@ -134,8 +139,8 @@ public class ProfileEventHandlerBridge {
                 try {
                     JSONObject parameters = new JSONObject();
                     parameters.put("method", ProfileConsts.EVENT_GET_CONTACTS_FAILED);
-                    parameters.put("provider", getContactsFailedEvent.Provider);
-                    parameters.put("socialActionType", getContactsFailedEvent.SocialActionType);
+                    parameters.put("provider", getContactsFailedEvent.Provider.getValue());
+                    parameters.put("socialActionType", getContactsFailedEvent.SocialActionType.getValue());
                     parameters.put("errorDescription", getContactsFailedEvent.ErrorDescription);
                     NdkGlue.getInstance().sendMessageWithParameters(parameters);
                 } catch (JSONException e) {
@@ -153,8 +158,8 @@ public class ProfileEventHandlerBridge {
                 try {
                     JSONObject parameters = new JSONObject();
                     parameters.put("method", ProfileConsts.EVENT_GET_CONTACTS_FINISHED);
-                    parameters.put("provider", getContactsFinishedEvent.Provider);
-                    parameters.put("socialActionType", getContactsFinishedEvent.SocialActionType);
+                    parameters.put("provider", getContactsFinishedEvent.Provider.getValue());
+                    parameters.put("socialActionType", getContactsFinishedEvent.SocialActionType.getValue());
                     parameters.put("contacts", DomainHelper.getInstance().getJsonObjectListFromDomains(getContactsFinishedEvent.Contacts));
                     NdkGlue.getInstance().sendMessageWithParameters(parameters);
                 } catch (JSONException e) {
@@ -172,8 +177,8 @@ public class ProfileEventHandlerBridge {
                 try {
                     JSONObject parameters = new JSONObject();
                     parameters.put("method", ProfileConsts.EVENT_GET_CONTACTS_STARTED);
-                    parameters.put("provider", getContactsStartedEvent.Provider);
-                    parameters.put("socialActionType", getContactsStartedEvent.SocialActionType);
+                    parameters.put("provider", getContactsStartedEvent.Provider.getValue());
+                    parameters.put("socialActionType", getContactsStartedEvent.SocialActionType.getValue());
                     NdkGlue.getInstance().sendMessageWithParameters(parameters);
                 } catch (JSONException e) {
                     throw new IllegalStateException(e);
@@ -189,9 +194,9 @@ public class ProfileEventHandlerBridge {
             public void run() {
                 try {
                     JSONObject parameters = new JSONObject();
-                    parameters.put("method", ProfileConsts.EVENT_GET_CONTACTS_FAILED);
-                    parameters.put("provider", getFeedFailedEvent.Provider);
-                    parameters.put("socialActionType", getFeedFailedEvent.SocialActionType);
+                    parameters.put("method", ProfileConsts.EVENT_GET_FEED_FAILED);
+                    parameters.put("provider", getFeedFailedEvent.Provider.getValue());
+                    parameters.put("socialActionType", getFeedFailedEvent.SocialActionType.getValue());
                     parameters.put("errorDescription", getFeedFailedEvent.ErrorDescription);
                     NdkGlue.getInstance().sendMessageWithParameters(parameters);
                 } catch (JSONException e) {
@@ -208,10 +213,10 @@ public class ProfileEventHandlerBridge {
             public void run() {
                 try {
                     JSONObject parameters = new JSONObject();
-                    parameters.put("method", ProfileConsts.EVENT_GET_CONTACTS_FINISHED);
-                    parameters.put("provider", getFeedFinishedEvent.Provider);
-                    parameters.put("socialActionType", getFeedFinishedEvent.SocialActionType);
-                    parameters.put("feed", getFeedFinishedEvent.Posts);
+                    parameters.put("method", ProfileConsts.EVENT_GET_FEED_FINISHED);
+                    parameters.put("provider", getFeedFinishedEvent.Provider.getValue());
+                    parameters.put("socialActionType", getFeedFinishedEvent.SocialActionType.getValue());
+                    parameters.put("feed", new JSONArray(getFeedFinishedEvent.Posts));
                     NdkGlue.getInstance().sendMessageWithParameters(parameters);
                 } catch (JSONException e) {
                     throw new IllegalStateException(e);
@@ -227,9 +232,9 @@ public class ProfileEventHandlerBridge {
             public void run() {
                 try {
                     JSONObject parameters = new JSONObject();
-                    parameters.put("method", ProfileConsts.EVENT_GET_CONTACTS_STARTED);
-                    parameters.put("provider", getFeedStartedEvent.Provider);
-                    parameters.put("socialActionType", getFeedStartedEvent.SocialActionType);
+                    parameters.put("method", ProfileConsts.EVENT_GET_FEED_STARTED);
+                    parameters.put("provider", getFeedStartedEvent.Provider.getValue());
+                    parameters.put("socialActionType", getFeedStartedEvent.SocialActionType.getValue());
                     NdkGlue.getInstance().sendMessageWithParameters(parameters);
                 } catch (JSONException e) {
                     throw new IllegalStateException(e);
@@ -246,7 +251,8 @@ public class ProfileEventHandlerBridge {
                 try {
                     JSONObject parameters = new JSONObject();
                     parameters.put("method", ProfileConsts.EVENT_SOCIAL_ACTION_FAILED);
-                    parameters.put("socialActionType", socialActionFailedEvent.SocialActionType);
+                    parameters.put("provider", socialActionFailedEvent.Provider.getValue());
+                    parameters.put("socialActionType", socialActionFailedEvent.SocialActionType.getValue());
                     parameters.put("errorDescription", socialActionFailedEvent.ErrorDescription);
                     NdkGlue.getInstance().sendMessageWithParameters(parameters);
                 } catch (JSONException e) {
@@ -264,7 +270,8 @@ public class ProfileEventHandlerBridge {
                 try {
                     JSONObject parameters = new JSONObject();
                     parameters.put("method", ProfileConsts.EVENT_SOCIAL_ACTION_FINISHED);
-                    parameters.put("socialActionType", socialActionFinishedEvent.SocialActionType);
+                    parameters.put("provider", socialActionFinishedEvent.Provider.getValue());
+                    parameters.put("socialActionType", socialActionFinishedEvent.SocialActionType.getValue());
                     NdkGlue.getInstance().sendMessageWithParameters(parameters);
                 } catch (JSONException e) {
                     throw new IllegalStateException(e);
@@ -281,7 +288,8 @@ public class ProfileEventHandlerBridge {
                 try {
                     JSONObject parameters = new JSONObject();
                     parameters.put("method", ProfileConsts.EVENT_SOCIAL_ACTION_STARTED);
-                    parameters.put("socialActionType", socialActionStartedEvent.SocialActionType);
+                    parameters.put("provider", socialActionStartedEvent.Provider.getValue());
+                    parameters.put("socialActionType", socialActionStartedEvent.SocialActionType.getValue());
                     NdkGlue.getInstance().sendMessageWithParameters(parameters);
                 } catch (JSONException e) {
                     throw new IllegalStateException(e);
@@ -299,6 +307,7 @@ public class ProfileEventHandlerBridge {
                 try {
                     JSONObject parameters = new JSONObject();
                     parameters.put("method", ProfileConsts.EVENT_LOGIN_CANCELLED);
+                    parameters.put("provider", loginCancelledEvent.Provider.getValue());
                     NdkGlue.getInstance().sendMessageWithParameters(parameters);
                 } catch (JSONException e) {
                     throw new IllegalStateException(e);

@@ -38,7 +38,9 @@ namespace soomla {
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCProfileController::login"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
-        params->setObject(reward->toDictionary(), "reward");
+        if (reward) {
+            params->setObject(reward->toDictionary(), "reward");
+        }
         CCNdkBridge::callNative(params, soomlaError);
     }
 

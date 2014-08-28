@@ -1,9 +1,13 @@
 package com.soomla.cocos2dx.profile;
 
 import android.opengl.GLSurfaceView;
+
+import com.soomla.Soomla;
+import com.soomla.SoomlaUtils;
 import com.soomla.cocos2dx.common.AbstractSoomlaService;
 import com.soomla.cocos2dx.common.DomainFactory;
 import com.soomla.cocos2dx.common.NdkGlue;
+import com.soomla.cocos2dx.common.ParamsProvider;
 import com.soomla.profile.SoomlaProfile;
 import com.soomla.profile.domain.IProvider;
 import com.soomla.profile.domain.UserProfile;
@@ -62,6 +66,11 @@ public class ProfileService extends AbstractSoomlaService {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
                 ProfileService.getInstance().init();
+
+                String customSecret = ParamsProvider.getInstance().getParams("common").optString("customSecret");
+                SoomlaUtils.LogDebug("SOOMLA", "initialize is called from java!");
+                Soomla.initialize(customSecret);
+                SoomlaProfile.getInstance().initialize();
             }
         });
 
@@ -147,6 +156,17 @@ public class ProfileService extends AbstractSoomlaService {
                 Reward reward = (rewardJson != null) ?
                         domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
                 SoomlaProfile.getInstance().getContacts(IProvider.Provider.getEnum(provider), reward);
+            }
+        });
+
+        ndkGlue.registerCallHandler("CCProfileController::getFeed", new NdkGlue.CallHandler() {
+            @Override
+            public void handle(JSONObject params, JSONObject retParams) throws Exception {
+                String provider = params.getString("provider");
+                JSONObject rewardJson = params.optJSONObject("reward");
+                Reward reward = (rewardJson != null) ?
+                        domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
+                SoomlaProfile.getInstance().getFeed(IProvider.Provider.getEnum(provider), reward);
             }
         });
 

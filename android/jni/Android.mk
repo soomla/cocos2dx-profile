@@ -8,6 +8,8 @@ LOCAL_SRC_FILES := ../../Profile/CCProfileConsts.cpp \
 	../../Profile/CCProfileController.cpp \
 	../../Profile/CCProfileEventDispatcher.cpp \
 	../../Profile/CCProfileService.cpp \
+	../../Profile/CCSocialActionUtils.cpp \
+	../../Profile/CCUserProfileUtils.cpp \
 	../../Profile/domain/CCUserProfile.cpp
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Profile

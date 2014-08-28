@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C0B3C5F3168C6D0C00161FAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B3C5F2168C6D0C00161FAA /* Foundation.framework */; };
-		F821043519A7819A008DB661 /* libCocos2dXiOSProfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F821043419A7819A008DB661 /* libCocos2dXiOSProfile.a */; };
 		F82107B319A78334008DB661 /* libSoomlaiOSProfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F82107B219A78334008DB661 /* libSoomlaiOSProfile.a */; };
 		F821FFAC19A742B8008DB661 /* CCProfileConsts.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F821FF9C19A742B8008DB661 /* CCProfileConsts.cpp */; };
 		F821FFAD19A742B8008DB661 /* CCProfileConsts.h in Headers */ = {isa = PBXBuildFile; fileRef = F821FF9D19A742B8008DB661 /* CCProfileConsts.h */; };
@@ -26,7 +25,25 @@
 		F83FDE8319AB54720011AD54 /* CCSocialActionUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = F83FDE8019AB51BC0011AD54 /* CCSocialActionUtils.h */; };
 		F83FDE8619AB58030011AD54 /* CCUserProfileUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F83FDE8419AB58030011AD54 /* CCUserProfileUtils.cpp */; };
 		F83FDE8719AB58030011AD54 /* CCUserProfileUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = F83FDE8519AB58030011AD54 /* CCUserProfileUtils.h */; };
+		F872D6BA19AF1CF8006820A1 /* libCocos2dXiOSProfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F872D6B719AF1CE0006820A1 /* libCocos2dXiOSProfile.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F872D6B619AF1CE0006820A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F872D6B219AF1CE0006820A1 /* Cocos2dXiOSProfile.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C0B3C5EF168C6D0C00161FAA;
+			remoteInfo = Cocos2dXiOSProfile;
+		};
+		F872D6B819AF1CEA006820A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F872D6B219AF1CE0006820A1 /* Cocos2dXiOSProfile.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = C0B3C5EE168C6D0C00161FAA;
+			remoteInfo = Cocos2dXiOSProfile;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		C0B3C5EF168C6D0C00161FAA /* libCocos2dXProfile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocos2dXProfile.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +66,7 @@
 		F83FDE8119AB541A0011AD54 /* CCSocialActionUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSocialActionUtils.cpp; sourceTree = "<group>"; };
 		F83FDE8419AB58030011AD54 /* CCUserProfileUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCUserProfileUtils.cpp; sourceTree = "<group>"; };
 		F83FDE8519AB58030011AD54 /* CCUserProfileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCUserProfileUtils.h; sourceTree = "<group>"; };
+		F872D6B219AF1CE0006820A1 /* Cocos2dXiOSProfile.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Cocos2dXiOSProfile.xcodeproj; path = "soomla-native/projects/cocos2dx-ios-profile/Cocos2dXiOSProfile.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F821043519A7819A008DB661 /* libCocos2dXiOSProfile.a in Frameworks */,
+				F872D6BA19AF1CF8006820A1 /* libCocos2dXiOSProfile.a in Frameworks */,
 				C0B3C5F3168C6D0C00161FAA /* Foundation.framework in Frameworks */,
 				F82107B319A78334008DB661 /* libSoomlaiOSProfile.a in Frameworks */,
 			);
@@ -68,6 +86,7 @@
 		C0B3C5E4168C6D0C00161FAA = {
 			isa = PBXGroup;
 			children = (
+				F872D6B219AF1CE0006820A1 /* Cocos2dXiOSProfile.xcodeproj */,
 				F821FF9B19A742B8008DB661 /* Profile */,
 				C0B3C5F1168C6D0C00161FAA /* Frameworks */,
 				C0B3C5F0168C6D0C00161FAA /* Products */,
@@ -123,6 +142,14 @@
 			path = domain;
 			sourceTree = "<group>";
 		};
+		F872D6B319AF1CE0006820A1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F872D6B719AF1CE0006820A1 /* libCocos2dXiOSProfile.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -156,6 +183,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				F872D6B919AF1CEA006820A1 /* PBXTargetDependency */,
 			);
 			name = Cocos2dXProfile;
 			productName = SoomlaIOSStore;
@@ -182,12 +210,28 @@
 			mainGroup = C0B3C5E4168C6D0C00161FAA;
 			productRefGroup = C0B3C5F0168C6D0C00161FAA /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = F872D6B319AF1CE0006820A1 /* Products */;
+					ProjectRef = F872D6B219AF1CE0006820A1 /* Cocos2dXiOSProfile.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				C0B3C5EE168C6D0C00161FAA /* Cocos2dXProfile */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		F872D6B719AF1CE0006820A1 /* libCocos2dXiOSProfile.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libCocos2dXiOSProfile.a;
+			remoteRef = F872D6B619AF1CE0006820A1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C0B3C5EB168C6D0C00161FAA /* Sources */ = {
@@ -205,6 +249,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F872D6B919AF1CEA006820A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Cocos2dXiOSProfile;
+			targetProxy = F872D6B819AF1CEA006820A1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		C0B3C5FB168C6D0C00161FAA /* Debug */ = {
@@ -278,7 +330,10 @@
 					"$(SRCROOT)/soomla-native/compilations/ios/headers/**",
 					"$(SRCROOT)/../soomla-cocos2dx-core/Soomla/**",
 				);
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/soomla-native/compilations/ios";
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/soomla-native/compilations/ios",
+					"$(PROJECT_DIR)/submodules/ios-profile/build",
+				);
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -310,7 +365,10 @@
 					"$(SRCROOT)/soomla-native/compilations/ios/headers/**",
 					"$(SRCROOT)/../soomla-cocos2dx-core/Soomla/**",
 				);
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/soomla-native/compilations/ios";
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/soomla-native/compilations/ios",
+					"$(PROJECT_DIR)/submodules/ios-profile/build",
+				);
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";

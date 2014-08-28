@@ -240,6 +240,8 @@
 					"$(SRCROOT)/../../../../../external/jansson",
 					"$(SRCROOT)/../../compilations/ios/headers/**",
 					"$(SRCROOT)/../../../submodules/ios-profile/SoomlaiOSProfile/**",
+					"$(SRCROOT)/../../../../soomla-cocos2dx-core/soomla-native/projects/cocos2dx-ios-core/build/headers/**",
+					"$(SRCROOT)/../../../../soomla-cocos2dx-core/submodules/soomla-ios-core/build/headers/**",
 				);
 				LIBRARY_SEARCH_PATHS = "";
 				LINK_WITH_STANDARD_LIBRARIES = NO;
@@ -272,6 +274,8 @@
 					"$(SRCROOT)/../../../../../external/jansson",
 					"$(SRCROOT)/../../compilations/ios/headers/**",
 					"$(SRCROOT)/../../../submodules/ios-profile/SoomlaiOSProfile/**",
+					"$(SRCROOT)/../../../../soomla-cocos2dx-core/soomla-native/projects/cocos2dx-ios-core/build/headers/**",
+					"$(SRCROOT)/../../../../soomla-cocos2dx-core/submodules/soomla-ios-core/build/headers/**",
 				);
 				LIBRARY_SEARCH_PATHS = "";
 				LINK_WITH_STANDARD_LIBRARIES = NO;

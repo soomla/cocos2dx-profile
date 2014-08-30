@@ -17,6 +17,9 @@ public class ProfileConsts {
     public static final String EVENT_GET_CONTACTS_FAILED = "com.soomla.profile.events.social.GetContactsFailedEvent";
     public static final String EVENT_GET_CONTACTS_FINISHED = "com.soomla.profile.events.social.GetContactsFinishedEvent";
     public static final String EVENT_GET_CONTACTS_STARTED = "com.soomla.profile.events.social.GetContactsStartedEvent";
+    public static final String EVENT_GET_FEED_FAILED = "com.soomla.profile.events.social.GetFeedFailedEvent";
+    public static final String EVENT_GET_FEED_FINISHED = "com.soomla.profile.events.social.GetFeedFinishedEvent";
+    public static final String EVENT_GET_FEED_STARTED = "com.soomla.profile.events.social.GetFeedStartedEvent";
     public static final String EVENT_SOCIAL_ACTION_FAILED = "com.soomla.profile.events.social.SocialActionFailedEvent";
     public static final String EVENT_SOCIAL_ACTION_FINISHED = "com.soomla.profile.events.social.SocialActionFinishedEvent";
     public static final String EVENT_SOCIAL_ACTION_STARTED = "com.soomla.profile.events.social.SocialActionStartedEvent";

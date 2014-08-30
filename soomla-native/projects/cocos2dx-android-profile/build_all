@@ -1,1 +1,1 @@
-ant -buildfile cocos2dx-android-store.xml -Dsoomla.filename="Cocos2dxAndroidStore" all
+ant -buildfile cocos2dx-android-profile.xml -Dsoomla.filename="Cocos2dxAndroidProfile" all

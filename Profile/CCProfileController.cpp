@@ -33,46 +33,48 @@ namespace soomla {
         return true;
     }
 
-    void CCProfileController::login(const char *provider, CCReward *reward, CCError **soomlaError) {
+    void CCProfileController::login(CCProvider provider, CCReward *reward, CCError **soomlaError) {
         CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCProfileController::login"), "method");
-        params->setObject(__String::create(provider), "provider");
-        params->setObject(reward->toDictionary(), "reward");
+        params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
+        if (reward) {
+            params->setObject(reward->toDictionary(), "reward");
+        }
         CCNdkBridge::callNative(params, soomlaError);
     }
 
-    void CCProfileController::login(const char *provider, CCError **soomlaError) {
+    void CCProfileController::login(CCProvider provider, CCError **soomlaError) {
         CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCProfileController::login"), "method");
-        params->setObject(__String::create(provider), "provider");
+        params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
         CCNdkBridge::callNative(params, soomlaError);
     }
 
-    void CCProfileController::logout(const char *provider, CCError **soomlaError) {
+    void CCProfileController::logout(CCProvider provider, CCError **soomlaError) {
         CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCProfileController::logout"), "method");
-        params->setObject(__String::create(provider), "provider");
+        params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
         CCNdkBridge::callNative(params, soomlaError);
     }
 
-    CCUserProfile *CCProfileController::getStoredUserProfile(const char *provider, CCError **soomlaError) {
+    CCUserProfile *CCProfileController::getStoredUserProfile(CCProvider provider, CCError **soomlaError) {
         CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCProfileController::getStoredUserProfile"), "method");
-        params->setObject(__String::create(provider), "provider");
+        params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
         __Dictionary *retParams = (__Dictionary *) CCNdkBridge::callNative(params, NULL);
         CCUserProfile *retValue = (CCUserProfile *) retParams->objectForKey("return");
         return retValue;
     }
 
-    void CCProfileController::updateStatus(const char *provider, const char *status, CCReward *reward, CCError **soomlaError) {
+    void CCProfileController::updateStatus(CCProvider provider, const char *status, CCReward *reward, CCError **soomlaError) {
         CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCProfileController::updateStatus"), "method");
-        params->setObject(__String::create(provider), "provider");
+        params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
         params->setObject(__String::create(status), "status");
         if (reward) {
             params->setObject(reward->toDictionary(), "reward");
@@ -80,44 +82,85 @@ namespace soomla {
         CCNdkBridge::callNative(params, soomlaError);
     }
 
-    void CCProfileController::updateStory(const char *provider, const char *message, const char *name,
+    void CCProfileController::updateStory(CCProvider provider, const char *message, const char *name,
             const char *caption, const char *description, const char *link, const char *picture,
             CCReward *reward, CCError **soomlaError) {
 
         CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCProfileController::updateStory"), "method");
-        params->setObject(__String::create(provider), "provider");
+        params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
         params->setObject(__String::create(message), "message");
         params->setObject(__String::create(name), "name");
         params->setObject(__String::create(caption), "caption");
         params->setObject(__String::create(description), "description");
         params->setObject(__String::create(link), "link");
         params->setObject(__String::create(picture), "picture");
-        params->setObject(reward->toDictionary(), "reward");
+        if (reward) {
+            params->setObject(reward->toDictionary(), "reward");
+        }
         CCNdkBridge::callNative(params, soomlaError);
     }
 
-    void CCProfileController::uploadImage(const char *provider, const char *message, const char *filePath,
+    void CCProfileController::uploadImage(CCProvider provider, const char *message, const char *filePath,
             CCReward *reward, CCError **soomlaError) {
 
         CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCProfileController::uploadImage"), "method");
-        params->setObject(__String::create(provider), "provider");
+        params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
         params->setObject(__String::create(message), "message");
         params->setObject(__String::create(filePath), "filePath");
-        params->setObject(reward->toDictionary(), "reward");
+        if (reward) {
+            params->setObject(reward->toDictionary(), "reward");
+        }
         CCNdkBridge::callNative(params, soomlaError);
     }
 
-    void CCProfileController::getContacts(const char *provider, CCReward *reward, CCError **soomlaError) {
+    void CCProfileController::getContacts(CCProvider provider, CCReward *reward, CCError **soomlaError) {
 
         CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCProfileController::getContacts"), "method");
-        params->setObject(__String::create(provider), "provider");
-        params->setObject(reward->toDictionary(), "reward");
+        params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
+        if (reward) {
+            params->setObject(reward->toDictionary(), "reward");
+        }
+        CCNdkBridge::callNative(params, soomlaError);
+    }
+    
+    void CCProfileController::getFeed(CCProvider provider, CCReward *reward, CCError **soomlaError) {
+        
+        CC_ASSERT(mInited);
+        __Dictionary *params = __Dictionary::create();
+        params->setObject(__String::create("CCProfileController::getFeed"), "method");
+        params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
+        if (reward) {
+            params->setObject(reward->toDictionary(), "reward");
+        }
+        CCNdkBridge::callNative(params, soomlaError);
+    }
+    
+    bool CCProfileController::isLoggedIn(CCProvider provider, CCError **soomlaError) {
+        CC_ASSERT(mInited);
+        __Dictionary *params = __Dictionary::create();
+        params->setObject(__String::create("CCProfileController::isLoggedIn"), "method");
+        params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
+        __Dictionary *retParams = (__Dictionary *) CCNdkBridge::callNative (params, soomlaError);
+        __Bool *retValue = (__Bool *) retParams->objectForKey("return");
+        
+        return retValue->getValue();
+    }
+    
+    void CCProfileController::like(CCProvider provider, const char *pageName, CCReward *reward, CCError **soomlaError) {
+        CC_ASSERT(mInited);
+        __Dictionary *params = __Dictionary::create();
+        params->setObject(__String::create("CCProfileController::like"), "method");
+        params->setObject(__String::create(pageName), "pageName");
+        params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
+        if (reward) {
+            params->setObject(reward->toDictionary(), "reward");
+        }
         CCNdkBridge::callNative(params, soomlaError);
     }
 }

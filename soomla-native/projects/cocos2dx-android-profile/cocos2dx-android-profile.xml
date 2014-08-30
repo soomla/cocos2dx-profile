@@ -2,7 +2,7 @@
 <project name="soomla" default="all">
 
   <property environment="env" />
-  <property file="cocos2dx-android-store.properties"/>
+  <property file="cocos2dx-android-profile.properties"/>
 
   <!-- Compiler options -->
 
@@ -71,36 +71,36 @@
 
   <!-- Modules -->
 
-  <import file="${basedir}/module_cocos2dxandroidstore.xml"/>
+  <import file="${basedir}/module_cocos2dxandroidprofile.xml"/>
 
   <target name="init" description="Build initialization">
     <!-- Perform any build initialization in this target -->
   </target>
 
-  <target name="clean" depends="clean.module.cocos2dxandroidstore" description="cleanup all"/>
+  <target name="clean" depends="clean.module.cocos2dxandroidprofile" description="cleanup all"/>
 
-  <target name="build.modules" depends="init, clean, compile.module.cocos2dxandroidstore" description="build all modules"/>
+  <target name="build.modules" depends="init, clean, compile.module.cocos2dxandroidprofile" description="build all modules"/>
 
   <target name="init.artifacts">
     <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
-    <property name="artifact.output.cocos2dxandroidstore:jar" value="${basedir}/out/artifacts/cocos2dxAndroidStore_jar"/>
+    <property name="artifact.output.cocos2dxandroidprofile:jar" value="${basedir}/out/artifacts/cocos2dxandroidprofile_jar"/>
     <mkdir dir="${artifacts.temp.dir}"/>
-    <property name="temp.jar.path.cocos2dxAndroidStore.jar" value="${artifacts.temp.dir}/${soomla.filename}.jar"/>
+    <property name="temp.jar.path.cocos2dxandroidprofile.jar" value="${artifacts.temp.dir}/${soomla.filename}.jar"/>
   </target>
 
-  <target name="artifact.cocos2dxandroidstore:jar" depends="init.artifacts, compile.module.cocos2dxandroidstore" description="Build &#39;cocos2dxAndroidStore:jar&#39; artifact">
-    <property name="artifact.temp.output.cocos2dxandroidstore:jar" value="${artifacts.temp.dir}/cocos2dxAndroidStore_jar"/>
-    <mkdir dir="${artifact.temp.output.cocos2dxandroidstore:jar}"/>
-    <jar destfile="${temp.jar.path.cocos2dxAndroidStore.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
-      <zipfileset dir="${cocos2dxandroidstore.output.dir}"/>
+  <target name="artifact.cocos2dxandroidprofile:jar" depends="init.artifacts, compile.module.cocos2dxandroidprofile" description="Build &#39;cocos2dxandroidprofile:jar&#39; artifact">
+    <property name="artifact.temp.output.cocos2dxandroidprofile:jar" value="${artifacts.temp.dir}/cocos2dxandroidprofile_jar"/>
+    <mkdir dir="${artifact.temp.output.cocos2dxandroidprofile:jar}"/>
+    <jar destfile="${temp.jar.path.cocos2dxandroidprofile.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset dir="${cocos2dxandroidprofile.output.dir}"/>
     </jar>
-    <copy file="${temp.jar.path.cocos2dxAndroidStore.jar}" tofile="${basedir}/${cocos2dxandroidstore.target.dir}/${soomla.filename}.jar"/>
+    <copy file="${temp.jar.path.cocos2dxandroidprofile.jar}" tofile="${basedir}/${cocos2dxandroidprofile.target.dir}/${soomla.filename}.jar"/>
   </target>
 
-  <target name="build.all.artifacts" depends="artifact.cocos2dxandroidstore:jar" description="Build all artifacts">
-    <mkdir dir="${artifact.output.cocos2dxandroidstore:jar}"/>
-    <copy todir="${artifact.output.cocos2dxandroidstore:jar}">
-      <fileset dir="${artifact.temp.output.cocos2dxandroidstore:jar}"/>
+  <target name="build.all.artifacts" depends="artifact.cocos2dxandroidprofile:jar" description="Build all artifacts">
+    <mkdir dir="${artifact.output.cocos2dxandroidprofile:jar}"/>
+    <copy todir="${artifact.output.cocos2dxandroidprofile:jar}">
+      <fileset dir="${artifact.temp.output.cocos2dxandroidprofile:jar}"/>
     </copy>
 
     <!-- Delete temporary files -->

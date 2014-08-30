@@ -133,6 +133,12 @@
         Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
         [[SoomlaProfile getInstance] getFeedWithProvider:[UserProfileUtils providerStringToEnum:provider] andReward:reward];
     }];
+    
+    [ndkGlue registerCallHandlerForKey:@"CCProfileController::isLoggedIn" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
+        NSString *provider = [parameters objectForKey:@"provider"];
+        BOOL result = [[SoomlaProfile getInstance] isLoggedInWithProvider:[UserProfileUtils providerStringToEnum:provider]];
+        [retParameters setObject:@(result) forKey:@"return"];
+    }];
 
     /* -= Exception handlers =- */
     void (^exceptionHandler)(NSException *, NSDictionary *, NSMutableDictionary *) = ^(NSException *exception, NSDictionary *parameters, NSMutableDictionary *retParameters) {

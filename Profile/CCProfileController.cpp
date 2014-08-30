@@ -140,4 +140,14 @@ namespace soomla {
         }
         CCNdkBridge::callNative(params, soomlaError);
     }
+    
+    bool CCProfileController::isLoggedIn(CCProvider provider, CCError **soomlaError) {
+        CC_ASSERT(mInited);
+        __Dictionary *params = __Dictionary::create();
+        params->setObject(__String::create("CCProfileController::isLoggedIn"), "method");
+        params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
+        __Dictionary *retParams = (__Dictionary *) CCNdkBridge::callNative (params, soomlaError);
+        __Bool *retValue = (__Bool *) retParams->objectForKey("return");
+        return retValue->getValue();
+    }
 }

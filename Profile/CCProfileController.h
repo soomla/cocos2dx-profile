@@ -51,6 +51,8 @@ namespace soomla {
         void getContacts(CCProvider provider, CCReward *reward, CCError **soomlaError);
         
         void getFeed(CCProvider provider, CCReward *reward, CCError **soomlaError);
+        
+        bool isLoggedIn(CCProvider provider, CCError **soomlaError);
 
     };
 };

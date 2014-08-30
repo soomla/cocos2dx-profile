@@ -170,6 +170,15 @@ public class ProfileService extends AbstractSoomlaService {
             }
         });
 
+        ndkGlue.registerCallHandler("CCProfileController::isLoggedIn", new NdkGlue.CallHandler() {
+            @Override
+            public void handle(JSONObject params, JSONObject retParams) throws Exception {
+                String provider = params.getString("provider");
+                boolean result = SoomlaProfile.getInstance().isLoggedIn(ndkGlue.getActivityRef().get(), IProvider.Provider.getEnum(provider));
+                retParams.put("return", result);
+            }
+        });
+
 
         final NdkGlue.ExceptionHandler exceptionHandler = new NdkGlue.ExceptionHandler() {
             @Override

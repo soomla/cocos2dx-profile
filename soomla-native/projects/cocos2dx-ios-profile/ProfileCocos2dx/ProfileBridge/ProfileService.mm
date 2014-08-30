@@ -139,6 +139,14 @@
         BOOL result = [[SoomlaProfile getInstance] isLoggedInWithProvider:[UserProfileUtils providerStringToEnum:provider]];
         [retParameters setObject:@(result) forKey:@"return"];
     }];
+    
+    [ndkGlue registerCallHandlerForKey:@"CCProfileController::like" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
+        NSString *provider = [parameters objectForKey:@"provider"];
+        NSString *pageName = [parameters objectForKey:@"pageName"];
+        NSDictionary *rewardDict = [parameters objectForKey:@"reward"];
+        Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
+        [[SoomlaProfile getInstance] like:[UserProfileUtils providerStringToEnum:provider] andPageName:pageName andReward:reward];
+    }];
 
     /* -= Exception handlers =- */
     void (^exceptionHandler)(NSException *, NSDictionary *, NSMutableDictionary *) = ^(NSException *exception, NSDictionary *parameters, NSMutableDictionary *retParameters) {

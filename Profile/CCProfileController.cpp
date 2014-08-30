@@ -148,6 +148,19 @@ namespace soomla {
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
         __Dictionary *retParams = (__Dictionary *) CCNdkBridge::callNative (params, soomlaError);
         __Bool *retValue = (__Bool *) retParams->objectForKey("return");
+        
         return retValue->getValue();
+    }
+    
+    void CCProfileController::like(CCProvider provider, const char *pageName, CCReward *reward, CCError **soomlaError) {
+        CC_ASSERT(mInited);
+        __Dictionary *params = __Dictionary::create();
+        params->setObject(__String::create("CCProfileController::like"), "method");
+        params->setObject(__String::create(pageName), "pageName");
+        params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
+        if (reward) {
+            params->setObject(reward->toDictionary(), "reward");
+        }
+        CCNdkBridge::callNative(params, soomlaError);
     }
 }

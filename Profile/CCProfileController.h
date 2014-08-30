@@ -53,6 +53,8 @@ namespace soomla {
         void getFeed(CCProvider provider, CCReward *reward, CCError **soomlaError);
         
         bool isLoggedIn(CCProvider provider, CCError **soomlaError);
+        
+        void like(CCProvider provider, const char *pageName, CCReward *reward, CCError **soomlaError);
 
     };
 };

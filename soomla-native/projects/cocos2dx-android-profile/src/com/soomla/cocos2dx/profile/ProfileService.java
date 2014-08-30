@@ -179,6 +179,19 @@ public class ProfileService extends AbstractSoomlaService {
             }
         });
 
+        ndkGlue.registerCallHandler("CCProfileController::like", new NdkGlue.CallHandler() {
+            @Override
+            public void handle(JSONObject params, JSONObject retParams) throws Exception {
+                String provider = params.getString("provider");
+                String pageName = params.getString("pageName");
+                JSONObject rewardJson = params.optJSONObject("reward");
+                Reward reward = (rewardJson != null) ?
+                        domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
+                SoomlaProfile.getInstance().like(ndkGlue.getActivityRef().get(), IProvider.Provider.getEnum(provider),
+                        pageName, reward);
+            }
+        });
+
 
         final NdkGlue.ExceptionHandler exceptionHandler = new NdkGlue.ExceptionHandler() {
             @Override

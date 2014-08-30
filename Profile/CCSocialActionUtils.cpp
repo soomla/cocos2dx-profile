@@ -1,17 +1,27 @@
-//
-//  CCSocialActionUtils.cpp
-//  Cocos2dXProfile
-//
+/*
+ Copyright (C) 2012-2014 Soomla Inc.
+ 
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ 
+ http://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ */
+
 //  Created by Simon Grinberg on 8/25/14.
-//  Copyright (c) 2014 SOOMLA. All rights reserved.
-//
 
 #include "CCSocialActionUtils.h"
 
 namespace soomla {
     
-     __String* CCSocialActionUtils::actionEnumToString(CCSocialActionType actionType) {
-         switch (actionType) {
+     __String* CCSocialActionUtils::actionEnumToString(CCSocialActionType providerType) {
+         switch (providerType) {
              case UPDATE_STATUS:
                  return __String::create("UPDATE_STATUS");
                  break;
@@ -30,20 +40,20 @@ namespace soomla {
          return NULL;
     }
     
-    CCSocialActionType CCSocialActionUtils::actionStringToEnum(__String* actionTypeString) {
-        if (actionTypeString->compare("UPDATE_STATUS")) {
+    CCSocialActionType CCSocialActionUtils::actionStringToEnum(__String* providerTypeString) {
+        if (providerTypeString->compare("UPDATE_STATUS")) {
             return UPDATE_STATUS;
         }
-        else if (actionTypeString->compare("UPDATE_STORY")) {
+        else if (providerTypeString->compare("UPDATE_STORY")) {
             return UPDATE_STORY;
         }
-        else if (actionTypeString->compare("UPLOAD_IMAGE")) {
+        else if (providerTypeString->compare("UPLOAD_IMAGE")) {
             return UPLOAD_IMAGE;
         }
-        else if (actionTypeString->compare("GET_CONTACTS")) {
+        else if (providerTypeString->compare("GET_CONTACTS")) {
             return GET_CONTACTS;
         }
-        else if (actionTypeString->compare("GET_FEED")) {
+        else if (providerTypeString->compare("GET_FEED")) {
             return GET_FEED;
         }
         

@@ -1,9 +1,25 @@
+/*
+ * Copyright (C) 2012-2014 Soomla Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.soomla.cocos2dx.profile;
 
+
 /**
- * @author vedi
- *         date 6/9/14
- *         time 6:49 PM
+ * Provides all the string consts to provide a common interface between native and
+ * Cocos2dx. String consts represent events and JSON fields.
  */
 public class ProfileConsts {
     public static final String JSON_JSON_TYPE_USER_PROFILE = "userProfile";
@@ -24,6 +40,5 @@ public class ProfileConsts {
     public static final String EVENT_SOCIAL_ACTION_FINISHED = "com.soomla.profile.events.social.SocialActionFinishedEvent";
     public static final String EVENT_SOCIAL_ACTION_STARTED = "com.soomla.profile.events.social.SocialActionStartedEvent";
     public static final String EVENT_LOGIN_CANCELLED = "com.soomla.profile.events.auth.LoginCancelledEvent";
-    public static final String EVENT_REWARD_GIVEN = "com.soomla.profile.events.RewardGivenEvent";
     public static final String EVENT_USER_PROFILE_UPDATED = "com.soomla.profile.events.UserProfileUpdatedEvent";
 }

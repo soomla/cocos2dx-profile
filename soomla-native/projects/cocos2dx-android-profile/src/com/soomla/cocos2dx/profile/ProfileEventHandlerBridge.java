@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2012-2014 Soomla Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.soomla.cocos2dx.profile;
 
 import android.opengl.GLSurfaceView;
@@ -17,16 +33,27 @@ import org.json.JSONObject;
 import java.util.List;
 
 /**
- * This bridge is used to populate events from the store to cocos2dx (through JNI).
+ * This bridge is used to populate events from the native profile to cocos2dx (through JNI).
  */
 public class ProfileEventHandlerBridge {
 
     private GLSurfaceView mGLThread;
 
+    /**
+     * Constructor
+     *
+     * The main constructor of the event handling bridge.
+     * Registers all event handling for native side.
+     */
     public ProfileEventHandlerBridge() {
         BusProvider.getInstance().register(this);
     }
 
+    /**
+     * Called when a login process to a provider has failed
+     *
+     * @param loginFailedEvent The event information
+     */
     @Subscribe
     public void onLoginFailedEvent(final LoginFailedEvent loginFailedEvent) {
         mGLThread.queueEvent(new Runnable() {
@@ -45,6 +72,11 @@ public class ProfileEventHandlerBridge {
         });
     }
 
+    /**
+     * Called when a login process to a provider has finished
+     *
+     * @param loginFinishedEvent The event information
+     */
     @Subscribe
     public void onLoginFinishedEvent(final LoginFinishedEvent loginFinishedEvent) {
         mGLThread.queueEvent(new Runnable() {
@@ -62,6 +94,11 @@ public class ProfileEventHandlerBridge {
         });
     }
 
+    /**
+     * Called when a login process to a provider has started
+     *
+     * @param loginStartedEvent The event information
+     */
     @Subscribe
     public void onLoginStartedEvent(final LoginStartedEvent loginStartedEvent) {
         mGLThread.queueEvent(new Runnable() {
@@ -79,6 +116,11 @@ public class ProfileEventHandlerBridge {
         });
     }
 
+    /**
+     * Called when a logout process from a provider has failed
+     *
+     * @param logoutFailedEvent The event information
+     */
     @Subscribe
     public void onLogoutFailedEvent(final LogoutFailedEvent logoutFailedEvent) {
         mGLThread.queueEvent(new Runnable() {
@@ -97,6 +139,11 @@ public class ProfileEventHandlerBridge {
         });
     }
 
+    /**
+     * Called when a logout process from a provider has finished
+     *
+     * @param logoutFinishedEvent The event information
+     */
     @Subscribe
     public void onLogoutFinishedEvent(final LogoutFinishedEvent logoutFinishedEvent) {
         mGLThread.queueEvent(new Runnable() {
@@ -114,6 +161,11 @@ public class ProfileEventHandlerBridge {
         });
     }
 
+    /**
+     * Called when a logout process from a provider has started
+     *
+     * @param logoutStartedEvent The event information
+     */
     @Subscribe
     public void onLogoutStartedEvent(final LogoutStartedEvent logoutStartedEvent) {
         mGLThread.queueEvent(new Runnable() {
@@ -131,6 +183,11 @@ public class ProfileEventHandlerBridge {
         });
     }
 
+    /**
+     * Called when a get contacts process from a provider has failed
+     *
+     * @param getContactsFailedEvent The event information
+     */
     @Subscribe
     public void onGetContactsFailedEvent(final GetContactsFailedEvent getContactsFailedEvent) {
         mGLThread.queueEvent(new Runnable() {
@@ -150,6 +207,11 @@ public class ProfileEventHandlerBridge {
         });
     }
 
+    /**
+     * Called when a get contacts process from a provider has finished
+     *
+     * @param getContactsFinishedEvent The event information
+     */
     @Subscribe
     public void onGetContactsFinishedEvent(final GetContactsFinishedEvent getContactsFinishedEvent) {
         mGLThread.queueEvent(new Runnable() {
@@ -169,6 +231,11 @@ public class ProfileEventHandlerBridge {
         });
     }
 
+    /**
+     * Called when a get contacts process from a provider has started
+     *
+     * @param getContactsStartedEvent The event information
+     */
     @Subscribe
     public void onGetContactsStartedEvent(final GetContactsStartedEvent getContactsStartedEvent) {
         mGLThread.queueEvent(new Runnable() {
@@ -187,6 +254,11 @@ public class ProfileEventHandlerBridge {
         });
     }
 
+    /**
+     * Called when a get feed process from a provider has failed
+     *
+     * @param getFeedFailedEvent The event information
+     */
     @Subscribe
     public void onGetFeedFailedEvent(final GetFeedFailedEvent getFeedFailedEvent) {
         mGLThread.queueEvent(new Runnable() {
@@ -206,6 +278,11 @@ public class ProfileEventHandlerBridge {
         });
     }
 
+    /**
+     * Called when a get feed process from a provider has finished
+     *
+     * @param getFeedFinishedEvent The event information
+     */
     @Subscribe
     public void onGetFeedFinishedEvent(final GetFeedFinishedEvent getFeedFinishedEvent) {
         mGLThread.queueEvent(new Runnable() {
@@ -225,6 +302,11 @@ public class ProfileEventHandlerBridge {
         });
     }
 
+    /**
+     * Called when a get feed process from a provider has started
+     *
+     * @param getFeedStartedEvent The event information
+     */
     @Subscribe
     public void onGetFeedStartedEvent(final GetFeedStartedEvent getFeedStartedEvent) {
         mGLThread.queueEvent(new Runnable() {
@@ -243,6 +325,11 @@ public class ProfileEventHandlerBridge {
         });
     }
 
+    /**
+     * Called when a generic social action on a provider has failed
+     *
+     * @param socialActionFailedEvent The event information
+     */
     @Subscribe
     public void onSocialActionFailedEvent(final SocialActionFailedEvent socialActionFailedEvent) {
         mGLThread.queueEvent(new Runnable() {
@@ -262,6 +349,11 @@ public class ProfileEventHandlerBridge {
         });
     }
 
+    /**
+     * Called when a generic social action on a provider has finished
+     *
+     * @param socialActionFinishedEvent The event information
+     */
     @Subscribe
     public void onSocialActionFinishedEvent(final SocialActionFinishedEvent socialActionFinishedEvent) {
         mGLThread.queueEvent(new Runnable() {
@@ -280,6 +372,11 @@ public class ProfileEventHandlerBridge {
         });
     }
 
+    /**
+     * Called when a generic social action on a provider has started
+     *
+     * @param socialActionStartedEvent The event information
+     */
     @Subscribe
     public void onSocialActionStartedEvent(final SocialActionStartedEvent socialActionStartedEvent) {
         mGLThread.queueEvent(new Runnable() {
@@ -298,6 +395,11 @@ public class ProfileEventHandlerBridge {
         });
     }
 
+    /**
+     * Called when a login process has been cancelled
+     *
+     * @param loginCancelledEvent The event information
+     */
     @SuppressWarnings("UnusedParameters")
     @Subscribe
     public void onLoginCancelledEvent(final LoginCancelledEvent loginCancelledEvent) {
@@ -316,6 +418,11 @@ public class ProfileEventHandlerBridge {
         });
     }
 
+    /**
+     * Called when a user's profile from a social provider has been updated
+     *
+     * @param userProfileUpdatedEvent The event information
+     */
     @Subscribe
     public void onUserProfileUpdatedEvent(final UserProfileUpdatedEvent userProfileUpdatedEvent) {
         mGLThread.queueEvent(new Runnable() {
@@ -333,6 +440,11 @@ public class ProfileEventHandlerBridge {
         });
     }
 
+    /**
+     * Sets the main GL surface of the application
+     *
+     * @param glSurfaceView The GL surface of the main activity
+     */
     public void setGlSurfaceView(GLSurfaceView glSurfaceView) {
         this.mGLThread = glSurfaceView;
     }

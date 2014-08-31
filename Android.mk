@@ -12,16 +12,16 @@ LOCAL_SRC_FILES := Profile/CCProfileConsts.cpp \
 	Profile/CCUserProfileUtils.cpp \
 	Profile/domain/CCUserProfile.cpp
 
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Profile
-LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../Profile/domain
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/Profile
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/Profile/domain
 
 LOCAL_WHOLE_STATIC_LIBRARIES += cocos2dx_static
 LOCAL_WHOLE_STATIC_LIBRARIES += cocos2dx_soomla_common_static
 
-LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/../..
-LOCAL_EXPORT_C_INCLUDES += $(LOCAL_PATH)/../../Profile
-LOCAL_EXPORT_C_INCLUDES += $(LOCAL_PATH)/../../Profile/domain
+LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/
+LOCAL_EXPORT_C_INCLUDES += $(LOCAL_PATH)/Profile
+LOCAL_EXPORT_C_INCLUDES += $(LOCAL_PATH)/Profile/domain
 
 include $(BUILD_STATIC_LIBRARY)
 
-$(call import-module,extensions/soomla-cocos2dx-core/android/jni)
+$(call import-module,extensions/soomla-cocos2dx-core)

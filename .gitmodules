@@ -1,6 +1,6 @@
-[submodule "submodules/android-profile"]
-	path = submodules/android-profile
-	url = git@github.com:soomla/android-profile.git
-[submodule "submodules/ios-profile"]
-	path = submodules/ios-profile
+[submodule "developement/submodules/ios-profile"]
+	path = developement/submodules/ios-profile
 	url = git@github.com:soomla/ios-profile.git
+[submodule "developement/submodules/android-profile"]
+	path = developement/submodules/android-profile
+	url = git@github.com:soomla/android-profile.git

@@ -1,4 +1,4 @@
-paths=( "soomla-native/projects/cocos2dx-android-profile" "submodules/android-profile/social-providers/android-profile-facebook")
+paths=( "soomla-native/projects/cocos2dx-android-profile" )
 build=../build/android
 
 rm -rf $build
@@ -8,7 +8,8 @@ mkdir -p $build
 cd submodules/android-profile/SoomlaAndroidProfile
 ./build_all
 cd -
-cp -RL submodules/android-profile/build/* $build/
+cp -L submodules/android-profile/build/AndroidProfile.jar $build/
+cp -L submodules/android-profile/build/simple.facebook-2.1.jar $build/
 
 for path in "${paths[@]}"
 do

@@ -1,7 +1,6 @@
 .DS_Store
 .idea
 local.properties
-*.iml
 TAGS
 out
 xcuserdata

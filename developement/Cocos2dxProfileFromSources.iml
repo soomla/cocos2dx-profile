@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/soomla-native/projects/cocos2dx-android-profile/src">
+      <sourceFolder url="file://$MODULE_DIR$/soomla-native/projects/cocos2dx-android-profile/src" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/submodules/android-profile/SoomlaAndroidProfile/src">
+      <sourceFolder url="file://$MODULE_DIR$/submodules/android-profile/SoomlaAndroidProfile/src" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="Cocos2dxCoreFromSources" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../soomla-cocos2dx-core/build/android/square-otto-1.3.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+  </component>
+</module>
+

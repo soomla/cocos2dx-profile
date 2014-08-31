@@ -16,35 +16,35 @@
 
   <path id="cocos2dxandroidprofile.module.production.classpath">
     <path refid="${module.jdk.classpath.cocos2dxandroidprofile}"/>
-    <pathelement location="${basedir}/../../compilations/android/AndroidProfile.jar"/>
-    <pathelement location="${basedir}/../../compilations/android/Cocos2dxAndroidCore.jar"/>
-    <pathelement location="${basedir}/../../compilations/android/SoomlaAndroidCore.jar"/>
-    <pathelement location="${basedir}/libs/square-otto-1.3.2.jar"/>
+    <pathelement location="${basedir}/../../../submodules/android-profile/build/AndroidProfile.jar"/>
+    <pathelement location="${basedir}/../../../../../soomla-cocos2dx-core/build/android/Cocos2dxAndroidCore.jar"/>
+    <pathelement location="${basedir}/../../../../../soomla-cocos2dx-core/build/android/SoomlaAndroidCore.jar"/>
+    <pathelement location="${basedir}/../../../../../soomla-cocos2dx-core/build/android/square-otto-1.3.2.jar"/>
   </path>
 
   <path id="cocos2dxandroidprofile.runtime.production.module.classpath">
     <pathelement location="${cocos2dxandroidprofile.output.dir}"/>
-    <pathelement location="${basedir}/../../compilations/android/AndroidProfile.jar"/>
-    <pathelement location="${basedir}/../../compilations/android/Cocos2dxAndroidCore.jar"/>
-    <pathelement location="${basedir}/../../compilations/android/SoomlaAndroidCore.jar"/>
-    <pathelement location="${basedir}/libs/square-otto-1.3.2.jar"/>
+    <pathelement location="${basedir}/../../../submodules/android-profile/build/AndroidProfile.jar"/>
+    <pathelement location="${basedir}/../../../../../soomla-cocos2dx-core/build/Cocos2dxAndroidCore.jar"/>
+    <pathelement location="${basedir}/../../../../../soomla-cocos2dx-core/build/SoomlaAndroidCore.jar"/>
+    <pathelement location="${basedir}/../../../../../soomla-cocos2dx-core/build/android/square-otto-1.3.2.jar"/>
   </path>
 
   <path id="cocos2dxandroidprofile.module.classpath">
     <path refid="${module.jdk.classpath.cocos2dxandroidprofile}"/>
     <pathelement location="${cocos2dxandroidprofile.output.dir}"/>
-    <pathelement location="${basedir}/../../compilations/android/AndroidProfile.jar"/>
-    <pathelement location="${basedir}/../../compilations/android/Cocos2dxAndroidCore.jar"/>
-    <pathelement location="${basedir}/../../compilations/android/SoomlaAndroidCore.jar"/>
-    <pathelement location="${basedir}/libs/square-otto-1.3.2.jar"/>
+    <pathelement location="${basedir}/../../../submodules/android-profile/build/AndroidProfile.jar"/>
+    <pathelement location="${basedir}/../../../../../soomla-cocos2dx-core/build/Cocos2dxAndroidCore.jar"/>
+    <pathelement location="${basedir}/../../../../../soomla-cocos2dx-core/build/SoomlaAndroidCore.jar"/>
+    <pathelement location="${basedir}/../../../../../soomla-cocos2dx-core/build/android/square-otto-1.3.2.jar"/>
   </path>
 
   <path id="cocos2dxandroidprofile.runtime.module.classpath">
     <pathelement location="${cocos2dxandroidprofile.output.dir}"/>
-    <pathelement location="${basedir}/../../compilations/android/AndroidProfile.jar"/>
-    <pathelement location="${basedir}/../../compilations/android/Cocos2dxAndroidCore.jar"/>
-    <pathelement location="${basedir}/../../compilations/android/SoomlaAndroidCore.jar"/>
-    <pathelement location="${basedir}/libs/square-otto-1.3.2.jar"/>
+    <pathelement location="${basedir}/../../../submodules/android-profile/build/AndroidProfile.jar"/>
+    <pathelement location="${basedir}/../../../../../soomla-cocos2dx-core/build/Cocos2dxAndroidCore.jar"/>
+    <pathelement location="${basedir}/../../../../../soomla-cocos2dx-core/build/SoomlaAndroidCore.jar"/>
+    <pathelement location="${basedir}/../../../../../soomla-cocos2dx-core/build/android/square-otto-1.3.2.jar"/>
   </path>
 
 

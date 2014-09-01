@@ -166,6 +166,10 @@ That's it! Now all you have to do is build your XCode project and run your game 
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- optional: required for uploadImage from SD card -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application ...
     	       android:name="com.soomla.SoomlaApp">
@@ -187,8 +191,7 @@ That's it! Now all you have to do is build your XCode project and run your game 
 
       ```xml
       ...
-      <uses-permission android:name="com.android.vending.BILLING"/>
-
+      
       <application ...
           <activity android:name="com.soomla.profile.social.facebook.SoomlaFacebook$SoomlaFBActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
         </activity>

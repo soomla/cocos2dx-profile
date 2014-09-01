@@ -64,7 +64,7 @@ namespace soomla {
         virtual void onLogoutFailed(CCProvider provider, cocos2d::__String *errorDescription) = 0;
         
         /**
-         Called when the logout process tfromo a provider has finished
+         Called when the logout process from a provider has finished
          
          @param provider The provider on which the logout has finished
          */
@@ -126,7 +126,7 @@ namespace soomla {
         virtual void onGetFeedStarted(CCProvider provider) = 0;
         
         /**
-         Called when the a generic social action on a provider has failed
+         Called when a generic social action on a provider has failed
          
          @param provider The provider on which the social action has failed
          @param socialActionType The social action which failed
@@ -135,7 +135,7 @@ namespace soomla {
         virtual void onSocialActionFailedEvent(CCProvider provider, CCSocialActionType socialActionType, cocos2d::__String *errorDescription) = 0;
         
         /**
-         Called when the a generic social action on a provider has finished
+         Called when a generic social action on a provider has finished
          
          @param provider The provider on which the social action has finished
          @param socialActionType The social action which finished
@@ -143,7 +143,7 @@ namespace soomla {
         virtual void onSocialActionFinishedEvent(CCProvider provider, CCSocialActionType socialActionType) = 0;
         
         /**
-         Called when the a generic social action on a provider has started
+         Called when a generic social action on a provider has started
          
          @param provider The provider on which the social action has started
          @param socialActionType The social action which started

@@ -39,7 +39,7 @@ The example project is still under development but they already have some import
     ```
     $ git clone git@github.com:soomla/soomla-cocos2dx-core.git extensions/soomla-cocos2dx-core
 
-    $ git clone git@github.com:soomla/cocos2dx-store.git extensions/cocos2dx-profile
+    $ git clone git@github.com:soomla/cocos2dx-profile.git extensions/cocos2dx-profile
     ```
 
 1. We use a [fork](https://github.com/vedi/jansson) of the jansson library for json parsing, clone our fork into the `external` directory at the root of your framework.
@@ -191,7 +191,7 @@ That's it! Now all you have to do is build your XCode project and run your game 
 
       ```xml
       ...
-      
+
       <application ...
           <activity android:name="com.soomla.profile.social.facebook.SoomlaFacebook$SoomlaFBActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
         </activity>

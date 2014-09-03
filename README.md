@@ -13,8 +13,7 @@ cocos2dx-profile
 *SOOMLA's Profile Module for Cocos2d-x*
 
 * More documentation and information in SOOMLA's [Knowledge Base](http://know.soom.la/docs/platforms/cocos2dx/)  
-* For issues you can use the [issues](https://github.com/soomla/cocos2dx-profile/issues) section or SOOMLA's [Answers Website](http://answers.soom.la)
-> cocos2dx-profile currently supports all Cocos2d-x 3.x versions. cocos2dx-profile currently supports Facebook only.
+* For issues you can use the [issues](https://github.com/soomla/cocos2dx-profile/issues) section or SOOMLA's [Answers Website](http://answers.soom.la).  cocos2dx-profile currently supports all Cocos2d-x 3.x versions. cocos2dx-profile currently supports Facebook only.
 
 cocos2dx-profile is the Cocos2d-x flavour of SOOMLA's Profile Module. This project uses [android-profile](https://github.com/soomla/android-profile) and [ios-profile](https://github.com/soomla/ios-profile) in order to provide game developers with social network connectivity for their **cocos2d-x** projects.
 
@@ -27,7 +26,7 @@ There is an example project that show how to use cocos2dx-profile:
 
 C++: https://github.com/soomla/cocos2dx-profile-example
 
-The example project is still under development but they already have some important aspects of the framework you can learn and implement in your application.
+The example project is still under development but it already has some important aspects of the framework that you can learn and implement in your application.
 
 ## Getting Started (With pre-built libraries)
 
@@ -64,7 +63,7 @@ The example project is still under development but they already have some import
     soomla::CCProfileService::initShared(profileParams);
     ```
     - *Custom Secret* - is an encryption secret you provide that will be used to secure your data.
-    **Choose the secret wisely. You can't change them after you launch your game!**
+    **Choose the secret wisely. You can't change it after you launch your game!**
 
     > Initialize `CCProfileService` ONLY ONCE when your application loads.
 
@@ -73,17 +72,17 @@ The example project is still under development but they already have some import
     #include "Cocos2dxProfile.h"
     ```
 
-1. Add instance of your event handler to `CCProfileEventDispatcher` after `CCProfileService` initialization:
+1. Add an instance of your event handler to `CCProfileEventDispatcher` after `CCProfileService` initialization:
 
     ```cpp
-    soomla::CCStoreEventDispatcher::getInstance()->addEventHandler(handler);
+    soomla::CCProfileEventDispatcher::getInstance()->addEventHandler(handler);
     ```
 
 The next steps are different for the different platforms.
 
 #### Instructions for iOS
 
-In your XCode project, perform following steps:
+In your XCode project, perform the following steps:
 
 1. Add `jansson` (**external/jansson/**) to your project (just add it as a source folder).
 
@@ -96,13 +95,13 @@ In your XCode project, perform following steps:
     1. Add their targets to your **Build Phases->Target Dependencies**.
     1. Add the Products (\*.a) of these projects to **Build Phases->Link Binary With Libraries**.
 
-1. Add the following directoris to **Build Settings->Header Search Paths** (with `recursive` option):
+1. Add the following directories to **Build Settings->Header Search Paths** (with `recursive` option):
  - `$(SRCROOT)/../cocos2d/extensions/soomla-cocos2dx-core/Soomla/**`
  - `$(SRCROOT)/../cocos2d/extensions/soomla-cocos2dx-core/build/ios/headers/**`
  - `$(SRCROOT)/../cocos2d/extensions/cocos2dx-profile/Profile/**`
  - `$(SRCROOT)/../cocos2d/extensions/cocos2dx-profile/build/ios/headers/**`
 
-1. Register the native StoreService by adding:
+1. Register the native `StoreService` by adding:
 
     ```cpp
     [[ServiceManager sharedServiceManager] registerService:[ProfileService sharedProfileService]];
@@ -119,18 +118,20 @@ at the begining of the method `application: didFinishLaunchingWithOptions:` of `
 
     1. Refer to [Getting Started with the Facebook iOS SDK](https://developers.facebook.com/docs/ios/getting-started/) for more information
 
+> To see a working Facebook example, try our [cocos2dx-profile-example](https://github.com/soomla/cocos2dx-profile-example) project
+
 That's it! Now all you have to do is build your XCode project and run your game with cocos2dx-profile.
 
 #### Instructions for Android
 
-1. Import cocos2dx-profile module into your project's Android.mk by adding the following:
+1. Import the cocos2dx-profile module into your project's Android.mk by adding the following:
     ```
     LOCAL_WHOLE_STATIC_LIBRARIES += cocos2dx_profile_static        # add this line along with your other LOCAL_WHOLE_STATIC_LIBRARIES
 
     $(call import-module, extensions/cocos2dx-profile) # add this line at the end of the file, along with the other import-module calls
     ```
 
-1. Add the following jars from to your android project's classpath:
+1. Add the following jars to your android project's classpath:
     - from `extensions/soomla-cocos2dx-core/build/android`
         1. SoomlaAndroidCore.jar
         1. Cocos2dxAndroidCore.jar
@@ -141,17 +142,18 @@ That's it! Now all you have to do is build your XCode project and run your game 
 
 1. In your game's main Cocos2dxActivity, call the following in the `onCreateView` method:
      ```java
-     public Cocos2dxGLSurfaceView onCreateView() {
+    public Cocos2dxGLSurfaceView onCreateView() {
 
-        // initialize services
-        final ServiceManager serviceManager = ServiceManager.getInstance();
-        serviceManager.setActivity(this);
-        serviceManager.setGlSurfaceView(glSurfaceView);
-        serviceManager.registerService(ProfileService.getInstance());
+    // initialize services
+    final ServiceManager serviceManager = ServiceManager.getInstance();
+    serviceManager.setActivity(this);
+    serviceManager.setGlSurfaceView(glSurfaceView);
+    serviceManager.registerService(ProfileService.getInstance());
      ```
 
 1. Override `onPause`, `onResume`:
 
+    ```java
     @Override
     protected void onPause() {
         super.onPause();
@@ -163,8 +165,9 @@ That's it! Now all you have to do is build your XCode project and run your game 
         ServiceManager.getInstance().onResume();
         super.onResume();
     }
+    ```
 
-1. Update your AndroidManifest.xml to include permissions and the SoomlaApp:
+1. Update your AndroidManifest.xml to include permissions and the `SoomlaApp`:
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -187,7 +190,7 @@ That's it! Now all you have to do is build your XCode project and run your game 
 
     1. For more information regarding this refer to [Facebook SDK for Android](https://developers.facebook.com/docs/android)
 
-    1. SOOMLA uses [Android Studio](https://developer.android.com/sdk/installing/studio.html), in this case you can extract the Facebook SDK into your `proj.android` folder and then it's simply a case of importing the `iml` file in the Facebook SDK folder into your project
+    1. SOOMLA uses [Android Studio](https://developer.android.com/sdk/installing/studio.html), in this case you can extract the Facebook SDK into your `proj.android` folder and then it's simply a case of importing the `.iml` file in the Facebook SDK folder into your project
 
   1. Update your AndroidManifest.xml:
 
@@ -200,6 +203,8 @@ That's it! Now all you have to do is build your XCode project and run your game 
       </application>
       ```
 
+> To see a working Facebook example, try our [cocos2dx-profile-example](https://github.com/soomla/cocos2dx-profile-example) project
+
 That's it! Don't forget to run the **build_native.sh** script so cocos2dx-profile sources will be built with cocos2d-x.
 
 ## What's next? Social Actions.
@@ -208,7 +213,7 @@ The Profile module is young and only a few social actions are provided. We're al
 
 Here is an example of sharing a story on the user's feed:
 
-After you initialized CCProfileService and logged the user in:
+After you initialized `CCProfileService` and logged the user in:
 
 ```cpp
   soomla::CCProfileController::getInstance()->updateStory(
@@ -223,8 +228,7 @@ After you initialized CCProfileService and logged the user in:
         &profileError);
 ```
 
-And that's it! cocos2dx-profile knows how to contact Facebook and share a story with the information you provided.  
-It will also give the user the `CCBadgeReward` we configured in the function call.
+And that's it! cocos2dx-profile knows how to contact Facebook and share a story with the information you provided. It will also give the user the `CCBadgeReward` we configured in the function call.
 
 Storage
 ---
@@ -246,14 +250,15 @@ SOOMLA lets you subscribe to store events, get notified and implement your own a
 > Your behaviour is an addition to the default behaviour implemented by SOOMLA. You don't replace SOOMLA's behaviour.
 
 The `CCProfileEventDispatcher` class is where all events go through. To handle various events, create your own event handler, a class that implements `CCProfileEventHandler`, and add it to the `CCProfileEventDispatcher` class:
-
-    soomla::CCProfileEventDispatcher::getInstance()->addEventHandler(profileEventHandler);
+```cpp
+soomla::CCProfileEventDispatcher::getInstance()->addEventHandler(profileEventHandler);
+```
 
 ## Error Handling
 
-Since Cocos2d-x doesn't support exceptions, we use a different method to catch and work with exceptions on the native side. All functions that raise an exception on the native side have an additional *CCError*** parameter to them. In order to know if an exception was raised, send a reference to *CCError** to the function, and inspect it after running.
+Since Cocos2d-x doesn't support exceptions, we use a different method to catch and work with exceptions on the native side. All functions that raise an exception on the native side have an additional `CCError*` parameter to them. In order to know if an exception was raised, send a reference to `CCError*` to the function, and inspect it after running.
 
-For example, if I want log a user into my game and later see if all went through ok, I will call `login` like this:
+For example, if I want to log a user into my game and later see if all went through ok, I will call `login` like this:
 
 ```cpp
 soomla::CCError *profileError = nullptr;
@@ -277,20 +282,20 @@ To see debug messages on iOS, make sure you have also `DEBUG=1` in your Build Se
 
 ## Working with sources
 
-We try to do all our best to make your contributions as easy as it's possible. We prepared "sourced" environment for you if you wish to contribute in soomla projects. In order to get it you should:
+We try to do all our best to make your contributions as easy as possible. We prepared a "sourced" environment for you if you wish to contribute to SOOMLA projects. In order to get it you should:
 
 1. Fetch submodules of repositories, you can do it recursively cloning them:
     ```
     $ git clone --recursive git@github.com:soomla/soomla-cocos2dx-core.git extensions/soomla-cocos2dx-core
     $ git clone --recursive git@github.com:soomla/cocos2dx-store.git extensions/cocos2dx-profile
     ```
-or, if you have repositories already cloned, deliver submodules with command:
+or, if you have repositories already cloned, fetch the submodules with this command:
     ```
     $ git submodule update --init --recursive
     ```
 > You should run this command in every repository.
 
-1. For iOS: Use sourced versions of Linked projects (`extensions/soomla-cocos2dx-core/development/Cocos2dxCoreFromSources.xcodeproj`, `extensions/cocos2dx-profile/development/Cocos2dxProfileFromSources.xcodeproj`)
+1. For iOS: Use a sourced versions of linked projects (`extensions/soomla-cocos2dx-core/development/Cocos2dxCoreFromSources.xcodeproj`, `extensions/cocos2dx-profile/development/Cocos2dxProfileFromSources.xcodeproj`)
 
 1. For Android: You can use our "sourced" modules for Android Studio (or IntelliJ IDEA) (`extensions/soomla-cocos2dx-core/development/Cocos2dxCoreFromSources.iml`, `extensions/cocos2dx-profile/development/Cocos2dxProfileFromSources.iml`), just including them to your project.
 
@@ -304,7 +309,7 @@ We have great RESPECT for contributors.
 
 ## Code Documentation
 
-android-profile follows strict code documentation conventions. If you would like to contribute please read our [Documentation Guidelines](https://github.com/soomla/cocos2dx-profile/blob/master/documentation.md) and follow them. Clear, consistent  comments will make our code easy to understand.
+cocos2dx-profile follows strict code documentation conventions. If you would like to contribute please read our [Documentation Guidelines](https://github.com/soomla/cocos2dx-profile/blob/master/documentation.md) and follow them. Clear, consistent  comments will make our code easy to understand.
 
 
 ## SOOMLA, Elsewhere ...

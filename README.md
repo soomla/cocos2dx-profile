@@ -32,7 +32,7 @@ The example project is still under development but it already has some important
 
 *If you want to develop with sources, refer to the [Working with sources](https://github.com/soomla/cocos2dx-profile#working-with-sources) section below*
 
-> If you didn't do that already, clone the Cocos2d-x framework from [here](https://github.com/cocos2d/cocos2d-x) or download it from the [Cocos2d-x website](http://www.cocos2d-x.org/download). Make sure the version you clone is supported by cocos2dx-store (the tag is the version).
+> If you didn't do that already, clone the Cocos2d-x framework from [here](https://github.com/cocos2d/cocos2d-x) or download it from the [Cocos2d-x website](http://www.cocos2d-x.org/download). Make sure the version you clone is supported by cocos2dx-profile (the tag is the version).
 
 ##### C++
 

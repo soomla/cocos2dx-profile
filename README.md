@@ -273,7 +273,7 @@ You can choose to handle each exception on its own, handle all three at once, or
 
 ## Debugging
 
-You can enable debug logging in cocos2dx-profile by setting `SOOMLA_DEBUG` in `CCSoomlaUtils.h` to `true`. Debug logging can also be enabled at build time by adding `-DSOOMLA_DEBUG=1` to `APP_CPPFLAGS` in your `Application.mk` on Android, or by setting `SOOMLA_DEBUG=1` in your Build Settings' `Preprocessor Macros` on iOS.
+You can enable debug logging in cocos2dx-profile by setting `SOOMLA_DEBUG` in `CCSoomlaUtils.h` (which is located in `soomla-cocos2dx-core` submodule) to `true`. Debug logging can also be enabled at build time by adding `-DSOOMLA_DEBUG=1` to `APP_CPPFLAGS` in your `Application.mk` on Android, or by setting `SOOMLA_DEBUG=1` in your Build Settings' `Preprocessor Macros` on iOS.
 
 If you want to see debug messages from _android-profile_, set the `logDebug` variable in `com.soomla.store.StoreConfig` to `true`.
 

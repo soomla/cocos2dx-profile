@@ -139,7 +139,7 @@ namespace soomla {
         void handle__EVENT_LOGOUT_FINISHED(cocos2d::CCDictionary *parameters);
         void handle__EVENT_LOGOUT_STARTED(cocos2d::CCDictionary *parameters);
         
-        void handle__GET_CONTACTS_FAILED(cocos2d::CCDictionary *parameters);
+        void handle__EVENT_GET_CONTACTS_FAILED(cocos2d::CCDictionary *parameters);
         void handle__EVENT_GET_CONTACTS_FINISHED(cocos2d::CCDictionary *parameters);
         void handle__EVENT_GET_CONTACTS_STARTED(cocos2d::CCDictionary *parameters);
         

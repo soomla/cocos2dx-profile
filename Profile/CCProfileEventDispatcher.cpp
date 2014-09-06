@@ -43,55 +43,72 @@ namespace soomla {
         CCSoomlaEventDispatcher *eventDispatcher = CCSoomlaEventDispatcher::getInstance();
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_LOGIN_CANCELLED,
-                                              this, (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_LOGIN_CANCELLED);
+                                              this,
+                                              (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_LOGIN_CANCELLED);
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_LOGIN_FAILED,
-                                              this, (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_LOGIN_CANCELLED);
+                                              this,
+                                              (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_LOGIN_FAILED);
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_LOGIN_FINISHED,
-                                              this, (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_LOGIN_CANCELLED);
+                                              this,
+                                              (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_LOGIN_FINISHED);
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_LOGIN_STARTED,
-                                              this, (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_LOGIN_CANCELLED);
+                                              this,
+                                              (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_LOGIN_STARTED);
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_LOGOUT_FAILED,
-                                              this, (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_LOGIN_CANCELLED);
+                                              this,
+                                              (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_LOGOUT_FAILED);
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_LOGOUT_FINISHED,
-                                              this, (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_LOGIN_CANCELLED);
+                                              this,
+                                              (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_LOGOUT_FINISHED);
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_LOGOUT_STARTED,
-                                              this, (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_LOGIN_CANCELLED);
+                                              this,
+                                              (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_LOGOUT_STARTED);
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_GET_CONTACTS_FAILED,
-                                              this, (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_LOGIN_CANCELLED);
+                                              this,
+                                              (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_GET_CONTACTS_FAILED);
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_GET_CONTACTS_FINISHED,
-                                              this, (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_LOGIN_CANCELLED);
+                                              this,
+                                              (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_GET_CONTACTS_FINISHED);
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_GET_CONTACTS_STARTED,
-                                              this, (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_LOGIN_CANCELLED);
+                                              this,
+                                              (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_GET_CONTACTS_STARTED);
         
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_GET_FEED_FAILED,
-                                              this, (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_LOGIN_CANCELLED);
+                                              this,
+                                              (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_GET_FEED_FAILED);
         
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_GET_FEED_FINISHED,
-                                              this, (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_LOGIN_CANCELLED);
+                                              this,
+                                              (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_GET_FEED_FINISHED);
         
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_GET_FEED_STARTED,
-                                              this, (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_LOGIN_CANCELLED);
+                                              this,
+                                              (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_GET_FEED_STARTED);
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_SOCIAL_ACTION_FAILED,
-                                              this, (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_LOGIN_CANCELLED);
+                                              this,
+                                              (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_SOCIAL_ACTION_FAILED);
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_SOCIAL_ACTION_FINISHED,
-                                              this, (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_LOGIN_CANCELLED);
+                                              this,
+                                              (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_SOCIAL_ACTION_FINISHED);
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_SOCIAL_ACTION_STARTED,
-                                              this, (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_LOGIN_CANCELLED);
+                                              this,
+                                              (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_SOCIAL_ACTION_STARTED);
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_USER_PROFILE_UPDATED,
-                                              this, (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_LOGIN_CANCELLED);
+                                              this,
+                                              (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_USER_PROFILE_UPDATED);
 
         return true;
     }
@@ -250,7 +267,7 @@ namespace soomla {
         this->onLogoutStarted(CCProvider(provider->getValue()));
     }
 
-    void CCProfileEventDispatcher::handle__GET_CONTACTS_FAILED(cocos2d::CCDictionary *parameters) {
+    void CCProfileEventDispatcher::handle__EVENT_GET_CONTACTS_FAILED(cocos2d::CCDictionary *parameters) {
         CCInteger* provider = dynamic_cast<CCInteger *>(parameters->objectForKey("provider"));
         CCString *errorDescription = dynamic_cast<CCString *>(parameters->objectForKey("errorDescription"));
         this->onGetContactsFailed(CCProvider(provider->getValue()), errorDescription);

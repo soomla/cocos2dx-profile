@@ -58,7 +58,7 @@ namespace soomla {
         CCDictionary *params = CCDictionary::create();
         params->setObject(CCString::create("CCProfileService::init"), "method");
         params->setObject(profileParams, "params");
-        CCNdkBridge::callNative(params, nullptr);
+        CCNdkBridge::callNative(params, NULL);
 
         CCDomainFactory::getInstance()->registerCreator(CCProfileConsts::JSON_JSON_TYPE_USER_PROFILE,
                 (SEL_DomainCreator)&CCUserProfile::createWithDictionary);

@@ -36,7 +36,7 @@ namespace soomla {
      An interface to the native SoomlaProfile class, use this class to
      access the native SoomlaProfile functionality.
 	 */
-    class CCProfileController: public cocos2d::Ref {
+    class CCProfileController: public cocos2d::CCObject {
     private:
         bool mInited;
     public:

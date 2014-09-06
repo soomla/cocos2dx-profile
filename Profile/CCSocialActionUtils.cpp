@@ -20,19 +20,19 @@
 
 namespace soomla {
     
-     __String* CCSocialActionUtils::actionEnumToString(CCSocialActionType providerType) {
+     CCString* CCSocialActionUtils::actionEnumToString(CCSocialActionType providerType) {
          switch (providerType) {
              case UPDATE_STATUS:
-                 return __String::create("UPDATE_STATUS");
+                 return CCString::create("UPDATE_STATUS");
                  break;
              case UPDATE_STORY:
-                 return __String::create("UPDATE_STORY");
+                 return CCString::create("UPDATE_STORY");
              case UPLOAD_IMAGE:
-                 return __String::create("UPLOAD_IMAGE");
+                 return CCString::create("UPLOAD_IMAGE");
              case GET_CONTACTS:
-                 return __String::create("GET_CONTACTS");
+                 return CCString::create("GET_CONTACTS");
              case GET_FEED:
-                 return __String::create("GET_FEED");
+                 return CCString::create("GET_FEED");
              default:
                  break;
          }
@@ -40,7 +40,7 @@ namespace soomla {
          return NULL;
     }
     
-    CCSocialActionType CCSocialActionUtils::actionStringToEnum(__String* providerTypeString) {
+    CCSocialActionType CCSocialActionUtils::actionStringToEnum(CCString* providerTypeString) {
         if (providerTypeString->compare("UPDATE_STATUS")) {
             return UPDATE_STATUS;
         }

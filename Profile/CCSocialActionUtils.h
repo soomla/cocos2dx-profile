@@ -52,7 +52,7 @@ namespace soomla {
          @param actionType The value of provider to convert
          @return The provided value represented by a __String
          */
-        static __String *actionEnumToString(CCSocialActionType actionType);
+        static CCString *actionEnumToString(CCSocialActionType actionType);
         
         /*
          Converts the supplied __String to CCSocialActionType if possible
@@ -61,7 +61,7 @@ namespace soomla {
          @return The CCSocialActionType value corresponding to the supplied 
          string, or -1 if there is none
          */
-        static CCSocialActionType actionStringToEnum(__String* actionTypeString);
+        static CCSocialActionType actionStringToEnum(CCString* actionTypeString);
     };
 };
 

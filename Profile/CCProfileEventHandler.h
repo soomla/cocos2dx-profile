@@ -31,7 +31,7 @@ namespace soomla {
      To receive events about any Profile-related actions a class must inherit
      from this class and sign up for events on CCProfileEventDispatcher
      */
-    class CCProfileEventHandler : public cocos2d::Ref {
+    class CCProfileEventHandler : public cocos2d::CCObject {
     public:
         /**
          Called when the login process to a provider has failed
@@ -39,7 +39,7 @@ namespace soomla {
          @param provider The provider on which the login has failed
          @param errorDescription a Description of the reason for failure
          */
-        virtual void onLoginFailed(CCProvider provider, cocos2d::__String *errorDescription) = 0;
+        virtual void onLoginFailed(CCProvider provider, cocos2d::CCString *errorDescription) = 0;
         
         /**
          Called when the login process finishes successfully
@@ -61,7 +61,7 @@ namespace soomla {
          @param provider The provider on which the logout has failed
          @param errorDescription a Description of the reason for failure
          */
-        virtual void onLogoutFailed(CCProvider provider, cocos2d::__String *errorDescription) = 0;
+        virtual void onLogoutFailed(CCProvider provider, cocos2d::CCString *errorDescription) = 0;
         
         /**
          Called when the logout process from a provider has finished
@@ -84,7 +84,7 @@ namespace soomla {
          failed
          @param errorDescription a Description of the reason for failure
          */
-        virtual void onGetContactsFailed(CCProvider provider, cocos2d::__String *errorDescription) = 0;
+        virtual void onGetContactsFailed(CCProvider provider, cocos2d::CCString *errorDescription) = 0;
         
         /**
          Called when the get contacts process from a provider has finished
@@ -92,7 +92,7 @@ namespace soomla {
          @param provider The provider on which the get contacts process finished
          @param contactsDict an Array of contacts represented by CCUserProfile
          */
-        virtual void onGetContactsFinished(CCProvider provider, cocos2d::__Array *contactsDict) = 0;
+        virtual void onGetContactsFinished(CCProvider provider, cocos2d::CCArray *contactsDict) = 0;
         
         /**
          Called when the get contacts process from a provider has started
@@ -108,7 +108,7 @@ namespace soomla {
          failed
          @param errorDescription a Description of the reason for failure
          */
-        virtual void onGetFeedFailed(CCProvider provider, cocos2d::__String *errorDescription) = 0;
+        virtual void onGetFeedFailed(CCProvider provider, cocos2d::CCString *errorDescription) = 0;
         
         /**
          Called when the get feed process from a provider has finished
@@ -116,7 +116,7 @@ namespace soomla {
          @param provider The provider on which the get feed process finished
          @param feedList an Array of feed entries represented by __String
          */
-        virtual void onGetFeedFinished(CCProvider provider, cocos2d::__Array *feedList) = 0;
+        virtual void onGetFeedFinished(CCProvider provider, cocos2d::CCArray *feedList) = 0;
         
         /**
          Called when the get feed process from a provider has started
@@ -132,7 +132,7 @@ namespace soomla {
          @param socialActionType The social action which failed
          @param errorDescription a Description of the reason for failure
          */
-        virtual void onSocialActionFailedEvent(CCProvider provider, CCSocialActionType socialActionType, cocos2d::__String *errorDescription) = 0;
+        virtual void onSocialActionFailedEvent(CCProvider provider, CCSocialActionType socialActionType, cocos2d::CCString *errorDescription) = 0;
         
         /**
          Called when a generic social action on a provider has finished

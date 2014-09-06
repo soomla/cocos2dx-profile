@@ -35,7 +35,7 @@ namespace soomla {
      Allows the cocos2dx project to call native functions on ProfileService
      in the Cocos2dx Profile bridge.
      */
-    class CCProfileService: public cocos2d::Ref {
+    class CCProfileService: public cocos2d::CCObject {
     public:
 		/**
          This class is singleton, use this function to access it.
@@ -48,7 +48,7 @@ namespace soomla {
          @param profileParams The parameters which are used to initialize
          the native ProfileService
          */
-        static void initShared(cocos2d::__Dictionary *profileParams);
+        static void initShared(cocos2d::CCDictionary *profileParams);
 
         /**
          Constructor
@@ -64,8 +64,7 @@ namespace soomla {
          @param profileParams The parameters which are used to initialize
          the native ProfileService
          */
-        virtual bool init(cocos2d::__Dictionary *profileParams);
-
+        virtual bool init(cocos2d::CCDictionary *profileParams);
     };
 };
 

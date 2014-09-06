@@ -48,7 +48,7 @@ namespace soomla {
         /** 
          see parent
          */
-        virtual void onLoginFailed(CCProvider provider, cocos2d::__String *errorDescription);
+        virtual void onLoginFailed(CCProvider provider, cocos2d::CCString *errorDescription);
 
         /**
          see parent
@@ -63,7 +63,7 @@ namespace soomla {
         /**
          see parent
          */
-        virtual void onLogoutFailed(CCProvider provider, cocos2d::__String *errorDescription);
+        virtual void onLogoutFailed(CCProvider provider, cocos2d::CCString *errorDescription);
 
         /**
          see parent
@@ -78,12 +78,12 @@ namespace soomla {
         /**
          see parent
          */
-        virtual void onGetContactsFailed(CCProvider provider, cocos2d::__String *errorDescription);
+        virtual void onGetContactsFailed(CCProvider provider, cocos2d::CCString *errorDescription);
 
         /**
          see parent
          */
-        virtual void onGetContactsFinished(CCProvider provider, cocos2d::__Array *contactsDict);
+        virtual void onGetContactsFinished(CCProvider provider, cocos2d::CCArray *contactsDict);
 
         /**
          see parent
@@ -93,12 +93,12 @@ namespace soomla {
         /**
          see parent
          */
-        virtual void onGetFeedFailed(CCProvider provider, cocos2d::__String *errorDescription);
+        virtual void onGetFeedFailed(CCProvider provider, cocos2d::CCString *errorDescription);
 
         /**
          see parent
          */
-        virtual void onGetFeedFinished(CCProvider provider, cocos2d::__Array *feedList);
+        virtual void onGetFeedFinished(CCProvider provider, cocos2d::CCArray *feedList);
 
         /**
          see parent
@@ -108,7 +108,7 @@ namespace soomla {
         /**
          see parent
          */
-        virtual void onSocialActionFailedEvent(CCProvider provider, CCSocialActionType socialActionType, cocos2d::__String *errorDescription);
+        virtual void onSocialActionFailedEvent(CCProvider provider, CCSocialActionType socialActionType, cocos2d::CCString *errorDescription);
 
         /**
          see parent
@@ -129,10 +129,33 @@ namespace soomla {
          see parent
          */
         virtual void onUserProfileUpdatedEvent(CCUserProfile *userProfile);
+        
+        void handle__EVENT_LOGIN_CANCELLED(cocos2d::CCDictionary *parameters);
+        void handle__EVENT_LOGIN_FAILED(cocos2d::CCDictionary *parameters);
+        void handle__EVENT_LOGIN_FINISHED(cocos2d::CCDictionary *parameters);
+        void handle__EVENT_LOGIN_STARTED(cocos2d::CCDictionary *parameters);
+        
+        void handle__EVENT_LOGOUT_FAILED(cocos2d::CCDictionary *parameters);
+        void handle__EVENT_LOGOUT_FINISHED(cocos2d::CCDictionary *parameters);
+        void handle__EVENT_LOGOUT_STARTED(cocos2d::CCDictionary *parameters);
+        
+        void handle__GET_CONTACTS_FAILED(cocos2d::CCDictionary *parameters);
+        void handle__EVENT_GET_CONTACTS_FINISHED(cocos2d::CCDictionary *parameters);
+        void handle__EVENT_GET_CONTACTS_STARTED(cocos2d::CCDictionary *parameters);
+        
+        void handle__EVENT_GET_FEED_FAILED(cocos2d::CCDictionary *parameters);
+        void handle__EVENT_GET_FEED_FINISHED(cocos2d::CCDictionary *parameters);
+        void handle__EVENT_GET_FEED_STARTED(cocos2d::CCDictionary *parameters);
+        
+        void handle__EVENT_SOCIAL_ACTION_FAILED(cocos2d::CCDictionary *parameters);
+        void handle__EVENT_SOCIAL_ACTION_FINISHED(cocos2d::CCDictionary *parameters);
+        void handle__EVENT_SOCIAL_ACTION_STARTED(cocos2d::CCDictionary *parameters);
+        
+        void handle__EVENT_USER_PROFILE_UPDATED(cocos2d::CCDictionary *parameters);
 
     private:
-        CCUserProfile *extractUserProfile(Ref *userProfileRef);
-        cocos2d::__Array *extractUserProfileArray(Ref *userProfileDictArray);
+        CCUserProfile *extractUserProfile(CCObject *userProfileRef);
+        cocos2d::CCArray *extractUserProfileArray(CCObject *userProfileDictArray);
     };
 };
 

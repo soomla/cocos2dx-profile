@@ -22,17 +22,17 @@
 #include "CCDomainFactory.h"
 
 soomla::CCUserProfile *soomla::CCUserProfile::create(
-        cocos2d::__String *provider,
-        cocos2d::__String *profileId,
-        cocos2d::__String *email,
-        cocos2d::__String *username,
-        cocos2d::__String *firstName,
-        cocos2d::__String *lastName,
-        cocos2d::__String *avatarLink,
-        cocos2d::__String *location,
-        cocos2d::__String *gender,
-        cocos2d::__String *language,
-        cocos2d::__String *birthday) {
+        cocos2d::CCString *provider,
+        cocos2d::CCString *profileId,
+        cocos2d::CCString *email,
+        cocos2d::CCString *username,
+        cocos2d::CCString *firstName,
+        cocos2d::CCString *lastName,
+        cocos2d::CCString *avatarLink,
+        cocos2d::CCString *location,
+        cocos2d::CCString *gender,
+        cocos2d::CCString *language,
+        cocos2d::CCString *birthday) {
 
     CCUserProfile *ret = new CCUserProfile();
     if (ret->init(provider, profileId, email, username,
@@ -47,17 +47,17 @@ soomla::CCUserProfile *soomla::CCUserProfile::create(
 }
 
 bool soomla::CCUserProfile::init(
-        cocos2d::__String *provider,
-        cocos2d::__String *profileId,
-        cocos2d::__String *email,
-        cocos2d::__String *username,
-        cocos2d::__String *firstName,
-        cocos2d::__String *lastName,
-        cocos2d::__String *avatarLink,
-        cocos2d::__String *location,
-        cocos2d::__String *gender,
-        cocos2d::__String *language,
-        cocos2d::__String *birthday) {
+        cocos2d::CCString *provider,
+        cocos2d::CCString *profileId,
+        cocos2d::CCString *email,
+        cocos2d::CCString *username,
+        cocos2d::CCString *firstName,
+        cocos2d::CCString *lastName,
+        cocos2d::CCString *avatarLink,
+        cocos2d::CCString *location,
+        cocos2d::CCString *gender,
+        cocos2d::CCString *language,
+        cocos2d::CCString *birthday) {
 
     setProvider(provider);
     setProfileId(profileId);
@@ -74,7 +74,7 @@ bool soomla::CCUserProfile::init(
     return true;
 }
 
-bool soomla::CCUserProfile::initWithDictionary(cocos2d::__Dictionary *dict) {
+bool soomla::CCUserProfile::initWithDictionary(cocos2d::CCDictionary *dict) {
     fillProviderFromDict(dict);
     fillProfileIdFromDict(dict);
     fillEmailFromDict(dict);
@@ -90,8 +90,8 @@ bool soomla::CCUserProfile::initWithDictionary(cocos2d::__Dictionary *dict) {
     return true;
 }
 
-cocos2d::__Dictionary *soomla::CCUserProfile::toDictionary() {
-    cocos2d::__Dictionary* dict = cocos2d::__Dictionary::create();
+cocos2d::CCDictionary *soomla::CCUserProfile::toDictionary() {
+    cocos2d::CCDictionary* dict = cocos2d::CCDictionary::create();
 
     putProviderToDict(dict);
     putProfileIdToDict(dict);

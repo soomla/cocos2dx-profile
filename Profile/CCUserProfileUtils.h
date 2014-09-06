@@ -59,7 +59,7 @@ namespace soomla {
          @param providerType The value of provider to convert
          @return The provided value represented by a __String
          */
-        static __String *providerEnumToString(CCProvider providerType);
+        static CCString *providerEnumToString(CCProvider providerType);
         
         /**
          Converts the supplied __String to CCProvider if possible
@@ -68,7 +68,7 @@ namespace soomla {
          @return The CCProvider value corresponding to the supplied string,
          or -1 if there is none
          */
-        static CCProvider providerStringToEnum(__String* providerTypeString);
+        static CCProvider providerStringToEnum(CCString* providerTypeString);
     };
 };
 

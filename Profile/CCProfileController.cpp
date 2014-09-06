@@ -22,7 +22,7 @@
 #include "CCNdkBridge.h"
 
 using namespace cocos2d;
-typedef DictElement CCDictElement;
+typedef CCDictElement CCDictElement;
 
 namespace soomla {
     #define TAG "SOOMLA StoreController"
@@ -51,8 +51,8 @@ namespace soomla {
 
     void CCProfileController::login(CCProvider provider, CCReward *reward, CCError **soomlaError) {
         CC_ASSERT(mInited);
-        __Dictionary *params = __Dictionary::create();
-        params->setObject(__String::create("CCProfileController::login"), "method");
+        CCDictionary *params = CCDictionary::create();
+        params->setObject(CCString::create("CCProfileController::login"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
         if (reward) {
             params->setObject(reward->toDictionary(), "reward");
@@ -62,36 +62,36 @@ namespace soomla {
 
     void CCProfileController::login(CCProvider provider, CCError **soomlaError) {
         CC_ASSERT(mInited);
-        __Dictionary *params = __Dictionary::create();
-        params->setObject(__String::create("CCProfileController::login"), "method");
+        CCDictionary *params = CCDictionary::create();
+        params->setObject(CCString::create("CCProfileController::login"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
         CCNdkBridge::callNative(params, soomlaError);
     }
 
     void CCProfileController::logout(CCProvider provider, CCError **soomlaError) {
         CC_ASSERT(mInited);
-        __Dictionary *params = __Dictionary::create();
-        params->setObject(__String::create("CCProfileController::logout"), "method");
+        CCDictionary *params = CCDictionary::create();
+        params->setObject(CCString::create("CCProfileController::logout"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
         CCNdkBridge::callNative(params, soomlaError);
     }
 
     CCUserProfile *CCProfileController::getStoredUserProfile(CCProvider provider, CCError **soomlaError) {
         CC_ASSERT(mInited);
-        __Dictionary *params = __Dictionary::create();
-        params->setObject(__String::create("CCProfileController::getStoredUserProfile"), "method");
+        CCDictionary *params = CCDictionary::create();
+        params->setObject(CCString::create("CCProfileController::getStoredUserProfile"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
-        __Dictionary *retParams = (__Dictionary *) CCNdkBridge::callNative(params, NULL);
+        CCDictionary *retParams = (CCDictionary *) CCNdkBridge::callNative(params, NULL);
         CCUserProfile *retValue = (CCUserProfile *) retParams->objectForKey("return");
         return retValue;
     }
 
     void CCProfileController::updateStatus(CCProvider provider, const char *status, CCReward *reward, CCError **soomlaError) {
         CC_ASSERT(mInited);
-        __Dictionary *params = __Dictionary::create();
-        params->setObject(__String::create("CCProfileController::updateStatus"), "method");
+        CCDictionary *params = CCDictionary::create();
+        params->setObject(CCString::create("CCProfileController::updateStatus"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
-        params->setObject(__String::create(status), "status");
+        params->setObject(CCString::create(status), "status");
         if (reward) {
             params->setObject(reward->toDictionary(), "reward");
         }
@@ -103,15 +103,15 @@ namespace soomla {
             CCReward *reward, CCError **soomlaError) {
 
         CC_ASSERT(mInited);
-        __Dictionary *params = __Dictionary::create();
-        params->setObject(__String::create("CCProfileController::updateStory"), "method");
+        CCDictionary *params = CCDictionary::create();
+        params->setObject(CCString::create("CCProfileController::updateStory"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
-        params->setObject(__String::create(message), "message");
-        params->setObject(__String::create(name), "name");
-        params->setObject(__String::create(caption), "caption");
-        params->setObject(__String::create(description), "description");
-        params->setObject(__String::create(link), "link");
-        params->setObject(__String::create(picture), "picture");
+        params->setObject(CCString::create(message), "message");
+        params->setObject(CCString::create(name), "name");
+        params->setObject(CCString::create(caption), "caption");
+        params->setObject(CCString::create(description), "description");
+        params->setObject(CCString::create(link), "link");
+        params->setObject(CCString::create(picture), "picture");
         if (reward) {
             params->setObject(reward->toDictionary(), "reward");
         }
@@ -122,11 +122,11 @@ namespace soomla {
             CCReward *reward, CCError **soomlaError) {
 
         CC_ASSERT(mInited);
-        __Dictionary *params = __Dictionary::create();
-        params->setObject(__String::create("CCProfileController::uploadImage"), "method");
+        CCDictionary *params = CCDictionary::create();
+        params->setObject(CCString::create("CCProfileController::uploadImage"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
-        params->setObject(__String::create(message), "message");
-        params->setObject(__String::create(filePath), "filePath");
+        params->setObject(CCString::create(message), "message");
+        params->setObject(CCString::create(filePath), "filePath");
         if (reward) {
             params->setObject(reward->toDictionary(), "reward");
         }
@@ -136,8 +136,8 @@ namespace soomla {
     void CCProfileController::getContacts(CCProvider provider, CCReward *reward, CCError **soomlaError) {
 
         CC_ASSERT(mInited);
-        __Dictionary *params = __Dictionary::create();
-        params->setObject(__String::create("CCProfileController::getContacts"), "method");
+        CCDictionary *params = CCDictionary::create();
+        params->setObject(CCString::create("CCProfileController::getContacts"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
         if (reward) {
             params->setObject(reward->toDictionary(), "reward");
@@ -148,8 +148,8 @@ namespace soomla {
     void CCProfileController::getFeed(CCProvider provider, CCReward *reward, CCError **soomlaError) {
         
         CC_ASSERT(mInited);
-        __Dictionary *params = __Dictionary::create();
-        params->setObject(__String::create("CCProfileController::getFeed"), "method");
+        CCDictionary *params = CCDictionary::create();
+        params->setObject(CCString::create("CCProfileController::getFeed"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
         if (reward) {
             params->setObject(reward->toDictionary(), "reward");
@@ -159,20 +159,20 @@ namespace soomla {
     
     bool CCProfileController::isLoggedIn(CCProvider provider, CCError **soomlaError) {
         CC_ASSERT(mInited);
-        __Dictionary *params = __Dictionary::create();
-        params->setObject(__String::create("CCProfileController::isLoggedIn"), "method");
+        CCDictionary *params = CCDictionary::create();
+        params->setObject(CCString::create("CCProfileController::isLoggedIn"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
-        __Dictionary *retParams = (__Dictionary *) CCNdkBridge::callNative (params, soomlaError);
-        __Bool *retValue = (__Bool *) retParams->objectForKey("return");
+        CCDictionary *retParams = (CCDictionary *) CCNdkBridge::callNative (params, soomlaError);
+        CCBool *retValue = (CCBool *) retParams->objectForKey("return");
         
         return retValue->getValue();
     }
     
     void CCProfileController::like(CCProvider provider, const char *pageName, CCReward *reward, CCError **soomlaError) {
         CC_ASSERT(mInited);
-        __Dictionary *params = __Dictionary::create();
-        params->setObject(__String::create("CCProfileController::like"), "method");
-        params->setObject(__String::create(pageName), "pageName");
+        CCDictionary *params = CCDictionary::create();
+        params->setObject(CCString::create("CCProfileController::like"), "method");
+        params->setObject(CCString::create(pageName), "pageName");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
         if (reward) {
             params->setObject(reward->toDictionary(), "reward");

@@ -20,43 +20,43 @@
 
 namespace soomla {
     
-     __String* CCUserProfileUtils::providerEnumToString(CCProvider actionType) {
+     CCString* CCUserProfileUtils::providerEnumToString(CCProvider actionType) {
          switch (actionType) {
              case FACEBOOK:
-                 return __String::create("facebook");
+                 return CCString::create("facebook");
                  break;
              case FOURSQUARE:
-                 return __String::create("foursquare");
+                 return CCString::create("foursquare");
                  break;
              case GOOGLE:
-                 return __String::create("google");
+                 return CCString::create("google");
                  break;
              case LINKEDIN:
-                 return __String::create("linkedin");
+                 return CCString::create("linkedin");
                  break;
              case MYSPACE:
-                 return __String::create("myspace");
+                 return CCString::create("myspace");
                  break;
              case TWITTER:
-                 return __String::create("twitter");
+                 return CCString::create("twitter");
                  break;
              case YAHOO:
-                 return __String::create("yahoo");
+                 return CCString::create("yahoo");
                  break;
              case SALESFORCE:
-                 return __String::create("salesforce");
+                 return CCString::create("salesforce");
                  break;
              case YAMMER:
-                 return __String::create("yammer");
+                 return CCString::create("yammer");
                  break;
              case RUNKEEPER:
-                 return __String::create("runkeeper");
+                 return CCString::create("runkeeper");
                  break;
              case INSTAGRAM:
-                 return __String::create("instagram");
+                 return CCString::create("instagram");
                  break;
              case FLICKR:
-                 return __String::create("flickr");
+                 return CCString::create("flickr");
                  break;
              default:
                  break;
@@ -65,7 +65,7 @@ namespace soomla {
          return NULL;
     }
     
-    CCProvider CCUserProfileUtils::providerStringToEnum(__String* actionTypeString) {
+    CCProvider CCUserProfileUtils::providerStringToEnum(CCString* actionTypeString) {
         if (actionTypeString->compare("facebook")) {
             return FACEBOOK;
         }

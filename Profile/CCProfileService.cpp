@@ -41,7 +41,7 @@ namespace soomla {
         return sInstance;
     }
 
-    void CCProfileService::initShared(__Dictionary *profileParams) {
+    void CCProfileService::initShared(CCDictionary *profileParams) {
         CCProfileService *profileService = CCProfileService::getInstance();
         if (!profileService->init(profileParams)) {
             exit(1);
@@ -51,17 +51,17 @@ namespace soomla {
     CCProfileService::CCProfileService() {
     }
 
-    bool CCProfileService::init(__Dictionary *profileParams) {
+    bool CCProfileService::init(CCDictionary *profileParams) {
 
         CCProfileEventDispatcher::getInstance();    // to get sure it's inited
 
-        __Dictionary *params = __Dictionary::create();
-        params->setObject(__String::create("CCProfileService::init"), "method");
+        CCDictionary *params = CCDictionary::create();
+        params->setObject(CCString::create("CCProfileService::init"), "method");
         params->setObject(profileParams, "params");
         CCNdkBridge::callNative(params, nullptr);
 
         CCDomainFactory::getInstance()->registerCreator(CCProfileConsts::JSON_JSON_TYPE_USER_PROFILE,
-                &CCUserProfile::createWithDictionary);
+                (SEL_DomainCreator)&CCUserProfile::createWithDictionary);
 
         return CCProfileController::getInstance()->init();
     }

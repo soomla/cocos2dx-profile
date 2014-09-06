@@ -38,17 +38,17 @@ namespace soomla {
      Inheritance CCUserProfile > CCDomain > cocos2d::Ref
      */
     class CCUserProfile : public CCDomain {
-        SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::__String *, mProvider, Provider, CCProfileConsts::JSON_PROVIDER);
-        SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::__String *, mProfileId, ProfileId, CCProfileConsts::JSON_PROFILE_ID);
-        SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::__String *, mEmail, Email, CCProfileConsts::JSON_EMAIL);
-        SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::__String *, mUsername, Username, CCProfileConsts::JSON_USERNAME);
-        SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::__String *, mFirstName, FirstName, CCProfileConsts::JSON_FIRST_NAME);
-        SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::__String *, mLastName, LastName, CCProfileConsts::JSON_LAST_NAME);
-        SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::__String *, mAvatarLink, AvatarLink, CCProfileConsts::JSON_AVATAR_LINK);
-        SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::__String *, mLocation, Location, CCProfileConsts::JSON_LOCATION);
-        SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::__String *, mGender, Gender, CCProfileConsts::JSON_GENDER);
-        SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::__String *, mLanguage, Language, CCProfileConsts::JSON_LANGUAGE);
-        SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::__String *, mBirthday, Birthday, CCProfileConsts::JSON_BIRTHDAY);
+        SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::CCString *, mProvider, Provider, CCProfileConsts::JSON_PROVIDER);
+        SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::CCString *, mProfileId, ProfileId, CCProfileConsts::JSON_PROFILE_ID);
+        SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::CCString *, mEmail, Email, CCProfileConsts::JSON_EMAIL);
+        SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::CCString *, mUsername, Username, CCProfileConsts::JSON_USERNAME);
+        SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::CCString *, mFirstName, FirstName, CCProfileConsts::JSON_FIRST_NAME);
+        SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::CCString *, mLastName, LastName, CCProfileConsts::JSON_LAST_NAME);
+        SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::CCString *, mAvatarLink, AvatarLink, CCProfileConsts::JSON_AVATAR_LINK);
+        SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::CCString *, mLocation, Location, CCProfileConsts::JSON_LOCATION);
+        SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::CCString *, mGender, Gender, CCProfileConsts::JSON_GENDER);
+        SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::CCString *, mLanguage, Language, CCProfileConsts::JSON_LANGUAGE);
+        SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::CCString *, mBirthday, Birthday, CCProfileConsts::JSON_BIRTHDAY);
     public:
         /**
          Constructor
@@ -78,17 +78,17 @@ namespace soomla {
          @param birthday The user's birth date
          */
         static CCUserProfile *create(
-                cocos2d::__String *provider,
-                cocos2d::__String *profileId,
-                cocos2d::__String *email,
-                cocos2d::__String *username,
-                cocos2d::__String *firstName,
-                cocos2d::__String *lastName,
-                cocos2d::__String *avatarLink,
-                cocos2d::__String *location,
-                cocos2d::__String *gender,
-                cocos2d::__String *language,
-                cocos2d::__String *birthday);
+                cocos2d::CCString *provider,
+                cocos2d::CCString *profileId,
+                cocos2d::CCString *email,
+                cocos2d::CCString *username,
+                cocos2d::CCString *firstName,
+                cocos2d::CCString *lastName,
+                cocos2d::CCString *avatarLink,
+                cocos2d::CCString *location,
+                cocos2d::CCString *gender,
+                cocos2d::CCString *language,
+                cocos2d::CCString *birthday);
 
         SL_CREATE_WITH_DICTIONARY(CCUserProfile);
 
@@ -109,31 +109,31 @@ namespace soomla {
          @param birthday The user's birth date
          */
         virtual bool init(
-                cocos2d::__String *provider,
-                cocos2d::__String *profileId,
-                cocos2d::__String *email,
-                cocos2d::__String *username,
-                cocos2d::__String *firstName,
-                cocos2d::__String *lastName,
-                cocos2d::__String *avatarLink,
-                cocos2d::__String *location,
-                cocos2d::__String *gender,
-                cocos2d::__String *language,
-                cocos2d::__String *birthday);
+                cocos2d::CCString *provider,
+                cocos2d::CCString *profileId,
+                cocos2d::CCString *email,
+                cocos2d::CCString *username,
+                cocos2d::CCString *firstName,
+                cocos2d::CCString *lastName,
+                cocos2d::CCString *avatarLink,
+                cocos2d::CCString *location,
+                cocos2d::CCString *gender,
+                cocos2d::CCString *language,
+                cocos2d::CCString *birthday);
 
         /**
          Initializes the class instance with information provided in a
          dictionary format with keys corresponding to fields JSON constants
          (see SL_SYNTHESIZE_RETAIN_WITH_DICT macros above)
          */
-        virtual bool initWithDictionary(cocos2d::__Dictionary *dict);
+        virtual bool initWithDictionary(cocos2d::CCDictionary *dict);
 
         /**
          Convers the profile instance into a dictionary using the fields'
          JSON constants as keys 
          (see SL_SYNTHESIZE_RETAIN_WITH_DICT macros above)
          */
-        virtual cocos2d::__Dictionary *toDictionary();
+        virtual cocos2d::CCDictionary *toDictionary();
 
         /**
          Destructor for the user profile

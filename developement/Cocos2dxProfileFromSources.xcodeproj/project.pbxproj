@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		372B71EC48A35784BE53D132 /* CCSimpleProfileEventHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 372B7A594B9F9AFDE584F013 /* CCSimpleProfileEventHandler.h */; };
+		372B7E3B6CC2AC319629221A /* CCSimpleProfileEventHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 372B7AD1CB7A447CF23C8A75 /* CCSimpleProfileEventHandler.cpp */; };
 		C0B3C5F3168C6D0C00161FAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B3C5F2168C6D0C00161FAA /* Foundation.framework */; };
 		F825C0DD19B31D6800A2CABB /* CCProfileConsts.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F825C0CC19B31D6800A2CABB /* CCProfileConsts.cpp */; };
 		F825C0DE19B31D6800A2CABB /* CCProfileConsts.h in Headers */ = {isa = PBXBuildFile; fileRef = F825C0CD19B31D6800A2CABB /* CCProfileConsts.h */; };
@@ -58,6 +60,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		372B7A594B9F9AFDE584F013 /* CCSimpleProfileEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSimpleProfileEventHandler.h; sourceTree = "<group>"; };
+		372B7AD1CB7A447CF23C8A75 /* CCSimpleProfileEventHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSimpleProfileEventHandler.cpp; sourceTree = "<group>"; };
 		C0B3C5EF168C6D0C00161FAA /* libCocos2dxProfileFromSources.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocos2dxProfileFromSources.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0B3C5F2168C6D0C00161FAA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F825C0CC19B31D6800A2CABB /* CCProfileConsts.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCProfileConsts.cpp; sourceTree = "<group>"; };
@@ -167,6 +171,8 @@
 				F825C0D819B31D6800A2CABB /* CCUserProfileUtils.h */,
 				F825C0D919B31D6800A2CABB /* Cocos2dxProfile.h */,
 				F825C0DA19B31D6800A2CABB /* domain */,
+				372B7AD1CB7A447CF23C8A75 /* CCSimpleProfileEventHandler.cpp */,
+				372B7A594B9F9AFDE584F013 /* CCSimpleProfileEventHandler.h */,
 			);
 			name = Profile;
 			path = ../Profile;
@@ -311,6 +317,7 @@
 				F825C19B19B3209F00A2CABB /* UserProfileEventHandling.h in Headers */,
 				F825C0E719B31D6800A2CABB /* CCSocialActionUtils.h in Headers */,
 				F825C19619B3209F00A2CABB /* SocialController.h in Headers */,
+				372B71EC48A35784BE53D132 /* CCSimpleProfileEventHandler.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,6 +392,7 @@
 				F825C17C19B3209F00A2CABB /* PJSONConsts.m in Sources */,
 				F825C0EB19B31D6800A2CABB /* CCUserProfile.cpp in Sources */,
 				F825C19519B3209F00A2CABB /* SocialActionUtils.m in Sources */,
+				372B7E3B6CC2AC319629221A /* CCSimpleProfileEventHandler.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

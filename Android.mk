@@ -8,6 +8,7 @@ LOCAL_SRC_FILES := Soomla/CCProfileConsts.cpp \
 	Soomla/CCProfileController.cpp \
 	Soomla/CCProfileEventDispatcher.cpp \
 	Soomla/CCProfileService.cpp \
+	Soomla/CCSimpleProfileEventHandler.cpp \
 	Soomla/CCSocialActionUtils.cpp \
 	Soomla/CCUserProfileUtils.cpp \
 	Soomla/domain/CCUserProfile.cpp

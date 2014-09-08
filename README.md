@@ -101,7 +101,7 @@ In your XCode project, perform the following steps:
  - `$(SRCROOT)/../cocos2d/extensions/cocos2dx-profile/Soomla/**`
  - `$(SRCROOT)/../cocos2d/extensions/cocos2dx-profile/build/ios/headers/**`
 
-1. Register the native `StoreService` by adding:
+1. Register the native `ProfileService` by adding:
 
     ```cpp
     [[ServiceManager sharedServiceManager] registerService:[ProfileService sharedProfileService]];
@@ -137,8 +137,8 @@ That's it! Now all you have to do is build your XCode project and run your game 
         1. Cocos2dxAndroidCore.jar
 
     - from `extensions/cocos2dx-profile/build/android`
-        1. SoomlaAndroidStore.jar
-        1. Cocos2dxAndroidStore.jar
+        1. AndroidProfile.jar
+        1. Cocos2dxAndroidProfile.jar
 
 1. In your game's main Cocos2dxActivity, call the following in the `onCreateView` method:
      ```java
@@ -287,7 +287,7 @@ We try to do all our best to make your contributions as easy as possible. We pre
 1. Fetch submodules of repositories, you can do it recursively cloning them:
     ```
     $ git clone --recursive git@github.com:soomla/soomla-cocos2dx-core.git extensions/soomla-cocos2dx-core
-    $ git clone --recursive git@github.com:soomla/cocos2dx-store.git extensions/cocos2dx-profile
+    $ git clone --recursive git@github.com:soomla/cocos2dx-profile.git extensions/cocos2dx-profile
     ```
 or, if you have repositories already cloned, fetch the submodules with this command:
     ```

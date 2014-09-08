@@ -13,31 +13,31 @@ namespace soomla {
     class CCSimpleProfileEventHandler: public CCProfileEventHandler {
 
     public:
-        virtual void onLoginFailed(CCProvider provider, cocos2d::__String *errorDescription);
+        virtual void onLoginFailed(CCProvider provider, cocos2d::CCString *errorDescription);
 
         virtual void onLoginFinished(CCUserProfile *userProfile);
 
         virtual void onLoginStarted(CCProvider provider);
 
-        virtual void onLogoutFailed(CCProvider provider, cocos2d::__String *errorDescription);
+        virtual void onLogoutFailed(CCProvider provider, cocos2d::CCString *errorDescription);
 
         virtual void onLogoutFinished(CCProvider provider);
 
         virtual void onLogoutStarted(CCProvider provider);
 
-        virtual void onGetContactsFailed(CCProvider provider, cocos2d::__String *errorDescription);
+        virtual void onGetContactsFailed(CCProvider provider, cocos2d::CCString *errorDescription);
 
-        virtual void onGetContactsFinished(CCProvider provider, cocos2d::__Array *contactsDict);
+        virtual void onGetContactsFinished(CCProvider provider, cocos2d::CCArray *contactsDict);
 
         virtual void onGetContactsStarted(CCProvider provider);
 
-        virtual void onGetFeedFailed(CCProvider provider, cocos2d::__String *errorDescription);
+        virtual void onGetFeedFailed(CCProvider provider, cocos2d::CCString *errorDescription);
 
-        virtual void onGetFeedFinished(CCProvider provider, cocos2d::__Array *feedList);
+        virtual void onGetFeedFinished(CCProvider provider, cocos2d::CCArray *feedList);
 
         virtual void onGetFeedStarted(CCProvider provider);
 
-        virtual void onSocialActionFailedEvent(CCProvider provider, CCSocialActionType socialActionType, cocos2d::__String *errorDescription);
+        virtual void onSocialActionFailedEvent(CCProvider provider, CCSocialActionType socialActionType, cocos2d::CCString *errorDescription);
 
         virtual void onSocialActionFinishedEvent(CCProvider provider, CCSocialActionType socialActionType);
 

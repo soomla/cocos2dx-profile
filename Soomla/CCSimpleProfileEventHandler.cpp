@@ -5,7 +5,7 @@
 
 #include "CCSimpleProfileEventHandler.h"
 
-void soomla::CCSimpleProfileEventHandler::onLoginFailed(soomla::CCProvider provider, cocos2d::__String *errorDescription) {
+void soomla::CCSimpleProfileEventHandler::onLoginFailed(soomla::CCProvider provider, cocos2d::CCString *errorDescription) {
 
 }
 
@@ -17,7 +17,7 @@ void soomla::CCSimpleProfileEventHandler::onLoginStarted(soomla::CCProvider prov
 
 }
 
-void soomla::CCSimpleProfileEventHandler::onLogoutFailed(soomla::CCProvider provider, cocos2d::__String *errorDescription) {
+void soomla::CCSimpleProfileEventHandler::onLogoutFailed(soomla::CCProvider provider, cocos2d::CCString *errorDescription) {
 
 }
 
@@ -29,11 +29,11 @@ void soomla::CCSimpleProfileEventHandler::onLogoutStarted(soomla::CCProvider pro
 
 }
 
-void soomla::CCSimpleProfileEventHandler::onGetContactsFailed(soomla::CCProvider provider, cocos2d::__String *errorDescription) {
+void soomla::CCSimpleProfileEventHandler::onGetContactsFailed(soomla::CCProvider provider, cocos2d::CCString *errorDescription) {
 
 }
 
-void soomla::CCSimpleProfileEventHandler::onGetContactsFinished(soomla::CCProvider provider, cocos2d::__Array *contactsDict) {
+void soomla::CCSimpleProfileEventHandler::onGetContactsFinished(soomla::CCProvider provider, cocos2d::CCArray *contactsDict) {
 
 }
 
@@ -41,11 +41,11 @@ void soomla::CCSimpleProfileEventHandler::onGetContactsStarted(soomla::CCProvide
 
 }
 
-void soomla::CCSimpleProfileEventHandler::onGetFeedFailed(soomla::CCProvider provider, cocos2d::__String *errorDescription) {
+void soomla::CCSimpleProfileEventHandler::onGetFeedFailed(soomla::CCProvider provider, cocos2d::CCString *errorDescription) {
 
 }
 
-void soomla::CCSimpleProfileEventHandler::onGetFeedFinished(soomla::CCProvider provider, cocos2d::__Array *feedList) {
+void soomla::CCSimpleProfileEventHandler::onGetFeedFinished(soomla::CCProvider provider, cocos2d::CCArray *feedList) {
 
 }
 
@@ -53,7 +53,7 @@ void soomla::CCSimpleProfileEventHandler::onGetFeedStarted(soomla::CCProvider pr
 
 }
 
-void soomla::CCSimpleProfileEventHandler::onSocialActionFailedEvent(soomla::CCProvider provider, soomla::CCSocialActionType socialActionType, cocos2d::__String *errorDescription) {
+void soomla::CCSimpleProfileEventHandler::onSocialActionFailedEvent(soomla::CCProvider provider, soomla::CCSocialActionType socialActionType, cocos2d::CCString *errorDescription) {
 
 }
 

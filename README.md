@@ -18,7 +18,7 @@ cocos2dx-profile
 cocos2dx-profile is the Cocos2d-x flavour of SOOMLA's Profile Module. This project uses [android-profile](https://github.com/soomla/android-profile) and [ios-profile](https://github.com/soomla/ios-profile) in order to provide game developers with social network connectivity for their **cocos2d-x** projects.
 
 cocos2dx-profile easily connects to SOOMLA's virtual economy model ([cocos2dx-store](https://github.com/soomla/cocos2dx-store)), thus you can reward players for performing social interactions with virtual rewards (`CCVirtualItemReward`, etc). That said this integration is completely optional.
-![SOOMLA's Profile Module](http://know.soom.la/img/tutorial_img/soomla_diagrams/Profile.png)
+![SOOMLA's Profile Module](http://know.soom.la/img/tutorial_img/soomla_diagrams/profile.png)
 
 ## Example Project
 
@@ -98,7 +98,7 @@ In your XCode project, perform the following steps:
 1. Add the following directories to **Build Settings->Header Search Paths** (with `recursive` option):
  - `$(SRCROOT)/../cocos2d/extensions/soomla-cocos2dx-core/Soomla/**`
  - `$(SRCROOT)/../cocos2d/extensions/soomla-cocos2dx-core/build/ios/headers/**`
- - `$(SRCROOT)/../cocos2d/extensions/cocos2dx-profile/Profile/**`
+ - `$(SRCROOT)/../cocos2d/extensions/cocos2dx-profile/Soomla/**`
  - `$(SRCROOT)/../cocos2d/extensions/cocos2dx-profile/build/ios/headers/**`
 
 1. Register the native `StoreService` by adding:

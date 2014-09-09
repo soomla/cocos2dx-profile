@@ -4,14 +4,10 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE := cocos2dx_profile_static
 LOCAL_MODULE_FILENAME := libcocos2dxprofile
-LOCAL_SRC_FILES := Soomla/CCProfileConsts.cpp \
-	Soomla/CCProfileController.cpp \
-	Soomla/CCProfileEventDispatcher.cpp \
-	Soomla/CCProfileService.cpp \
-	Soomla/CCSimpleProfileEventHandler.cpp \
-	Soomla/CCSocialActionUtils.cpp \
-	Soomla/CCUserProfileUtils.cpp \
-	Soomla/domain/CCUserProfile.cpp
+
+FILE_LIST := $(wildcard $(LOCAL_PATH)/Soomla/*.cpp)
+FILE_LIST += $(wildcard $(LOCAL_PATH)/Soomla/domain/*.cpp)
+LOCAL_SRC_FILES := $(FILE_LIST)
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/Soomla
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/Soomla/domain

@@ -5,9 +5,9 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := cocos2dx_profile_static
 LOCAL_MODULE_FILENAME := libcocos2dxprofile
 
-FILE_LIST := $(wildcard $(LOCAL_PATH)/Soomla/*.cpp)
-FILE_LIST += $(wildcard $(LOCAL_PATH)/Soomla/domain/*.cpp)
-LOCAL_SRC_FILES := $(FILE_LIST)
+PROFILE_SRC_LIST := $(wildcard $(LOCAL_PATH)/Soomla/*.cpp)
+PROFILE_SRC_LIST += $(wildcard $(LOCAL_PATH)/Soomla/domain/*.cpp)
+LOCAL_SRC_FILES := $(PROFILE_SRC_LIST)
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/Soomla
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/Soomla/domain

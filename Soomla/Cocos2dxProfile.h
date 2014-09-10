@@ -14,14 +14,16 @@
  limitations under the License.
  */
 
-#ifndef _Cocos2dxSoomla_H
-#define _Cocos2dxSoomla_H
+#ifndef _Cocos2dxProfile_H
+#define _Cocos2dxProfile_H
 
-#include "domain/CCUserProfile.h"
+#include "CCUserProfile.h"
 #include "CCProfileEventHandler.h"
-#include "CCError.h"
 #include "CCProfileEventDispatcher.h"
 #include "CCNdkBridge.h"
 #include "CCProfileController.h"
+#include "CCProfileService.h"
+#include "CCUserProfileUtils.h"
+#include "CCSocialActionUtils.h"
 
-#endif /* !_Cocos2dxSoomla_H */
+#endif /* !_Cocos2dxProfile_H */

@@ -17,6 +17,8 @@
 #ifndef _Cocos2dxProfile_H
 #define _Cocos2dxProfile_H
 
+#include "Cocos2dxCore.h"
+
 #include "CCUserProfile.h"
 #include "CCProfileEventHandler.h"
 #include "CCProfileEventDispatcher.h"

@@ -140,6 +140,7 @@ That's it! Now all you have to do is build your XCode project and run your game 
     - from `extensions/cocos2dx-profile/build/android`
         1. AndroidProfile.jar
         2. Cocos2dxAndroidProfile.jar
+        3. simple.facebook-2.1.jar
 
 1. In your game's main Cocos2dxActivity, call the following in the `onCreateView` method:
      ```java

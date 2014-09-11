@@ -101,12 +101,19 @@ In your XCode project, perform the following steps:
  - `$(SRCROOT)/../cocos2d/extensions/cocos2dx-profile/Soomla/**`
  - `$(SRCROOT)/../cocos2d/extensions/cocos2dx-profile/build/ios/headers/**`
 
-1. Register the native `ProfileService` by adding:
+1. To register services on the native application (`AppController`):
 
+  1. Import the following headers:
     ```cpp
-    [[ServiceManager sharedServiceManager] registerService:[ProfileService sharedProfileService]];
+    #import "ServiceManager.h"
+    #import "ProfileService.h"
     ```
-at the begining of the method `application: didFinishLaunchingWithOptions:` of `AppController`.
+
+  1. Register the native `ProfileService` by adding:
+    ```cpp
+    [[ServiceManager sharedServiceManager] registerService:[ProfileService sharedStoreService]];
+    ```
+    at the begining of the method `application: didFinishLaunchingWithOptions:` of `AppController`.
 
 1. Make sure you have these 3 Frameworks linked to your XCode project: **Security, libsqlite3.0.dylib, StoreKit**.
 

@@ -41,6 +41,7 @@
     if (self) {
         [UserProfileEventHandling observeAllEventsWithObserver:[NdkGlue sharedInstance]
                                                   withSelector:@selector(dispatchNdkCallback:)];
+        [SoomlaProfile getInstance];
     }
 
     return self;

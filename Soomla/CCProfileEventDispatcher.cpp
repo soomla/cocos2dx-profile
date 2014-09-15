@@ -42,6 +42,11 @@ namespace soomla {
         
         CCSoomlaEventDispatcher *eventDispatcher = CCSoomlaEventDispatcher::getInstance();
 
+        eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_PROFILE_INITIALIZED,
+                [this](__Dictionary *parameters) {
+                    this->onProfileInitialized();
+                });
+
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_LOGIN_CANCELLED,
                 [this](__Dictionary *parameters) {
                     __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
@@ -172,6 +177,12 @@ namespace soomla {
         return CCDomainHelper::getInstance()->getDomainsFromDictArray(contactsDict, CCProfileConsts::JSON_JSON_TYPE_USER_PROFILE);
     }
 
+    void CCProfileEventDispatcher::onProfileInitialized() {
+        FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
+            eventHandler->onProfileInitialized();
+        }
+    }
+
     void CCProfileEventDispatcher::onLoginFailed(CCProvider provider, cocos2d::__String *errorDescription) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
             eventHandler->onLoginFailed(provider, errorDescription);
@@ -273,5 +284,4 @@ namespace soomla {
             eventHandler->onUserProfileUpdatedEvent(userProfile);
         }
     }
-
 }

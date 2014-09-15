@@ -33,6 +33,12 @@ namespace soomla {
      */
     class CCProfileEventHandler : public cocos2d::Ref {
     public:
+
+        /**
+        * Called after the service has been initialized
+        */
+        virtual void onProfileInitialized() = 0;
+
         /**
          Called when the login process to a provider has failed
          

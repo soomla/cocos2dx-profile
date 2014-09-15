@@ -45,7 +45,12 @@ namespace soomla {
          */
         bool init();
 
-        /** 
+        /**
+        see parent
+        */
+        virtual void onProfileInitialized();
+
+        /**
          see parent
          */
         virtual void onLoginFailed(CCProvider provider, cocos2d::__String *errorDescription);

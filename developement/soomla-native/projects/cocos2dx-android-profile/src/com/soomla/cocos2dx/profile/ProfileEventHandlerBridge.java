@@ -21,6 +21,7 @@ import com.soomla.BusProvider;
 import com.soomla.SoomlaUtils;
 import com.soomla.cocos2dx.common.DomainHelper;
 import com.soomla.cocos2dx.common.NdkGlue;
+import com.soomla.profile.events.ProfileInitializedEvent;
 import com.soomla.profile.events.UserProfileUpdatedEvent;
 import com.soomla.profile.events.auth.*;
 import com.soomla.profile.events.social.*;
@@ -47,6 +48,25 @@ public class ProfileEventHandlerBridge {
      */
     public ProfileEventHandlerBridge() {
         BusProvider.getInstance().register(this);
+    }
+
+    /**
+     * @param profileInitializedEvent The event information
+     */
+    @Subscribe
+    public void onProfileInitializedEvent(final ProfileInitializedEvent profileInitializedEvent) {
+        mGLThread.queueEvent(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject parameters = new JSONObject();
+                    parameters.put("method", ProfileConsts.EVENT_UP_PROFILE_INITIALIZED);
+                    NdkGlue.getInstance().sendMessageWithParameters(parameters);
+                } catch (JSONException e) {
+                    throw new IllegalStateException(e);
+                }
+            }
+        });
     }
 
     /**

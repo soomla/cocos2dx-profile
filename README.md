@@ -199,7 +199,13 @@ That's it! Now all you have to do is build your XCode project and run your game 
 
     1. For more information regarding this refer to [Facebook SDK for Android](https://developers.facebook.com/docs/android)
 
-    1. SOOMLA uses [Android Studio](https://developer.android.com/sdk/installing/studio.html), in this case you can extract the Facebook SDK into your `proj.android` folder and then it's simply a case of importing the `.iml` file in the Facebook SDK folder into your project
+    1. SOOMLA uses [Android Studio](https://developer.android.com/sdk/installing/studio.html), in this case you can extract the Facebook SDK into a folder and copy over the facebook folder into `proj.android`
+
+    1. Then import the facebook module from existing sources (File -> Project Structure -> + button -> select the facebook folder)
+
+    1. Follow the wizard until the module is created (at this point you might want to mark the gen folder in facebook as generated sources, the wizard sometime misses that)
+
+    1. Add the new facebook module as a dependency for your main project
 
   1. Update your AndroidManifest.xml:
 

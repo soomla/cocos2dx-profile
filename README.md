@@ -211,11 +211,22 @@ That's it! Now all you have to do is build your XCode project and run your game 
 
       ```xml
       ...
-
       <application ...
+
+          <activity android:name="com.facebook.LoginActivity" />
+          <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/fb_app_id" />
+
           <activity android:name="com.soomla.profile.social.facebook.SoomlaFacebook$SoomlaFBActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
-        </activity>
+          </activity>
       </application>
+      ```
+  1. Update tour `res/values/strings.xml`:
+      ```xml
+      ...
+      <resources>
+          ...
+          <string name="fb_app_id">your facebook app id here</string>
+      </resources>
       ```
 
 > To see a working Facebook example, try our [cocos2dx-profile-example](https://github.com/soomla/cocos2dx-profile-example) project

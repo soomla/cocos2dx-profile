@@ -13,7 +13,7 @@ void soomla::CCSimpleProfileEventHandler::onUserRatingEvent() {
     
 }
 
-void soomla::CCSimpleProfileEventHandler::onLoginFailed(soomla::CCProvider provider, cocos2d::__String *errorDescription) {
+void soomla::CCSimpleProfileEventHandler::onLoginFailed(soomla::CCProvider provider, cocos2d::CCString *errorDescription) {
 
 }
 

@@ -10,6 +10,8 @@
 		C0B3C5F3168C6D0C00161FAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B3C5F2168C6D0C00161FAA /* Foundation.framework */; };
 		F825C0C619B31C2D00A2CABB /* libCocos2dXiOSProfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F825C0C519B31C2D00A2CABB /* libCocos2dXiOSProfile.a */; };
 		F825C0C819B31C3C00A2CABB /* libSoomlaiOSProfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F825C0C719B31C3C00A2CABB /* libSoomlaiOSProfile.a */; };
+		F83376D119C83ABE005CA2A0 /* CCSimpleProfileEventHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F83376CF19C83ABE005CA2A0 /* CCSimpleProfileEventHandler.cpp */; };
+		F83376D219C83ABE005CA2A0 /* CCSimpleProfileEventHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = F83376D019C83ABE005CA2A0 /* CCSimpleProfileEventHandler.h */; };
 		F8DBEC5D19BDB34D0093252C /* CCProfileConsts.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8DBEC4C19BDB34D0093252C /* CCProfileConsts.cpp */; };
 		F8DBEC5E19BDB34D0093252C /* CCProfileConsts.h in Headers */ = {isa = PBXBuildFile; fileRef = F8DBEC4D19BDB34D0093252C /* CCProfileConsts.h */; };
 		F8DBEC5F19BDB34D0093252C /* CCProfileController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8DBEC4E19BDB34D0093252C /* CCProfileController.cpp */; };
@@ -33,6 +35,8 @@
 		C0B3C5F2168C6D0C00161FAA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F825C0C519B31C2D00A2CABB /* libCocos2dXiOSProfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCocos2dXiOSProfile.a; path = build/ios/libCocos2dXiOSProfile.a; sourceTree = "<group>"; };
 		F825C0C719B31C3C00A2CABB /* libSoomlaiOSProfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSoomlaiOSProfile.a; path = build/ios/libSoomlaiOSProfile.a; sourceTree = "<group>"; };
+		F83376CF19C83ABE005CA2A0 /* CCSimpleProfileEventHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSimpleProfileEventHandler.cpp; sourceTree = "<group>"; };
+		F83376D019C83ABE005CA2A0 /* CCSimpleProfileEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSimpleProfileEventHandler.h; sourceTree = "<group>"; };
 		F8DBEC4C19BDB34D0093252C /* CCProfileConsts.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCProfileConsts.cpp; sourceTree = "<group>"; };
 		F8DBEC4D19BDB34D0093252C /* CCProfileConsts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCProfileConsts.h; sourceTree = "<group>"; };
 		F8DBEC4E19BDB34D0093252C /* CCProfileController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCProfileController.cpp; sourceTree = "<group>"; };
@@ -95,6 +99,8 @@
 		F8DBEC4B19BDB34D0093252C /* Soomla */ = {
 			isa = PBXGroup;
 			children = (
+				F83376CF19C83ABE005CA2A0 /* CCSimpleProfileEventHandler.cpp */,
+				F83376D019C83ABE005CA2A0 /* CCSimpleProfileEventHandler.h */,
 				F8DBEC4C19BDB34D0093252C /* CCProfileConsts.cpp */,
 				F8DBEC4D19BDB34D0093252C /* CCProfileConsts.h */,
 				F8DBEC4E19BDB34D0093252C /* CCProfileController.cpp */,
@@ -138,6 +144,7 @@
 				F8DBEC6219BDB34D0093252C /* CCProfileEventDispatcher.h in Headers */,
 				F8DBEC6A19BDB34D0093252C /* Cocos2dxProfile.h in Headers */,
 				F8DBEC5E19BDB34D0093252C /* CCProfileConsts.h in Headers */,
+				F83376D219C83ABE005CA2A0 /* CCSimpleProfileEventHandler.h in Headers */,
 				F8DBEC6719BDB34D0093252C /* CCSocialActionUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,6 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8DBEC6119BDB34D0093252C /* CCProfileEventDispatcher.cpp in Sources */,
+				F83376D119C83ABE005CA2A0 /* CCSimpleProfileEventHandler.cpp in Sources */,
 				F8DBEC6619BDB34D0093252C /* CCSocialActionUtils.cpp in Sources */,
 				F8DBEC6819BDB34D0093252C /* CCUserProfileUtils.cpp in Sources */,
 				F8DBEC6419BDB34D0093252C /* CCProfileService.cpp in Sources */,

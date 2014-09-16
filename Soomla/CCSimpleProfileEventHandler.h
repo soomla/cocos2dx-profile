@@ -18,7 +18,7 @@ namespace soomla {
         
         virtual void onUserRatingEvent();
 
-        virtual void onLoginFailed(CCProvider provider, cocos2d::__String *errorDescription);
+        virtual void onLoginFailed(CCProvider provider, cocos2d::CCString *errorDescription);
 
         virtual void onLoginFinished(CCUserProfile *userProfile);
 

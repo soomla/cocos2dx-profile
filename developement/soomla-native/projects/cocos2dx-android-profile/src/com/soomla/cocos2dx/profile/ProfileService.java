@@ -106,7 +106,7 @@ public class ProfileService extends AbstractSoomlaService {
             }
         });
 
-        ndkGlue.registerCallHandler("CCProfileController::login", new NdkGlue.CallHandler() {
+        ndkGlue.registerCallHandler("CCSoomlaProfile::login", new NdkGlue.CallHandler() {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
                 String provider = params.getString("provider");
@@ -117,7 +117,7 @@ public class ProfileService extends AbstractSoomlaService {
             }
         });
 
-        ndkGlue.registerCallHandler("CCProfileController::logout", new NdkGlue.CallHandler() {
+        ndkGlue.registerCallHandler("CCSoomlaProfile::logout", new NdkGlue.CallHandler() {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
                 String provider = params.getString("provider");
@@ -125,7 +125,7 @@ public class ProfileService extends AbstractSoomlaService {
             }
         });
 
-        ndkGlue.registerCallHandler("CCProfileController::getStoredUserProfile", new NdkGlue.CallHandler() {
+        ndkGlue.registerCallHandler("CCSoomlaProfile::getStoredUserProfile", new NdkGlue.CallHandler() {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
                 String provider = params.getString("provider");
@@ -136,7 +136,7 @@ public class ProfileService extends AbstractSoomlaService {
             }
         });
 
-        ndkGlue.registerCallHandler("CCProfileController::updateStatus", new NdkGlue.CallHandler() {
+        ndkGlue.registerCallHandler("CCSoomlaProfile::updateStatus", new NdkGlue.CallHandler() {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
                 String provider = params.getString("provider");
@@ -148,7 +148,7 @@ public class ProfileService extends AbstractSoomlaService {
             }
         });
 
-        ndkGlue.registerCallHandler("CCProfileController::updateStory", new NdkGlue.CallHandler() {
+        ndkGlue.registerCallHandler("CCSoomlaProfile::updateStory", new NdkGlue.CallHandler() {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
                 String provider = params.getString("provider");
@@ -166,7 +166,7 @@ public class ProfileService extends AbstractSoomlaService {
             }
         });
 
-        ndkGlue.registerCallHandler("CCProfileController::uploadImage", new NdkGlue.CallHandler() {
+        ndkGlue.registerCallHandler("CCSoomlaProfile::uploadImage", new NdkGlue.CallHandler() {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
                 String provider = params.getString("provider");
@@ -180,7 +180,7 @@ public class ProfileService extends AbstractSoomlaService {
             }
         });
 
-        ndkGlue.registerCallHandler("CCProfileController::getContacts", new NdkGlue.CallHandler() {
+        ndkGlue.registerCallHandler("CCSoomlaProfile::getContacts", new NdkGlue.CallHandler() {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
                 String provider = params.getString("provider");
@@ -191,7 +191,7 @@ public class ProfileService extends AbstractSoomlaService {
             }
         });
 
-        ndkGlue.registerCallHandler("CCProfileController::getFeed", new NdkGlue.CallHandler() {
+        ndkGlue.registerCallHandler("CCSoomlaProfile::getFeed", new NdkGlue.CallHandler() {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
                 String provider = params.getString("provider");
@@ -202,7 +202,7 @@ public class ProfileService extends AbstractSoomlaService {
             }
         });
 
-        ndkGlue.registerCallHandler("CCProfileController::isLoggedIn", new NdkGlue.CallHandler() {
+        ndkGlue.registerCallHandler("CCSoomlaProfile::isLoggedIn", new NdkGlue.CallHandler() {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
                 String provider = params.getString("provider");
@@ -211,7 +211,7 @@ public class ProfileService extends AbstractSoomlaService {
             }
         });
 
-        ndkGlue.registerCallHandler("CCProfileController::like", new NdkGlue.CallHandler() {
+        ndkGlue.registerCallHandler("CCSoomlaProfile::like", new NdkGlue.CallHandler() {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
                 String provider = params.getString("provider");
@@ -224,7 +224,7 @@ public class ProfileService extends AbstractSoomlaService {
             }
         });
 
-        ndkGlue.registerCallHandler("CCProfileController::openAppRatingPage", new NdkGlue.CallHandler() {
+        ndkGlue.registerCallHandler("CCSoomlaProfile::openAppRatingPage", new NdkGlue.CallHandler() {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
                 SoomlaProfile.getInstance().openAppRatingPage(ndkGlue.getActivityRef().get().getApplicationContext());

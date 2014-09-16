@@ -41,7 +41,7 @@
     if (self) {
         [UserProfileEventHandling observeAllEventsWithObserver:[NdkGlue sharedInstance]
                                                   withSelector:@selector(dispatchNdkCallback:)];
-        [SoomlaProfile getInstance];
+        [[SoomlaProfile getInstance] initialize];
     }
 
     return self;
@@ -59,7 +59,7 @@
     [ndkGlue registerCallHandlerForKey:@"CCProfileService::init" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         [[ProfileService sharedProfileService] init];
     }];
-    [ndkGlue registerCallHandlerForKey:@"CCProfileController::login" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
+    [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::login" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];
         NSDictionary *rewardDict = [parameters objectForKey:@"reward"];
         Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
@@ -70,11 +70,11 @@
             [[SoomlaProfile getInstance] loginWithProvider:[UserProfileUtils providerStringToEnum:provider]];
         }
     }];
-    [ndkGlue registerCallHandlerForKey:@"CCProfileController::logout" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
+    [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::logout" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];
         [[SoomlaProfile getInstance] logoutWithProvider:[UserProfileUtils providerStringToEnum:provider]];
     }];
-    [ndkGlue registerCallHandlerForKey:@"CCProfileController::getStoredUserProfile" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
+    [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::getStoredUserProfile" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];
         UserProfile *userProfile = [[SoomlaProfile getInstance] getStoredUserProfileWithProvider:
                 [UserProfileUtils providerStringToEnum:provider]];
@@ -82,7 +82,7 @@
             [retParameters setObject:[userProfile toDictionary] forKey:@"return"];
         }
     }];
-    [ndkGlue registerCallHandlerForKey:@"CCProfileController::updateStatus" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
+    [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::updateStatus" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];
         NSString *status = [parameters objectForKey:@"status"];
         NSDictionary *rewardDict = [parameters objectForKey:@"reward"];
@@ -91,7 +91,7 @@
                                                     andStatus:status
                                                     andReward:reward];
     }];
-    [ndkGlue registerCallHandlerForKey:@"CCProfileController::updateStory" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
+    [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::updateStory" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];
         NSString *message = [parameters objectForKey:@"message"];
         NSString *name = [parameters objectForKey:@"name"];
@@ -110,7 +110,7 @@
                                                   andPicture:picture
                                                    andReward:reward];
     }];
-    [ndkGlue registerCallHandlerForKey:@"CCProfileController::uploadImage" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
+    [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::uploadImage" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];
         NSString *message = [parameters objectForKey:@"message"];
         NSString *filePath = [parameters objectForKey:@"filePath"];
@@ -121,27 +121,27 @@
                                                  andFilePath:filePath
                                                    andReward:reward];
     }];
-    [ndkGlue registerCallHandlerForKey:@"CCProfileController::getContacts" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
+    [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::getContacts" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];
         NSDictionary *rewardDict = [parameters objectForKey:@"reward"];
         Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
         [[SoomlaProfile getInstance] getContactsWithProvider:[UserProfileUtils providerStringToEnum:provider] andReward:reward];
     }];
     
-    [ndkGlue registerCallHandlerForKey:@"CCProfileController::getFeed" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
+    [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::getFeed" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];
         NSDictionary *rewardDict = [parameters objectForKey:@"reward"];
         Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
         [[SoomlaProfile getInstance] getFeedWithProvider:[UserProfileUtils providerStringToEnum:provider] andReward:reward];
     }];
     
-    [ndkGlue registerCallHandlerForKey:@"CCProfileController::isLoggedIn" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
+    [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::isLoggedIn" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];
         BOOL result = [[SoomlaProfile getInstance] isLoggedInWithProvider:[UserProfileUtils providerStringToEnum:provider]];
         [retParameters setObject:@(result) forKey:@"return"];
     }];
     
-    [ndkGlue registerCallHandlerForKey:@"CCProfileController::like" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
+    [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::like" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];
         NSString *pageName = [parameters objectForKey:@"pageName"];
         NSDictionary *rewardDict = [parameters objectForKey:@"reward"];
@@ -149,7 +149,7 @@
         [[SoomlaProfile getInstance] like:[UserProfileUtils providerStringToEnum:provider] andPageName:pageName andReward:reward];
     }];
     
-    [ndkGlue registerCallHandlerForKey:@"CCProfileController::openAppRatingPage" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
+    [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::openAppRatingPage" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         [[SoomlaProfile getInstance] openAppRatingPage];
     }];
 

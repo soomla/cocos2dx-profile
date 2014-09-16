@@ -69,4 +69,4 @@ namespace soomla {
     };
 };
 
-#endif // !__CCProfileController_H_
+#endif // !__CCSoomlaProfile_H_

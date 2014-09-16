@@ -13,7 +13,12 @@ namespace soomla {
     class CCSimpleProfileEventHandler: public CCProfileEventHandler {
 
     public:
-        virtual void onLoginFailed(CCProvider provider, cocos2d::CCString *errorDescription);
+
+        virtual void onProfileInitialized();
+        
+        virtual void onUserRatingEvent();
+
+        virtual void onLoginFailed(CCProvider provider, cocos2d::__String *errorDescription);
 
         virtual void onLoginFinished(CCUserProfile *userProfile);
 

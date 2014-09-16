@@ -224,6 +224,13 @@ public class ProfileService extends AbstractSoomlaService {
             }
         });
 
+        ndkGlue.registerCallHandler("CCProfileController::openAppRatingPage", new NdkGlue.CallHandler() {
+            @Override
+            public void handle(JSONObject params, JSONObject retParams) throws Exception {
+                SoomlaProfile.getInstance().openAppRatingPage(ndkGlue.getActivityRef().get().getApplicationContext());
+            }
+        });
+
 
         final NdkGlue.ExceptionHandler exceptionHandler = new NdkGlue.ExceptionHandler() {
             @Override

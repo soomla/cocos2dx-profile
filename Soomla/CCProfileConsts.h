@@ -44,6 +44,8 @@ namespace soomla {
 
         static char const *JSON_JSON_TYPE_USER_PROFILE;
 
+        static char const *EVENT_PROFILE_INITIALIZED;
+        static char const *EVENT_USER_RATING;
         static char const *EVENT_LOGIN_CANCELLED;
         static char const *EVENT_LOGIN_FAILED;
         static char const *EVENT_LOGIN_FINISHED;

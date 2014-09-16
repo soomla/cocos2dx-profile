@@ -5,7 +5,15 @@
 
 #include "CCSimpleProfileEventHandler.h"
 
-void soomla::CCSimpleProfileEventHandler::onLoginFailed(soomla::CCProvider provider, cocos2d::CCString *errorDescription) {
+void soomla::CCSimpleProfileEventHandler::onProfileInitialized() {
+
+}
+
+void soomla::CCSimpleProfileEventHandler::onUserRatingEvent() {
+    
+}
+
+void soomla::CCSimpleProfileEventHandler::onLoginFailed(soomla::CCProvider provider, cocos2d::__String *errorDescription) {
 
 }
 

@@ -42,6 +42,14 @@ namespace soomla {
         
         CCSoomlaEventDispatcher *eventDispatcher = CCSoomlaEventDispatcher::getInstance();
 
+        eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_PROFILE_INITIALIZED,
+                                              this,
+                                              (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_PROFILE_INITIALIZED);
+        
+        eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_USER_RATING,
+                                              this,
+                                              (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_USER_RATING);
+
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_LOGIN_CANCELLED,
                                               this,
                                               (SEL_EventHandler) &CCProfileEventDispatcher::handle__EVENT_LOGIN_CANCELLED);
@@ -126,6 +134,18 @@ namespace soomla {
         CCArray *contactsDict = dynamic_cast<CCArray *>(userProfileDictArray);
         CC_ASSERT(contactsDict);
         return CCDomainHelper::getInstance()->getDomainsFromDictArray(contactsDict, CCProfileConsts::JSON_JSON_TYPE_USER_PROFILE);
+    }
+
+    void CCProfileEventDispatcher::onProfileInitialized() {
+        FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
+            eventHandler->onProfileInitialized();
+        }
+    }
+
+    void CCProfileEventDispatcher::onUserRatingEvent() {
+        FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
+            eventHandler->onUserRatingEvent();
+        }
     }
 
     void CCProfileEventDispatcher::onLoginFailed(CCProvider provider, cocos2d::CCString *errorDescription) {
@@ -230,6 +250,14 @@ namespace soomla {
         }
     }
 
+    void CCProfileEventDispatcher::handle__EVENT_PROFILE_INITIALIZED(cocos2d::CCDictionary *parameters) {
+        this->onProfileInitialized();
+    }
+
+    void CCProfileEventDispatcher::handle__EVENT_USER_RATING(cocos2d::CCDictionary *parameters) {
+        this->onUserRatingEvent();
+    }
+
     void CCProfileEventDispatcher::handle__EVENT_LOGIN_CANCELLED(cocos2d::CCDictionary *parameters) {
         CCInteger* provider = dynamic_cast<CCInteger *>(parameters->objectForKey("provider"));
         this->onLoginCancelledEvent(CCProvider(provider->getValue()));
@@ -324,5 +352,4 @@ namespace soomla {
         CCUserProfile *userProfile = this->extractUserProfile(parameters->objectForKey("userProfile"));
         this->onUserProfileUpdatedEvent(userProfile);
     }
-
 }

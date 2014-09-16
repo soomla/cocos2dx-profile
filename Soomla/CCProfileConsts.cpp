@@ -31,6 +31,9 @@ namespace soomla {
 
     char const *CCProfileConsts::JSON_JSON_TYPE_USER_PROFILE = "userProfile";
 
+    char const *CCProfileConsts::EVENT_PROFILE_INITIALIZED = "com.soomla.profile.events.ProfileInitializedEvent";
+    char const *CCProfileConsts::EVENT_USER_RATING = "com.soomla.profile.events.UserRatingEvent";
+
     char const *CCProfileConsts::EVENT_LOGIN_CANCELLED = "com.soomla.profile.events.auth.LoginCancelledEvent";
     char const *CCProfileConsts::EVENT_LOGIN_FAILED = "com.soomla.profile.events.auth.LoginFailedEvent";
     char const *CCProfileConsts::EVENT_LOGIN_FINISHED = "com.soomla.profile.events.auth.LoginFinishedEvent";

@@ -45,7 +45,17 @@ namespace soomla {
          */
         bool init();
 
-        /** 
+        /**
+        see parent
+        */
+        virtual void onProfileInitialized();
+        
+        /**
+         see parent
+         */
+        virtual void onUserRatingEvent();
+
+        /**
          see parent
          */
         virtual void onLoginFailed(CCProvider provider, cocos2d::CCString *errorDescription);
@@ -129,6 +139,9 @@ namespace soomla {
          see parent
          */
         virtual void onUserProfileUpdatedEvent(CCUserProfile *userProfile);
+        
+        void handle__EVENT_PROFILE_INITIALIZED(cocos2d::CCDictionary *parameters);
+        void handle__EVENT_USER_RATING(cocos2d::CCDictionary *parameters);
         
         void handle__EVENT_LOGIN_CANCELLED(cocos2d::CCDictionary *parameters);
         void handle__EVENT_LOGIN_FAILED(cocos2d::CCDictionary *parameters);

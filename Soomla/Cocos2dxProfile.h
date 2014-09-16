@@ -23,7 +23,7 @@
 #include "CCProfileEventHandler.h"
 #include "CCProfileEventDispatcher.h"
 #include "CCNdkBridge.h"
-#include "CCProfileController.h"
+#include "CCSoomlaProfile.h"
 #include "CCProfileService.h"
 #include "CCUserProfileUtils.h"
 #include "CCSocialActionUtils.h"

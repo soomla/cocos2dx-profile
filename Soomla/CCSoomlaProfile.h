@@ -18,8 +18,8 @@
 // Created by Fedor Shubin on 5/20/13.
 //
 
-#ifndef __CCProfileController_H_
-#define __CCProfileController_H_
+#ifndef __CCSoomlaProfile_H_
+#define __CCSoomlaProfile_H_
 
 #include "cocos2d.h"
 #include "CCError.h"
@@ -30,29 +30,29 @@
 
 namespace soomla {
 	/** 
-     @class CCProfileController
+     @class CCSoomlaProfile
      @brief An interface to the native SoomlaProfile class.
      
      An interface to the native SoomlaProfile class, use this class to
      access the native SoomlaProfile functionality.
 	 */
-    class CCProfileController: public cocos2d::CCObject {
+    class CCSoomlaProfile: public cocos2d::CCObject {
     private:
         bool mInited;
     public:
 		/**
-         Retrieves the singleton instance of CCProfileController
+         Retrieves the singleton instance of CCSoomlaProfile
          
-         @return The singleton instance of CCProfileController
+         @return The singleton instance of CCSoomlaProfile
          */
-        static CCProfileController* getInstance();
+        static CCSoomlaProfile* getInstance();
 
         /**
          Constructor
          
-         The main constructor for CCProfileController
+         The main constructor for CCSoomlaProfile
          */
-        CCProfileController();
+        CCSoomlaProfile();
         
         /**
          Initializes the controller
@@ -201,4 +201,4 @@ namespace soomla {
     };
 };
 
-#endif // !__CCProfileController_H_
+#endif // !__CCSoomlaProfile_H_

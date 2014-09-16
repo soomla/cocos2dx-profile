@@ -21,7 +21,7 @@
 #include "CCProfileService.h"
 #include "CCNdkBridge.h"
 #include "CCDomainFactory.h"
-#include "CCProfileController.h"
+#include "CCSoomlaProfile.h"
 #include "CCProfileEventDispatcher.h"
 
 using namespace cocos2d;
@@ -63,6 +63,6 @@ namespace soomla {
         CCDomainFactory::getInstance()->registerCreator(CCProfileConsts::JSON_JSON_TYPE_USER_PROFILE,
                 (SEL_DomainCreator)&CCUserProfile::createWithDictionary);
 
-        return CCProfileController::getInstance()->init();
+        return CCSoomlaProfile::getInstance()->init();
     }
 }

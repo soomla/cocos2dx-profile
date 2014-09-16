@@ -4,7 +4,7 @@ Haven't you ever wanted a status sharing one liner that looks like this ?!
 
 C++
 ```cpp
-soomla::CCProfileController::getInstance()->updateStatus(soomla::FACEBOOK, "I love this game !", soomla::CCVirtualItemReward::create( ... ), ...);
+soomla::CCSoomlaProfile::getInstance()->updateStatus(soomla::FACEBOOK, "I love this game !", soomla::CCVirtualItemReward::create( ... ), ...);
 ```
 
 cocos2dx-profile
@@ -242,7 +242,7 @@ Here is an example of sharing a story on the user's feed:
 After you initialized `CCProfileService` and logged the user in:
 
 ```cpp
-  soomla::CCProfileController::getInstance()->updateStory(
+  soomla::CCSoomlaProfile::getInstance()->updateStory(
         soomla::FACEBOOK,
         "Check out this great story by SOOMLA !",
         "SOOMLA is 2 years young!",
@@ -262,7 +262,7 @@ Storage
 **cocos2dx-profile** is caching user information on the device. You can access it through:
 
 ```cpp
-soomla::CCUserProfile *userProfile = soomla::CCProfileController::getInstance()->getStoredUserProfile(
+soomla::CCUserProfile *userProfile = soomla::CCSoomlaProfile::getInstance()->getStoredUserProfile(
         soomla::FACEBOOK,
         &profileError);
 ```
@@ -288,7 +288,7 @@ For example, if I want to log a user into my game and later see if all went thro
 
 ```cpp
 soomla::CCError *profileError = nullptr;
-soomla::CCProfileController::getInstance()->login(soomla::FACEBOOK, nullptr, &profileError);
+soomla::CCSoomlaProfile::getInstance()->login(soomla::FACEBOOK, nullptr, &profileError);
 
 if (profileError != NULL) {
      MessageBox(profileError->getInfo(), "Error");

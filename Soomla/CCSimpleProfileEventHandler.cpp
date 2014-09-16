@@ -9,6 +9,10 @@ void soomla::CCSimpleProfileEventHandler::onProfileInitialized() {
 
 }
 
+void soomla::CCSimpleProfileEventHandler::onUserRatingEvent() {
+    
+}
+
 void soomla::CCSimpleProfileEventHandler::onLoginFailed(soomla::CCProvider provider, cocos2d::__String *errorDescription) {
 
 }

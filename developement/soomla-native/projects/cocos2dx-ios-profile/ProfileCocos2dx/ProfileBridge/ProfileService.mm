@@ -148,6 +148,10 @@
         Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
         [[SoomlaProfile getInstance] like:[UserProfileUtils providerStringToEnum:provider] andPageName:pageName andReward:reward];
     }];
+    
+    [ndkGlue registerCallHandlerForKey:@"CCProfileController::openAppRatingPage" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
+        [[SoomlaProfile getInstance] openAppRatingPage];
+    }];
 
     /* -= Exception handlers =- */
     void (^exceptionHandler)(NSException *, NSDictionary *, NSMutableDictionary *) = ^(NSException *exception, NSDictionary *parameters, NSMutableDictionary *retParameters) {
@@ -159,6 +163,9 @@
     /* -= Callback handlers =- */
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_PROFILE_INITIALIZED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
         parameters[@"method"] = @"com.soomla.profile.events.ProfileInitializedEvent";
+    }];
+    [ndkGlue registerCallbackHandlerForKey:EVENT_UP_USER_RATING withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
+        parameters[@"method"] = @"com.soomla.profile.events.UserRatingEvent";
     }];
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_LOGIN_CANCELLED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
         [parameters setObject:@"com.soomla.profile.events.auth.LoginCancelledEvent" forKey:@"method"];

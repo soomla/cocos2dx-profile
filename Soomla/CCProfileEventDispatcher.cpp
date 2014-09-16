@@ -46,6 +46,11 @@ namespace soomla {
                 [this](__Dictionary *parameters) {
                     this->onProfileInitialized();
                 });
+        
+        eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_USER_RATING,
+                [this](__Dictionary *parameters) {
+                    this->onUserRatingEvent();
+                });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_LOGIN_CANCELLED,
                 [this](__Dictionary *parameters) {
@@ -180,6 +185,12 @@ namespace soomla {
     void CCProfileEventDispatcher::onProfileInitialized() {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
             eventHandler->onProfileInitialized();
+        }
+    }
+
+    void CCProfileEventDispatcher::onUserRatingEvent() {
+        FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
+            eventHandler->onUserRatingEvent();
         }
     }
 

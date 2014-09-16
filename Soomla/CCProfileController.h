@@ -193,7 +193,11 @@ namespace soomla {
          @param soomlaError Any errors will be returned in this parameter
          */
         void like(CCProvider provider, const char *pageName, CCReward *reward, CCError **soomlaError);
-
+        
+        /**
+         Utility method to open up the market application rating page
+         */
+        void openAppRatingPage(CCError **soomlaError);
     };
 };
 

@@ -23,6 +23,7 @@ import com.soomla.cocos2dx.common.DomainHelper;
 import com.soomla.cocos2dx.common.NdkGlue;
 import com.soomla.profile.events.ProfileInitializedEvent;
 import com.soomla.profile.events.UserProfileUpdatedEvent;
+import com.soomla.profile.events.UserRatingEvent;
 import com.soomla.profile.events.auth.*;
 import com.soomla.profile.events.social.*;
 import com.squareup.otto.Subscribe;
@@ -51,6 +52,8 @@ public class ProfileEventHandlerBridge {
     }
 
     /**
+     * Called when the profile module has finished initializing
+     *
      * @param profileInitializedEvent The event information
      */
     @Subscribe
@@ -61,6 +64,27 @@ public class ProfileEventHandlerBridge {
                 try {
                     JSONObject parameters = new JSONObject();
                     parameters.put("method", ProfileConsts.EVENT_UP_PROFILE_INITIALIZED);
+                    NdkGlue.getInstance().sendMessageWithParameters(parameters);
+                } catch (JSONException e) {
+                    throw new IllegalStateException(e);
+                }
+            }
+        });
+    }
+
+    /**
+     * Called when the app's market rate page is opened
+     *
+     * @param userRatingEvent The event information
+     */
+    @Subscribe
+    public void onProfileInitializedEvent(final UserRatingEvent userRatingEvent) {
+        mGLThread.queueEvent(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject parameters = new JSONObject();
+                    parameters.put("method", ProfileConsts.EVENT_UP_USER_RATING);
                     NdkGlue.getInstance().sendMessageWithParameters(parameters);
                 } catch (JSONException e) {
                     throw new IllegalStateException(e);

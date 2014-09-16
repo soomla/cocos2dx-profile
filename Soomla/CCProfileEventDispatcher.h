@@ -49,6 +49,11 @@ namespace soomla {
         see parent
         */
         virtual void onProfileInitialized();
+        
+        /**
+         see parent
+         */
+        virtual void onUserRatingEvent();
 
         /**
          see parent

@@ -179,4 +179,11 @@ namespace soomla {
         }
         CCNdkBridge::callNative(params, soomlaError);
     }
+    
+    void CCProfileController::openAppRatingPage(CCError **soomlaError) {
+        CC_ASSERT(mInited);
+        __Dictionary *params = __Dictionary::create();
+        params->setObject(__String::create("CCProfileController::openAppRatingPage"), "method");
+        CCNdkBridge::callNative(params, soomlaError);
+    }
 }

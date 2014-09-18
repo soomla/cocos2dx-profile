@@ -111,7 +111,7 @@ In your XCode project, perform the following steps:
 
   1. Register the native `ProfileService` by adding:
     ```cpp
-    [[ServiceManager sharedServiceManager] registerService:[ProfileService sharedStoreService]];
+    [[ServiceManager sharedServiceManager] registerService:[ProfileService sharedProfileService]];
     ```
     at the begining of the method `application: didFinishLaunchingWithOptions:` of `AppController`.
 

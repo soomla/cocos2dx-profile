@@ -14,7 +14,7 @@
 		<string>ssh://github.com/soomla/cocos2dx-profile.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>developement/soomla-native/projects/cocos2dx-ios-profile/Cocos2dXiOSProfile.xcodeproj/project.xcworkspace</string>
+	<string>development/soomla-native/projects/cocos2dx-ios-profile/Cocos2dXiOSProfile.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>74E15279-25CE-4DB5-B227-0309E7ED3079</key>

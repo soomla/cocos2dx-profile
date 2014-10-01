@@ -48,8 +48,12 @@
 }
 
 + (void)initDomainHelper {
-    [[DomainHelper sharedDomainHelper] registerType:@"userProfile"
-                                      withClassName:NSStringFromClass([UserProfile class])];
+    
+    [[DomainHelper sharedDomainHelper] registerType:(NSString *)@"UserProfile"
+                                      withClassName:NSStringFromClass([UserProfile class])
+                                           andBlock:^id(NSDictionary *dict) {
+                                               return [[[UserProfile alloc] initWithDictionary:dict] autorelease];
+                                           }];
 }
 
 + (void)initGlue {
@@ -78,8 +82,9 @@
         NSString *provider = [parameters objectForKey:@"provider"];
         UserProfile *userProfile = [[SoomlaProfile getInstance] getStoredUserProfileWithProvider:
                 [UserProfileUtils providerStringToEnum:provider]];
+        NSDictionary *retObj = [[DomainHelper sharedDomainHelper] domainToDict:userProfile];
         if (userProfile != nil) {
-            [retParameters setObject:[userProfile toDictionary] forKey:@"return"];
+            [retParameters setObject:retObj forKey:@"return"];
         }
     }];
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::updateStatus" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {

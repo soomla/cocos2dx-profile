@@ -45,24 +45,24 @@ namespace soomla {
     
     /**
      @class CCUserProfileUtils
-     @brief a Utility class which helps convert CCProvider from/to __String
+     @brief a Utility class which helps convert CCProvider from/to CCString
      
      Currently the class' soul purpose is to convert CCProvider from/to
-     __String
+     CCString
      */
     class CCUserProfileUtils
     {
     public:
         /**
-         Converts the supplied enum CCProvider to __String
+         Converts the supplied enum CCProvider to CCString
          
          @param providerType The value of provider to convert
-         @return The provided value represented by a __String
+         @return The provided value represented by a CCString
          */
         static CCString *providerEnumToString(CCProvider providerType);
         
         /**
-         Converts the supplied __String to CCProvider if possible
+         Converts the supplied CCString to CCProvider if possible
          
          @param providerTypeString The string to convert to CCProvider
          @return The CCProvider value corresponding to the supplied string,

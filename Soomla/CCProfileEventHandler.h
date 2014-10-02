@@ -125,7 +125,7 @@ namespace soomla {
          Called when the get feed process from a provider has finished
          
          @param provider The provider on which the get feed process finished
-         @param feedList an Array of feed entries represented by __String
+         @param feedList an Array of feed entries represented by CCString
          */
         virtual void onGetFeedFinished(CCProvider provider, cocos2d::CCArray *feedList) = 0;
         

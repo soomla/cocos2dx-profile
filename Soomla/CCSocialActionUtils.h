@@ -39,23 +39,23 @@ namespace soomla {
     /**
      @class CCSocialActionUtil
      @brief a Utility class which helps convert CCSocialActionType from/to 
-     __String
+     CCString
     
-     Currently the class' soul purpose is to convert CCProvider from/to __String
+     Currently the class' soul purpose is to convert CCProvider from/to CCString
      */
     class CCSocialActionUtils
     {
     public:
         /**
-         Converts the supplied enum CCSocialActionType to __String
+         Converts the supplied enum CCSocialActionType to CCString
          
          @param actionType The value of provider to convert
-         @return The provided value represented by a __String
+         @return The provided value represented by a CCString
          */
         static CCString *actionEnumToString(CCSocialActionType actionType);
         
         /*
-         Converts the supplied __String to CCSocialActionType if possible
+         Converts the supplied CCString to CCSocialActionType if possible
          
          @param actionTypeString The string to convert to CCSocialActionType
          @return The CCSocialActionType value corresponding to the supplied 

@@ -22,7 +22,7 @@ package com.soomla.cocos2dx.profile;
  * Cocos2dx. String consts represent events and JSON fields.
  */
 public class ProfileConsts {
-    public static final String JSON_JSON_TYPE_USER_PROFILE = "userProfile";
+    public static final String JSON_JSON_TYPE_USER_PROFILE = "UserProfile";
 
     public static final String EVENT_UP_PROFILE_INITIALIZED = "com.soomla.profile.events.ProfileInitializedEvent";
     public static final String EVENT_UP_USER_RATING = "com.soomla.profile.events.UserRatingEvent";

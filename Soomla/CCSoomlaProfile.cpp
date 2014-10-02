@@ -20,6 +20,8 @@
 
 #include "CCSoomlaProfile.h"
 #include "CCNdkBridge.h"
+#include "CCSoomlaMacros.h"
+#include "CCDomainFactory.h"
 
 using namespace cocos2d;
 typedef CCDictElement CCDictElement;
@@ -82,7 +84,7 @@ namespace soomla {
         params->setObject(CCString::create("CCSoomlaProfile::getStoredUserProfile"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
         CCDictionary *retParams = (CCDictionary *) CCNdkBridge::callNative(params, NULL);
-        CCUserProfile *retValue = (CCUserProfile *) retParams->objectForKey("return");
+        SL_SAFE_CREATE_FROM_RETURN(CCUserProfile *, retValue, retParams);
         return retValue;
     }
 

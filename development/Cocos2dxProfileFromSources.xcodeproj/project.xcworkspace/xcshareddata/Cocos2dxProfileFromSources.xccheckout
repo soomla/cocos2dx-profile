@@ -12,7 +12,11 @@
 	<dict>
 		<key>3FE41E37-3E7F-460E-BEEC-3EC61DB1DDB0</key>
 		<string>ssh://github.com/soomla/ios-profile.git</string>
-		<key>74E15279-25CE-4DB5-B227-0309E7ED3079</key>
+		<key>852ED3691A47A99B0D19C820A500AE9772B2A44E</key>
+		<string>https://github.com/cocos2d/cocos2d-x.git</string>
+		<key>87DCEF5738C2BFDC3842EBFF7DF77768E197B424</key>
+		<string>github.com:soomla/ios-profile.git</string>
+		<key>DC12E607C51B19A2F89A4800A29AF2E834D48132</key>
 		<string>ssh://github.com/soomla/cocos2dx-profile.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
@@ -20,23 +24,35 @@
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>3FE41E37-3E7F-460E-BEEC-3EC61DB1DDB0</key>
-		<string>../../submodules/ios-profile</string>
-		<key>74E15279-25CE-4DB5-B227-0309E7ED3079</key>
+		<string>../../../../../../submodules/ios-profile</string>
+		<key>852ED3691A47A99B0D19C820A500AE9772B2A44E</key>
+		<string>../../../../..</string>
+		<key>87DCEF5738C2BFDC3842EBFF7DF77768E197B424</key>
+		<string>../../../development/submodules/ios-profile/</string>
+		<key>DC12E607C51B19A2F89A4800A29AF2E834D48132</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>ssh://github.com/soomla/cocos2dx-profile.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>74E15279-25CE-4DB5-B227-0309E7ED3079</string>
+	<string>DC12E607C51B19A2F89A4800A29AF2E834D48132</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>74E15279-25CE-4DB5-B227-0309E7ED3079</string>
+			<string>852ED3691A47A99B0D19C820A500AE9772B2A44E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>..</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DC12E607C51B19A2F89A4800A29AF2E834D48132</string>
 			<key>IDESourceControlWCCName</key>
 			<string>cocos2dx-profile</string>
 		</dict>
@@ -45,6 +61,14 @@
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>3FE41E37-3E7F-460E-BEEC-3EC61DB1DDB0</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ios-profile</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>87DCEF5738C2BFDC3842EBFF7DF77768E197B424</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ios-profile</string>
 		</dict>

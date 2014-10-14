@@ -52,7 +52,7 @@
     [[DomainHelper sharedDomainHelper] registerType:(NSString *)@"UserProfile"
                                       withClassName:NSStringFromClass([UserProfile class])
                                            andBlock:^id(NSDictionary *dict) {
-                                               return [[[UserProfile alloc] initWithDictionary:dict] autorelease];
+                                               return [[UserProfile alloc] initWithDictionary:dict] ;
                                            }];
 }
 

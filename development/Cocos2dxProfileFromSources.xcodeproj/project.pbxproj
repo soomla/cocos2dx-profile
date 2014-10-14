@@ -463,6 +463,7 @@
 		C0B3C5FE168C6D0C00161FAA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/SoomlaIOSStore.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -505,6 +506,7 @@
 		C0B3C5FF168C6D0C00161FAA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/SoomlaIOSStore.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

@@ -1,7 +1,3 @@
-//
-// Created by Shubin Fedor on 08/09/14.
-// Copyright (c) 2014 SOOMLA. All rights reserved.
-//
 
 #include "CCSimpleProfileEventHandler.h"
 
@@ -10,7 +6,7 @@ void soomla::CCSimpleProfileEventHandler::onProfileInitialized() {
 }
 
 void soomla::CCSimpleProfileEventHandler::onUserRatingEvent() {
-    
+
 }
 
 void soomla::CCSimpleProfileEventHandler::onLoginFailed(soomla::CCProvider provider, cocos2d::CCString *errorDescription) {

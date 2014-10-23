@@ -1,7 +1,3 @@
-//
-// Created by Shubin Fedor on 08/09/14.
-// Copyright (c) 2014 SOOMLA. All rights reserved.
-//
 
 #ifndef __CCSimpleProfileEventHandler_H_
 #define __CCSimpleProfileEventHandler_H_
@@ -15,7 +11,7 @@ namespace soomla {
     public:
 
         virtual void onProfileInitialized();
-        
+
         virtual void onUserRatingEvent();
 
         virtual void onLoginFailed(CCProvider provider, cocos2d::CCString *errorDescription);

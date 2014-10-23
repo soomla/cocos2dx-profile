@@ -1,12 +1,12 @@
 /*
  Copyright (C) 2012-2014 Soomla Inc.
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -14,9 +14,6 @@
  limitations under the License.
  */
 
-//
-// Created by Fedor on 03/06/14.
-//
 
 
 #ifndef __CCUserProfile_H_
@@ -31,10 +28,10 @@ namespace soomla {
     /**
      @class CCUserProfile
      @brief Represents a profile of a user from a social network (provider)
-     
-     The class contains all provided information from the user to the 
+
+     The class contains all provided information from the user to the
      application
-     
+
      Inheritance CCUserProfile > CCDomain > cocos2d::Ref
      */
     class CCUserProfile : public CCDomain {
@@ -52,7 +49,7 @@ namespace soomla {
     public:
         /**
          Constructor
-         
+
          Main constructor for the user profile which nullifies all information
          in the class
          */
@@ -63,8 +60,8 @@ namespace soomla {
         /**
          Creates an instance of CCUserProfile according to the information
          provided
-         
-         @param provider The origin of this profile, meaning the originating 
+
+         @param provider The origin of this profile, meaning the originating
          social network (defined in CCProvider)
          @param profileId The ID of the profile in the social network
          @param email The email of the user
@@ -94,7 +91,7 @@ namespace soomla {
 
         /**
          Initializes the class instance with the provided information
-         
+
          @param provider The origin of this profile, meaning the originating
          social network (defined in CCProvider)
          @param profileId The ID of the profile in the social network
@@ -130,7 +127,7 @@ namespace soomla {
 
         /**
          Convers the profile instance into a dictionary using the fields'
-         JSON constants as keys 
+         JSON constants as keys
          (see SL_SYNTHESIZE_RETAIN_WITH_DICT macros above)
          */
         virtual cocos2d::CCDictionary *toDictionary();

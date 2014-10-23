@@ -1,4 +1,4 @@
-*This project is a part of [The SOOMLA Project](http://project.soom.la) which is a series of open source initiatives with a joint goal to help mobile game developers get better stores and more in-app purchases.*
+*This project is a part of The [SOOMLA](http://www.soom.la) Framework, which is a series of open source initiatives with a joint goal to help mobile game developers do more together. SOOMLA encourages better game design, economy modeling, social engagement, and faster development.*
 
 Haven't you ever wanted a status sharing one liner that looks like this ?!
 
@@ -325,25 +325,22 @@ or, if you have repositories already cloned, fetch the submodules with this comm
 
 1. For Android: You can use our "sourced" modules for Android Studio (or IntelliJ IDEA) (`extensions/soomla-cocos2dx-core/development/Cocos2dxCoreFromSources.iml`, `extensions/cocos2dx-profile/development/Cocos2dxProfileFromSources.iml`), just including them to your project.
 
-## Contribution
+Contribution
+---
+SOOMLA appreciates code contributions! You are more than welcome to extend the capabilities of SOOMLA.
 
-We want you!
+Fork -> Clone -> Implement -> Add documentation -> Test -> Pull-Request.
 
-Fork -> Clone -> Implement -> Insert Comments -> Test -> Pull-Request.
-
-We have great RESPECT for contributors.
-
-## Code Documentation
-
-cocos2dx-profile follows strict code documentation conventions. If you would like to contribute please read our [Documentation Guidelines](https://github.com/soomla/cocos2dx-profile/blob/master/documentation.md) and follow them. Clear, consistent  comments will make our code easy to understand.
-
+IMPORTANT: If you would like to contribute, please follow our [Documentation Guidelines](https://github.com/soomla/cocos2dx-store/blob/master/documentation.md
+). Clear, consistent comments will make our code easy to understand.
 
 ## SOOMLA, Elsewhere ...
 
 + [Framework Website](http://www.soom.la/)
-+ [On Facebook](https://www.facebook.com/pages/The-SOOMLA-Project/389643294427376).
-+ [On AngelList](https://angel.co/the-soomla-project)
++ [Knowledge Base](http://know.soom.la/)
 
+
+<a href="https://www.facebook.com/pages/The-SOOMLA-Project/389643294427376"><img src="http://know.soom.la/img/tutorial_img/social/Facebook.png"></a><a href="https://twitter.com/Soomla"><img src="http://know.soom.la/img/tutorial_img/social/Twitter.png"></a><a href="https://plus.google.com/+SoomLa/posts"><img src="http://know.soom.la/img/tutorial_img/social/GoogleP.png"></a><a href ="https://www.youtube.com/channel/UCR1-D9GdSRRLD0fiEDkpeyg"><img src="http://know.soom.la/img/tutorial_img/social/Youtube.png"></a>
 
 ## License
 

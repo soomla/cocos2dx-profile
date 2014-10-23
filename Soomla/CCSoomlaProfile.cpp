@@ -95,6 +95,20 @@ namespace soomla {
         }
         CCNdkBridge::callNative(params, soomlaError);
     }
+    
+    void CCSoomlaProfile::updateStatusDialog(CCProvider provider, const char *link, CCReward *reward, CCError **soomlaError) {
+        CC_ASSERT(mInited);
+        __Dictionary *params = __Dictionary::create();
+        params->setObject(__String::create("CCSoomlaProfile::updateStatusDialog"), "method");
+        params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
+        if (link) {
+            params->setObject(__String::create(link), "link");
+        }
+        if (reward) {
+            params->setObject(reward->toDictionary(), "reward");
+        }
+        CCNdkBridge::callNative(params, soomlaError);
+    }
 
     void CCSoomlaProfile::updateStory(CCProvider provider, const char *message, const char *name,
             const char *caption, const char *description, const char *link, const char *picture,
@@ -110,6 +124,35 @@ namespace soomla {
         params->setObject(__String::create(description), "description");
         params->setObject(__String::create(link), "link");
         params->setObject(__String::create(picture), "picture");
+        if (reward) {
+            params->setObject(reward->toDictionary(), "reward");
+        }
+        CCNdkBridge::callNative(params, soomlaError);
+    }
+    
+    void CCSoomlaProfile::updateStoryDialog(CCProvider provider, const char *name,
+                                      const char *caption, const char *description, const char *link, const char *picture,
+                                      CCReward *reward, CCError **soomlaError) {
+        
+        CC_ASSERT(mInited);
+        __Dictionary *params = __Dictionary::create();
+        params->setObject(__String::create("CCSoomlaProfile::updateStoryDialog"), "method");
+        params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
+        if (name) {
+            params->setObject(__String::create(name), "name");
+        }
+        if (caption) {
+            params->setObject(__String::create(caption), "caption");
+        }
+        if (description) {
+            params->setObject(__String::create(description), "description");
+        }
+        if (link) {
+            params->setObject(__String::create(link), "link");
+        }
+        if (picture) {
+            params->setObject(__String::create(picture), "picture");
+        }
         if (reward) {
             params->setObject(reward->toDictionary(), "reward");
         }

@@ -148,6 +148,18 @@ public class ProfileService extends AbstractSoomlaService {
             }
         });
 
+        ndkGlue.registerCallHandler("CCSoomlaProfile::updateStatusDialog", new NdkGlue.CallHandler() {
+            @Override
+            public void handle(JSONObject params, JSONObject retParams) throws Exception {
+                String provider = params.getString("provider");
+                String link = params.optString("link");
+                JSONObject rewardJson = params.optJSONObject("reward");
+                Reward reward = (rewardJson != null) ?
+                        domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
+                SoomlaProfile.getInstance().updateStatusDialog(IProvider.Provider.getEnum(provider), link, reward);
+            }
+        });
+
         ndkGlue.registerCallHandler("CCSoomlaProfile::updateStory", new NdkGlue.CallHandler() {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
@@ -162,6 +174,23 @@ public class ProfileService extends AbstractSoomlaService {
                 Reward reward = (rewardJson != null) ?
                         domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
                 SoomlaProfile.getInstance().updateStory(IProvider.Provider.getEnum(provider), message, name, caption,
+                        description, link, picture, reward);
+            }
+        });
+
+        ndkGlue.registerCallHandler("CCSoomlaProfile::updateStoryDialog", new NdkGlue.CallHandler() {
+            @Override
+            public void handle(JSONObject params, JSONObject retParams) throws Exception {
+                String provider = params.getString("provider");
+                String name = params.optString("name");
+                String caption = params.optString("caption");
+                String description = params.optString("description");
+                String link = params.optString("link");
+                String picture = params.optString("picture");
+                JSONObject rewardJson = params.optJSONObject("reward");
+                Reward reward = (rewardJson != null) ?
+                        domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
+                SoomlaProfile.getInstance().updateStoryDialog(IProvider.Provider.getEnum(provider), name, caption,
                         description, link, picture, reward);
             }
         });

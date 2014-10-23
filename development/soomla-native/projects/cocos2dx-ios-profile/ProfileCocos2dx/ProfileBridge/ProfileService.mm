@@ -93,6 +93,15 @@
                                                     andStatus:status
                                                     andReward:reward];
     }];
+    [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::updateStatusDialog" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
+        NSString *provider = [parameters objectForKey:@"provider"];
+        NSString *link = [parameters objectForKey:@"link"];
+        NSDictionary *rewardDict = [parameters objectForKey:@"reward"];
+        Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
+        [[SoomlaProfile getInstance] updateStatusWithProviderDialog:[UserProfileUtils providerStringToEnum:provider]
+                                                    andLink:link
+                                                    andReward:reward];
+    }];
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::updateStory" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];
         NSString *message = [parameters objectForKey:@"message"];
@@ -105,6 +114,23 @@
         Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
         [[SoomlaProfile getInstance] updateStoryWithProvider:[UserProfileUtils providerStringToEnum:provider]
                                                   andMessage:message
+                                                     andName:name
+                                                  andCaption:caption
+                                              andDescription:description
+                                                     andLink:link
+                                                  andPicture:picture
+                                                   andReward:reward];
+    }];
+    [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::updateStoryDialog" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
+        NSString *provider = [parameters objectForKey:@"provider"];
+        NSString *name = [parameters objectForKey:@"name"];
+        NSString *caption = [parameters objectForKey:@"caption"];
+        NSString *description = [parameters objectForKey:@"description"];
+        NSString *link = [parameters objectForKey:@"link"];
+        NSString *picture = [parameters objectForKey:@"picture"];
+        NSDictionary *rewardDict = [parameters objectForKey:@"reward"];
+        Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
+        [[SoomlaProfile getInstance] updateStoryWithProviderDialog:[UserProfileUtils providerStringToEnum:provider]
                                                      andName:name
                                                   andCaption:caption
                                               andDescription:description

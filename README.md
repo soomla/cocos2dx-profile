@@ -305,6 +305,11 @@ If you want to see debug messages from _android-profile_, set the `logDebug` var
 
 To see debug messages on iOS, make sure you have also `DEBUG=1` in your Build Settings' `Preprocessor Macros` (for Debug only).
 
+## Facebook Caveats
+
+1. See [iOS Facebook Caveats](https://github.com/soomla/ios-profile#facebook-caveats)
+1. See [Android Facebook Caveats](https://github.com/soomla/android-profile#facebook-caveats)
+
 
 ## Working with sources
 

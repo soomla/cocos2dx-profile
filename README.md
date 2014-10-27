@@ -96,6 +96,8 @@ In your XCode project, perform the following steps:
     1. Add the Products (\*.a) of these projects to **Build Phases->Link Binary With Libraries**.
 
 1. Add the following directories to **Build Settings->Header Search Paths** (with `recursive` option):
+> This article assumes you have a `cocos2d` folder under your project folder and which either contains the Cocos2d-x framework, or links to to its root folder
+
  - `$(SRCROOT)/../cocos2d/extensions/soomla-cocos2dx-core/Soomla/**`
  - `$(SRCROOT)/../cocos2d/extensions/soomla-cocos2dx-core/build/ios/headers/**`
  - `$(SRCROOT)/../cocos2d/extensions/cocos2dx-profile/Soomla/**`

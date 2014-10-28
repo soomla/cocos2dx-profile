@@ -10,6 +10,7 @@ cd submodules/android-profile/SoomlaAndroidProfile
 cd -
 cp -L submodules/android-profile/build/AndroidProfile.jar $build/
 cp -L submodules/android-profile/build/simple.facebook-2.1.jar $build/
+cp -L submodules/android-profile/build/AndroidProfileFacebook.jar $build/
 
 for path in "${paths[@]}"
 do

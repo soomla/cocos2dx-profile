@@ -123,6 +123,8 @@ In your XCode project, perform the following steps:
 
   ##### Facebook
 
+  1. Add the `libSoomlaiOSProfileFacebook.a` from `extensions/cocos2dx-profile/build/ios` to your **BuildPhases->Link Binary With Libraries**
+
   1. Add the Facebook SDK for iOS to the project's Frameworks and make sure your project links to the project
 
     1. Refer to [Getting Started with the Facebook iOS SDK](https://developers.facebook.com/docs/ios/getting-started/) for more information
@@ -196,6 +198,8 @@ That's it! Now all you have to do is build your XCode project and run your game 
 1. The following steps should be done according to the target social network:
 
   ##### Facebook
+
+  1. Add the `AndroidProfileFacebook.jar` to your android project's classpath from `extensions/cocos2dx-profile/build/android`
 
   1. Import the Facebook SDK for Android into your project
 

@@ -11,6 +11,8 @@ cd submodules/ios-profile
 cd -
 cp -L submodules/ios-profile/build/libSoomlaiOSProfile.a $build/
 cp -RL submodules/ios-profile/build/headers/SoomlaiOSProfile $build_headers/
+cp -L submodules/ios-profile/build/libSoomlaiOSProfileFacebook.a $build/
+cp -RL submodules/ios-profile/build/headers/SoomlaiOSProfileFacebook $build_headers/
 
 for path in "${paths[@]}"
 do

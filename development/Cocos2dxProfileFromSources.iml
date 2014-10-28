@@ -8,6 +8,9 @@
     <content url="file://$MODULE_DIR$/submodules/android-profile/SoomlaAndroidProfile/src">
       <sourceFolder url="file://$MODULE_DIR$/submodules/android-profile/SoomlaAndroidProfile/src" isTestSource="false" />
     </content>
+    <content url="file://$MODULE_DIR$/submodules/android-profile/social-providers/android-profile-facebook/src">
+      <sourceFolder url="file://$MODULE_DIR$/submodules/android-profile/social-providers/android-profile-facebook/src" isTestSource="false" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="Cocos2dxCoreFromSources" />

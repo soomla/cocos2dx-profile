@@ -43,9 +43,11 @@
 		F825C19E19B3209F00A2CABB /* UserProfileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F825C17719B3209F00A2CABB /* UserProfileUtils.m */; };
 		F84F251D19C86BFD00DB0905 /* CCSoomlaProfile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F84F251B19C86BFD00DB0905 /* CCSoomlaProfile.cpp */; };
 		F84F251E19C86BFD00DB0905 /* CCSoomlaProfile.h in Headers */ = {isa = PBXBuildFile; fileRef = F84F251C19C86BFD00DB0905 /* CCSoomlaProfile.h */; };
+		F87488211A0007F9005952C9 /* SoomlaFacebook.h in Headers */ = {isa = PBXBuildFile; fileRef = F874881E1A0007F9005952C9 /* SoomlaFacebook.h */; };
+		F87488221A0007F9005952C9 /* SoomlaFacebook.m in Sources */ = {isa = PBXBuildFile; fileRef = F874881F1A0007F9005952C9 /* SoomlaFacebook.m */; };
+		F87488231A0007F9005952C9 /* SoomlaiOSProfileFacebook.pch in Headers */ = {isa = PBXBuildFile; fileRef = F87488201A0007F9005952C9 /* SoomlaiOSProfileFacebook.pch */; };
+		F87488251A000814005952C9 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F87488241A000814005952C9 /* FacebookSDK.framework */; };
 		F88C15F919C7309800889606 /* SoomlaFacebook.h in Headers */ = {isa = PBXBuildFile; fileRef = F88C15F719C7309800889606 /* SoomlaFacebook.h */; };
-		F88C15FA19C7309800889606 /* SoomlaFacebook.m in Sources */ = {isa = PBXBuildFile; fileRef = F88C15F819C7309800889606 /* SoomlaFacebook.m */; };
-		F88C160A19C7318C00889606 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F88C15FB19C7314800889606 /* FacebookSDK.framework */; };
 		F8DBEC7F19BDB38D0093252C /* CCProfileConsts.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8DBEC6E19BDB38D0093252C /* CCProfileConsts.cpp */; };
 		F8DBEC8019BDB38D0093252C /* CCProfileConsts.h in Headers */ = {isa = PBXBuildFile; fileRef = F8DBEC6F19BDB38D0093252C /* CCProfileConsts.h */; };
 		F8DBEC8319BDB38D0093252C /* CCProfileEventDispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8DBEC7219BDB38D0093252C /* CCProfileEventDispatcher.cpp */; };
@@ -101,9 +103,12 @@
 		F825C17719B3209F00A2CABB /* UserProfileUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileUtils.m; sourceTree = "<group>"; };
 		F84F251B19C86BFD00DB0905 /* CCSoomlaProfile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSoomlaProfile.cpp; sourceTree = "<group>"; };
 		F84F251C19C86BFD00DB0905 /* CCSoomlaProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSoomlaProfile.h; sourceTree = "<group>"; };
+		F874881E1A0007F9005952C9 /* SoomlaFacebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoomlaFacebook.h; sourceTree = "<group>"; };
+		F874881F1A0007F9005952C9 /* SoomlaFacebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoomlaFacebook.m; sourceTree = "<group>"; };
+		F87488201A0007F9005952C9 /* SoomlaiOSProfileFacebook.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoomlaiOSProfileFacebook.pch; sourceTree = "<group>"; };
+		F87488241A000814005952C9 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = "submodules/ios-profile/social-providers/ios-profile-facebook/libs/FacebookSDK.framework"; sourceTree = "<group>"; };
 		F88C15F719C7309800889606 /* SoomlaFacebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoomlaFacebook.h; sourceTree = "<group>"; };
 		F88C15F819C7309800889606 /* SoomlaFacebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoomlaFacebook.m; sourceTree = "<group>"; };
-		F88C15FB19C7314800889606 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = "submodules/ios-profile/FacebookSDK.framework"; sourceTree = "<group>"; };
 		F8DBEC6E19BDB38D0093252C /* CCProfileConsts.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCProfileConsts.cpp; sourceTree = "<group>"; };
 		F8DBEC6F19BDB38D0093252C /* CCProfileConsts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCProfileConsts.h; sourceTree = "<group>"; };
 		F8DBEC7219BDB38D0093252C /* CCProfileEventDispatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCProfileEventDispatcher.cpp; sourceTree = "<group>"; };
@@ -126,7 +131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0B3C5F3168C6D0C00161FAA /* Foundation.framework in Frameworks */,
-				F88C160A19C7318C00889606 /* FacebookSDK.framework in Frameworks */,
+				F87488251A000814005952C9 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +144,7 @@
 				F8DBEC6D19BDB38D0093252C /* Soomla */,
 				F825C0ED19B31D8100A2CABB /* ProfileCocos2dx */,
 				F825C14919B3209F00A2CABB /* SoomlaiOSProfile */,
+				F874881D1A0007F9005952C9 /* SoomlaiOSProfileFacebook */,
 				C0B3C5F1168C6D0C00161FAA /* Frameworks */,
 				C0B3C5F0168C6D0C00161FAA /* Products */,
 			);
@@ -155,7 +161,7 @@
 		C0B3C5F1168C6D0C00161FAA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F88C15FB19C7314800889606 /* FacebookSDK.framework */,
+				F87488241A000814005952C9 /* FacebookSDK.framework */,
 				C0B3C5F2168C6D0C00161FAA /* Foundation.framework */,
 			);
 			name = Frameworks;
@@ -259,6 +265,17 @@
 			path = social;
 			sourceTree = "<group>";
 		};
+		F874881D1A0007F9005952C9 /* SoomlaiOSProfileFacebook */ = {
+			isa = PBXGroup;
+			children = (
+				F874881E1A0007F9005952C9 /* SoomlaFacebook.h */,
+				F874881F1A0007F9005952C9 /* SoomlaFacebook.m */,
+				F87488201A0007F9005952C9 /* SoomlaiOSProfileFacebook.pch */,
+			);
+			name = SoomlaiOSProfileFacebook;
+			path = "submodules/ios-profile/social-providers/ios-profile-facebook/SoomlaiOSProfileFacebook";
+			sourceTree = "<group>";
+		};
 		F8DBEC6D19BDB38D0093252C /* Soomla */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +317,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F87488211A0007F9005952C9 /* SoomlaFacebook.h in Headers */,
 				F825C19019B3209F00A2CABB /* ProviderLoader.h in Headers */,
 				F8DBEC8B19BDB38D0093252C /* CCUserProfileUtils.h in Headers */,
 				F8DBEC8E19BDB38D0093252C /* CCUserProfile.h in Headers */,
@@ -324,6 +342,7 @@
 				F88C15F919C7309800889606 /* SoomlaFacebook.h in Headers */,
 				F825C18A19B3209F00A2CABB /* UserProfile.h in Headers */,
 				F8DBEC8C19BDB38D0093252C /* Cocos2dxProfile.h in Headers */,
+				F87488231A0007F9005952C9 /* SoomlaiOSProfileFacebook.pch in Headers */,
 				F825C17B19B3209F00A2CABB /* PJSONConsts.h in Headers */,
 				F825C19B19B3209F00A2CABB /* UserProfileEventHandling.h in Headers */,
 				F8DBEC8719BDB38D0093252C /* CCProfileService.h in Headers */,
@@ -383,6 +402,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F87488221A0007F9005952C9 /* SoomlaFacebook.m in Sources */,
 				F8DBEC8D19BDB38D0093252C /* CCUserProfile.cpp in Sources */,
 				F825C18019B3209F00A2CABB /* UserProfileStorage.m in Sources */,
 				F8DBEC7F19BDB38D0093252C /* CCProfileConsts.cpp in Sources */,
@@ -396,7 +416,6 @@
 				F8DBEC8A19BDB38D0093252C /* CCUserProfileUtils.cpp in Sources */,
 				F8DBEC8819BDB38D0093252C /* CCSocialActionUtils.cpp in Sources */,
 				F825C18D19B3209F00A2CABB /* ProviderNotFoundException.m in Sources */,
-				F88C15FA19C7309800889606 /* SoomlaFacebook.m in Sources */,
 				F825C19719B3209F00A2CABB /* SocialController.m in Sources */,
 				F825C18B19B3209F00A2CABB /* UserProfile.m in Sources */,
 				F84F251D19C86BFD00DB0905 /* CCSoomlaProfile.cpp in Sources */,
@@ -468,6 +487,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/submodules/ios-profile",
+					"$(PROJECT_DIR)/submodules/ios-profile/social-providers/ios-profile-facebook/libs",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
@@ -511,6 +531,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/submodules/ios-profile",
+					"$(PROJECT_DIR)/submodules/ios-profile/social-providers/ios-profile-facebook/libs",
 				);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

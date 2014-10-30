@@ -148,21 +148,21 @@ namespace soomla {
         }
     }
 
-    void CCProfileEventDispatcher::onLoginFailed(CCProvider provider, cocos2d::CCString *errorDescription) {
+    void CCProfileEventDispatcher::onLoginFailed(CCProvider provider, cocos2d::CCString *errorDescription, cocos2d::CCString *payload) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onLoginFailed(provider, errorDescription);
+            eventHandler->onLoginFailed(provider, errorDescription, payload);
         }
     }
 
-    void CCProfileEventDispatcher::onLoginFinished(CCUserProfile *userProfile) {
+    void CCProfileEventDispatcher::onLoginFinished(CCUserProfile *userProfile, cocos2d::CCString *payload) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onLoginFinished(userProfile);
+            eventHandler->onLoginFinished(userProfile, payload);
         }
     }
 
-    void CCProfileEventDispatcher::onLoginStarted(CCProvider provider) {
+    void CCProfileEventDispatcher::onLoginStarted(CCProvider provider, cocos2d::CCString *payload) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onLoginStarted(provider);
+            eventHandler->onLoginStarted(provider, payload);
         }
     }
 
@@ -184,63 +184,64 @@ namespace soomla {
         }
     }
 
-    void CCProfileEventDispatcher::onGetContactsFailed(CCProvider provider, cocos2d::CCString *errorDescription) {
+    void CCProfileEventDispatcher::onGetContactsFailed(CCProvider provider, cocos2d::CCString *errorDescription, cocos2d::CCString *payload) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onGetContactsFailed(provider, errorDescription);
+            eventHandler->onGetContactsFailed(provider, errorDescription, payload);
         }
     }
 
-    void CCProfileEventDispatcher::onGetContactsFinished(CCProvider provider, cocos2d::CCArray *contactsDict) {
+    void CCProfileEventDispatcher::onGetContactsFinished(CCProvider provider, cocos2d::CCArray *contactsDict, cocos2d::CCString *payload) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onGetContactsFinished(provider, contactsDict);
+            eventHandler->onGetContactsFinished(provider, contactsDict, payload);
         }
     }
 
-    void CCProfileEventDispatcher::onGetContactsStarted(CCProvider provider) {
+    void CCProfileEventDispatcher::onGetContactsStarted(CCProvider provider, cocos2d::CCString *payload) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onGetContactsStarted(provider);
+            eventHandler->onGetContactsStarted(provider, payload);
         }
     }
 
-    void CCProfileEventDispatcher::onGetFeedFailed(CCProvider provider, cocos2d::CCString *errorDescription){
+    void CCProfileEventDispatcher::onGetFeedFailed(CCProvider provider, cocos2d::CCString *errorDescription, cocos2d::CCString *payload){
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onGetFeedFailed(provider, errorDescription);
+            eventHandler->onGetFeedFailed(provider, errorDescription, payload);
         }
     }
 
-    void CCProfileEventDispatcher::onGetFeedFinished(CCProvider provider, cocos2d::CCArray *feedList) {
+    void CCProfileEventDispatcher::onGetFeedFinished(CCProvider provider, cocos2d::CCArray *feedList, cocos2d::CCString *payload) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onGetFeedFinished(provider, feedList);
+            eventHandler->onGetFeedFinished(provider, feedList, payload);
         }
     }
 
-    void CCProfileEventDispatcher::onGetFeedStarted(CCProvider provider) {
+    void CCProfileEventDispatcher::onGetFeedStarted(CCProvider provider, cocos2d::CCString *payload) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onGetFeedStarted(provider);
+            eventHandler->onGetFeedStarted(provider, payload);
         }
     }
 
-    void CCProfileEventDispatcher::onSocialActionFailedEvent(CCProvider provider, CCSocialActionType  socialActionType, cocos2d::CCString *errorDescription) {
+    void CCProfileEventDispatcher::onSocialActionFailedEvent(CCProvider provider, CCSocialActionType  socialActionType,
+                                                             cocos2d::CCString *errorDescription, cocos2d::CCString *payload) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onSocialActionFailedEvent(provider, socialActionType, errorDescription);
+            eventHandler->onSocialActionFailedEvent(provider, socialActionType, errorDescription, payload);
         }
     }
 
-    void CCProfileEventDispatcher::onSocialActionFinishedEvent(CCProvider provider, CCSocialActionType socialActionType) {
+    void CCProfileEventDispatcher::onSocialActionFinishedEvent(CCProvider provider, CCSocialActionType socialActionType, cocos2d::CCString *payload) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onSocialActionFinishedEvent(provider, socialActionType);
+            eventHandler->onSocialActionFinishedEvent(provider, socialActionType, payload);
         }
     }
 
-    void CCProfileEventDispatcher::onSocialActionStartedEvent(CCProvider provider, CCSocialActionType socialActionType) {
+    void CCProfileEventDispatcher::onSocialActionStartedEvent(CCProvider provider, CCSocialActionType socialActionType, cocos2d::CCString *payload) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onSocialActionStartedEvent(provider, socialActionType);
+            eventHandler->onSocialActionStartedEvent(provider, socialActionType, payload);
         }
     }
 
-    void CCProfileEventDispatcher::onLoginCancelledEvent(CCProvider provider) {
+    void CCProfileEventDispatcher::onLoginCancelledEvent(CCProvider provider, cocos2d::CCString *payload) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onLoginCancelledEvent(provider);
+            eventHandler->onLoginCancelledEvent(provider, payload);
         }
     }
 
@@ -260,23 +261,27 @@ namespace soomla {
 
     void CCProfileEventDispatcher::handle__EVENT_LOGIN_CANCELLED(cocos2d::CCDictionary *parameters) {
         CCInteger* provider = dynamic_cast<CCInteger *>(parameters->objectForKey("provider"));
-        this->onLoginCancelledEvent(CCProvider(provider->getValue()));
+        CCString *payload = dynamic_cast<CCString *>(parameters->objectForKey("payload"));
+        this->onLoginCancelledEvent(CCProvider(provider->getValue()), payload);
     }
 
     void CCProfileEventDispatcher::handle__EVENT_LOGIN_FAILED(cocos2d::CCDictionary *parameters) {
         CCInteger* provider = dynamic_cast<CCInteger *>(parameters->objectForKey("provider"));
         CCString *errorDescription = dynamic_cast<CCString *>(parameters->objectForKey("errorDescription"));
-        this->onLoginFailed(CCProvider(provider->getValue()), errorDescription);
+        CCString *payload = dynamic_cast<CCString *>(parameters->objectForKey("payload"));
+        this->onLoginFailed(CCProvider(provider->getValue()), errorDescription, payload);
     }
 
     void CCProfileEventDispatcher::handle__EVENT_LOGIN_FINISHED(cocos2d::CCDictionary *parameters) {
         CCUserProfile *userProfile = this->extractUserProfile(parameters->objectForKey("userProfile"));
-        this->onLoginFinished(userProfile);
+        CCString *payload = dynamic_cast<CCString *>(parameters->objectForKey("payload"));
+        this->onLoginFinished(userProfile, payload);
     }
 
     void CCProfileEventDispatcher::handle__EVENT_LOGIN_STARTED(cocos2d::CCDictionary *parameters) {
         CCInteger* provider = dynamic_cast<CCInteger *>(parameters->objectForKey("provider"));
-        this->onLoginStarted(CCProvider(provider->getValue()));
+        CCString *payload = dynamic_cast<CCString *>(parameters->objectForKey("payload"));
+        this->onLoginStarted(CCProvider(provider->getValue()), payload);
     }
 
     void CCProfileEventDispatcher::handle__EVENT_LOGOUT_FAILED(cocos2d::CCDictionary *parameters) {
@@ -298,54 +303,63 @@ namespace soomla {
     void CCProfileEventDispatcher::handle__EVENT_GET_CONTACTS_FAILED(cocos2d::CCDictionary *parameters) {
         CCInteger* provider = dynamic_cast<CCInteger *>(parameters->objectForKey("provider"));
         CCString *errorDescription = dynamic_cast<CCString *>(parameters->objectForKey("errorDescription"));
-        this->onGetContactsFailed(CCProvider(provider->getValue()), errorDescription);
+        CCString *payload = dynamic_cast<CCString *>(parameters->objectForKey("payload"));
+        this->onGetContactsFailed(CCProvider(provider->getValue()), errorDescription, payload);
     }
 
     void CCProfileEventDispatcher::handle__EVENT_GET_CONTACTS_FINISHED(cocos2d::CCDictionary *parameters) {
         CCInteger* provider = dynamic_cast<CCInteger *>(parameters->objectForKey("provider"));
         CCArray *contacts = this->extractUserProfileArray(parameters->objectForKey("contacts"));
-        this->onGetContactsFinished(CCProvider(provider->getValue()), contacts);
+        CCString *payload = dynamic_cast<CCString *>(parameters->objectForKey("payload"));
+        this->onGetContactsFinished(CCProvider(provider->getValue()), contacts, payload);
     }
 
     void CCProfileEventDispatcher::handle__EVENT_GET_CONTACTS_STARTED(cocos2d::CCDictionary *parameters) {
         CCInteger* provider = dynamic_cast<CCInteger *>(parameters->objectForKey("provider"));
-        this->onGetContactsStarted(CCProvider(provider->getValue()));
+        CCString *payload = dynamic_cast<CCString *>(parameters->objectForKey("payload"));
+        this->onGetContactsStarted(CCProvider(provider->getValue()), payload);
     }
 
     void CCProfileEventDispatcher::handle__EVENT_GET_FEED_FAILED(cocos2d::CCDictionary *parameters) {
         CCInteger* provider = dynamic_cast<CCInteger *>(parameters->objectForKey("provider"));
         CCString *errorDescription = dynamic_cast<CCString *>(parameters->objectForKey("errorDescription"));
-        this->onGetFeedFailed(CCProvider(provider->getValue()), errorDescription);
+        CCString *payload = dynamic_cast<CCString *>(parameters->objectForKey("payload"));
+        this->onGetFeedFailed(CCProvider(provider->getValue()), errorDescription, payload);
     }
 
     void CCProfileEventDispatcher::handle__EVENT_GET_FEED_FINISHED(cocos2d::CCDictionary *parameters) {
         CCInteger* provider = dynamic_cast<CCInteger *>(parameters->objectForKey("provider"));
         CCArray *feed = dynamic_cast<CCArray *>(parameters->objectForKey("feed"));
-        this->onGetFeedFinished(CCProvider(provider->getValue()), feed);
+        CCString *payload = dynamic_cast<CCString *>(parameters->objectForKey("payload"));
+        this->onGetFeedFinished(CCProvider(provider->getValue()), feed, payload);
     }
 
     void CCProfileEventDispatcher::handle__EVENT_GET_FEED_STARTED(cocos2d::CCDictionary *parameters) {
         CCInteger* provider = dynamic_cast<CCInteger *>(parameters->objectForKey("provider"));
-        this->onGetFeedStarted(CCProvider(provider->getValue()));
+        CCString *payload = dynamic_cast<CCString *>(parameters->objectForKey("payload"));
+        this->onGetFeedStarted(CCProvider(provider->getValue()), payload);
     }
 
     void CCProfileEventDispatcher::handle__EVENT_SOCIAL_ACTION_FAILED(cocos2d::CCDictionary *parameters) {
         CCInteger* provider = dynamic_cast<CCInteger *>(parameters->objectForKey("provider"));
         CCInteger *socialActionType = dynamic_cast<CCInteger *>(parameters->objectForKey("socialActionType"));
         CCString *errorDescription = dynamic_cast<CCString *>(parameters->objectForKey("errorDescription"));
-        this->onSocialActionFailedEvent(CCProvider(provider->getValue()), CCSocialActionType(socialActionType->getValue()), errorDescription);
+        CCString *payload = dynamic_cast<CCString *>(parameters->objectForKey("payload"));
+        this->onSocialActionFailedEvent(CCProvider(provider->getValue()), CCSocialActionType(socialActionType->getValue()), errorDescription, payload);
     }
 
     void CCProfileEventDispatcher::handle__EVENT_SOCIAL_ACTION_FINISHED(cocos2d::CCDictionary *parameters) {
         CCInteger* provider = dynamic_cast<CCInteger *>(parameters->objectForKey("provider"));
         CCInteger *socialActionType = dynamic_cast<CCInteger *>(parameters->objectForKey("socialActionType"));
-        this->onSocialActionFinishedEvent(CCProvider(provider->getValue()), CCSocialActionType(socialActionType->getValue()));
+        CCString *payload = dynamic_cast<CCString *>(parameters->objectForKey("payload"));
+        this->onSocialActionFinishedEvent(CCProvider(provider->getValue()), CCSocialActionType(socialActionType->getValue()), payload);
     }
 
     void CCProfileEventDispatcher::handle__EVENT_SOCIAL_ACTION_STARTED(cocos2d::CCDictionary *parameters) {
         CCInteger* provider = dynamic_cast<CCInteger *>(parameters->objectForKey("provider"));
         CCInteger *socialActionType = dynamic_cast<CCInteger *>(parameters->objectForKey("socialActionType"));
-        this->onSocialActionStartedEvent(CCProvider(provider->getValue()), CCSocialActionType(socialActionType->getValue()));
+        CCString *payload = dynamic_cast<CCString *>(parameters->objectForKey("payload"));
+        this->onSocialActionStartedEvent(CCProvider(provider->getValue()), CCSocialActionType(socialActionType->getValue()), payload);
     }
 
     void CCProfileEventDispatcher::handle__EVENT_USER_PROFILE_UPDATED(cocos2d::CCDictionary *parameters) {

@@ -58,17 +58,17 @@ namespace soomla {
         /**
          see parent
          */
-        virtual void onLoginFailed(CCProvider provider, cocos2d::CCString *errorDescription);
+        virtual void onLoginFailed(CCProvider provider, cocos2d::CCString *errorDescription, cocos2d::CCString *payload);
 
         /**
          see parent
          */
-        virtual void onLoginFinished(CCUserProfile *userProfile);
+        virtual void onLoginFinished(CCUserProfile *userProfile, cocos2d::CCString *payload);
 
         /**
          see parent
          */
-        virtual void onLoginStarted(CCProvider provider);
+        virtual void onLoginStarted(CCProvider provider, cocos2d::CCString *payload);
 
         /**
          see parent
@@ -88,52 +88,52 @@ namespace soomla {
         /**
          see parent
          */
-        virtual void onGetContactsFailed(CCProvider provider, cocos2d::CCString *errorDescription);
+        virtual void onGetContactsFailed(CCProvider provider, cocos2d::CCString *errorDescription, cocos2d::CCString *payload);
 
         /**
          see parent
          */
-        virtual void onGetContactsFinished(CCProvider provider, cocos2d::CCArray *contactsDict);
+        virtual void onGetContactsFinished(CCProvider provider, cocos2d::CCArray *contactsDict, cocos2d::CCString *payload);
 
         /**
          see parent
          */
-        virtual void onGetContactsStarted(CCProvider provider);
+        virtual void onGetContactsStarted(CCProvider provider, cocos2d::CCString *payload);
 
         /**
          see parent
          */
-        virtual void onGetFeedFailed(CCProvider provider, cocos2d::CCString *errorDescription);
+        virtual void onGetFeedFailed(CCProvider provider, cocos2d::CCString *errorDescription, cocos2d::CCString *payload);
 
         /**
          see parent
          */
-        virtual void onGetFeedFinished(CCProvider provider, cocos2d::CCArray *feedList);
+        virtual void onGetFeedFinished(CCProvider provider, cocos2d::CCArray *feedList, cocos2d::CCString *payload);
 
         /**
          see parent
          */
-        virtual void onGetFeedStarted(CCProvider provider);
+        virtual void onGetFeedStarted(CCProvider provider, cocos2d::CCString *payload);
 
         /**
          see parent
          */
-        virtual void onSocialActionFailedEvent(CCProvider provider, CCSocialActionType socialActionType, cocos2d::CCString *errorDescription);
+        virtual void onSocialActionFailedEvent(CCProvider provider, CCSocialActionType socialActionType, cocos2d::CCString *errorDescription, cocos2d::CCString *payload);
 
         /**
          see parent
          */
-        virtual void onSocialActionFinishedEvent(CCProvider provider, CCSocialActionType socialActionType);
+        virtual void onSocialActionFinishedEvent(CCProvider provider, CCSocialActionType socialActionType, cocos2d::CCString *payload);
 
         /**
          see parent
          */
-        virtual void onSocialActionStartedEvent(CCProvider provider, CCSocialActionType socialActionType);
+        virtual void onSocialActionStartedEvent(CCProvider provider, CCSocialActionType socialActionType, cocos2d::CCString *payload);
 
         /**
          see parent
          */
-        virtual void onLoginCancelledEvent(CCProvider provider);
+        virtual void onLoginCancelledEvent(CCProvider provider, cocos2d::CCString *payload);
         
         /**
          see parent

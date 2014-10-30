@@ -63,12 +63,13 @@
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::login" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];
         NSDictionary *rewardDict = [parameters objectForKey:@"reward"];
+        NSString *payload = [parameters objectForKey:@"payload"];
         Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
         if (reward != nil) {
             [[SoomlaProfile getInstance] loginWithProvider:[UserProfileUtils providerStringToEnum:provider]
-                                                 andReward:reward];
+                                                 andPayload:payload andReward:reward];
         } else {
-            [[SoomlaProfile getInstance] loginWithProvider:[UserProfileUtils providerStringToEnum:provider]];
+            [[SoomlaProfile getInstance] loginWithProvider:[UserProfileUtils providerStringToEnum:provider] andPayload:payload andReward:nil];
         }
     }];
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::logout" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
@@ -87,19 +88,23 @@
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::updateStatus" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];
         NSString *status = [parameters objectForKey:@"status"];
+        NSString *payload = [parameters objectForKey:@"payload"];
         NSDictionary *rewardDict = [parameters objectForKey:@"reward"];
         Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
         [[SoomlaProfile getInstance] updateStatusWithProvider:[UserProfileUtils providerStringToEnum:provider]
                                                     andStatus:status
+                                                    andPayload:payload
                                                     andReward:reward];
     }];
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::updateStatusDialog" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];
         NSString *link = [parameters objectForKey:@"link"];
+        NSString *payload = [parameters objectForKey:@"payload"];
         NSDictionary *rewardDict = [parameters objectForKey:@"reward"];
         Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
         [[SoomlaProfile getInstance] updateStatusWithProviderDialog:[UserProfileUtils providerStringToEnum:provider]
                                                     andLink:link
+                                                    andPayload:payload
                                                     andReward:reward];
     }];
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::updateStory" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
@@ -110,6 +115,7 @@
         NSString *description = [parameters objectForKey:@"description"];
         NSString *link = [parameters objectForKey:@"link"];
         NSString *picture = [parameters objectForKey:@"picture"];
+        NSString *payload = [parameters objectForKey:@"payload"];
         NSDictionary *rewardDict = [parameters objectForKey:@"reward"];
         Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
         [[SoomlaProfile getInstance] updateStoryWithProvider:[UserProfileUtils providerStringToEnum:provider]
@@ -119,6 +125,7 @@
                                               andDescription:description
                                                      andLink:link
                                                   andPicture:picture
+                                                  andPayload:payload
                                                    andReward:reward];
     }];
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::updateStoryDialog" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
@@ -128,6 +135,7 @@
         NSString *description = [parameters objectForKey:@"description"];
         NSString *link = [parameters objectForKey:@"link"];
         NSString *picture = [parameters objectForKey:@"picture"];
+        NSString *payload = [parameters objectForKey:@"payload"];
         NSDictionary *rewardDict = [parameters objectForKey:@"reward"];
         Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
         [[SoomlaProfile getInstance] updateStoryWithProviderDialog:[UserProfileUtils providerStringToEnum:provider]
@@ -136,31 +144,36 @@
                                               andDescription:description
                                                      andLink:link
                                                   andPicture:picture
+                                                  andPayload:payload
                                                    andReward:reward];
     }];
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::uploadImage" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];
         NSString *message = [parameters objectForKey:@"message"];
         NSString *filePath = [parameters objectForKey:@"filePath"];
+        NSString *payload = [parameters objectForKey:@"payload"];
         NSDictionary *rewardDict = [parameters objectForKey:@"reward"];
         Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
         [[SoomlaProfile getInstance] uploadImageWithProvider:[UserProfileUtils providerStringToEnum:provider]
                                                   andMessage:message
                                                  andFilePath:filePath
+                                                  andPayload:payload
                                                    andReward:reward];
     }];
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::getContacts" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];
+        NSString *payload = [parameters objectForKey:@"payload"];
         NSDictionary *rewardDict = [parameters objectForKey:@"reward"];
         Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
-        [[SoomlaProfile getInstance] getContactsWithProvider:[UserProfileUtils providerStringToEnum:provider] andReward:reward];
+        [[SoomlaProfile getInstance] getContactsWithProvider:[UserProfileUtils providerStringToEnum:provider] andPayload:payload andReward:reward];
     }];
 
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::getFeed" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];
+        NSString *payload = [parameters objectForKey:@"payload"];
         NSDictionary *rewardDict = [parameters objectForKey:@"reward"];
         Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
-        [[SoomlaProfile getInstance] getFeedWithProvider:[UserProfileUtils providerStringToEnum:provider] andReward:reward];
+        [[SoomlaProfile getInstance] getFeedWithProvider:[UserProfileUtils providerStringToEnum:provider] andPayload:payload andReward:reward];
     }];
 
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::isLoggedIn" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
@@ -198,20 +211,24 @@
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_LOGIN_CANCELLED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
         [parameters setObject:@"com.soomla.profile.events.auth.LoginCancelledEvent" forKey:@"method"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PROVIDER] forKey:@"provider"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PAYLOAD] forKey:@"payload"];
     }];
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_LOGIN_FAILED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
         [parameters setObject:@"com.soomla.profile.events.auth.LoginFailedEvent" forKey:@"method"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PROVIDER] forKey:@"provider"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_MESSAGE] forKey:@"errorDescription"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PAYLOAD] forKey:@"payload"];
     }];
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_LOGIN_FINISHED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
         [parameters setObject:@"com.soomla.profile.events.auth.LoginFinishedEvent" forKey:@"method"];
         id userProfile = [notification.userInfo objectForKey:DICT_ELEMENT_USER_PROFILE];
         [parameters setObject:[userProfile toDictionary] forKey:@"userProfile"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PAYLOAD] forKey:@"payload"];
     }];
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_LOGIN_STARTED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
         [parameters setObject:@"com.soomla.profile.events.auth.LoginStartedEvent" forKey:@"method"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PROVIDER] forKey:@"provider"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PAYLOAD] forKey:@"payload"];
     }];
 
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_LOGOUT_FAILED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
@@ -233,6 +250,7 @@
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PROVIDER] forKey:@"provider"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_SOCIAL_ACTION_TYPE] forKey:@"socialActionType"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_MESSAGE] forKey:@"errorDescription"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PAYLOAD] forKey:@"payload"];
     }];
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_GET_CONTACTS_FINISHED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
         [parameters setObject:@"com.soomla.profile.events.social.GetContactsFinishedEvent" forKey:@"method"];
@@ -240,11 +258,13 @@
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_SOCIAL_ACTION_TYPE] forKey:@"socialActionType"];
         id contacts = [notification.userInfo objectForKey:DICT_ELEMENT_CONTACTS];
         [parameters setObject:[[DomainHelper sharedDomainHelper] getDictListFromDomains:contacts] forKey:@"contacts"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PAYLOAD] forKey:@"payload"];
     }];
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_GET_CONTACTS_STARTED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
         [parameters setObject:@"com.soomla.profile.events.social.GetContactsStartedEvent" forKey:@"method"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PROVIDER] forKey:@"provider"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_SOCIAL_ACTION_TYPE] forKey:@"socialActionType"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PAYLOAD] forKey:@"payload"];
     }];
 
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_GET_FEED_FAILED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
@@ -252,17 +272,20 @@
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PROVIDER] forKey:@"provider"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_SOCIAL_ACTION_TYPE] forKey:@"socialActionType"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_MESSAGE] forKey:@"errorDescription"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PAYLOAD] forKey:@"payload"];
     }];
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_GET_FEED_FINISHED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
         [parameters setObject:@"com.soomla.profile.events.social.GetFeedFinishedEvent" forKey:@"method"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PROVIDER] forKey:@"provider"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_SOCIAL_ACTION_TYPE] forKey:@"socialActionType"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_FEEDS] forKey:@"feed"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PAYLOAD] forKey:@"payload"];
     }];
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_GET_FEED_STARTED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
         [parameters setObject:@"com.soomla.profile.events.social.GetFeedStartedEvent" forKey:@"method"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PROVIDER] forKey:@"provider"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_SOCIAL_ACTION_TYPE] forKey:@"socialActionType"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PAYLOAD] forKey:@"payload"];
     }];
 
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_SOCIAL_ACTION_FAILED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
@@ -270,16 +293,19 @@
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PROVIDER] forKey:@"provider"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_SOCIAL_ACTION_TYPE] forKey:@"socialActionType"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_MESSAGE] forKey:@"errorDescription"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PAYLOAD] forKey:@"payload"];
     }];
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_SOCIAL_ACTION_FINISHED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
         [parameters setObject:@"com.soomla.profile.events.social.SocialActionFinishedEvent" forKey:@"method"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PROVIDER] forKey:@"provider"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_SOCIAL_ACTION_TYPE] forKey:@"socialActionType"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PAYLOAD] forKey:@"payload"];
     }];
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_SOCIAL_ACTION_STARTED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
         [parameters setObject:@"com.soomla.profile.events.social.SocialActionStartedEvent" forKey:@"method"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PROVIDER] forKey:@"provider"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_SOCIAL_ACTION_TYPE] forKey:@"socialActionType"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PAYLOAD] forKey:@"payload"];
     }];
 
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_USER_PROFILE_UPDATED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {

@@ -110,10 +110,11 @@ public class ProfileService extends AbstractSoomlaService {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
                 String provider = params.getString("provider");
+                String payload = params.getString("payload");
                 JSONObject rewardJson = params.optJSONObject("reward");
                 Reward reward = (rewardJson != null) ?
                         domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
-                SoomlaProfile.getInstance().login(ndkGlue.getActivityRef().get(), IProvider.Provider.getEnum(provider), reward);
+                SoomlaProfile.getInstance().login(ndkGlue.getActivityRef().get(), IProvider.Provider.getEnum(provider), payload, reward);
             }
         });
 
@@ -141,10 +142,11 @@ public class ProfileService extends AbstractSoomlaService {
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
                 String provider = params.getString("provider");
                 String status = params.getString("status");
+                String payload = params.getString("payload");
                 JSONObject rewardJson = params.optJSONObject("reward");
                 Reward reward = (rewardJson != null) ?
                         domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
-                SoomlaProfile.getInstance().updateStatus(IProvider.Provider.getEnum(provider), status, reward);
+                SoomlaProfile.getInstance().updateStatus(IProvider.Provider.getEnum(provider), status, payload, reward);
             }
         });
 
@@ -153,10 +155,11 @@ public class ProfileService extends AbstractSoomlaService {
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
                 String provider = params.getString("provider");
                 String link = params.optString("link");
+                String payload = params.getString("payload");
                 JSONObject rewardJson = params.optJSONObject("reward");
                 Reward reward = (rewardJson != null) ?
                         domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
-                SoomlaProfile.getInstance().updateStatusDialog(IProvider.Provider.getEnum(provider), link, reward);
+                SoomlaProfile.getInstance().updateStatusDialog(IProvider.Provider.getEnum(provider), link, payload, reward);
             }
         });
 
@@ -170,11 +173,12 @@ public class ProfileService extends AbstractSoomlaService {
                 String description = params.getString("description");
                 String link = params.getString("link");
                 String picture = params.getString("picture");
+                String payload = params.getString("payload");
                 JSONObject rewardJson = params.optJSONObject("reward");
                 Reward reward = (rewardJson != null) ?
                         domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
                 SoomlaProfile.getInstance().updateStory(IProvider.Provider.getEnum(provider), message, name, caption,
-                        description, link, picture, reward);
+                        description, link, picture, payload, reward);
             }
         });
 
@@ -187,11 +191,12 @@ public class ProfileService extends AbstractSoomlaService {
                 String description = params.optString("description");
                 String link = params.optString("link");
                 String picture = params.optString("picture");
+                String payload = params.getString("payload");
                 JSONObject rewardJson = params.optJSONObject("reward");
                 Reward reward = (rewardJson != null) ?
                         domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
                 SoomlaProfile.getInstance().updateStoryDialog(IProvider.Provider.getEnum(provider), name, caption,
-                        description, link, picture, reward);
+                        description, link, picture, payload, reward);
             }
         });
 
@@ -201,11 +206,12 @@ public class ProfileService extends AbstractSoomlaService {
                 String provider = params.getString("provider");
                 String message = params.getString("message");
                 String filePath = params.getString("filePath");
+                String payload = params.getString("payload");
                 JSONObject rewardJson = params.optJSONObject("reward");
                 Reward reward = (rewardJson != null) ?
                         domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
                 SoomlaProfile.getInstance().uploadImage(IProvider.Provider.getEnum(provider), message, filePath,
-                        reward);
+                        payload, reward);
             }
         });
 
@@ -213,10 +219,11 @@ public class ProfileService extends AbstractSoomlaService {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
                 String provider = params.getString("provider");
+                String payload = params.getString("payload");
                 JSONObject rewardJson = params.optJSONObject("reward");
                 Reward reward = (rewardJson != null) ?
                         domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
-                SoomlaProfile.getInstance().getContacts(IProvider.Provider.getEnum(provider), reward);
+                SoomlaProfile.getInstance().getContacts(IProvider.Provider.getEnum(provider), payload, reward);
             }
         });
 
@@ -224,10 +231,11 @@ public class ProfileService extends AbstractSoomlaService {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
                 String provider = params.getString("provider");
+                String payload = params.getString("payload");
                 JSONObject rewardJson = params.optJSONObject("reward");
                 Reward reward = (rewardJson != null) ?
                         domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
-                SoomlaProfile.getInstance().getFeed(IProvider.Provider.getEnum(provider), reward);
+                SoomlaProfile.getInstance().getFeed(IProvider.Provider.getEnum(provider), payload, reward);
             }
         });
 

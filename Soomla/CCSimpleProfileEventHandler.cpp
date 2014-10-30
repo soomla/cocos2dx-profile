@@ -9,15 +9,15 @@ void soomla::CCSimpleProfileEventHandler::onUserRatingEvent() {
 
 }
 
-void soomla::CCSimpleProfileEventHandler::onLoginFailed(soomla::CCProvider provider, cocos2d::CCString *errorDescription) {
+void soomla::CCSimpleProfileEventHandler::onLoginFailed(soomla::CCProvider provider, cocos2d::CCString *errorDescription, cocos2d::CCString *payload) {
 
 }
 
-void soomla::CCSimpleProfileEventHandler::onLoginFinished(soomla::CCUserProfile *userProfile) {
+void soomla::CCSimpleProfileEventHandler::onLoginFinished(soomla::CCUserProfile *userProfile, cocos2d::CCString *payload) {
 
 }
 
-void soomla::CCSimpleProfileEventHandler::onLoginStarted(soomla::CCProvider provider) {
+void soomla::CCSimpleProfileEventHandler::onLoginStarted(soomla::CCProvider provider, cocos2d::CCString *payload) {
 
 }
 
@@ -33,43 +33,44 @@ void soomla::CCSimpleProfileEventHandler::onLogoutStarted(soomla::CCProvider pro
 
 }
 
-void soomla::CCSimpleProfileEventHandler::onGetContactsFailed(soomla::CCProvider provider, cocos2d::CCString *errorDescription) {
+void soomla::CCSimpleProfileEventHandler::onGetContactsFailed(soomla::CCProvider provider, cocos2d::CCString *errorDescription, cocos2d::CCString *payload) {
 
 }
 
-void soomla::CCSimpleProfileEventHandler::onGetContactsFinished(soomla::CCProvider provider, cocos2d::CCArray *contactsDict) {
+void soomla::CCSimpleProfileEventHandler::onGetContactsFinished(soomla::CCProvider provider, cocos2d::CCArray *contactsDict, cocos2d::CCString *payload) {
 
 }
 
-void soomla::CCSimpleProfileEventHandler::onGetContactsStarted(soomla::CCProvider provider) {
+void soomla::CCSimpleProfileEventHandler::onGetContactsStarted(soomla::CCProvider provider, cocos2d::CCString *payload) {
 
 }
 
-void soomla::CCSimpleProfileEventHandler::onGetFeedFailed(soomla::CCProvider provider, cocos2d::CCString *errorDescription) {
+void soomla::CCSimpleProfileEventHandler::onGetFeedFailed(soomla::CCProvider provider, cocos2d::CCString *errorDescription, cocos2d::CCString *payload) {
 
 }
 
-void soomla::CCSimpleProfileEventHandler::onGetFeedFinished(soomla::CCProvider provider, cocos2d::CCArray *feedList) {
+void soomla::CCSimpleProfileEventHandler::onGetFeedFinished(soomla::CCProvider provider, cocos2d::CCArray *feedList, cocos2d::CCString *payload) {
 
 }
 
-void soomla::CCSimpleProfileEventHandler::onGetFeedStarted(soomla::CCProvider provider) {
+void soomla::CCSimpleProfileEventHandler::onGetFeedStarted(soomla::CCProvider provider, cocos2d::CCString *payload) {
 
 }
 
-void soomla::CCSimpleProfileEventHandler::onSocialActionFailedEvent(soomla::CCProvider provider, soomla::CCSocialActionType socialActionType, cocos2d::CCString *errorDescription) {
+void soomla::CCSimpleProfileEventHandler::onSocialActionFailedEvent(soomla::CCProvider provider, soomla::CCSocialActionType socialActionType,
+                                                                    cocos2d::CCString *errorDescription, cocos2d::CCString *payload) {
 
 }
 
-void soomla::CCSimpleProfileEventHandler::onSocialActionFinishedEvent(soomla::CCProvider provider, soomla::CCSocialActionType socialActionType) {
+void soomla::CCSimpleProfileEventHandler::onSocialActionFinishedEvent(soomla::CCProvider provider, soomla::CCSocialActionType socialActionType, cocos2d::CCString *payload) {
 
 }
 
-void soomla::CCSimpleProfileEventHandler::onSocialActionStartedEvent(soomla::CCProvider provider, soomla::CCSocialActionType socialActionType) {
+void soomla::CCSimpleProfileEventHandler::onSocialActionStartedEvent(soomla::CCProvider provider, soomla::CCSocialActionType socialActionType, cocos2d::CCString *payload) {
 
 }
 
-void soomla::CCSimpleProfileEventHandler::onLoginCancelledEvent(soomla::CCProvider provider) {
+void soomla::CCSimpleProfileEventHandler::onLoginCancelledEvent(soomla::CCProvider provider, cocos2d::CCString *payload) {
 
 }
 

@@ -48,10 +48,15 @@ namespace soomla {
     }
 
     void CCSoomlaProfile::login(CCProvider provider, CCReward *reward, CCError **soomlaError) {
+        this->login(provider, "", reward, soomlaError);
+    }
+    
+    void CCSoomlaProfile::login(CCProvider provider, const char *payload, CCReward *reward, CCError **soomlaError) {
         CC_ASSERT(mInited);
         CCDictionary *params = CCDictionary::create();
         params->setObject(CCString::create("CCSoomlaProfile::login"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
+        params->setObject(CCString::create(payload), "payload");
         if (reward) {
             params->setObject(reward->toDictionary(), "reward");
         }
@@ -59,11 +64,7 @@ namespace soomla {
     }
 
     void CCSoomlaProfile::login(CCProvider provider, CCError **soomlaError) {
-        CC_ASSERT(mInited);
-        CCDictionary *params = CCDictionary::create();
-        params->setObject(CCString::create("CCSoomlaProfile::login"), "method");
-        params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
-        CCNdkBridge::callNative(params, soomlaError);
+        this->login(provider, "", NULL, soomlaError);
     }
 
     void CCSoomlaProfile::logout(CCProvider provider, CCError **soomlaError) {
@@ -83,24 +84,30 @@ namespace soomla {
         SL_SAFE_CREATE_FROM_RETURN(CCUserProfile *, retValue, retParams);
         return retValue;
     }
-
-    void CCSoomlaProfile::updateStatus(CCProvider provider, const char *status, CCReward *reward, CCError **soomlaError) {
+    
+    void CCSoomlaProfile::updateStatus(CCProvider provider, const char *status, const char *payload, CCReward *reward, CCError **soomlaError) {
         CC_ASSERT(mInited);
         CCDictionary *params = CCDictionary::create();
         params->setObject(CCString::create("CCSoomlaProfile::updateStatus"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
         params->setObject(CCString::create(status), "status");
+        params->setObject(CCString::create(payload), "payload");
         if (reward) {
             params->setObject(reward->toDictionary(), "reward");
         }
         CCNdkBridge::callNative(params, soomlaError);
     }
+
+    void CCSoomlaProfile::updateStatus(CCProvider provider, const char *status, CCReward *reward, CCError **soomlaError) {
+        this->updateStatus(provider, status, "", reward, soomlaError);
+    }
     
-    void CCSoomlaProfile::updateStatusDialog(CCProvider provider, const char *link, CCReward *reward, CCError **soomlaError) {
+    void CCSoomlaProfile::updateStatusDialog(CCProvider provider, const char *link, const char *payload, CCReward *reward, CCError **soomlaError) {
         CC_ASSERT(mInited);
         CCDictionary *params = CCDictionary::create();
         params->setObject(CCString::create("CCSoomlaProfile::updateStatusDialog"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
+        params->setObject(CCString::create(payload), "payload");
         if (link) {
             params->setObject(CCString::create(link), "link");
         }
@@ -109,10 +116,14 @@ namespace soomla {
         }
         CCNdkBridge::callNative(params, soomlaError);
     }
+    
+    void CCSoomlaProfile::updateStatusDialog(CCProvider provider, const char *link, CCReward *reward, CCError **soomlaError) {
+        this->updateStatusDialog(provider, link, "", reward, soomlaError);
+    }
 
     void CCSoomlaProfile::updateStory(CCProvider provider, const char *message, const char *name,
             const char *caption, const char *description, const char *link, const char *picture,
-            CCReward *reward, CCError **soomlaError) {
+            const char *payload, CCReward *reward, CCError **soomlaError) {
 
         CC_ASSERT(mInited);
         CCDictionary *params = CCDictionary::create();
@@ -124,20 +135,28 @@ namespace soomla {
         params->setObject(CCString::create(description), "description");
         params->setObject(CCString::create(link), "link");
         params->setObject(CCString::create(picture), "picture");
+        params->setObject(CCString::create(payload), "payload");
         if (reward) {
             params->setObject(reward->toDictionary(), "reward");
         }
         CCNdkBridge::callNative(params, soomlaError);
     }
     
-    void CCSoomlaProfile::updateStoryDialog(CCProvider provider, const char *name,
+    void CCSoomlaProfile::updateStory(CCProvider provider, const char *message, const char *name,
                                       const char *caption, const char *description, const char *link, const char *picture,
                                       CCReward *reward, CCError **soomlaError) {
+        this->updateStory(provider, message, name, caption, description, link, picture, "", reward, soomlaError);
+    }
+    
+    void CCSoomlaProfile::updateStoryDialog(CCProvider provider, const char *name,
+                                      const char *caption, const char *description, const char *link, const char *picture,
+                                      const char *payload, CCReward *reward, CCError **soomlaError) {
         
         CC_ASSERT(mInited);
         CCDictionary *params = CCDictionary::create();
         params->setObject(CCString::create("CCSoomlaProfile::updateStoryDialog"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
+        params->setObject(CCString::create(payload), "payload");
         if (name) {
             params->setObject(CCString::create(name), "name");
         }
@@ -158,9 +177,16 @@ namespace soomla {
         }
         CCNdkBridge::callNative(params, soomlaError);
     }
+    
+    void CCSoomlaProfile::updateStoryDialog(CCProvider provider, const char *name,
+                                            const char *caption, const char *description, const char *link, const char *picture,
+                                            CCReward *reward, CCError **soomlaError) {
+        
+        this->updateStoryDialog(provider, name, caption, description, link, picture, "", reward, soomlaError);
+    }
 
     void CCSoomlaProfile::uploadImage(CCProvider provider, const char *message, const char *filePath,
-            CCReward *reward, CCError **soomlaError) {
+            const char *payload, CCReward *reward, CCError **soomlaError) {
 
         CC_ASSERT(mInited);
         CCDictionary *params = CCDictionary::create();
@@ -168,34 +194,53 @@ namespace soomla {
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
         params->setObject(CCString::create(message), "message");
         params->setObject(CCString::create(filePath), "filePath");
+        params->setObject(CCString::create(payload), "payload");
         if (reward) {
             params->setObject(reward->toDictionary(), "reward");
         }
         CCNdkBridge::callNative(params, soomlaError);
     }
+    
+    void CCSoomlaProfile::uploadImage(CCProvider provider, const char *message, const char *filePath,
+                                      CCReward *reward, CCError **soomlaError) {
+        
+        this->uploadImage(provider, message, filePath, "", reward, soomlaError);
+    }
 
-    void CCSoomlaProfile::getContacts(CCProvider provider, CCReward *reward, CCError **soomlaError) {
-
+    void CCSoomlaProfile::getContacts(CCProvider provider, const char *payload, CCReward *reward, CCError **soomlaError) {
+        
         CC_ASSERT(mInited);
         CCDictionary *params = CCDictionary::create();
         params->setObject(CCString::create("CCSoomlaProfile::getContacts"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
+        params->setObject(CCString::create(payload), "payload");
         if (reward) {
             params->setObject(reward->toDictionary(), "reward");
         }
         CCNdkBridge::callNative(params, soomlaError);
     }
+    
+    void CCSoomlaProfile::getContacts(CCProvider provider, CCReward *reward, CCError **soomlaError) {
 
-    void CCSoomlaProfile::getFeed(CCProvider provider, CCReward *reward, CCError **soomlaError) {
+        this->getContacts(provider, "", reward, soomlaError);
+    }
+    
+    void CCSoomlaProfile::getFeed(CCProvider provider, const char *payload, CCReward *reward, CCError **soomlaError) {
 
         CC_ASSERT(mInited);
         CCDictionary *params = CCDictionary::create();
         params->setObject(CCString::create("CCSoomlaProfile::getFeed"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
+        params->setObject(CCString::create(payload), "payload");
         if (reward) {
             params->setObject(reward->toDictionary(), "reward");
         }
         CCNdkBridge::callNative(params, soomlaError);
+    }
+    
+    void CCSoomlaProfile::getFeed(CCProvider provider, CCReward *reward, CCError **soomlaError) {
+        
+        this->getFeed(provider, "", reward, soomlaError);
     }
 
     bool CCSoomlaProfile::isLoggedIn(CCProvider provider, CCError **soomlaError) {

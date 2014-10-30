@@ -55,26 +55,30 @@ namespace soomla {
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_LOGIN_CANCELLED,
                 [this](__Dictionary *parameters) {
                     __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
-                    this->onLoginCancelledEvent(CCProvider(provider->getValue()));
+                    __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
+                    this->onLoginCancelledEvent(CCProvider(provider->getValue()), payload);
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_LOGIN_FAILED,
                 [this](__Dictionary *parameters) {
                     __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
                     __String *errorDescription = dynamic_cast<__String *>(parameters->objectForKey("errorDescription"));
-                    this->onLoginFailed(CCProvider(provider->getValue()), errorDescription);
+                    __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
+                    this->onLoginFailed(CCProvider(provider->getValue()), errorDescription, payload);
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_LOGIN_FINISHED,
                 [this](__Dictionary *parameters) {
                     CCUserProfile *userProfile = this->extractUserProfile(parameters->objectForKey("userProfile"));
-                    this->onLoginFinished(userProfile);
+                    __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
+                    this->onLoginFinished(userProfile, payload);
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_LOGIN_STARTED,
                 [this](__Dictionary *parameters) {
                     __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
-                    this->onLoginStarted(CCProvider(provider->getValue()));
+                    __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
+                    this->onLoginStarted(CCProvider(provider->getValue()), payload);
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_LOGOUT_FAILED,
@@ -100,40 +104,46 @@ namespace soomla {
                 [this](__Dictionary *parameters) {
                     __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
                     __String *errorDescription = dynamic_cast<__String *>(parameters->objectForKey("errorDescription"));
-                    this->onGetContactsFailed(CCProvider(provider->getValue()), errorDescription);
+                    __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
+                    this->onGetContactsFailed(CCProvider(provider->getValue()), errorDescription, payload);
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_GET_CONTACTS_FINISHED,
                 [this](__Dictionary *parameters) {
                     __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
                     __Array *contacts = this->extractUserProfileArray(parameters->objectForKey("contacts"));
-                    this->onGetContactsFinished(CCProvider(provider->getValue()), contacts);
+                    __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
+                    this->onGetContactsFinished(CCProvider(provider->getValue()), contacts, payload);
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_GET_CONTACTS_STARTED,
                 [this](__Dictionary *parameters) {
                     __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
-                    this->onGetContactsStarted(CCProvider(provider->getValue()));
+                    __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
+                    this->onGetContactsStarted(CCProvider(provider->getValue()), payload);
                 });
         
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_GET_FEED_FAILED,
                 [this](__Dictionary *parameters) {
                     __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
                     __String *errorDescription = dynamic_cast<__String *>(parameters->objectForKey("errorDescription"));
-                    this->onGetFeedFailed(CCProvider(provider->getValue()), errorDescription);
+                    __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
+                    this->onGetFeedFailed(CCProvider(provider->getValue()), errorDescription, payload);
                 });
         
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_GET_FEED_FINISHED,
                 [this](__Dictionary *parameters) {
                     __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
                     __Array *feed = dynamic_cast<__Array *>(parameters->objectForKey("feed"));
-                    this->onGetFeedFinished(CCProvider(provider->getValue()), feed);
+                    __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
+                    this->onGetFeedFinished(CCProvider(provider->getValue()), feed, payload);
                 });
         
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_GET_FEED_STARTED,
                 [this](__Dictionary *parameters) {
                     __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
-                    this->onGetFeedStarted(CCProvider(provider->getValue()));
+                    __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
+                    this->onGetFeedStarted(CCProvider(provider->getValue()), payload);
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_SOCIAL_ACTION_FAILED,
@@ -141,21 +151,24 @@ namespace soomla {
                     __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
                     __Integer *socialActionType = dynamic_cast<__Integer *>(parameters->objectForKey("socialActionType"));
                     __String *errorDescription = dynamic_cast<__String *>(parameters->objectForKey("errorDescription"));
-                    this->onSocialActionFailedEvent(CCProvider(provider->getValue()), CCSocialActionType(socialActionType->getValue()), errorDescription);
+                    __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
+                    this->onSocialActionFailedEvent(CCProvider(provider->getValue()), CCSocialActionType(socialActionType->getValue()), errorDescription, payload);
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_SOCIAL_ACTION_FINISHED,
                 [this](__Dictionary *parameters) {
                     __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
                     __Integer *socialActionType = dynamic_cast<__Integer *>(parameters->objectForKey("socialActionType"));
-                    this->onSocialActionFinishedEvent(CCProvider(provider->getValue()), CCSocialActionType(socialActionType->getValue()));
+                    __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
+                    this->onSocialActionFinishedEvent(CCProvider(provider->getValue()), CCSocialActionType(socialActionType->getValue()), payload);
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_SOCIAL_ACTION_STARTED,
                 [this](__Dictionary *parameters) {
                     __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
                     __Integer *socialActionType = dynamic_cast<__Integer *>(parameters->objectForKey("socialActionType"));
-                    this->onSocialActionStartedEvent(CCProvider(provider->getValue()), CCSocialActionType(socialActionType->getValue()));
+                    __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
+                    this->onSocialActionStartedEvent(CCProvider(provider->getValue()), CCSocialActionType(socialActionType->getValue()), payload);
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_USER_PROFILE_UPDATED,
@@ -194,21 +207,21 @@ namespace soomla {
         }
     }
 
-    void CCProfileEventDispatcher::onLoginFailed(CCProvider provider, cocos2d::__String *errorDescription) {
+    void CCProfileEventDispatcher::onLoginFailed(CCProvider provider, cocos2d::__String *errorDescription, cocos2d::__String *payload) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onLoginFailed(provider, errorDescription);
+            eventHandler->onLoginFailed(provider, errorDescription, payload);
         }
     }
 
-    void CCProfileEventDispatcher::onLoginFinished(CCUserProfile *userProfile) {
+    void CCProfileEventDispatcher::onLoginFinished(CCUserProfile *userProfile, cocos2d::__String *payload) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onLoginFinished(userProfile);
+            eventHandler->onLoginFinished(userProfile, payload);
         }
     }
 
-    void CCProfileEventDispatcher::onLoginStarted(CCProvider provider) {
+    void CCProfileEventDispatcher::onLoginStarted(CCProvider provider, cocos2d::__String *payload) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onLoginStarted(provider);
+            eventHandler->onLoginStarted(provider, payload);
         }
     }
 
@@ -230,63 +243,64 @@ namespace soomla {
         }
     }
 
-    void CCProfileEventDispatcher::onGetContactsFailed(CCProvider provider, cocos2d::__String *errorDescription) {
+    void CCProfileEventDispatcher::onGetContactsFailed(CCProvider provider, cocos2d::__String *errorDescription, cocos2d::__String *payload) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onGetContactsFailed(provider, errorDescription);
+            eventHandler->onGetContactsFailed(provider, errorDescription, payload);
         }
     }
 
-    void CCProfileEventDispatcher::onGetContactsFinished(CCProvider provider, cocos2d::__Array *contactsDict) {
+    void CCProfileEventDispatcher::onGetContactsFinished(CCProvider provider, cocos2d::__Array *contactsDict, cocos2d::__String *payload) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onGetContactsFinished(provider, contactsDict);
+            eventHandler->onGetContactsFinished(provider, contactsDict, payload);
         }
     }
 
-    void CCProfileEventDispatcher::onGetContactsStarted(CCProvider provider) {
+    void CCProfileEventDispatcher::onGetContactsStarted(CCProvider provider, cocos2d::__String *payload) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onGetContactsStarted(provider);
+            eventHandler->onGetContactsStarted(provider, payload);
         }
     }
 
-    void CCProfileEventDispatcher::onGetFeedFailed(CCProvider provider, cocos2d::__String *errorDescription){
+    void CCProfileEventDispatcher::onGetFeedFailed(CCProvider provider, cocos2d::__String *errorDescription, cocos2d::__String *payload){
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onGetFeedFailed(provider, errorDescription);
+            eventHandler->onGetFeedFailed(provider, errorDescription, payload);
         }
     }
 
-    void CCProfileEventDispatcher::onGetFeedFinished(CCProvider provider, cocos2d::__Array *feedList) {
+    void CCProfileEventDispatcher::onGetFeedFinished(CCProvider provider, cocos2d::__Array *feedList, cocos2d::__String *payload) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onGetFeedFinished(provider, feedList);
+            eventHandler->onGetFeedFinished(provider, feedList, payload);
         }
     }
 
-    void CCProfileEventDispatcher::onGetFeedStarted(CCProvider provider) {
+    void CCProfileEventDispatcher::onGetFeedStarted(CCProvider provider, cocos2d::__String *payload) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onGetFeedStarted(provider);
+            eventHandler->onGetFeedStarted(provider, payload);
         }
     }
 
-    void CCProfileEventDispatcher::onSocialActionFailedEvent(CCProvider provider, CCSocialActionType  socialActionType, cocos2d::__String *errorDescription) {
+    void CCProfileEventDispatcher::onSocialActionFailedEvent(CCProvider provider, CCSocialActionType  socialActionType,
+                                                             cocos2d::__String *errorDescription, cocos2d::__String *payload) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onSocialActionFailedEvent(provider, socialActionType, errorDescription);
+            eventHandler->onSocialActionFailedEvent(provider, socialActionType, errorDescription, payload);
         }
     }
 
-    void CCProfileEventDispatcher::onSocialActionFinishedEvent(CCProvider provider, CCSocialActionType socialActionType) {
+    void CCProfileEventDispatcher::onSocialActionFinishedEvent(CCProvider provider, CCSocialActionType socialActionType, cocos2d::__String *payload) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onSocialActionFinishedEvent(provider, socialActionType);
+            eventHandler->onSocialActionFinishedEvent(provider, socialActionType, payload);
         }
     }
 
-    void CCProfileEventDispatcher::onSocialActionStartedEvent(CCProvider provider, CCSocialActionType socialActionType) {
+    void CCProfileEventDispatcher::onSocialActionStartedEvent(CCProvider provider, CCSocialActionType socialActionType, cocos2d::__String *payload) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onSocialActionStartedEvent(provider, socialActionType);
+            eventHandler->onSocialActionStartedEvent(provider, socialActionType, payload);
         }
     }
 
-    void CCProfileEventDispatcher::onLoginCancelledEvent(CCProvider provider) {
+    void CCProfileEventDispatcher::onLoginCancelledEvent(CCProvider provider, cocos2d::__String *payload) {
         FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onLoginCancelledEvent(provider);
+            eventHandler->onLoginCancelledEvent(provider, payload);
         }
     }
 

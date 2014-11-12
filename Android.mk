@@ -7,7 +7,7 @@ LOCAL_MODULE_FILENAME := libcocos2dxprofile
 
 PROFILE_SRC_LIST := $(wildcard $(LOCAL_PATH)/Soomla/*.cpp)
 PROFILE_SRC_LIST += $(wildcard $(LOCAL_PATH)/Soomla/domain/*.cpp)
-LOCAL_SRC_FILES := $(PROFILE_SRC_LIST)
+LOCAL_SRC_FILES := $(PROFILE_SRC_LIST:$(LOCAL_PATH)/%=%)
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/Soomla
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/Soomla/domain

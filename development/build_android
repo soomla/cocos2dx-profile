@@ -11,6 +11,10 @@ cd -
 cp -L submodules/android-profile/build/AndroidProfile.jar $build/
 cp -L submodules/android-profile/build/simple.facebook-2.1.jar $build/
 cp -L submodules/android-profile/build/AndroidProfileFacebook.jar $build/
+cp -L submodules/android-profile/build/AndroidProfileGoogle.jar $build/
+cp -L submodules/android-profile/build/AndroidProfileTwitter.jar $build/
+cp -L submodules/android-profile/build/twitter4j-asyc-4.0.2.jar $build/
+cp -L submodules/android-profile/build/twitter4j-core-4.0.2.jar $build/
 
 for path in "${paths[@]}"
 do

@@ -251,7 +251,11 @@ namespace soomla {
         CCDictionary *retParams = (CCDictionary *) CCNdkBridge::callNative (params, soomlaError);
         CCBool *retValue = (CCBool *) retParams->objectForKey("return");
 
-        return retValue->getValue();
+        if (retValue != NULL) {
+            return retValue->getValue();
+        }
+        
+        return false;
     }
 
     void CCSoomlaProfile::like(CCProvider provider, const char *pageName, CCReward *reward, CCError **soomlaError) {

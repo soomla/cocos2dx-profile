@@ -2,6 +2,12 @@
 <module type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../../../../extensions/cocos2dx-profile/development/submodules/android-profile/social-providers/android-profile-google/src">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../../extensions/cocos2dx-profile/development/submodules/android-profile/social-providers/android-profile-google/src" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../../../extensions/cocos2dx-profile/development/submodules/android-profile/social-providers/android-profile-twitter/src">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../../extensions/cocos2dx-profile/development/submodules/android-profile/social-providers/android-profile-twitter/src" isTestSource="false" />
+    </content>
     <content url="file://$MODULE_DIR$/soomla-native/projects/cocos2dx-android-profile/src">
       <sourceFolder url="file://$MODULE_DIR$/soomla-native/projects/cocos2dx-android-profile/src" isTestSource="false" />
     </content>
@@ -27,6 +33,24 @@
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/../build/android/simple.facebook-2.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../../../extensions/cocos2dx-profile/build/android/twitter4j-asyc-4.0.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../../../extensions/cocos2dx-profile/build/android/twitter4j-core-4.0.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

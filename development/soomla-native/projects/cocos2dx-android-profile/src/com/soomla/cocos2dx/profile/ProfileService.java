@@ -34,6 +34,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.ref.WeakReference;
+import java.security.Provider;
+import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * Profile defines all the glue between Cocos2dx-Profile and iOS Profile
@@ -100,9 +103,10 @@ public class ProfileService extends AbstractSoomlaService {
                 ProfileService.getInstance().init();
 
                 String customSecret = ParamsProvider.getInstance().getParams("common").optString("customSecret");
+                HashMap<IProvider.Provider, HashMap<String, String>> providerParams = parseProviderParams(params.optJSONObject("params"));
                 SoomlaUtils.LogDebug("SOOMLA", "initialize is called from java!");
                 Soomla.initialize(customSecret);
-                SoomlaProfile.getInstance().initialize();
+                SoomlaProfile.getInstance().initialize(providerParams);
             }
         });
 
@@ -278,6 +282,34 @@ public class ProfileService extends AbstractSoomlaService {
 
         ndkGlue.registerExceptionHandler(ProviderNotFoundException.class.getName(), exceptionHandler);
         ndkGlue.registerExceptionHandler(UserProfileNotFoundException.class.getName(), exceptionHandler);
+    }
+
+    private HashMap<IProvider.Provider, HashMap<String, String>> parseProviderParams(JSONObject sentParams) {
+        if (sentParams == null) {
+            SoomlaUtils.LogDebug("SOOMLA", "no provider params were sent");
+            return null;
+        }
+
+        HashMap<IProvider.Provider, HashMap<String, String>> result = new HashMap<IProvider.Provider, HashMap<String, String>>();
+        Iterator keysIterator = sentParams.keys();
+        while (keysIterator.hasNext()) {
+            String providerStr = (String)keysIterator.next();
+            JSONObject paramsEntry = sentParams.optJSONObject(providerStr);
+
+            if (paramsEntry != null) {
+                HashMap<String, String> currentProviderParams = new HashMap<String, String>();
+                Iterator innerKeysIterator = paramsEntry.keys();
+                while (innerKeysIterator.hasNext()) {
+                    String innerKey = (String)innerKeysIterator.next();
+                    String innerValue = paramsEntry.optString(innerKey);
+                    currentProviderParams.put(innerKey, innerValue);
+                }
+
+                result.put(IProvider.Provider.getEnum(providerStr), currentProviderParams);
+            }
+        }
+
+        return result;
     }
 
     /**

@@ -44,6 +44,17 @@
     return self;
 }
 
+- (id)initWithProviderParams:(NSDictionary *)providerParams {
+    self = [super init];
+    if (self) {
+        [UserProfileEventHandling observeAllEventsWithObserver:[NdkGlue sharedInstance]
+                                                  withSelector:@selector(dispatchNdkCallback:)];
+        [[SoomlaProfile getInstance] initialize:providerParams];
+    }
+    
+    return self;
+}
+
 + (void)initDomainHelper {
 
     [[DomainHelper sharedDomainHelper] registerType:(NSString *)@"UserProfile"
@@ -58,7 +69,18 @@
 
     /* -= Call handlers =- */
     [ndkGlue registerCallHandlerForKey:@"CCProfileService::init" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
-        [[ProfileService sharedProfileService] init];
+        NSDictionary *providerParams = [parameters objectForKey:@"params"];
+        if (providerParams) {
+            NSMutableDictionary *parsedParams = [NSMutableDictionary dictionary];
+            for (NSString* key in providerParams) {
+                id value = providerParams[key];
+                [parsedParams setObject:value forKey:@([UserProfileUtils providerStringToEnum:key])];
+            }
+            [[ProfileService sharedProfileService] initWithProviderParams:parsedParams];
+        }
+        else {
+            [[ProfileService sharedProfileService] init];
+        }
     }];
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::login" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];

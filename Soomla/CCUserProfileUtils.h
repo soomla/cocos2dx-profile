@@ -29,18 +29,9 @@ namespace soomla {
      Lists all the supported or to-be supported social platforms (providers)
      */
     enum CCProvider {
-        FACEBOOK,
-        FOURSQUARE,
-        GOOGLE,
-        LINKEDIN,
-        MYSPACE,
-        TWITTER,
-        YAHOO,
-        SALESFORCE,
-        YAMMER,
-        RUNKEEPER,
-        INSTAGRAM,
-        FLICKR
+        FACEBOOK = 0,
+        GOOGLE = 2,
+        TWITTER = 5
     };
     
     /**

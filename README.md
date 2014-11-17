@@ -12,6 +12,8 @@ cocos2dx-profile
 
 *SOOMLA's Profile Module for Cocos2d-x*
 
+**November 16th**: v1.0 **cocos2dx-profile** supports Facebook, Google+ and Twitter
+
 * More documentation and information in SOOMLA's [Knowledge Base](http://know.soom.la/docs/platforms/cocos2dx/)  
 * For issues you can use the [issues](https://github.com/soomla/cocos2dx-profile/issues) section or SOOMLA's [Answers Website](http://answers.soom.la).  cocos2dx-profile currently supports all Cocos2d-x 3.x versions. cocos2dx-profile currently supports Facebook only.
 
@@ -291,8 +293,6 @@ The `CCProfileEventDispatcher` class is where all events go through. To handle v
 ```cpp
 soomla::CCProfileEventDispatcher::getInstance()->addEventHandler(profileEventHandler);
 ```
-
-## Error Handling
 
 Since Cocos2d-x doesn't support exceptions, we use a different method to catch and work with exceptions on the native side. All functions that raise an exception on the native side have an additional `CCError*` parameter to them. In order to know if an exception was raised, send a reference to `CCError*` to the function, and inspect it after running.
 

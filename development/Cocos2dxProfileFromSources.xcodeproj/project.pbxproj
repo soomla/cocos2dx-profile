@@ -41,6 +41,24 @@
 		F825C19C19B3209F00A2CABB /* UserProfileEventHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = F825C17519B3209F00A2CABB /* UserProfileEventHandling.m */; };
 		F825C19D19B3209F00A2CABB /* UserProfileUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = F825C17619B3209F00A2CABB /* UserProfileUtils.h */; };
 		F825C19E19B3209F00A2CABB /* UserProfileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F825C17719B3209F00A2CABB /* UserProfileUtils.m */; };
+		F82F0C2C1A1376DD00D1B34A /* SoomlaiOSProfileTwitter.pch in Headers */ = {isa = PBXBuildFile; fileRef = F82F0C251A1376DD00D1B34A /* SoomlaiOSProfileTwitter.pch */; };
+		F82F0C2D1A1376DD00D1B34A /* SoomlaTwitter.h in Headers */ = {isa = PBXBuildFile; fileRef = F82F0C261A1376DD00D1B34A /* SoomlaTwitter.h */; };
+		F82F0C2E1A1376DD00D1B34A /* SoomlaTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = F82F0C271A1376DD00D1B34A /* SoomlaTwitter.m */; };
+		F82F0C2F1A1376DD00D1B34A /* SoomlaGooglePlus.h in Headers */ = {isa = PBXBuildFile; fileRef = F82F0C291A1376DD00D1B34A /* SoomlaGooglePlus.h */; };
+		F82F0C301A1376DD00D1B34A /* SoomlaGooglePlus.m in Sources */ = {isa = PBXBuildFile; fileRef = F82F0C2A1A1376DD00D1B34A /* SoomlaGooglePlus.m */; };
+		F82F0C311A1376DD00D1B34A /* SoomlaiOSProfileGoogle.pch in Headers */ = {isa = PBXBuildFile; fileRef = F82F0C2B1A1376DD00D1B34A /* SoomlaiOSProfileGoogle.pch */; };
+		F82F0C351A13773100D1B34A /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82F0C321A13773100D1B34A /* GooglePlus.framework */; };
+		F82F0C371A13773100D1B34A /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82F0C341A13773100D1B34A /* GoogleOpenSource.framework */; };
+		F82F0C421A13776700D1B34A /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82F0C381A13776700D1B34A /* Accounts.framework */; };
+		F82F0C431A13776700D1B34A /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82F0C391A13776700D1B34A /* AddressBook.framework */; };
+		F82F0C441A13776700D1B34A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82F0C3A1A13776700D1B34A /* CoreGraphics.framework */; };
+		F82F0C451A13776800D1B34A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82F0C3B1A13776700D1B34A /* CoreLocation.framework */; };
+		F82F0C461A13776800D1B34A /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82F0C3C1A13776700D1B34A /* CoreText.framework */; };
+		F82F0C471A13776800D1B34A /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82F0C3D1A13776700D1B34A /* MediaPlayer.framework */; };
+		F82F0C481A13776800D1B34A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82F0C3E1A13776700D1B34A /* Security.framework */; };
+		F82F0C491A13776800D1B34A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82F0C3F1A13776700D1B34A /* Social.framework */; };
+		F82F0C4A1A13776800D1B34A /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82F0C401A13776700D1B34A /* Twitter.framework */; };
+		F82F0C4B1A13776800D1B34A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82F0C411A13776700D1B34A /* UIKit.framework */; };
 		F84F251D19C86BFD00DB0905 /* CCSoomlaProfile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F84F251B19C86BFD00DB0905 /* CCSoomlaProfile.cpp */; };
 		F84F251E19C86BFD00DB0905 /* CCSoomlaProfile.h in Headers */ = {isa = PBXBuildFile; fileRef = F84F251C19C86BFD00DB0905 /* CCSoomlaProfile.h */; };
 		F87488211A0007F9005952C9 /* SoomlaFacebook.h in Headers */ = {isa = PBXBuildFile; fileRef = F874881E1A0007F9005952C9 /* SoomlaFacebook.h */; };
@@ -118,6 +136,24 @@
 		F825C17519B3209F00A2CABB /* UserProfileEventHandling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileEventHandling.m; sourceTree = "<group>"; };
 		F825C17619B3209F00A2CABB /* UserProfileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileUtils.h; sourceTree = "<group>"; };
 		F825C17719B3209F00A2CABB /* UserProfileUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileUtils.m; sourceTree = "<group>"; };
+		F82F0C251A1376DD00D1B34A /* SoomlaiOSProfileTwitter.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoomlaiOSProfileTwitter.pch; sourceTree = "<group>"; };
+		F82F0C261A1376DD00D1B34A /* SoomlaTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoomlaTwitter.h; sourceTree = "<group>"; };
+		F82F0C271A1376DD00D1B34A /* SoomlaTwitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoomlaTwitter.m; sourceTree = "<group>"; };
+		F82F0C291A1376DD00D1B34A /* SoomlaGooglePlus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoomlaGooglePlus.h; sourceTree = "<group>"; };
+		F82F0C2A1A1376DD00D1B34A /* SoomlaGooglePlus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoomlaGooglePlus.m; sourceTree = "<group>"; };
+		F82F0C2B1A1376DD00D1B34A /* SoomlaiOSProfileGoogle.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoomlaiOSProfileGoogle.pch; sourceTree = "<group>"; };
+		F82F0C321A13773100D1B34A /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = "submodules/ios-profile/social-providers/ios-profile-google/libs/GooglePlus.framework"; sourceTree = "<group>"; };
+		F82F0C341A13773100D1B34A /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = "submodules/ios-profile/social-providers/ios-profile-google/libs/GoogleOpenSource.framework"; sourceTree = "<group>"; };
+		F82F0C381A13776700D1B34A /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		F82F0C391A13776700D1B34A /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		F82F0C3A1A13776700D1B34A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F82F0C3B1A13776700D1B34A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F82F0C3C1A13776700D1B34A /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		F82F0C3D1A13776700D1B34A /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		F82F0C3E1A13776700D1B34A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		F82F0C3F1A13776700D1B34A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		F82F0C401A13776700D1B34A /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		F82F0C411A13776700D1B34A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F84F251B19C86BFD00DB0905 /* CCSoomlaProfile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSoomlaProfile.cpp; sourceTree = "<group>"; };
 		F84F251C19C86BFD00DB0905 /* CCSoomlaProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSoomlaProfile.h; sourceTree = "<group>"; };
 		F874881E1A0007F9005952C9 /* SoomlaFacebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoomlaFacebook.h; sourceTree = "<group>"; };
@@ -163,18 +199,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8B876B51A13904000372AF4 /* Accounts.framework in Frameworks */,
-				F8B876B61A13904000372AF4 /* AddressBook.framework in Frameworks */,
-				F8B876B71A13904000372AF4 /* AssetsLibrary.framework in Frameworks */,
-				F8B876B81A13904000372AF4 /* CoreGraphics.framework in Frameworks */,
-				F8B876B91A13904000372AF4 /* CoreLocation.framework in Frameworks */,
-				F8B876BA1A13904000372AF4 /* MediaPlayer.framework in Frameworks */,
-				F8B876BB1A13904000372AF4 /* Security.framework in Frameworks */,
-				F8B876BC1A13904000372AF4 /* Social.framework in Frameworks */,
-				F8B876BD1A13904000372AF4 /* Twitter.framework in Frameworks */,
-				F8B876BE1A13904000372AF4 /* UIKit.framework in Frameworks */,
-				F8B876A91A13900000372AF4 /* GoogleOpenSource.framework in Frameworks */,
-				F8B876AA1A13900000372AF4 /* GooglePlus.framework in Frameworks */,
+				F82F0C421A13776700D1B34A /* Accounts.framework in Frameworks */,
+				F82F0C431A13776700D1B34A /* AddressBook.framework in Frameworks */,
+				F82F0C441A13776700D1B34A /* CoreGraphics.framework in Frameworks */,
+				F82F0C451A13776800D1B34A /* CoreLocation.framework in Frameworks */,
+				F82F0C461A13776800D1B34A /* CoreText.framework in Frameworks */,
+				F82F0C471A13776800D1B34A /* MediaPlayer.framework in Frameworks */,
+				F82F0C481A13776800D1B34A /* Security.framework in Frameworks */,
+				F82F0C491A13776800D1B34A /* Social.framework in Frameworks */,
+				F82F0C4A1A13776800D1B34A /* Twitter.framework in Frameworks */,
+				F82F0C4B1A13776800D1B34A /* UIKit.framework in Frameworks */,
+				F82F0C351A13773100D1B34A /* GooglePlus.framework in Frameworks */,
+				F82F0C371A13773100D1B34A /* GoogleOpenSource.framework in Frameworks */,
 				C0B3C5F3168C6D0C00161FAA /* Foundation.framework in Frameworks */,
 				F87488251A000814005952C9 /* FacebookSDK.framework in Frameworks */,
 			);
@@ -208,18 +244,18 @@
 		C0B3C5F1168C6D0C00161FAA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F8B876AB1A13903F00372AF4 /* Accounts.framework */,
-				F8B876AC1A13904000372AF4 /* AddressBook.framework */,
-				F8B876AD1A13904000372AF4 /* AssetsLibrary.framework */,
-				F8B876AE1A13904000372AF4 /* CoreGraphics.framework */,
-				F8B876AF1A13904000372AF4 /* CoreLocation.framework */,
-				F8B876B01A13904000372AF4 /* MediaPlayer.framework */,
-				F8B876B11A13904000372AF4 /* Security.framework */,
-				F8B876B21A13904000372AF4 /* Social.framework */,
-				F8B876B31A13904000372AF4 /* Twitter.framework */,
-				F8B876B41A13904000372AF4 /* UIKit.framework */,
-				F8B876A71A13900000372AF4 /* GoogleOpenSource.framework */,
-				F8B876A81A13900000372AF4 /* GooglePlus.framework */,
+				F82F0C381A13776700D1B34A /* Accounts.framework */,
+				F82F0C391A13776700D1B34A /* AddressBook.framework */,
+				F82F0C3A1A13776700D1B34A /* CoreGraphics.framework */,
+				F82F0C3B1A13776700D1B34A /* CoreLocation.framework */,
+				F82F0C3C1A13776700D1B34A /* CoreText.framework */,
+				F82F0C3D1A13776700D1B34A /* MediaPlayer.framework */,
+				F82F0C3E1A13776700D1B34A /* Security.framework */,
+				F82F0C3F1A13776700D1B34A /* Social.framework */,
+				F82F0C401A13776700D1B34A /* Twitter.framework */,
+				F82F0C411A13776700D1B34A /* UIKit.framework */,
+				F82F0C321A13773100D1B34A /* GooglePlus.framework */,
+				F82F0C341A13773100D1B34A /* GoogleOpenSource.framework */,
 				F87488241A000814005952C9 /* FacebookSDK.framework */,
 				C0B3C5F2168C6D0C00161FAA /* Foundation.framework */,
 			);
@@ -322,6 +358,28 @@
 			path = social;
 			sourceTree = "<group>";
 		};
+		F82F0C241A1376DD00D1B34A /* SoomlaiOSProfileTwitter */ = {
+			isa = PBXGroup;
+			children = (
+				F82F0C251A1376DD00D1B34A /* SoomlaiOSProfileTwitter.pch */,
+				F82F0C261A1376DD00D1B34A /* SoomlaTwitter.h */,
+				F82F0C271A1376DD00D1B34A /* SoomlaTwitter.m */,
+			);
+			name = SoomlaiOSProfileTwitter;
+			path = "submodules/ios-profile/social-providers/ios-profile-twitter/SoomlaiOSProfileTwitter";
+			sourceTree = "<group>";
+		};
+		F82F0C281A1376DD00D1B34A /* SoomlaiOSProfileGoogle */ = {
+			isa = PBXGroup;
+			children = (
+				F82F0C291A1376DD00D1B34A /* SoomlaGooglePlus.h */,
+				F82F0C2A1A1376DD00D1B34A /* SoomlaGooglePlus.m */,
+				F82F0C2B1A1376DD00D1B34A /* SoomlaiOSProfileGoogle.pch */,
+			);
+			name = SoomlaiOSProfileGoogle;
+			path = "submodules/ios-profile/social-providers/ios-profile-google/SoomlaiOSProfileGoogle";
+			sourceTree = "<group>";
+		};
 		F874881D1A0007F9005952C9 /* SoomlaiOSProfileFacebook */ = {
 			isa = PBXGroup;
 			children = (
@@ -399,7 +457,7 @@
 				F87488211A0007F9005952C9 /* SoomlaFacebook.h in Headers */,
 				F825C19019B3209F00A2CABB /* ProviderLoader.h in Headers */,
 				F8DBEC8B19BDB38D0093252C /* CCUserProfileUtils.h in Headers */,
-				F8B876A21A138FC000372AF4 /* SoomlaTwitter.h in Headers */,
+				F82F0C2D1A1376DD00D1B34A /* SoomlaTwitter.h in Headers */,
 				F8DBEC8E19BDB38D0093252C /* CCUserProfile.h in Headers */,
 				F825C17819B3209F00A2CABB /* IAuthProvider.h in Headers */,
 				F825C18C19B3209F00A2CABB /* ProviderNotFoundException.h in Headers */,
@@ -411,12 +469,12 @@
 				F825C18E19B3209F00A2CABB /* UserProfileNotFoundException.h in Headers */,
 				F825C19919B3209F00A2CABB /* SoomlaProfile.h in Headers */,
 				F8DBEC8019BDB38D0093252C /* CCProfileConsts.h in Headers */,
-				F8B876A61A138FC000372AF4 /* SoomlaiOSProfileGoogle.pch in Headers */,
+				F82F0C311A1376DD00D1B34A /* SoomlaiOSProfileGoogle.pch in Headers */,
 				F8DBEC8919BDB38D0093252C /* CCSocialActionUtils.h in Headers */,
 				F825C17F19B3209F00A2CABB /* UserProfileStorage.h in Headers */,
 				F825C19319B3209F00A2CABB /* SocialCallbacks.h in Headers */,
 				F84F251E19C86BFD00DB0905 /* CCSoomlaProfile.h in Headers */,
-				F8B876A11A138FC000372AF4 /* SoomlaiOSProfileTwitter.pch in Headers */,
+				F82F0C2C1A1376DD00D1B34A /* SoomlaiOSProfileTwitter.pch in Headers */,
 				F8DBEC8519BDB38D0093252C /* CCProfileEventHandler.h in Headers */,
 				F825C0F119B31D8100A2CABB /* ProfileService.h in Headers */,
 				F825C19219B3209F00A2CABB /* ISocialProvider.h in Headers */,
@@ -427,7 +485,7 @@
 				F825C17B19B3209F00A2CABB /* PJSONConsts.h in Headers */,
 				F825C19B19B3209F00A2CABB /* UserProfileEventHandling.h in Headers */,
 				F8DBEC8719BDB38D0093252C /* CCProfileService.h in Headers */,
-				F8B876A41A138FC000372AF4 /* SoomlaGooglePlus.h in Headers */,
+				F82F0C2F1A1376DD00D1B34A /* SoomlaGooglePlus.h in Headers */,
 				F825C19619B3209F00A2CABB /* SocialController.h in Headers */,
 				372B70DFA5CD93E38AFB90C3 /* CCSimpleProfileEventHandler.h in Headers */,
 			);
@@ -485,13 +543,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F87488221A0007F9005952C9 /* SoomlaFacebook.m in Sources */,
-				F8B876A51A138FC000372AF4 /* SoomlaGooglePlus.m in Sources */,
+				F82F0C301A1376DD00D1B34A /* SoomlaGooglePlus.m in Sources */,
 				F8DBEC8D19BDB38D0093252C /* CCUserProfile.cpp in Sources */,
 				F825C18019B3209F00A2CABB /* UserProfileStorage.m in Sources */,
 				F8DBEC7F19BDB38D0093252C /* CCProfileConsts.cpp in Sources */,
 				F825C19A19B3209F00A2CABB /* SoomlaProfile.m in Sources */,
 				F825C19119B3209F00A2CABB /* ProviderLoader.m in Sources */,
-				F8B876A31A138FC000372AF4 /* SoomlaTwitter.m in Sources */,
+				F82F0C2E1A1376DD00D1B34A /* SoomlaTwitter.m in Sources */,
 				F8DBEC8619BDB38D0093252C /* CCProfileService.cpp in Sources */,
 				F825C17A19B3209F00A2CABB /* AuthController.m in Sources */,
 				F825C19E19B3209F00A2CABB /* UserProfileUtils.m in Sources */,
@@ -591,12 +649,13 @@
 					"$(SRCROOT)/../../../cocos2dx/platform/ios",
 					"$(SRCROOT)/../../../cocos2dx/platform/ios/Simulation",
 					"$(SRCROOT)/../../../external/jansson",
+					"$(SRCROOT)/submodules/ios-profile/social-providers/ios-profile-twitter/STTwitter/**",
 					"$(SRCROOT)/../../soomla-cocos2dx-core/Soomla/**",
 					"$(SRCROOT)/../../soomla-cocos2dx-core/development/soomla-native/projects/cocos2dx-ios-core/CoreCocos2dx/**",
 					"$(SRCROOT)/../../soomla-cocos2dx-core/development/submodules/soomla-ios-core/SoomlaiOSCore/**",
 					"$(SRCROOT)/submodules/ios-profile/social-providers/ios-profile-twitter/STTwitter/**",
 				);
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/submodules/ios-profile/social-providers/ios-profile-twitter/libs";
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -634,12 +693,13 @@
 					"$(SRCROOT)/../../../cocos2dx/platform/ios",
 					"$(SRCROOT)/../../../cocos2dx/platform/ios/Simulation",
 					"$(SRCROOT)/../../../external/jansson",
+					"$(SRCROOT)/submodules/ios-profile/social-providers/ios-profile-twitter/STTwitter/**",
 					"$(SRCROOT)/../../soomla-cocos2dx-core/Soomla/**",
 					"$(SRCROOT)/../../soomla-cocos2dx-core/development/soomla-native/projects/cocos2dx-ios-core/CoreCocos2dx/**",
 					"$(SRCROOT)/../../soomla-cocos2dx-core/development/submodules/soomla-ios-core/SoomlaiOSCore/**",
 					"$(SRCROOT)/submodules/ios-profile/social-providers/ios-profile-twitter/STTwitter/**",
 				);
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/submodules/ios-profile/social-providers/ios-profile-twitter/libs";
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";

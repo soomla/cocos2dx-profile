@@ -17,6 +17,12 @@
     <content url="file://$MODULE_DIR$/submodules/android-profile/social-providers/android-profile-facebook/src">
       <sourceFolder url="file://$MODULE_DIR$/submodules/android-profile/social-providers/android-profile-facebook/src" isTestSource="false" />
     </content>
+    <content url="file://$MODULE_DIR$/submodules/android-profile/social-providers/android-profile-google/src">
+      <sourceFolder url="file://$MODULE_DIR$/submodules/android-profile/social-providers/android-profile-google/src" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/submodules/android-profile/social-providers/android-profile-twitter/src">
+      <sourceFolder url="file://$MODULE_DIR$/submodules/android-profile/social-providers/android-profile-twitter/src" isTestSource="false" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="Cocos2dxCoreFromSources" />
@@ -41,7 +47,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../../../../extensions/cocos2dx-profile/build/android/twitter4j-asyc-4.0.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/../build/android/twitter4j-asyc-4.0.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -50,7 +56,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../../../../extensions/cocos2dx-profile/build/android/twitter4j-core-4.0.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/../build/android/twitter4j-core-4.0.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

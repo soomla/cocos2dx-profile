@@ -10,30 +10,26 @@
 	<string>Cocos2dxProfileFromSources</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>3FE41E37-3E7F-460E-BEEC-3EC61DB1DDB0</key>
-		<string>ssh://github.com/soomla/ios-profile.git</string>
 		<key>852ED3691A47A99B0D19C820A500AE9772B2A44E</key>
 		<string>https://github.com/cocos2d/cocos2d-x.git</string>
 		<key>87DCEF5738C2BFDC3842EBFF7DF77768E197B424</key>
 		<string>github.com:soomla/ios-profile.git</string>
 		<key>DC12E607C51B19A2F89A4800A29AF2E834D48132</key>
-		<string>ssh://github.com/soomla/cocos2dx-profile.git</string>
+		<string>github.com:soomla/cocos2dx-profile.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>development/Cocos2dxProfileFromSources.xcodeproj/project.xcworkspace</string>
+	<string>development/Cocos2dxProfileFromSources.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>3FE41E37-3E7F-460E-BEEC-3EC61DB1DDB0</key>
-		<string>../../../../../../submodules/ios-profile</string>
 		<key>852ED3691A47A99B0D19C820A500AE9772B2A44E</key>
 		<string>../../../../..</string>
 		<key>87DCEF5738C2BFDC3842EBFF7DF77768E197B424</key>
-		<string>../../../development/submodules/ios-profile/</string>
+		<string>../../..development/submodules/ios-profile/</string>
 		<key>DC12E607C51B19A2F89A4800A29AF2E834D48132</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/soomla/cocos2dx-profile.git</string>
+	<string>github.com:soomla/cocos2dx-profile.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -55,14 +51,6 @@
 			<string>DC12E607C51B19A2F89A4800A29AF2E834D48132</string>
 			<key>IDESourceControlWCCName</key>
 			<string>cocos2dx-profile</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>3FE41E37-3E7F-460E-BEEC-3EC61DB1DDB0</string>
-			<key>IDESourceControlWCCName</key>
-			<string>ios-profile</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>

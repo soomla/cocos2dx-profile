@@ -162,11 +162,11 @@ In your XCode project, perform the following steps:
 
 1. The following steps should be done according to the target social network:
 
-  1. **Facebook** - Follow the integration steps in [ios-profile for Facebook](https://github.com/soomla/ios-profile#facebook)
+    - **Facebook** - Follow the integration steps in [ios-profile for Facebook](https://github.com/soomla/ios-profile#facebook)
 
-  1. **Google+** - Follow the integration steps in [ios-profile for Google+](https://github.com/soomla/ios-profile#google)
+    - **Google+** - Follow the integration steps in [ios-profile for Google+](https://github.com/soomla/ios-profile#google)
 
-  1. **Twitter** - Follow the integration steps in [ios-profile for Twitter](https://github.com/soomla/ios-profile#twitter)
+    - **Twitter** - Follow the integration steps in [ios-profile for Twitter](https://github.com/soomla/ios-profile#twitter)
 
 > To see a working example, try our [cocos2dx-profile-example](https://github.com/soomla/cocos2dx-profile-example) project
 
@@ -237,11 +237,11 @@ That's it! Now all you have to do is build your XCode project and run your game 
 
 > NOTE: All jars for social providers are located at the following path: `extensions/cocos2dx-profile/build/android`
 
-  1. **Facebook** - Follow the integration steps in [android-profile for Facebook](https://github.com/soomla/android-profile#facebook)
+  - **Facebook** - Follow the integration steps in [android-profile for Facebook](https://github.com/soomla/android-profile#facebook)
 
-  1. **Google+** - Follow the integration steps in [android-profile for Google+](https://github.com/soomla/android-profile#google-plus)
+  - **Google+** - Follow the integration steps in [android-profile for Google+](https://github.com/soomla/android-profile#google-plus)
 
-  1. **Twitter** - Follow the integration steps in [android-profile for Twitter](https://github.com/soomla/android-profile#twitter)
+  - **Twitter** - Follow the integration steps in [android-profile for Twitter](https://github.com/soomla/android-profile#twitter)
 
 > To see a working example, try our [cocos2dx-profile-example](https://github.com/soomla/cocos2dx-profile-example) project
 

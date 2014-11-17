@@ -116,29 +116,29 @@ In your XCode project, perform the following steps:
     1. Add the Products (\*.a) of these projects to **Build Phases->Link Binary With Libraries**.
 
 1. Add the following directories to **Build Settings->Header Search Paths** (with `recursive` option):
-> This article assumes you have a `cocos2d` folder under your project folder and which either contains the Cocos2d-x framework, or links to to its root folder
+    > This article assumes you have a `cocos2d` folder under your project folder and which either contains the Cocos2d-x framework, or links to to its root folder
 
- - `$(SRCROOT)/../cocos2d/extensions/soomla-cocos2dx-core/Soomla`
- - `$(SRCROOT)/../cocos2d/extensions/soomla-cocos2dx-core/build/ios/headers`
- - `$(SRCROOT)/../cocos2d/extensions/cocos2dx-profile/Soomla`
- - `$(SRCROOT)/../cocos2d/extensions/cocos2dx-profile/build/ios/headers`
+    - `$(SRCROOT)/../cocos2d/extensions/soomla-cocos2dx-core/Soomla`
+    - `$(SRCROOT)/../cocos2d/extensions/soomla-cocos2dx-core/build/ios/headers`
+    - `$(SRCROOT)/../cocos2d/extensions/cocos2dx-profile/Soomla`
+    - `$(SRCROOT)/../cocos2d/extensions/cocos2dx-profile/build/ios/headers`
 
 1. To register services on the native application (`AppController`):
 
-  1. Import the following headers:
+    1. Import the following headers:
     ```objective-c
     #import "ServiceManager.h"
     #import "ProfileService.h"
     #import "SoomlaProfile.h"
     ```
 
-  1. Register the native `ProfileService` by adding:
+    1. Register the native `ProfileService` by adding:
     ```objective-c
     [[ServiceManager sharedServiceManager] registerService:[ProfileService sharedProfileService]];
     ```
     at the beginning of the method `application: didFinishLaunchingWithOptions:` of `AppController`.
 
-  1. To support browser-based authentication add the following method in your `AppController` (for more information see [ios-profile](https://github.com/soomla/ios-profile#browser-based-authentication)):
+    1. To support browser-based authentication add the following method in your `AppController` (for more information see [ios-profile](https://github.com/soomla/ios-profile#browser-based-authentication)):
     ```objective-c
       - (BOOL)application:(UIApplication *)application
                   openURL:(NSURL *)url
@@ -171,6 +171,7 @@ In your XCode project, perform the following steps:
 > To see a working example, try our [cocos2dx-profile-example](https://github.com/soomla/cocos2dx-profile-example) project
 
 That's it! Now all you have to do is build your XCode project and run your game with cocos2dx-profile.
+
 
 #### Instructions for Android
 

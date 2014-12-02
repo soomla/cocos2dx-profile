@@ -1,4 +1,4 @@
-### v1.0.1 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.0.0...v1.0.1)
+### v1.0.1 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/cocos2dx-v2-v1.0.0...cocos2dx-v2-v1.0.1)
 
 * Changes
   * Updating to new native submodules

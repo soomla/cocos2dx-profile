@@ -10,11 +10,8 @@
 	<string>Cocos2dXProfile</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-<<<<<<< HEAD
-=======
 		<key>852ED3691A47A99B0D19C820A500AE9772B2A44E</key>
 		<string>https://github.com/cocos2d/cocos2d-x.git</string>
->>>>>>> origin/twgoogle
 		<key>DC12E607C51B19A2F89A4800A29AF2E834D48132</key>
 		<string>github.com:soomla/cocos2dx-profile.git</string>
 	</dict>
@@ -22,11 +19,8 @@
 	<string>Cocos2dXProfile.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-<<<<<<< HEAD
-=======
 		<key>852ED3691A47A99B0D19C820A500AE9772B2A44E</key>
-		<string>../../../..</string>
->>>>>>> origin/twgoogle
+		<string>../../..</string>
 		<key>DC12E607C51B19A2F89A4800A29AF2E834D48132</key>
 		<string>../..</string>
 	</dict>
@@ -42,17 +36,14 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-<<<<<<< HEAD
-=======
 			<string>852ED3691A47A99B0D19C820A500AE9772B2A44E</string>
 			<key>IDESourceControlWCCName</key>
-			<string>..</string>
+			<string></string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
->>>>>>> origin/twgoogle
 			<string>DC12E607C51B19A2F89A4800A29AF2E834D48132</string>
 			<key>IDESourceControlWCCName</key>
 			<string>cocos2dx-profile</string>

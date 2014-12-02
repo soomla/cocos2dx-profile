@@ -4,7 +4,7 @@
 #import "Reward.h"
 #import "DomainFactory.h"
 #import "SoomlaProfile.h"
-#import "UserProfileEventHandling.h"
+#import "ProfileEventHandling.h"
 #import "ProviderNotFoundException.h"
 #import "UserProfile.h"
 #import "DomainHelper.h"
@@ -36,7 +36,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-        [UserProfileEventHandling observeAllEventsWithObserver:[NdkGlue sharedInstance]
+        [ProfileEventHandling observeAllEventsWithObserver:[NdkGlue sharedInstance]
                                                   withSelector:@selector(dispatchNdkCallback:)];
         [[SoomlaProfile getInstance] initialize];
     }
@@ -47,7 +47,7 @@
 - (id)initWithProviderParams:(NSDictionary *)providerParams {
     self = [super init];
     if (self) {
-        [UserProfileEventHandling observeAllEventsWithObserver:[NdkGlue sharedInstance]
+        [ProfileEventHandling observeAllEventsWithObserver:[NdkGlue sharedInstance]
                                                   withSelector:@selector(dispatchNdkCallback:)];
         [[SoomlaProfile getInstance] initialize:providerParams];
     }

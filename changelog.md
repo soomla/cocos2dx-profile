@@ -1,4 +1,9 @@
-### v1.0.0 (16.11.14)
+### v1.0.1 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/cocos2dx-v2-v1.0.0...cocos2dx-v2-v1.0.1)
+
+* Changes
+  * Updating to new native submodules
+
+### v1.0.0
 * Features
   * The module is integrated with Facebook, Google Plus and Twitter
   * Ability to preform following actions on multiple social networks (parallel):

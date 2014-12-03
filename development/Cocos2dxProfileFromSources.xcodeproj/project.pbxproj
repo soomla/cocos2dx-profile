@@ -37,8 +37,6 @@
 		F825C19819B3209F00A2CABB /* SoomlaiOSProfile-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = F825C17119B3209F00A2CABB /* SoomlaiOSProfile-Prefix.pch */; };
 		F825C19919B3209F00A2CABB /* SoomlaProfile.h in Headers */ = {isa = PBXBuildFile; fileRef = F825C17219B3209F00A2CABB /* SoomlaProfile.h */; };
 		F825C19A19B3209F00A2CABB /* SoomlaProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = F825C17319B3209F00A2CABB /* SoomlaProfile.m */; };
-		F825C19B19B3209F00A2CABB /* UserProfileEventHandling.h in Headers */ = {isa = PBXBuildFile; fileRef = F825C17419B3209F00A2CABB /* UserProfileEventHandling.h */; };
-		F825C19C19B3209F00A2CABB /* UserProfileEventHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = F825C17519B3209F00A2CABB /* UserProfileEventHandling.m */; };
 		F825C19D19B3209F00A2CABB /* UserProfileUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = F825C17619B3209F00A2CABB /* UserProfileUtils.h */; };
 		F825C19E19B3209F00A2CABB /* UserProfileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F825C17719B3209F00A2CABB /* UserProfileUtils.m */; };
 		F82F0C2C1A1376DD00D1B34A /* SoomlaiOSProfileTwitter.pch in Headers */ = {isa = PBXBuildFile; fileRef = F82F0C251A1376DD00D1B34A /* SoomlaiOSProfileTwitter.pch */; };
@@ -77,8 +75,8 @@
 		F8DBEC8C19BDB38D0093252C /* Cocos2dxProfile.h in Headers */ = {isa = PBXBuildFile; fileRef = F8DBEC7B19BDB38D0093252C /* Cocos2dxProfile.h */; };
 		F8DBEC8D19BDB38D0093252C /* CCUserProfile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8DBEC7D19BDB38D0093252C /* CCUserProfile.cpp */; };
 		F8DBEC8E19BDB38D0093252C /* CCUserProfile.h in Headers */ = {isa = PBXBuildFile; fileRef = F8DBEC7E19BDB38D0093252C /* CCUserProfile.h */; };
-		F8F68FDF1A1A544B00B708CB /* SoomlaTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B8769C1A138FC000372AF4 /* SoomlaTwitter.m */; };
-		F8F68FE01A1A544D00B708CB /* SoomlaGooglePlus.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B8769F1A138FC000372AF4 /* SoomlaGooglePlus.m */; };
+		F8F3875C1A2C9EFA00EEA2E2 /* ProfileEventHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F3875A1A2C9EFA00EEA2E2 /* ProfileEventHandling.m */; };
+		F8F3875D1A2C9EFA00EEA2E2 /* ProfileEventHandling.h in Headers */ = {isa = PBXBuildFile; fileRef = F8F3875B1A2C9EFA00EEA2E2 /* ProfileEventHandling.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,8 +112,6 @@
 		F825C17119B3209F00A2CABB /* SoomlaiOSProfile-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SoomlaiOSProfile-Prefix.pch"; sourceTree = "<group>"; };
 		F825C17219B3209F00A2CABB /* SoomlaProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoomlaProfile.h; sourceTree = "<group>"; };
 		F825C17319B3209F00A2CABB /* SoomlaProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoomlaProfile.m; sourceTree = "<group>"; };
-		F825C17419B3209F00A2CABB /* UserProfileEventHandling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileEventHandling.h; sourceTree = "<group>"; };
-		F825C17519B3209F00A2CABB /* UserProfileEventHandling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileEventHandling.m; sourceTree = "<group>"; };
 		F825C17619B3209F00A2CABB /* UserProfileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileUtils.h; sourceTree = "<group>"; };
 		F825C17719B3209F00A2CABB /* UserProfileUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileUtils.m; sourceTree = "<group>"; };
 		F82F0C251A1376DD00D1B34A /* SoomlaiOSProfileTwitter.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoomlaiOSProfileTwitter.pch; sourceTree = "<group>"; };
@@ -160,6 +156,8 @@
 		F8DBEC7B19BDB38D0093252C /* Cocos2dxProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cocos2dxProfile.h; sourceTree = "<group>"; };
 		F8DBEC7D19BDB38D0093252C /* CCUserProfile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCUserProfile.cpp; sourceTree = "<group>"; };
 		F8DBEC7E19BDB38D0093252C /* CCUserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCUserProfile.h; sourceTree = "<group>"; };
+		F8F3875A1A2C9EFA00EEA2E2 /* ProfileEventHandling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileEventHandling.m; sourceTree = "<group>"; };
+		F8F3875B1A2C9EFA00EEA2E2 /* ProfileEventHandling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileEventHandling.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +249,8 @@
 		F825C14919B3209F00A2CABB /* SoomlaiOSProfile */ = {
 			isa = PBXGroup;
 			children = (
+				F8F3875A1A2C9EFA00EEA2E2 /* ProfileEventHandling.m */,
+				F8F3875B1A2C9EFA00EEA2E2 /* ProfileEventHandling.h */,
 				F825C14A19B3209F00A2CABB /* auth */,
 				F825C14C19B3209F00A2CABB /* AuthController.h */,
 				F825C14D19B3209F00A2CABB /* AuthController.m */,
@@ -268,8 +268,6 @@
 				F825C17119B3209F00A2CABB /* SoomlaiOSProfile-Prefix.pch */,
 				F825C17219B3209F00A2CABB /* SoomlaProfile.h */,
 				F825C17319B3209F00A2CABB /* SoomlaProfile.m */,
-				F825C17419B3209F00A2CABB /* UserProfileEventHandling.h */,
-				F825C17519B3209F00A2CABB /* UserProfileEventHandling.m */,
 				F825C17619B3209F00A2CABB /* UserProfileUtils.h */,
 				F825C17719B3209F00A2CABB /* UserProfileUtils.m */,
 			);
@@ -416,6 +414,7 @@
 				F825C19919B3209F00A2CABB /* SoomlaProfile.h in Headers */,
 				F8DBEC8019BDB38D0093252C /* CCProfileConsts.h in Headers */,
 				F82F0C311A1376DD00D1B34A /* SoomlaiOSProfileGoogle.pch in Headers */,
+				F8F3875D1A2C9EFA00EEA2E2 /* ProfileEventHandling.h in Headers */,
 				F8DBEC8919BDB38D0093252C /* CCSocialActionUtils.h in Headers */,
 				F825C17F19B3209F00A2CABB /* UserProfileStorage.h in Headers */,
 				F825C19319B3209F00A2CABB /* SocialCallbacks.h in Headers */,
@@ -429,7 +428,6 @@
 				F8DBEC8C19BDB38D0093252C /* Cocos2dxProfile.h in Headers */,
 				F87488231A0007F9005952C9 /* SoomlaiOSProfileFacebook.pch in Headers */,
 				F825C17B19B3209F00A2CABB /* PJSONConsts.h in Headers */,
-				F825C19B19B3209F00A2CABB /* UserProfileEventHandling.h in Headers */,
 				F8DBEC8719BDB38D0093252C /* CCProfileService.h in Headers */,
 				F82F0C2F1A1376DD00D1B34A /* SoomlaGooglePlus.h in Headers */,
 				F825C19619B3209F00A2CABB /* SocialController.h in Headers */,
@@ -505,9 +503,9 @@
 				F8DBEC8819BDB38D0093252C /* CCSocialActionUtils.cpp in Sources */,
 				F825C18D19B3209F00A2CABB /* ProviderNotFoundException.m in Sources */,
 				F825C19719B3209F00A2CABB /* SocialController.m in Sources */,
+				F8F3875C1A2C9EFA00EEA2E2 /* ProfileEventHandling.m in Sources */,
 				F825C18B19B3209F00A2CABB /* UserProfile.m in Sources */,
 				F84F251D19C86BFD00DB0905 /* CCSoomlaProfile.cpp in Sources */,
-				F825C19C19B3209F00A2CABB /* UserProfileEventHandling.m in Sources */,
 				F8DBEC8319BDB38D0093252C /* CCProfileEventDispatcher.cpp in Sources */,
 				F825C17C19B3209F00A2CABB /* PJSONConsts.m in Sources */,
 				F825C19519B3209F00A2CABB /* SocialActionUtils.m in Sources */,

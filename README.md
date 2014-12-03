@@ -15,7 +15,7 @@ cocos2dx-profile
 **November 16th**: v1.0 **cocos2dx-profile** supports Facebook, Google+ and Twitter
 
 * More documentation and information in SOOMLA's [Knowledge Base](http://know.soom.la/docs/platforms/cocos2dx/)  
-* For issues you can use the [issues](https://github.com/soomla/cocos2dx-profile/issues) section or SOOMLA's [Answers Website](http://answers.soom.la).  cocos2dx-profile currently supports all Cocos2d-x 3.x versions. cocos2dx-profile currently supports Facebook only.
+* For issues you can use the [issues](https://github.com/soomla/cocos2dx-profile/issues) section or SOOMLA's [Answers Website](http://answers.soom.la).  cocos2dx-profile currently supports all Cocos2d-x 3.x versions.
 
 cocos2dx-profile is the Cocos2d-x flavour of SOOMLA's Profile Module. This project uses [android-profile](https://github.com/soomla/android-profile) and [ios-profile](https://github.com/soomla/ios-profile) in order to provide game developers with social network connectivity for their **cocos2d-x** projects.
 
@@ -24,7 +24,7 @@ cocos2dx-profile easily connects to SOOMLA's virtual economy model ([cocos2dx-st
 
 ## Example Project
 
-There is an example project that show how to use cocos2dx-profile:
+There is an example project that shows how to use cocos2dx-profile:
 
 C++: https://github.com/soomla/cocos2dx-profile-example
 
@@ -32,7 +32,7 @@ The example project is still under development but it already has some important
 
 ## Getting Started (With pre-built libraries)
 
-*If you want to develop with sources, refer to the [Working with sources](https://github.com/soomla/cocos2dx-profile#working-with-sources) section below*
+*If you want to develop with sources, refer to the [Working with sources](#working-with-sources) section below*
 
 > If you didn't do that already, clone the Cocos2d-x framework from [here](https://github.com/cocos2d/cocos2d-x) or download it from the [Cocos2d-x website](http://www.cocos2d-x.org/download). Make sure the version you clone is supported by cocos2dx-profile (the tag is the version).
 
@@ -50,7 +50,7 @@ The example project is still under development but it already has some important
     $ git clone git@github.com:vedi/jansson.git external/jansson
     ```
 
-1. Implement your `CCProfileEventHandler` in order to be notified about social network related events. Refer to the [Event Handling](https://github.com/soomla/cocos2dx-profile#event-handling) section for more information.
+1. Implement your `CCProfileEventHandler` in order to be notified about social network related events. Refer to the [Event Handling](#event-handling) section for more information.
 
 1. Initialize `CCServiceManager` and `CCProfileService` with the class you just created, a `customSecret` and other params:
 
@@ -71,7 +71,7 @@ The example project is still under development but it already has some important
 
 1. Note that some social providers need special parameters to be passed in order for them to work:
   1. **Facebook** - No special parameters
-  1. **Google+** - Please provide **Client ID** from the "API&Auth, credentials" section like so:
+  1. **Google+** - Please provide **Client ID** from the "API & Auth, credentials" section like so:
     ```cpp
     CCDictionary *googleParams = CCDictionary::create();
     googleParams->setObject(CCString::create("[YOUR CLIENT ID]"), "clientId");
@@ -177,9 +177,9 @@ That's it! Now all you have to do is build your XCode project and run your game 
 
 1. Import the cocos2dx-profile module into your project's Android.mk by adding the following:
     ```
-    LOCAL_WHOLE_STATIC_LIBRARIES += cocos2dx_profile_static        # add this line along with your other LOCAL_WHOLE_STATIC_LIBRARIES
+    LOCAL_WHOLE_STATIC_LIBRARIES += cocos2dx_profile_static     # add this line along with your other LOCAL_WHOLE_STATIC_LIBRARIES
 
-    $(call import-module, extensions/cocos2dx-profile) # add this line at the end of the file, along with the other import-module calls
+    $(call import-module, extensions/cocos2dx-profile)          # add this line at the end of the file, along with the other import-module calls
     ```
 
 1. Add the following jars to your android project's classpath:
@@ -308,7 +308,7 @@ if (profileError != NULL) {
 }
 ```
 
-You can choose to handle each exception on its own, handle all three at once, or not handle the exceptions at all. The `CCError` parameter is entirely optional, you can pass NULL instead if you do not wish to handle errors, but remember, error handling is *your* responsibility. cocos2dx-profile doesn't do any external error handling (i.e. error handling that uses `CCError`) for you.
+The `CCError` parameter is entirely optional, you can pass NULL instead if you do not wish to handle errors, but remember, error handling is *your* responsibility. cocos2dx-profile doesn't do any external error handling (i.e. error handling that uses `CCError`) for you.
 
 ## Debugging
 
@@ -337,7 +337,7 @@ To see debug messages on iOS, make sure you have also `DEBUG=1` in your Build Se
 
 We try to do all our best to make your contributions as easy as possible. We prepared a "sourced" environment for you if you wish to contribute to SOOMLA projects. In order to get it you should:
 
-1. Fetch submodules of repositories, you can do it recursively cloning them:
+1. Fetch submodules of repositories, you can do it recursively by cloning them:
     ```
     $ git clone --recursive git@github.com:soomla/soomla-cocos2dx-core.git extensions/soomla-cocos2dx-core
     $ git clone --recursive git@github.com:soomla/cocos2dx-profile.git extensions/cocos2dx-profile
@@ -350,7 +350,7 @@ or, if you have repositories already cloned, fetch the submodules with this comm
 
 1. For iOS: Use a sourced versions of linked projects (`extensions/soomla-cocos2dx-core/development/Cocos2dxCoreFromSources.xcodeproj`, `extensions/cocos2dx-profile/development/Cocos2dxProfileFromSources.xcodeproj`)
 
-1. For Android: You can use our "sourced" modules for Android Studio (or IntelliJ IDEA) (`extensions/soomla-cocos2dx-core/development/Cocos2dxCoreFromSources.iml`, `extensions/cocos2dx-profile/development/Cocos2dxProfileFromSources.iml`), just including them to your project.
+1. For Android: You can use our "sourced" modules for Android Studio (or IntelliJ IDEA) (`extensions/soomla-cocos2dx-core/development/Cocos2dxCoreFromSources.iml`, `extensions/cocos2dx-profile/development/Cocos2dxProfileFromSources.iml`), just include them to your project.
 
 Contribution
 ---

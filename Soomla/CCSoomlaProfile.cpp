@@ -47,6 +47,9 @@ namespace soomla {
         return true;
     }
 
+    ///
+    /// Supported platforms: Facebook, Twitter, Google+
+    ///
     void CCSoomlaProfile::login(CCProvider provider, CCReward *reward, CCError **soomlaError) {
         this->login(provider, "", reward, soomlaError);
     }
@@ -63,10 +66,16 @@ namespace soomla {
         CCNdkBridge::callNative(params, soomlaError);
     }
 
+    ///
+    /// Supported platforms: Facebook, Twitter, Google+
+    ///
     void CCSoomlaProfile::login(CCProvider provider, CCError **soomlaError) {
         this->login(provider, "", NULL, soomlaError);
     }
 
+    ///
+    /// Supported platforms: Facebook, Twitter, Google+
+    ///
     void CCSoomlaProfile::logout(CCProvider provider, CCError **soomlaError) {
         CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
@@ -75,6 +84,10 @@ namespace soomla {
         CCNdkBridge::callNative(params, soomlaError);
     }
 
+    ///
+    /// Supported platforms: Facebook, Twitter, Google+
+    /// Missing user info for Twitter: email, gender, birthday.
+    ///
     CCUserProfile *CCSoomlaProfile::getStoredUserProfile(CCProvider provider, CCError **soomlaError) {
         CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
@@ -85,6 +98,9 @@ namespace soomla {
         return retValue;
     }
     
+    ///
+    /// Supported platforms: Facebook, Twitter, Google+
+    ///
     void CCSoomlaProfile::updateStatus(CCProvider provider, const char *status, const char *payload, CCReward *reward, CCError **soomlaError) {
         CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
@@ -98,10 +114,19 @@ namespace soomla {
         CCNdkBridge::callNative(params, soomlaError);
     }
 
+    ///
+    /// Supported platforms: Facebook, Twitter, Google+
+    ///
     void CCSoomlaProfile::updateStatus(CCProvider provider, const char *status, CCReward *reward, CCError **soomlaError) {
         this->updateStatus(provider, status, "", reward, soomlaError);
     }
     
+    ///
+    /// Supported platforms: Facebook, Google+
+    /// NOTE:
+    /// 1. Twitter does NOT support dialogs.
+    /// 2. Google+ uses dialogs by default.
+    ///
     void CCSoomlaProfile::updateStatusDialog(CCProvider provider, const char *link, const char *payload, CCReward *reward, CCError **soomlaError) {
         CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
@@ -121,6 +146,11 @@ namespace soomla {
         this->updateStatusDialog(provider, link, "", reward, soomlaError);
     }
 
+    ///
+    /// Supported platforms: Facebook, Twitter, Google+
+    /// NOTE:
+    /// Partial support for Twitter and Google+ - only message and link
+    ///
     void CCSoomlaProfile::updateStory(CCProvider provider, const char *message, const char *name,
             const char *caption, const char *description, const char *link, const char *picture,
             const char *payload, CCReward *reward, CCError **soomlaError) {
@@ -148,6 +178,13 @@ namespace soomla {
         this->updateStory(provider, message, name, caption, description, link, picture, "", reward, soomlaError);
     }
     
+    ///
+    /// Supported platforms: Facebook, Google+.
+    /// Note:
+    /// 1. Twitter does NOT support dialogs.
+    /// 2. Google+ uses dialogs by default.
+    /// 3. Partial support for Google+ - only message and link
+    ///
     void CCSoomlaProfile::updateStoryDialog(CCProvider provider, const char *name,
                                       const char *caption, const char *description, const char *link, const char *picture,
                                       const char *payload, CCReward *reward, CCError **soomlaError) {
@@ -185,6 +222,11 @@ namespace soomla {
         this->updateStoryDialog(provider, name, caption, description, link, picture, "", reward, soomlaError);
     }
 
+    ///
+    /// Supported platforms: Facebook, Twitter, Google+.
+    /// Note:
+    /// Google+ - not supported targetting Android.
+    ///
     void CCSoomlaProfile::uploadImage(CCProvider provider, const char *message, const char *filePath,
             const char *payload, CCReward *reward, CCError **soomlaError) {
 
@@ -207,6 +249,12 @@ namespace soomla {
         this->uploadImage(provider, message, filePath, "", reward, soomlaError);
     }
 
+    ///
+    /// Supported platforms: Facebook, Twitter, Google+
+    /// Note:
+    /// 1. Twitter - missing contact info: email, gender, birthday.
+    /// 2. Google+ - missing contact info: username, email, gender, bithday
+    ///
     void CCSoomlaProfile::getContacts(CCProvider provider, const char *payload, CCReward *reward, CCError **soomlaError) {
         
         CC_ASSERT(mInited);
@@ -225,6 +273,9 @@ namespace soomla {
         this->getContacts(provider, "", reward, soomlaError);
     }
     
+    ///
+    /// Supported platforms: Facebook.
+    ///
     void CCSoomlaProfile::getFeed(CCProvider provider, const char *payload, CCReward *reward, CCError **soomlaError) {
 
         CC_ASSERT(mInited);
@@ -243,6 +294,9 @@ namespace soomla {
         this->getFeed(provider, "", reward, soomlaError);
     }
 
+    ///
+    /// Supported platforms: Facebook, Twitter, Google+
+    ///
     bool CCSoomlaProfile::isLoggedIn(CCProvider provider, CCError **soomlaError) {
         CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
@@ -258,6 +312,9 @@ namespace soomla {
         return false;
     }
 
+    ///
+    /// Supported platforms: Facebook, Twitter, Google+
+    ///
     void CCSoomlaProfile::like(CCProvider provider, const char *pageName, CCReward *reward, CCError **soomlaError) {
         CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();

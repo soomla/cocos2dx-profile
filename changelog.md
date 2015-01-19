@@ -1,3 +1,11 @@
+### v1.0.2 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.0.1...v1.0.2)
+
+* Fixes
+  * Upload image now works in Google+
+
+* Changes
+  * Updating to new native submodules
+
 ### v1.0.1 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.0.0...v1.0.1)
 
 * Changes

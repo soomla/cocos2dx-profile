@@ -114,6 +114,9 @@ namespace soomla {
         CCNdkBridge::callNative(params, soomlaError);
     }
 
+    ///
+    /// Supported platforms: Facebook, Twitter, Google+
+    ///
     void CCSoomlaProfile::updateStatus(CCProvider provider, const char *status, CCReward *reward, CCError **soomlaError) {
         this->updateStatus(provider, status, "", reward, soomlaError);
     }

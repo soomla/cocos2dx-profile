@@ -30,6 +30,13 @@ C++: https://github.com/soomla/cocos2dx-profile-example
 
 The example project is still under development but it already has some important aspects of the framework that you can learn and implement in your application.
 
+## Download
+
+####Pre baked zip:
+
+- [soomla-cocos2dx-core 1.0.1](http://library.soom.la/fetch/cocos2dx-v2-core/1.0.1?cf=github)
+- [cocos2dx-profile 1.0.2](http://library.soom.la/fetch/cocos2dx-v2-profile/1.0.2?cf=github)
+
 ## Getting Started (With pre-built libraries)
 
 *If you want to develop with sources, refer to the [Working with sources](#working-with-sources) section below*

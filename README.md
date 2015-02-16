@@ -34,8 +34,8 @@ The example project is still under development but it already has some important
 
 ####Pre baked zip:
 
-- [soomla-cocos2dx-core 1.0.1](http://library.soom.la/fetch/cocos2dx-v2-core/1.0.1?cf=github)
-- [cocos2dx-profile 1.0.2](http://library.soom.la/fetch/cocos2dx-v2-profile/1.0.2?cf=github)
+- [soomla-cocos2dx-core 1.0.2](http://library.soom.la/fetch/cocos2dx-v2-core/1.0.2?cf=github)
+- [cocos2dx-profile 1.0.3](http://library.soom.la/fetch/cocos2dx-v2-profile/1.0.3?cf=github)
 
 ## Getting Started (With pre-built libraries)
 

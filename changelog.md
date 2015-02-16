@@ -1,3 +1,8 @@
+### v1.0.3 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.0.2...v1.0.3)
+
+* Fixes
+  * Login cancelled will fire when back is clicked while logging in (Twitter Android)
+
 ### v1.0.2 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.0.1...v1.0.2)
 
 * Fixes

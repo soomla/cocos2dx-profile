@@ -36,11 +36,8 @@ import java.util.Iterator;
 /**
  * Profile defines all the glue between Cocos2dx-Profile and iOS Profile
  *
- * ProfileService signs up to all Profile events which are received from native
+ * ProfileBridge signs up to all Profile events which are received from native
  * and passed to Cocos2dx and the other way around.
- *
- * NOTE: This service should be registered in the ServiceManager in your
- * main app activity
  *
  */
 public class ProfileBridge {
@@ -48,9 +45,9 @@ public class ProfileBridge {
     private static ProfileBridge INSTANCE = null;
 
     /**
-     * Retrieves the singleton instance of the service
+     * Retrieves the singleton instance of the bridge
      *
-     * @return The singleton instance of the service
+     * @return The singleton instance of the bridge
      */
     public static ProfileBridge getInstance() {
         if (INSTANCE == null) {
@@ -69,7 +66,7 @@ public class ProfileBridge {
     /**
      * Constructor
      *
-     * The main constructor for the service.
+     * The main constructor for the bridge.
      * Registers all glue between native and Cocos2dx
      */
     public ProfileBridge() {
@@ -302,7 +299,7 @@ public class ProfileBridge {
     }
 
     /**
-     * Initializes the service for further use
+     * Initializes the bridge for further use
      *
      * NOTE: Called through the Cocos side
      */

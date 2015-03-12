@@ -18,12 +18,9 @@ package com.soomla.cocos2dx.profile;
 
 import android.opengl.GLSurfaceView;
 
-import com.soomla.Soomla;
 import com.soomla.SoomlaUtils;
-import com.soomla.cocos2dx.common.AbstractSoomlaService;
 import com.soomla.cocos2dx.common.DomainFactory;
 import com.soomla.cocos2dx.common.NdkGlue;
-import com.soomla.cocos2dx.common.ParamsProvider;
 import com.soomla.profile.SoomlaProfile;
 import com.soomla.profile.domain.IProvider;
 import com.soomla.profile.domain.UserProfile;
@@ -33,8 +30,6 @@ import com.soomla.rewards.Reward;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.ref.WeakReference;
-import java.security.Provider;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -48,22 +43,20 @@ import java.util.Iterator;
  * main app activity
  *
  */
-public class ProfileService extends AbstractSoomlaService {
+public class ProfileBridge {
 
-    private static ProfileService INSTANCE = null;
-
-    private boolean inited = false;
+    private static ProfileBridge INSTANCE = null;
 
     /**
      * Retrieves the singleton instance of the service
      *
      * @return The singleton instance of the service
      */
-    public static ProfileService getInstance() {
+    public static ProfileBridge getInstance() {
         if (INSTANCE == null) {
-            synchronized (ProfileService.class) {
+            synchronized (ProfileBridge.class) {
                 if (INSTANCE == null) {
-                    INSTANCE = new ProfileService();
+                    INSTANCE = new ProfileBridge();
                 }
             }
         }
@@ -79,7 +72,7 @@ public class ProfileService extends AbstractSoomlaService {
      * The main constructor for the service.
      * Registers all glue between native and Cocos2dx
      */
-    public ProfileService() {
+    public ProfileBridge() {
         profileEventHandlerBridge = new ProfileEventHandlerBridge();
 
         final DomainFactory domainFactory = DomainFactory.getInstance();
@@ -97,15 +90,11 @@ public class ProfileService extends AbstractSoomlaService {
 
         final NdkGlue ndkGlue = NdkGlue.getInstance();
 
-        ndkGlue.registerCallHandler("CCProfileService::init", new NdkGlue.CallHandler() {
+        ndkGlue.registerCallHandler("CCProfileBridge::init", new NdkGlue.CallHandler() {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
-                ProfileService.getInstance().init();
-
-                String customSecret = ParamsProvider.getInstance().getParams("common").optString("customSecret");
                 HashMap<IProvider.Provider, HashMap<String, String>> providerParams = parseProviderParams(params.optJSONObject("params"));
                 SoomlaUtils.LogDebug("SOOMLA", "initialize is called from java!");
-                Soomla.initialize(customSecret);
                 SoomlaProfile.getInstance().initialize(providerParams);
             }
         });
@@ -318,24 +307,9 @@ public class ProfileService extends AbstractSoomlaService {
      * NOTE: Called through the Cocos side
      */
     public void init() {
-        final GLSurfaceView glSurfaceView = glSurfaceViewRef.get();
+        final GLSurfaceView glSurfaceView = NdkGlue.getInstance().getGlSurfaceRef().get();
         if (glSurfaceView != null) {
             profileEventHandlerBridge.setGlSurfaceView(glSurfaceView);
-        }
-
-        inited = true;
-    }
-
-    /**
-     * Sets the main GL surface of the application
-     *
-     * @param glSurfaceView The GL surface of the main activity
-     */
-    public void setGlSurfaceView(GLSurfaceView glSurfaceView) {
-        if (inited) {
-            profileEventHandlerBridge.setGlSurfaceView(glSurfaceView);
-        } else {
-            glSurfaceViewRef = new WeakReference<GLSurfaceView>(glSurfaceView);
         }
     }
 }

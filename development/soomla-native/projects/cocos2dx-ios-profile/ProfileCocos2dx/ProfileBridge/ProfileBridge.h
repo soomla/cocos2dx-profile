@@ -19,17 +19,14 @@
 /**
  Profile defines all the glue between Cocos2dx-Profile and iOS Profile
 
- ProfileService signs up to all Profile events which are received from native
+ ProfileBridge signs up to all Profile events which are received from native
  and passed to Cocos2dx and the other way around.
-
- NOTE: This service should be registered in the ServiceManager in your
- AppController
  */
-@interface ProfileService : NSObject
+@interface ProfileBridge : NSObject
 /**
  Retrieves the singleton instance of the service
 
- @return Singleton instance of ProfileService
+ @return Singleton instance of ProfileBridge
  */
-+ (id)sharedProfileService;
++ (id)sharedProfileBridge;
 @end

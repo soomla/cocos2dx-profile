@@ -18,6 +18,8 @@
 #include "CCNdkBridge.h"
 #include "CCSoomlaMacros.h"
 #include "CCDomainFactory.h"
+#include "CCProfileBridge.h"
+#include "CCSoomlaUtils.h"
 
 using namespace cocos2d;
 typedef CCDictElement CCDictElement;
@@ -41,10 +43,17 @@ namespace soomla {
     CCSoomlaProfile::CCSoomlaProfile() {
         mInited = false;
     }
-
-    bool CCSoomlaProfile::init() {
-        mInited = true;
-        return true;
+    
+    void CCSoomlaProfile::initialize(cocos2d::__Dictionary *profileParams) {
+        
+        if (CCSoomlaProfile::getInstance()->mInited) {
+            CCSoomlaUtils::logError(TAG, "SoomlaProfile is already initialized. You can't initialize it twice!");
+            return;
+        }
+        
+        CCProfileBridge::initShared(profileParams);
+        
+        CCSoomlaProfile::getInstance()->mInited = true;
     }
 
     ///

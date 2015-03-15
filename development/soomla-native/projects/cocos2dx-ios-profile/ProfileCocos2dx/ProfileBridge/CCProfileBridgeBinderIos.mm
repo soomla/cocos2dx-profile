@@ -14,18 +14,11 @@
  limitations under the License.
  */
 
-#ifndef _Cocos2dxProfile_H
-#define _Cocos2dxProfile_H
+#import "CCProfileBridgeBinderIos.h"
+#import "ProfileBridge.h"
 
-#include "Cocos2dxCore.h"
-
-#include "CCUserProfile.h"
-#include "CCProfileEventHandler.h"
-#include "CCProfileEventDispatcher.h"
-#include "CCNdkBridge.h"
-#include "CCSoomlaProfile.h"
-#include "CCProfileBridge.h"
-#include "CCUserProfileUtils.h"
-#include "CCSocialActionUtils.h"
-
-#endif /* !_Cocos2dxProfile_H */
+namespace soomla {
+    void CCProfileBridgeBinderIos::bind() {
+        [[ProfileBridge sharedProfileBridge] init];
+    }
+}

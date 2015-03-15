@@ -8,16 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		C0B3C5F3168C6D0C00161FAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B3C5F2168C6D0C00161FAA /* Foundation.framework */; };
-		F821FFC619A752ED008DB661 /* ProfileService.h in Headers */ = {isa = PBXBuildFile; fileRef = F821FFC419A752ED008DB661 /* ProfileService.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F821FFC719A752ED008DB661 /* ProfileService.mm in Sources */ = {isa = PBXBuildFile; fileRef = F821FFC519A752ED008DB661 /* ProfileService.mm */; };
+		F8BBDC9A1AB1D40600FD9403 /* ProfileBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = F8BBDC961AB1D40600FD9403 /* ProfileBridge.mm */; };
+		F8BBDC9C1AB1D40600FD9403 /* ProfileBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = F8BBDC981AB1D40600FD9403 /* ProfileBridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F8BBDCA01AB1E4DA00FD9403 /* CCProfileBridgeBinderIos.mm in Sources */ = {isa = PBXBuildFile; fileRef = F8BBDC9E1AB1E4DA00FD9403 /* CCProfileBridgeBinderIos.mm */; };
+		F8BBDCA11AB1E4DA00FD9403 /* CCProfileBridgeBinderIos.h in Headers */ = {isa = PBXBuildFile; fileRef = F8BBDC9F1AB1E4DA00FD9403 /* CCProfileBridgeBinderIos.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9D1D39B719018BB0000EC503 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		C0B3C5EF168C6D0C00161FAA /* libCocos2dXiOSProfile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocos2dXiOSProfile.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0B3C5F2168C6D0C00161FAA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		F821FFC419A752ED008DB661 /* ProfileService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileService.h; sourceTree = "<group>"; };
-		F821FFC519A752ED008DB661 /* ProfileService.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ProfileService.mm; sourceTree = "<group>"; };
+		F8BBDC961AB1D40600FD9403 /* ProfileBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ProfileBridge.mm; sourceTree = "<group>"; };
+		F8BBDC981AB1D40600FD9403 /* ProfileBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileBridge.h; sourceTree = "<group>"; };
+		F8BBDC9E1AB1E4DA00FD9403 /* CCProfileBridgeBinderIos.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCProfileBridgeBinderIos.mm; sourceTree = "<group>"; };
+		F8BBDC9F1AB1E4DA00FD9403 /* CCProfileBridgeBinderIos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCProfileBridgeBinderIos.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,8 +73,10 @@
 		F821FFC319A752ED008DB661 /* ProfileBridge */ = {
 			isa = PBXGroup;
 			children = (
-				F821FFC419A752ED008DB661 /* ProfileService.h */,
-				F821FFC519A752ED008DB661 /* ProfileService.mm */,
+				F8BBDC9E1AB1E4DA00FD9403 /* CCProfileBridgeBinderIos.mm */,
+				F8BBDC9F1AB1E4DA00FD9403 /* CCProfileBridgeBinderIos.h */,
+				F8BBDC961AB1D40600FD9403 /* ProfileBridge.mm */,
+				F8BBDC981AB1D40600FD9403 /* ProfileBridge.h */,
 			);
 			path = ProfileBridge;
 			sourceTree = "<group>";
@@ -82,7 +88,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F821FFC619A752ED008DB661 /* ProfileService.h in Headers */,
+				F8BBDC9C1AB1D40600FD9403 /* ProfileBridge.h in Headers */,
+				F8BBDCA11AB1E4DA00FD9403 /* CCProfileBridgeBinderIos.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,7 +162,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F821FFC719A752ED008DB661 /* ProfileService.mm in Sources */,
+				F8BBDCA01AB1E4DA00FD9403 /* CCProfileBridgeBinderIos.mm in Sources */,
+				F8BBDC9A1AB1D40600FD9403 /* ProfileBridge.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

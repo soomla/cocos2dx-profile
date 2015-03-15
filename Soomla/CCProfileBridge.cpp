@@ -51,7 +51,7 @@ namespace soomla {
         return sInstance;
     }
 
-    void CCProfileBridge::initShared(__Dictionary *profileParams) {
+    void CCProfileBridge::initShared(CCDictionary *profileParams) {
         CCProfileBridge *profileBridge = CCProfileBridge::getInstance();
         if (!profileBridge->init(profileParams)) {
             exit(1);
@@ -63,17 +63,17 @@ namespace soomla {
         this->bindNative();
     }
 
-    bool CCProfileBridge::init(__Dictionary *profileParams) {
+    bool CCProfileBridge::init(CCDictionary *profileParams) {
 
         CCProfileEventDispatcher::getInstance();    // to get sure it's inited
 
         CCDomainFactory::getInstance()->registerCreator(CCProfileConsts::JSON_JSON_TYPE_USER_PROFILE,
-                &CCUserProfile::createWithDictionary);
+                (SEL_DomainCreator)&CCUserProfile::createWithDictionary);
         
-        __Dictionary *params = __Dictionary::create();
-        params->setObject(__String::create("CCProfileBridge::init"), "method");
+        CCDictionary *params = CCDictionary::create();
+        params->setObject(CCString::create("CCProfileBridge::init"), "method");
         params->setObject(profileParams, "params");
-        CCNdkBridge::callNative(params, nullptr);
+        CCNdkBridge::callNative(params, NULL);
 
         return true;
     }

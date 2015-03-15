@@ -44,7 +44,7 @@ namespace soomla {
         mInited = false;
     }
     
-    void CCSoomlaProfile::initialize(cocos2d::__Dictionary *profileParams) {
+    void CCSoomlaProfile::initialize(cocos2d::CCDictionary *profileParams) {
         
         if (CCSoomlaProfile::getInstance()->mInited) {
             CCSoomlaUtils::logError(TAG, "SoomlaProfile is already initialized. You can't initialize it twice!");

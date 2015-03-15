@@ -59,7 +59,7 @@ namespace soomla {
          @param profileParams The parameters which are used to initialize
          the native ProfileBridge
          */
-        static void initialize(cocos2d::__Dictionary *profileParams);
+        static void initialize(cocos2d::CCDictionary *profileParams);
 
         /**
          Logs a user into the given provider, upon successful login, the

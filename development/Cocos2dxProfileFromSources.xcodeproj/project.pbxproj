@@ -190,12 +190,12 @@
 		C0B3C5E4168C6D0C00161FAA = {
 			isa = PBXGroup;
 			children = (
-				F82F0C241A1376DD00D1B34A /* SoomlaiOSProfileTwitter */,
-				F82F0C281A1376DD00D1B34A /* SoomlaiOSProfileGoogle */,
 				F8DBEC6D19BDB38D0093252C /* Soomla */,
 				F825C0ED19B31D8100A2CABB /* ProfileCocos2dx */,
 				F825C14919B3209F00A2CABB /* SoomlaiOSProfile */,
 				F874881D1A0007F9005952C9 /* SoomlaiOSProfileFacebook */,
+				F82F0C281A1376DD00D1B34A /* SoomlaiOSProfileGoogle */,
+				F82F0C241A1376DD00D1B34A /* SoomlaiOSProfileTwitter */,
 				C0B3C5F1168C6D0C00161FAA /* Frameworks */,
 				C0B3C5F0168C6D0C00161FAA /* Products */,
 			);

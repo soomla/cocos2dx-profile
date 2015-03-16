@@ -12,7 +12,7 @@ cocos2dx-profile
 
 *SOOMLA's Profile Module for Cocos2d-x*
 
-**March 16, 2015**: Better integration for all Soomla modules in Cocos2d-x (needs core update as well)
+**March 16, 2015**: v1.1 Better integration for all Soomla modules in Cocos2d-x (needs core update as well)
 
 **November 16th**: v1.0 **cocos2dx-profile** supports Facebook, Google+ and Twitter
 

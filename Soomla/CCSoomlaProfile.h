@@ -50,13 +50,16 @@ namespace soomla {
          The main constructor for CCSoomlaProfile
          */
         CCSoomlaProfile();
-
+        
         /**
-         Initializes the controller
-
+         Initializes the CCSoomlaProfile
+         
          NOTE: must be called before any of its methods can be used
+         
+         @param profileParams The parameters which are used to initialize
+         the native ProfileBridge
          */
-        virtual bool init();
+        static void initialize(cocos2d::CCDictionary *profileParams);
 
         /**
          Logs a user into the given provider, upon successful login, the

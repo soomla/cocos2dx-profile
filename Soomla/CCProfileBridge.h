@@ -14,8 +14,8 @@
  limitations under the License.
  */
 
-#ifndef __CCProfileService_H_
-#define __CCProfileService_H_
+#ifndef __CCProfileBridge_H_
+#define __CCProfileBridge_H_
 
 #include "cocos2d.h"
 #include "CCError.h"
@@ -25,43 +25,47 @@
 namespace soomla {
 
     /**
-     @class CCProfileService
-     @brief Provides an interface to the native ProfileService
+     @class CCProfileBridge
+     @brief Provides an interface to the native ProfileBridge
 
-     Allows the cocos2dx project to call native functions on ProfileService
+     Allows the cocos2dx project to call native functions on ProfileBridge
      in the Cocos2dx Profile bridge.
      */
-    class CCProfileService: public cocos2d::CCObject {
+    class CCProfileBridge: public cocos2d::CCObject {
     public:
 		/**
          This class is singleton, use this function to access it.
 		*/
-        static CCProfileService* getInstance();
+        static CCProfileBridge* getInstance();
 
         /**
          Initializes the singleto instance of the service
 
          @param profileParams The parameters which are used to initialize
-         the native ProfileService
+         the native ProfileBridge
          */
         static void initShared(cocos2d::CCDictionary *profileParams);
 
         /**
          Constructor
 
-         The main constructor for CCProfileService
+         The main constructor for CCProfileBridge
          */
-        CCProfileService();
+        CCProfileBridge();
 
         /**
-         Initializes an instance of CCProfileService with the profile parameters
+         Initializes an instance of CCProfileBridge with the profile parameters
          needed by the native platform
 
          @param profileParams The parameters which are used to initialize
          the native ProfileService
          */
         virtual bool init(cocos2d::CCDictionary *profileParams);
+        
+    private:
+        void bindNative();
+
     };
 };
 
-#endif // !__CCSoomlaProfile_H_
+#endif // !__CCProfileBridge_H_

@@ -1,5 +1,5 @@
 
-#import "ProfileService.h"
+#import "ProfileBridge.h"
 #import "NdkGlue.h"
 #import "Reward.h"
 #import "DomainFactory.h"
@@ -10,20 +10,20 @@
 #import "DomainHelper.h"
 #import "UserProfileNotFoundException.h"
 
-@interface ProfileService ()
+@interface ProfileBridge ()
 @end
 
-@implementation ProfileService {
+@implementation ProfileBridge {
 
 }
 
-+ (id)sharedProfileService {
-    static ProfileService *sharedProfileService = nil;
++ (id)sharedProfileBridge {
+    static ProfileBridge *sharedProfileBridge = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedProfileService = [self alloc];
+        sharedProfileBridge = [self alloc];
     });
-    return sharedProfileService;
+    return sharedProfileBridge;
 }
 
 + (void)initialize {
@@ -38,20 +38,8 @@
     if (self) {
         [ProfileEventHandling observeAllEventsWithObserver:[NdkGlue sharedInstance]
                                                   withSelector:@selector(dispatchNdkCallback:)];
-        [[SoomlaProfile getInstance] initialize];
     }
 
-    return self;
-}
-
-- (id)initWithProviderParams:(NSDictionary *)providerParams {
-    self = [super init];
-    if (self) {
-        [ProfileEventHandling observeAllEventsWithObserver:[NdkGlue sharedInstance]
-                                                  withSelector:@selector(dispatchNdkCallback:)];
-        [[SoomlaProfile getInstance] initialize:providerParams];
-    }
-    
     return self;
 }
 
@@ -68,7 +56,7 @@
     NdkGlue *ndkGlue = [NdkGlue sharedInstance];
 
     /* -= Call handlers =- */
-    [ndkGlue registerCallHandlerForKey:@"CCProfileService::init" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
+    [ndkGlue registerCallHandlerForKey:@"CCProfileBridge::init" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSDictionary *providerParams = [parameters objectForKey:@"params"];
         if (providerParams) {
             NSMutableDictionary *parsedParams = [NSMutableDictionary dictionary];
@@ -76,10 +64,8 @@
                 id value = providerParams[key];
                 [parsedParams setObject:value forKey:@([UserProfileUtils providerStringToEnum:key])];
             }
-            [[ProfileService sharedProfileService] initWithProviderParams:parsedParams];
-        }
-        else {
-            [[ProfileService sharedProfileService] init];
+            
+            [[SoomlaProfile getInstance] initialize:parsedParams];
         }
     }];
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::login" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {

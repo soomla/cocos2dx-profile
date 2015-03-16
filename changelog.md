@@ -1,3 +1,10 @@
+### v1.1.0 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.0.3...v1.1.0)
+
+**BREAKING API VERSION**
+
+* Features
+  * Better integration process for Profile module (see README for instructions)
+
 ### v1.0.3 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.0.2...v1.0.3)
 
 * Fixes

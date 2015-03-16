@@ -65,7 +65,7 @@
                 [parsedParams setObject:value forKey:@([UserProfileUtils providerStringToEnum:key])];
             }
             
-            [[SoomlaProfile getInstance] initialize:providerParams];
+            [[SoomlaProfile getInstance] initialize:parsedParams];
         }
     }];
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::login" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {

@@ -1,12 +1,16 @@
+### v1.1.0 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/cocos2dx-v2-v1.0.3...cocos2dx-v2-v1.1.0)
+
+**BREAKING API VERSION**
+
+* Features
+  * Better integration process for Profile module (see README for instructions)
+
 ### v1.0.3 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/cocos2dx-v2-v1.0.2...cocos2dx-v2-v1.0.3)
 
 * Fixes
   * Login cancelled will fire when back is clicked while logging in (Twitter Android)
 
 ### v1.0.2 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/cocos2dx-v2-v1.0.1...cocos2dx-v2-v1.0.2)
-
-* Fixes
-  * Login cancelled will fire when back is clicked while logging in (Twitter Android)
 
 
 * Fixes

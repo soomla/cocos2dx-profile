@@ -12,6 +12,8 @@ cocos2dx-profile
 
 *SOOMLA's Profile Module for Cocos2d-x*
 
+**March 16, 2015**: Better integration for all Soomla modules in Cocos2d-x (needs core update as well)
+
 **November 16th**: v1.0 **cocos2dx-profile** supports Facebook, Google+ and Twitter
 
 * More documentation and information in SOOMLA's [Knowledge Base](http://know.soom.la/docs/platforms/cocos2dx/)  
@@ -34,8 +36,8 @@ The example project is still under development but it already has some important
 
 ####Pre baked zip:
 
-- [soomla-cocos2dx-core 1.0.2](http://library.soom.la/fetch/cocos2dx-v2-core/1.0.2?cf=github)
-- [cocos2dx-profile 1.0.3](http://library.soom.la/fetch/cocos2dx-v2-profile/1.0.3?cf=github)
+- [soomla-cocos2dx-core 1.1.0](http://library.soom.la/fetch/cocos2dx-v2-core/1.1.0?cf=github)
+- [cocos2dx-profile 1.1.0](http://library.soom.la/fetch/cocos2dx-v2-profile/1.1.0?cf=github)
 
 ## Getting Started (With pre-built libraries)
 
@@ -52,29 +54,38 @@ The example project is still under development but it already has some important
     $ git clone git@github.com:soomla/cocos2dx-profile.git extensions/cocos2dx-profile
     ```
 
-1. We use a [fork](https://github.com/vedi/jansson) of the jansson library for json parsing, clone our fork into the `external` directory at the root of your framework.
+1. We use a [fork](https://github.com/soomla/jansson) of the jansson library for json parsing, clone our fork into the `external` directory at the root of your framework.
     ```
-    $ git clone git@github.com:vedi/jansson.git external/jansson
+    $ git clone git@github.com:soomla/jansson.git external/jansson
     ```
 
 1. Implement your `CCProfileEventHandler` in order to be notified about social network related events. Refer to the [Event Handling](#event-handling) section for more information.
 
-1. Initialize `CCServiceManager` and `CCProfileService` with the class you just created, a `customSecret` and other params:
+1. Make sure to include the `Cocos2dxProfile.h` header whenever you use any of the **cocos2dx-profile** functions:
+    ```cpp
+    #include "Cocos2dxProfile.h"
+    ```
+
+1. Add an instance of your event handler to `CCProfileEventDispatcher` before `CCSoomlaProfile` initialization:
 
     ```cpp
-    CCDictionary *commonParams = CCDictionary::create();
-    commonParams->setObject(CCString::create("ExampleCustomSecret"), "customSecret");
-    soomla::CCServiceManager::getInstance()->setCommonParams(commonParams);
+    soomla::CCProfileEventDispatcher::getInstance()->addEventHandler(handler);
+    ```
+
+1. Initialize `CCSoomla` and `CCSoomlaProfile` with the class you just created, a `customSecret` and other params:
+
+    ```cpp
+    soomla::CCSoomla::initialize("customSecret");
     ```
 
     ```cpp
     CCDictionary *profileParams = CCDictionary::create();
-    soomla::CCProfileService::initShared(profileParams);
+    soomla::CCSoomlaProfile::initialize(profileParams);
     ```
     - *Custom Secret* - is an encryption secret you provide that will be used to secure your data.
     **Choose the secret wisely. You can't change it after you launch your game!**
 
-    > Initialize `CCProfileService` ONLY ONCE when your application loads.
+    > Initialize `CCSoomlaProfile` ONLY ONCE when your application loads.
 
 1. Note that some social providers need special parameters to be passed in order for them to work:
   1. **Facebook** - No special parameters
@@ -94,24 +105,13 @@ The example project is still under development but it already has some important
     profileParams->setObject(twitterParams, soomla::CCUserProfileUtils::providerEnumToString(soomla::TWITTER)->getCString());
     ```
 
-1. Make sure to include the `Cocos2dxProfile.h` header whenever you use any of the **cocos2dx-profile** functions:
-    ```cpp
-    #include "Cocos2dxProfile.h"
-    ```
-
-1. Add an instance of your event handler to `CCProfileEventDispatcher` after `CCProfileService` initialization:
-
-    ```cpp
-    soomla::CCProfileEventDispatcher::getInstance()->addEventHandler(handler);
-    ```
-
 The next steps are different for the different platforms.
 
 #### Instructions for iOS
 
 In your XCode project, perform the following steps:
 
-1. Add `jansson` (**external/jansson/**) to your project (just add it as a source folder).
+1. Add `jansson` (**external/jansson/**) to your project (just add it as a source folder, make sure to check "create group").
 
 1. For the following XCode projects:
 
@@ -130,38 +130,23 @@ In your XCode project, perform the following steps:
     - `$(SRCROOT)/../cocos2d/extensions/cocos2dx-profile/Soomla`
     - `$(SRCROOT)/../cocos2d/extensions/cocos2dx-profile/build/ios/headers`
 
-1. To register services on the native application (`AppController`):
+1. To support browser-based authentication add the following method in your `AppController` (for more information see [ios-profile](https://github.com/soomla/ios-profile#browser-based-authentication)):
+```objective-c
+  - (BOOL)application:(UIApplication *)application
+              openURL:(NSURL *)url
+    sourceApplication:(NSString *)sourceApplication
+           annotation:(id)annotation
+  {
+      BOOL urlWasHandled = [[SoomlaProfile getInstance] tryHandleOpenURL:url sourceApplication:sourceApplication annotation:annotation];
 
-    1. Import the following headers:
-    ```objective-c
-    #import "ServiceManager.h"
-    #import "ProfileService.h"
-    #import "SoomlaProfile.h"
-    ```
-
-    1. Register the native `ProfileService` by adding:
-    ```objective-c
-    [[ServiceManager sharedServiceManager] registerService:[ProfileService sharedProfileService]];
-    ```
-    at the beginning of the method `application: didFinishLaunchingWithOptions:` of `AppController`.
-
-    1. To support browser-based authentication add the following method in your `AppController` (for more information see [ios-profile](https://github.com/soomla/ios-profile#browser-based-authentication)):
-    ```objective-c
-      - (BOOL)application:(UIApplication *)application
-                  openURL:(NSURL *)url
-        sourceApplication:(NSString *)sourceApplication
-               annotation:(id)annotation
-      {
-          BOOL urlWasHandled = [[SoomlaProfile getInstance] tryHandleOpenURL:url sourceApplication:sourceApplication annotation:annotation];
-
-          if (urlWasHandled) {
-              return urlWasHandled;
-          }
-
-          // Profile was unable to handle callback, do some custom handling
-          return NO;
+      if (urlWasHandled) {
+          return urlWasHandled;
       }
-      ```
+
+      // Profile was unable to handle callback, do some custom handling
+      return NO;
+  }
+  ```
 
 1. Make sure you have these 3 Frameworks linked to your XCode project: **Security, libsqlite3.0.dylib, StoreKit**.
 
@@ -199,33 +184,6 @@ That's it! Now all you have to do is build your XCode project and run your game 
         1. AndroidProfile.jar
         2. Cocos2dxAndroidProfile.jar
 
-1. In your game's main Cocos2dxActivity, call the following in the `onCreateView` method:
-     ```java
-    public Cocos2dxGLSurfaceView onCreateView() {
-
-    // initialize services
-    final ServiceManager serviceManager = ServiceManager.getInstance();
-    serviceManager.setActivity(this);
-    serviceManager.setGlSurfaceView(glSurfaceView);
-    serviceManager.registerService(ProfileService.getInstance());
-     ```
-
-1. Override `onPause`, `onResume`:
-
-    ```java
-    @Override
-    protected void onPause() {
-        super.onPause();
-        ServiceManager.getInstance().onPause();
-    }
-
-    @Override
-    protected void onResume() {
-        ServiceManager.getInstance().onResume();
-        super.onResume();
-    }
-    ```
-
 1. Update your AndroidManifest.xml to include permissions and the `SoomlaApp`:
 
     ```xml
@@ -261,7 +219,7 @@ The Profile module is young and only a few social actions are provided. We're al
 
 Here is an example of sharing a story on the user's feed:
 
-After you initialized `CCProfileService` and logged the user in:
+After you initialized `CCSoomlaProfile` and logged the user in:
 
 ```cpp
   soomla::CCSoomlaProfile::getInstance()->updateStory(
@@ -358,6 +316,19 @@ or, if you have repositories already cloned, fetch the submodules with this comm
 1. For iOS: Use a sourced versions of linked projects (`extensions/soomla-cocos2dx-core/development/Cocos2dxCoreFromSources.xcodeproj`, `extensions/cocos2dx-profile/development/Cocos2dxProfileFromSources.xcodeproj`)
 
 1. For Android: You can use our "sourced" modules for Android Studio (or IntelliJ IDEA) (`extensions/soomla-cocos2dx-core/development/Cocos2dxCoreFromSources.iml`, `extensions/cocos2dx-profile/development/Cocos2dxProfileFromSources.iml`), just include them to your project.
+
+## How to move from v1.0.x to v1.1.x?
+
+Version 1.1.x is all about making the integration process on iOS and Android easier.
+If you are using v1.0.x and want to move to v1.1.x follow these steps:
+
+1. Pull the latest version to your `extensions` folder
+1. Remove any Soomla-related code in iOS (`AppController.mm`) and Android (`Cocos2dxActivity`), especially code related to `ServiceManager` and any other `Service`s.
+1. In your AppDelegate.cpp:
+  - Change `soomla::CCServiceManager::getInstance()->setCommonParams(commonParams);` to `soomla::CCSoomla::initialize("customSecret");`
+  - Change `soomla::CCProfileService::initShared(profileParams);` to `soomla::CCSoomlaProfile::initialize(profileParams);`
+  - Remove any `#include`s to missing header files, you only need `Cocos2dxProfile.h` for profile
+1. When in doubt follow the [cocos2dx-profile-example](https://github.com/soomla/cocos2dx-profile#example-project)
 
 Contribution
 ---

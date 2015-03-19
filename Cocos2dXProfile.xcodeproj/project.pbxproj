@@ -145,7 +145,6 @@
 				F8DBEC6219BDB34D0093252C /* CCProfileEventDispatcher.h in Headers */,
 				F8DBEC6A19BDB34D0093252C /* Cocos2dxProfile.h in Headers */,
 				F8DBEC5E19BDB34D0093252C /* CCProfileConsts.h in Headers */,
-				F83376D219C83ABE005CA2A0 /* CCSimpleProfileEventHandler.h in Headers */,
 				F8DBEC6719BDB34D0093252C /* CCSocialActionUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -204,7 +203,6 @@
 			files = (
 				F8BBDCA81AB1F20D00FD9403 /* CCProfileBridge.cpp in Sources */,
 				F8DBEC6119BDB34D0093252C /* CCProfileEventDispatcher.cpp in Sources */,
-				F83376D119C83ABE005CA2A0 /* CCSimpleProfileEventHandler.cpp in Sources */,
 				F8DBEC6619BDB34D0093252C /* CCSocialActionUtils.cpp in Sources */,
 				F84F252319C86C5300DB0905 /* CCSimpleProfileEventHandler.cpp in Sources */,
 				F8DBEC6819BDB34D0093252C /* CCUserProfileUtils.cpp in Sources */,
@@ -221,8 +219,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++98";
-				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -249,8 +247,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++98";
-				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

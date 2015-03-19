@@ -55,6 +55,12 @@
 		F82F0C491A13776800D1B34A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82F0C3F1A13776700D1B34A /* Social.framework */; };
 		F82F0C4A1A13776800D1B34A /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82F0C401A13776700D1B34A /* Twitter.framework */; };
 		F82F0C4B1A13776800D1B34A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82F0C411A13776700D1B34A /* UIKit.framework */; };
+		F8320A851ABB0449008E3C2A /* SoomlaGooglePlus.h in Headers */ = {isa = PBXBuildFile; fileRef = F8320A7E1ABB0449008E3C2A /* SoomlaGooglePlus.h */; };
+		F8320A861ABB0449008E3C2A /* SoomlaGooglePlus.m in Sources */ = {isa = PBXBuildFile; fileRef = F8320A7F1ABB0449008E3C2A /* SoomlaGooglePlus.m */; };
+		F8320A871ABB0449008E3C2A /* SoomlaiOSProfileGoogle.pch in Headers */ = {isa = PBXBuildFile; fileRef = F8320A801ABB0449008E3C2A /* SoomlaiOSProfileGoogle.pch */; };
+		F8320A881ABB0449008E3C2A /* SoomlaiOSProfileTwitter.pch in Headers */ = {isa = PBXBuildFile; fileRef = F8320A821ABB0449008E3C2A /* SoomlaiOSProfileTwitter.pch */; };
+		F8320A891ABB0449008E3C2A /* SoomlaTwitter.h in Headers */ = {isa = PBXBuildFile; fileRef = F8320A831ABB0449008E3C2A /* SoomlaTwitter.h */; };
+		F8320A8A1ABB0449008E3C2A /* SoomlaTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8320A841ABB0449008E3C2A /* SoomlaTwitter.m */; };
 		F84F251D19C86BFD00DB0905 /* CCSoomlaProfile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F84F251B19C86BFD00DB0905 /* CCSoomlaProfile.cpp */; };
 		F84F251E19C86BFD00DB0905 /* CCSoomlaProfile.h in Headers */ = {isa = PBXBuildFile; fileRef = F84F251C19C86BFD00DB0905 /* CCSoomlaProfile.h */; };
 		F87488211A0007F9005952C9 /* SoomlaFacebook.h in Headers */ = {isa = PBXBuildFile; fileRef = F874881E1A0007F9005952C9 /* SoomlaFacebook.h */; };
@@ -132,6 +138,12 @@
 		F82F0C3F1A13776700D1B34A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F82F0C401A13776700D1B34A /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		F82F0C411A13776700D1B34A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F8320A7E1ABB0449008E3C2A /* SoomlaGooglePlus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoomlaGooglePlus.h; sourceTree = "<group>"; };
+		F8320A7F1ABB0449008E3C2A /* SoomlaGooglePlus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoomlaGooglePlus.m; sourceTree = "<group>"; };
+		F8320A801ABB0449008E3C2A /* SoomlaiOSProfileGoogle.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoomlaiOSProfileGoogle.pch; sourceTree = "<group>"; };
+		F8320A821ABB0449008E3C2A /* SoomlaiOSProfileTwitter.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoomlaiOSProfileTwitter.pch; sourceTree = "<group>"; };
+		F8320A831ABB0449008E3C2A /* SoomlaTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoomlaTwitter.h; sourceTree = "<group>"; };
+		F8320A841ABB0449008E3C2A /* SoomlaTwitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoomlaTwitter.m; sourceTree = "<group>"; };
 		F84F251B19C86BFD00DB0905 /* CCSoomlaProfile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSoomlaProfile.cpp; sourceTree = "<group>"; };
 		F84F251C19C86BFD00DB0905 /* CCSoomlaProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSoomlaProfile.h; sourceTree = "<group>"; };
 		F874881E1A0007F9005952C9 /* SoomlaFacebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoomlaFacebook.h; sourceTree = "<group>"; };
@@ -140,12 +152,6 @@
 		F87488241A000814005952C9 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = "submodules/ios-profile/social-providers/ios-profile-facebook/libs/FacebookSDK.framework"; sourceTree = "<group>"; };
 		F8BBDC8C1AB1D16600FD9403 /* CCProfileBridgeBinderIos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCProfileBridgeBinderIos.h; sourceTree = "<group>"; };
 		F8BBDC8D1AB1D16600FD9403 /* CCProfileBridgeBinderIos.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCProfileBridgeBinderIos.mm; sourceTree = "<group>"; };
-		F8B8769A1A138FC000372AF4 /* SoomlaiOSProfileTwitter.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoomlaiOSProfileTwitter.pch; sourceTree = "<group>"; };
-		F8B8769B1A138FC000372AF4 /* SoomlaTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoomlaTwitter.h; sourceTree = "<group>"; };
-		F8B8769C1A138FC000372AF4 /* SoomlaTwitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoomlaTwitter.m; sourceTree = "<group>"; };
-		F8B8769E1A138FC000372AF4 /* SoomlaGooglePlus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoomlaGooglePlus.h; sourceTree = "<group>"; };
-		F8B8769F1A138FC000372AF4 /* SoomlaGooglePlus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoomlaGooglePlus.m; sourceTree = "<group>"; };
-		F8B876A01A138FC000372AF4 /* SoomlaiOSProfileGoogle.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoomlaiOSProfileGoogle.pch; sourceTree = "<group>"; };
 		F8DBEC6E19BDB38D0093252C /* CCProfileConsts.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCProfileConsts.cpp; sourceTree = "<group>"; };
 		F8DBEC6F19BDB38D0093252C /* CCProfileConsts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCProfileConsts.h; sourceTree = "<group>"; };
 		F8DBEC7219BDB38D0093252C /* CCProfileEventDispatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCProfileEventDispatcher.cpp; sourceTree = "<group>"; };
@@ -192,12 +198,12 @@
 		C0B3C5E4168C6D0C00161FAA = {
 			isa = PBXGroup;
 			children = (
+				F8320A7D1ABB0449008E3C2A /* SoomlaiOSProfileGoogle */,
+				F8320A811ABB0449008E3C2A /* SoomlaiOSProfileTwitter */,
 				F8DBEC6D19BDB38D0093252C /* Soomla */,
 				F825C0ED19B31D8100A2CABB /* ProfileCocos2dx */,
 				F825C14919B3209F00A2CABB /* SoomlaiOSProfile */,
 				F874881D1A0007F9005952C9 /* SoomlaiOSProfileFacebook */,
-				F82F0C281A1376DD00D1B34A /* SoomlaiOSProfileGoogle */,
-				F82F0C241A1376DD00D1B34A /* SoomlaiOSProfileTwitter */,
 				C0B3C5F1168C6D0C00161FAA /* Frameworks */,
 				C0B3C5F0168C6D0C00161FAA /* Products */,
 			);
@@ -330,6 +336,28 @@
 			path = social;
 			sourceTree = "<group>";
 		};
+		F8320A7D1ABB0449008E3C2A /* SoomlaiOSProfileGoogle */ = {
+			isa = PBXGroup;
+			children = (
+				F8320A7E1ABB0449008E3C2A /* SoomlaGooglePlus.h */,
+				F8320A7F1ABB0449008E3C2A /* SoomlaGooglePlus.m */,
+				F8320A801ABB0449008E3C2A /* SoomlaiOSProfileGoogle.pch */,
+			);
+			name = SoomlaiOSProfileGoogle;
+			path = "submodules/ios-profile/social-providers/ios-profile-google/SoomlaiOSProfileGoogle";
+			sourceTree = "<group>";
+		};
+		F8320A811ABB0449008E3C2A /* SoomlaiOSProfileTwitter */ = {
+			isa = PBXGroup;
+			children = (
+				F8320A821ABB0449008E3C2A /* SoomlaiOSProfileTwitter.pch */,
+				F8320A831ABB0449008E3C2A /* SoomlaTwitter.h */,
+				F8320A841ABB0449008E3C2A /* SoomlaTwitter.m */,
+			);
+			name = SoomlaiOSProfileTwitter;
+			path = "submodules/ios-profile/social-providers/ios-profile-twitter/SoomlaiOSProfileTwitter";
+			sourceTree = "<group>";
+		};
 		F874881D1A0007F9005952C9 /* SoomlaiOSProfileFacebook */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,28 +367,6 @@
 			);
 			name = SoomlaiOSProfileFacebook;
 			path = "submodules/ios-profile/social-providers/ios-profile-facebook/SoomlaiOSProfileFacebook";
-			sourceTree = "<group>";
-		};
-		F8B876991A138FC000372AF4 /* SoomlaiOSProfileTwitter */ = {
-			isa = PBXGroup;
-			children = (
-				F8B8769A1A138FC000372AF4 /* SoomlaiOSProfileTwitter.pch */,
-				F8B8769B1A138FC000372AF4 /* SoomlaTwitter.h */,
-				F8B8769C1A138FC000372AF4 /* SoomlaTwitter.m */,
-			);
-			name = SoomlaiOSProfileTwitter;
-			path = "submodules/ios-profile/social-providers/ios-profile-twitter/SoomlaiOSProfileTwitter";
-			sourceTree = "<group>";
-		};
-		F8B8769D1A138FC000372AF4 /* SoomlaiOSProfileGoogle */ = {
-			isa = PBXGroup;
-			children = (
-				F8B8769E1A138FC000372AF4 /* SoomlaGooglePlus.h */,
-				F8B8769F1A138FC000372AF4 /* SoomlaGooglePlus.m */,
-				F8B876A01A138FC000372AF4 /* SoomlaiOSProfileGoogle.pch */,
-			);
-			name = SoomlaiOSProfileGoogle;
-			path = "submodules/ios-profile/social-providers/ios-profile-google/SoomlaiOSProfileGoogle";
 			sourceTree = "<group>";
 		};
 		F8DBEC6D19BDB38D0093252C /* Soomla */ = {
@@ -404,6 +410,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8320A851ABB0449008E3C2A /* SoomlaGooglePlus.h in Headers */,
 				F87488211A0007F9005952C9 /* SoomlaFacebook.h in Headers */,
 				F825C19019B3209F00A2CABB /* ProviderLoader.h in Headers */,
 				F8DBEC8B19BDB38D0093252C /* CCUserProfileUtils.h in Headers */,
@@ -414,6 +421,7 @@
 				F825C19419B3209F00A2CABB /* SocialActionUtils.h in Headers */,
 				F8DBEC8419BDB38D0093252C /* CCProfileEventDispatcher.h in Headers */,
 				F825C19D19B3209F00A2CABB /* UserProfileUtils.h in Headers */,
+				F8320A891ABB0449008E3C2A /* SoomlaTwitter.h in Headers */,
 				F825C19819B3209F00A2CABB /* SoomlaiOSProfile-Prefix.pch in Headers */,
 				F825C18119B3209F00A2CABB /* IProvider.h in Headers */,
 				F825C18E19B3209F00A2CABB /* UserProfileNotFoundException.h in Headers */,
@@ -423,7 +431,9 @@
 				F8F3875D1A2C9EFA00EEA2E2 /* ProfileEventHandling.h in Headers */,
 				F8DBEC8919BDB38D0093252C /* CCSocialActionUtils.h in Headers */,
 				F825C17F19B3209F00A2CABB /* UserProfileStorage.h in Headers */,
+				F8320A881ABB0449008E3C2A /* SoomlaiOSProfileTwitter.pch in Headers */,
 				F825C19319B3209F00A2CABB /* SocialCallbacks.h in Headers */,
+				F8320A871ABB0449008E3C2A /* SoomlaiOSProfileGoogle.pch in Headers */,
 				F84F251E19C86BFD00DB0905 /* CCSoomlaProfile.h in Headers */,
 				F82F0C2C1A1376DD00D1B34A /* SoomlaiOSProfileTwitter.pch in Headers */,
 				F8DBEC8519BDB38D0093252C /* CCProfileEventHandler.h in Headers */,
@@ -494,6 +504,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F87488221A0007F9005952C9 /* SoomlaFacebook.m in Sources */,
+				F8320A861ABB0449008E3C2A /* SoomlaGooglePlus.m in Sources */,
 				F8BBDC8F1AB1D16600FD9403 /* CCProfileBridgeBinderIos.mm in Sources */,
 				F8DBEC8D19BDB38D0093252C /* CCUserProfile.cpp in Sources */,
 				F825C18019B3209F00A2CABB /* UserProfileStorage.m in Sources */,
@@ -503,8 +514,6 @@
 				F8DBEC8619BDB38D0093252C /* CCProfileBridge.cpp in Sources */,
 				F825C17A19B3209F00A2CABB /* AuthController.m in Sources */,
 				F825C19E19B3209F00A2CABB /* UserProfileUtils.m in Sources */,
-				F8F68FDF1A1A544B00B708CB /* SoomlaTwitter.m in Sources */,
-				F8F68FE01A1A544D00B708CB /* SoomlaGooglePlus.m in Sources */,
 				F825C18F19B3209F00A2CABB /* UserProfileNotFoundException.m in Sources */,
 				F825C0F219B31D8100A2CABB /* ProfileBridge.mm in Sources */,
 				F8DBEC8A19BDB38D0093252C /* CCUserProfileUtils.cpp in Sources */,
@@ -512,6 +521,7 @@
 				F825C18D19B3209F00A2CABB /* ProviderNotFoundException.m in Sources */,
 				F825C19719B3209F00A2CABB /* SocialController.m in Sources */,
 				F8F3875C1A2C9EFA00EEA2E2 /* ProfileEventHandling.m in Sources */,
+				F8320A8A1ABB0449008E3C2A /* SoomlaTwitter.m in Sources */,
 				F825C18B19B3209F00A2CABB /* UserProfile.m in Sources */,
 				F84F251D19C86BFD00DB0905 /* CCSoomlaProfile.cpp in Sources */,
 				F8DBEC8319BDB38D0093252C /* CCProfileEventDispatcher.cpp in Sources */,
@@ -528,8 +538,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++98";
-				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -556,8 +566,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++98";
-				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

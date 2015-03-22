@@ -1,3 +1,8 @@
+### v1.1.1 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.1.0...v1.1.1)
+
+* Changes
+  * Changing iOS bridge compilation and resulting header location
+
 ### v1.1.0 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.0.3...v1.1.0)
 
 **BREAKING API VERSION**

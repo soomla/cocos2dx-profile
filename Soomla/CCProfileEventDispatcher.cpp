@@ -35,10 +35,6 @@ namespace soomla {
     }
 
     bool CCProfileEventDispatcher::init() {
-
-        if (!CCAbstractAggregatedEventHandler::init()) {
-            return false;
-        }
         
         CCSoomlaEventDispatcher *eventDispatcher = CCSoomlaEventDispatcher::getInstance();
 
@@ -196,117 +192,153 @@ namespace soomla {
     }
 
     void CCProfileEventDispatcher::onProfileInitialized() {
-        FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onProfileInitialized();
-        }
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_PROFILE_INITIALIZED);
     }
 
     void CCProfileEventDispatcher::onUserRatingEvent() {
-        FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onUserRatingEvent();
-        }
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_USER_RATING);
     }
 
-    void CCProfileEventDispatcher::onLoginFailed(CCProvider provider, cocos2d::__String *errorDescription, cocos2d::__String *payload) {
-        FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onLoginFailed(provider, errorDescription, payload);
-        }
+    void CCProfileEventDispatcher::onLoginFailed(CCProvider provider, cocos2d::__String *message, cocos2d::__String *payload) {
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(message, CCProfileConsts::DICT_ELEMENT_MESSAGE);
+        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
+        
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_LOGIN_FAILED, eventData);
     }
 
     void CCProfileEventDispatcher::onLoginFinished(CCUserProfile *userProfile, cocos2d::__String *payload) {
-        FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onLoginFinished(userProfile, payload);
-        }
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(userProfile, CCProfileConsts::DICT_ELEMENT_USER_PROFILE);
+        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
+        
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_LOGIN_FINISHED, eventData);
     }
 
     void CCProfileEventDispatcher::onLoginStarted(CCProvider provider, cocos2d::__String *payload) {
-        FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onLoginStarted(provider, payload);
-        }
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
+        
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_LOGIN_STARTED, eventData);
     }
 
-    void CCProfileEventDispatcher::onLogoutFailed(CCProvider provider, cocos2d::__String *errorDescription) {
-        FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onLogoutFailed(provider, errorDescription);
-        }
+    void CCProfileEventDispatcher::onLogoutFailed(CCProvider provider, cocos2d::__String *message) {
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(message, CCProfileConsts::DICT_ELEMENT_MESSAGE);
+        
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_LOGOUT_FAILED, eventData);
     }
 
     void CCProfileEventDispatcher::onLogoutFinished(CCProvider provider) {
-        FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onLogoutFinished(provider);
-        }
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_LOGOUT_FINISHED, eventData);
     }
 
     void CCProfileEventDispatcher::onLogoutStarted(CCProvider provider) {
-        FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onLogoutStarted(provider);
-        }
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_LOGOUT_STARTED, eventData);
     }
 
-    void CCProfileEventDispatcher::onGetContactsFailed(CCProvider provider, cocos2d::__String *errorDescription, cocos2d::__String *payload) {
-        FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onGetContactsFailed(provider, errorDescription, payload);
-        }
+    void CCProfileEventDispatcher::onGetContactsFailed(CCProvider provider, cocos2d::__String *message, cocos2d::__String *payload) {
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(message, CCProfileConsts::DICT_ELEMENT_MESSAGE);
+        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
+        
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_GET_CONTACTS_FAILED, eventData);
     }
 
     void CCProfileEventDispatcher::onGetContactsFinished(CCProvider provider, cocos2d::__Array *contactsDict, cocos2d::__String *payload) {
-        FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onGetContactsFinished(provider, contactsDict, payload);
-        }
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(contactsDict, CCProfileConsts::DICT_ELEMENT_CONTACTS);
+        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
+        
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_GET_CONTACTS_FINISHED, eventData);
     }
 
     void CCProfileEventDispatcher::onGetContactsStarted(CCProvider provider, cocos2d::__String *payload) {
-        FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onGetContactsStarted(provider, payload);
-        }
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
+        
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_GET_CONTACTS_STARTED, eventData);
     }
 
-    void CCProfileEventDispatcher::onGetFeedFailed(CCProvider provider, cocos2d::__String *errorDescription, cocos2d::__String *payload){
-        FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onGetFeedFailed(provider, errorDescription, payload);
-        }
+    void CCProfileEventDispatcher::onGetFeedFailed(CCProvider provider, cocos2d::__String *message, cocos2d::__String *payload){
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(message, CCProfileConsts::DICT_ELEMENT_MESSAGE);
+        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
+        
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_GET_FEED_FAILED, eventData);
     }
 
     void CCProfileEventDispatcher::onGetFeedFinished(CCProvider provider, cocos2d::__Array *feedList, cocos2d::__String *payload) {
-        FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onGetFeedFinished(provider, feedList, payload);
-        }
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(feedList, CCProfileConsts::DICT_ELEMENT_FEEDS);
+        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
+        
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_GET_FEED_FINISHED, eventData);
     }
 
     void CCProfileEventDispatcher::onGetFeedStarted(CCProvider provider, cocos2d::__String *payload) {
-        FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onGetFeedStarted(provider, payload);
-        }
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
+        
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_GET_FEED_STARTED, eventData);
     }
 
     void CCProfileEventDispatcher::onSocialActionFailedEvent(CCProvider provider, CCSocialActionType  socialActionType,
-                                                             cocos2d::__String *errorDescription, cocos2d::__String *payload) {
-        FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onSocialActionFailedEvent(provider, socialActionType, errorDescription, payload);
-        }
+                                                             cocos2d::__String *message, cocos2d::__String *payload) {
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(__Integer::create(socialActionType), CCProfileConsts::DICT_ELEMENT_SOCIAL_ACTION_TYPE);
+        eventData->setObject(message, CCProfileConsts::DICT_ELEMENT_MESSAGE);
+        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
+        
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_SOCIAL_ACTION_FAILED, eventData);
     }
 
     void CCProfileEventDispatcher::onSocialActionFinishedEvent(CCProvider provider, CCSocialActionType socialActionType, cocos2d::__String *payload) {
-        FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onSocialActionFinishedEvent(provider, socialActionType, payload);
-        }
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(__Integer::create(socialActionType), CCProfileConsts::DICT_ELEMENT_SOCIAL_ACTION_TYPE);
+        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
+        
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_SOCIAL_ACTION_FINISHED, eventData);
     }
 
     void CCProfileEventDispatcher::onSocialActionStartedEvent(CCProvider provider, CCSocialActionType socialActionType, cocos2d::__String *payload) {
-        FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onSocialActionStartedEvent(provider, socialActionType, payload);
-        }
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(__Integer::create(socialActionType), CCProfileConsts::DICT_ELEMENT_SOCIAL_ACTION_TYPE);
+        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
+        
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_SOCIAL_ACTION_STARTED, eventData);
     }
 
     void CCProfileEventDispatcher::onLoginCancelledEvent(CCProvider provider, cocos2d::__String *payload) {
-        FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onLoginCancelledEvent(provider, payload);
-        }
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
+        
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_LOGIN_CANCELLED, eventData);
     }
 
     void CCProfileEventDispatcher::onUserProfileUpdatedEvent(CCUserProfile *userProfile) {
-        FOR_EACH_EVENT_HANDLER(CCProfileEventHandler)
-            eventHandler->onUserProfileUpdatedEvent(userProfile);
-        }
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(userProfile, CCProfileConsts::DICT_ELEMENT_USER_PROFILE);
+        
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_USER_PROFILE_UPDATED, eventData);
     }
 }

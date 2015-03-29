@@ -18,8 +18,7 @@
 #define __CCProfileEventDispatcher_H_
 
 #include "cocos2d.h"
-#include "CCProfileEventHandler.h"
-#include "CCAbstractAggregatedEventHandler.h"
+#include "CCUserProfile.h"
 #include "CCSocialActionUtils.h"
 #include "CCUserProfileUtils.h"
 
@@ -33,7 +32,7 @@ namespace soomla {
      When the events arrive this class calls event handler functions, to tie
      it to your event handler call addEventHandler().
      */
-    class CCProfileEventDispatcher : public CCAbstractAggregatedEventHandler<CCProfileEventHandler>, public CCProfileEventHandler {
+    class CCProfileEventDispatcher : public cocos2d::Ref {
     public:
 		/**
 		   This class is singleton, access it with this function.
@@ -58,7 +57,7 @@ namespace soomla {
         /**
          see parent
          */
-        virtual void onLoginFailed(CCProvider provider, cocos2d::__String *errorDescription, cocos2d::__String *payload);
+        virtual void onLoginFailed(CCProvider provider, cocos2d::__String *message, cocos2d::__String *payload);
 
         /**
          see parent
@@ -73,7 +72,7 @@ namespace soomla {
         /**
          see parent
          */
-        virtual void onLogoutFailed(CCProvider provider, cocos2d::__String *errorDescription);
+        virtual void onLogoutFailed(CCProvider provider, cocos2d::__String *message);
 
         /**
          see parent
@@ -88,7 +87,7 @@ namespace soomla {
         /**
          see parent
          */
-        virtual void onGetContactsFailed(CCProvider provider, cocos2d::__String *errorDescription, cocos2d::__String *payload);
+        virtual void onGetContactsFailed(CCProvider provider, cocos2d::__String *message, cocos2d::__String *payload);
 
         /**
          see parent
@@ -103,7 +102,7 @@ namespace soomla {
         /**
          see parent
          */
-        virtual void onGetFeedFailed(CCProvider provider, cocos2d::__String *errorDescription, cocos2d::__String *payload);
+        virtual void onGetFeedFailed(CCProvider provider, cocos2d::__String *message, cocos2d::__String *payload);
 
         /**
          see parent
@@ -118,7 +117,7 @@ namespace soomla {
         /**
          see parent
          */
-        virtual void onSocialActionFailedEvent(CCProvider provider, CCSocialActionType socialActionType, cocos2d::__String *errorDescription, cocos2d::__String *payload);
+        virtual void onSocialActionFailedEvent(CCProvider provider, CCSocialActionType socialActionType, cocos2d::__String *message, cocos2d::__String *payload);
 
         /**
          see parent

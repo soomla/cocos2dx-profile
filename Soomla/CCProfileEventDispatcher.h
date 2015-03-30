@@ -26,7 +26,7 @@ namespace soomla {
 
 	/** 
      @class CCProfileEventDispatcher
-     @brief Calls event handler functions when events are fired
+     @brief Fires event when received from the native implementation.
      
      Signs up to native Profile events through CCSoomlaEventDispatcher.
      When the events arrive this class calls event handler functions, to tie

@@ -29,8 +29,8 @@ namespace soomla {
      @brief Fires event when received from the native implementation.
      
      Signs up to native Profile events through CCSoomlaEventDispatcher.
-     When the events arrive this class calls event handler functions, to tie
-     it to your event handler call addEventHandler().
+     When the events arrive this class fires the repective event through
+     the Cocos2dx Event Dispatcher.
      */
     class CCProfileEventDispatcher : public cocos2d::Ref {
     public:

@@ -20,7 +20,7 @@
 #include "Cocos2dxCore.h"
 
 #include "CCUserProfile.h"
-#include "CCProfileEventHandler.h"
+#include "CCProfileConsts.h"
 #include "CCProfileEventDispatcher.h"
 #include "CCNdkBridge.h"
 #include "CCSoomlaProfile.h"

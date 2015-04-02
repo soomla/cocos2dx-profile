@@ -30,6 +30,16 @@ namespace soomla {
     char const *CCProfileConsts::JSON_BIRTHDAY = "birthday";
 
     char const *CCProfileConsts::JSON_JSON_TYPE_USER_PROFILE = "UserProfile";
+    
+    
+    char const *CCProfileConsts::DICT_ELEMENT_USER_PROFILE = "userProfile";
+    char const *CCProfileConsts::DICT_ELEMENT_PROVIDER = "provider";
+    char const *CCProfileConsts::DICT_ELEMENT_PAYLOAD = "payload";
+    char const *CCProfileConsts::DICT_ELEMENT_SOCIAL_ACTION_TYPE = "socialActiontype";
+    char const *CCProfileConsts::DICT_ELEMENT_MESSAGE = "message";
+    char const *CCProfileConsts::DICT_ELEMENT_CONTACTS = "contacts";
+    char const *CCProfileConsts::DICT_ELEMENT_FEEDS = "feeds";
+    char const *CCProfileConsts::DICT_ELEMENT_REWARD = "reward";
 
     char const *CCProfileConsts::EVENT_PROFILE_INITIALIZED = "com.soomla.profile.events.ProfileInitializedEvent";
     char const *CCProfileConsts::EVENT_USER_RATING = "com.soomla.profile.events.UserRatingEvent";

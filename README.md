@@ -12,6 +12,8 @@ cocos2dx-profile
 
 *SOOMLA's Profile Module for Cocos2d-x*
 
+**April 1st, 2015**: v1.2 Event handlers replaced with Cocos2d-x event system (needs core update as well)
+
 **March 16, 2015**: v1.1 Better integration for all Soomla modules in Cocos2d-x (needs core update as well)
 
 **November 16th**: v1.0 **cocos2dx-profile** supports Facebook, Google+ and Twitter
@@ -36,8 +38,8 @@ The example project is still under development but it already has some important
 
 ####Pre baked zip:
 
-- [soomla-cocos2dx-core 1.1.1](http://library.soom.la/fetch/cocos2dx-v2-core/1.1.1?cf=github)
-- [cocos2dx-profile 1.1.1](http://library.soom.la/fetch/cocos2dx-v2-profile/1.1.1?cf=github)
+- [soomla-cocos2dx-core 1.2.0](http://library.soom.la/fetch/cocos2dx-v2-core/1.2.0?cf=github)
+- [cocos2dx-profile 1.2.0](http://library.soom.la/fetch/cocos2dx-v2-profile/1.2.0?cf=github)
 
 ## Getting Started (With pre-built libraries)
 
@@ -59,17 +61,9 @@ The example project is still under development but it already has some important
     $ git clone git@github.com:soomla/jansson.git external/jansson
     ```
 
-1. Implement your `CCProfileEventHandler` in order to be notified about social network related events. Refer to the [Event Handling](#event-handling) section for more information.
-
 1. Make sure to include the `Cocos2dxProfile.h` header whenever you use any of the **cocos2dx-profile** functions:
     ```cpp
     #include "Cocos2dxProfile.h"
-    ```
-
-1. Add an instance of your event handler to `CCProfileEventDispatcher` before `CCSoomlaProfile` initialization:
-
-    ```cpp
-    soomla::CCProfileEventDispatcher::getInstance()->addEventHandler(handler);
     ```
 
 1. Initialize `CCSoomla` and `CCSoomlaProfile` with the class you just created, a `customSecret` and other params:
@@ -104,6 +98,7 @@ The example project is still under development but it already has some important
 
     profileParams->setObject(twitterParams, soomla::CCUserProfileUtils::providerEnumToString(soomla::TWITTER)->getCString());
     ```
+1. You'll need to subscribe to profile events to get notified about social network related events. refer to the [Event Handling](#event-handling) section for more information.
 
 The next steps are different for the different platforms.
 
@@ -251,14 +246,35 @@ The on-device storage is encrypted and kept in a SQLite database. SOOMLA is prep
 
 ## Event Handling
 
-SOOMLA lets you subscribe to store events, get notified and implement your own application specific behaviour to them.
+SOOMLA lets you subscribe to profile events, get notified and implement your own application specific behaviour to them.
 
 > Your behaviour is an addition to the default behaviour implemented by SOOMLA. You don't replace SOOMLA's behaviour.
 
-The `CCProfileEventDispatcher` class is where all events go through. To handle various events, create your own event handler, a class that implements `CCProfileEventHandler`, and add it to the `CCProfileEventDispatcher` class:
+SOOMLA uses the Cocos2d-x [`EventDispatcher`](http://www.cocos2d-x.org/wiki/EventDispatcher_Mechanism) to dispatch its own custom events.
+The names of such events are defined in `CCProfileConsts`, the received event has a `__Dictionary` set in its `userData` which holds all the meta-data for the event.
+You can subscribe to any event from anywhere in your code.
+
+For example here's how to subscribe to the login finished event:
+
 ```cpp
-soomla::CCProfileEventDispatcher::getInstance()->addEventHandler(profileEventHandler);
+cocos2d::Director::getInstance()->getEventDispatcher()->addCustomEventListener(soomla::CCProfileConsts::EVENT_LOGIN_FINISHED, CC_CALLBACK_1(ExampleScene::onLoginFinished, this));
 ```
+
+Continuing the example, here's how you would handle and extract data from such an event:
+
+```cpp
+void ExampleScene::onLoginFinished(cocos2d::EventCustom *event) {
+  cocos2d::__Dictionary *eventData = (cocos2d::__Dictionary *)event->getUserData();
+  soomla::CCUserProfile *userProfile = dynamic_cast<soomla::CCUserProfile *>(eventData->objectForKey(soomla::CCProfileConsts::DICT_ELEMENT_USER_PROFILE));
+  cocos2d::__String *payload = dynamic_cast<cocos2d::__String *>(eventData->objectForKey(soomla::CCProfileConsts::DICT_ELEMENT_PAYLOAD));
+
+  // Use userProfile and payload for your needs
+}
+```
+
+Each event has its own meta-data, see inline documentation in [`CCProfileEventDispatcher`](https://github.com/soomla/cocos2dx-profile/blob/master/Soomla/CCSimpleProfileEventHandler.h) for more information.
+
+## Error Handling
 
 Since Cocos2d-x doesn't support exceptions, we use a different method to catch and work with exceptions on the native side. All functions that raise an exception on the native side have an additional `CCError*` parameter to them. In order to know if an exception was raised, send a reference to `CCError*` to the function, and inspect it after running.
 
@@ -317,10 +333,10 @@ or, if you have repositories already cloned, fetch the submodules with this comm
 
 1. For Android: You can use our "sourced" modules for Android Studio (or IntelliJ IDEA) (`extensions/soomla-cocos2dx-core/development/Cocos2dxCoreFromSources.iml`, `extensions/cocos2dx-profile/development/Cocos2dxProfileFromSources.iml`), just include them to your project.
 
-## How to move from v1.0.x to v1.1.x?
+## How to move from v1.0.x to v1.2.x?
 
-Version 1.1.x is all about making the integration process on iOS and Android easier.
-If you are using v1.0.x and want to move to v1.1.x follow these steps:
+Version 1.2.x is all about making the integration process on iOS and Android easier.
+If you are using v1.0.x and want to move to v1.2.x follow these steps:
 
 1. Pull the latest version to your `extensions` folder
 1. Remove any Soomla-related code in iOS (`AppController.mm`) and Android (`Cocos2dxActivity`), especially code related to `ServiceManager` and any other `Service`s.
@@ -328,6 +344,7 @@ If you are using v1.0.x and want to move to v1.1.x follow these steps:
   - Change `soomla::CCServiceManager::getInstance()->setCommonParams(commonParams);` to `soomla::CCSoomla::initialize("customSecret");`
   - Change `soomla::CCProfileService::initShared(profileParams);` to `soomla::CCSoomlaProfile::initialize(profileParams);`
   - Remove any `#include`s to missing header files, you only need `Cocos2dxProfile.h` for profile
+1. Remove any reference to `EventHandler`s and subscribing through Soomla `EventDispatcher`s, instead use the Cocos2d-x `EventDispatcher` to subscribe to events.
 1. When in doubt follow the [cocos2dx-profile-example](https://github.com/soomla/cocos2dx-profile#example-project)
 
 Contribution

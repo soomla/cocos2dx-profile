@@ -263,7 +263,7 @@ cocos2d::CCNotificationCenter::sharedNotificationCenter()->addObserver(this, cal
 Continuing the example, here's how you would handle and extract data from such an event:
 
 ```cpp
-void ExampleScene::onLoginFinished(cocos2d::CCDictionary *event) {
+void ExampleScene::onLoginFinished(cocos2d::CCDictionary *eventData) {
   soomla::CCUserProfile *userProfile = dynamic_cast<soomla::CCUserProfile *>(eventData->objectForKey(soomla::CCProfileConsts::DICT_ELEMENT_USER_PROFILE));
   cocos2d::CCString *payload = dynamic_cast<cocos2d::CCString *>(eventData->objectForKey(soomla::CCProfileConsts::DICT_ELEMENT_PAYLOAD));
 

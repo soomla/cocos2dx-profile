@@ -250,29 +250,28 @@ SOOMLA lets you subscribe to profile events, get notified and implement your own
 
 > Your behaviour is an addition to the default behaviour implemented by SOOMLA. You don't replace SOOMLA's behaviour.
 
-SOOMLA uses the Cocos2d-x [`EventDispatcher`](http://www.cocos2d-x.org/wiki/EventDispatcher_Mechanism) to dispatch its own custom events.
-The names of such events are defined in `CCProfileConsts`, the received event has a `__Dictionary` set in its `userData` which holds all the meta-data for the event.
-You can subscribe to any event from anywhere in your code.
+SOOMLA uses the Cocos2d-x `CCNotificationCenter` to dispatch its own custom events.
+The names of such events are defined in `CCProfileConsts`, the received event data is a `CCDictionary` which holds all the meta-data for the event.
+You can subscribe to any event from any `CCObject` in your code.
 
 For example here's how to subscribe to the login finished event:
 
 ```cpp
-cocos2d::Director::getInstance()->getEventDispatcher()->addCustomEventListener(soomla::CCProfileConsts::EVENT_LOGIN_FINISHED, CC_CALLBACK_1(ExampleScene::onLoginFinished, this));
+cocos2d::CCNotificationCenter::sharedNotificationCenter()->addObserver(this, callfuncO_selector(ExampleScene::onLoginFinished), soomla::CCProfileConsts::EVENT_LOGIN_FINISHED, NULL);
 ```
 
 Continuing the example, here's how you would handle and extract data from such an event:
 
 ```cpp
-void ExampleScene::onLoginFinished(cocos2d::EventCustom *event) {
-  cocos2d::__Dictionary *eventData = (cocos2d::__Dictionary *)event->getUserData();
+void ExampleScene::onLoginFinished(cocos2d::CCDictionary *event) {
   soomla::CCUserProfile *userProfile = dynamic_cast<soomla::CCUserProfile *>(eventData->objectForKey(soomla::CCProfileConsts::DICT_ELEMENT_USER_PROFILE));
-  cocos2d::__String *payload = dynamic_cast<cocos2d::__String *>(eventData->objectForKey(soomla::CCProfileConsts::DICT_ELEMENT_PAYLOAD));
+  cocos2d::CCString *payload = dynamic_cast<cocos2d::CCString *>(eventData->objectForKey(soomla::CCProfileConsts::DICT_ELEMENT_PAYLOAD));
 
   // Use userProfile and payload for your needs
 }
 ```
 
-Each event has its own meta-data, see inline documentation in [`CCProfileEventDispatcher`](https://github.com/soomla/cocos2dx-profile/blob/master/Soomla/CCSimpleProfileEventHandler.h) for more information.
+Each event has its own meta-data, see inline documentation in [`CCProfileEventDispatcher`](https://github.com/soomla/cocos2dx-profile/blob/cocos2dx-v2/Soomla/CCSimpleProfileEventHandler.h) for more information.
 
 ## Error Handling
 
@@ -344,7 +343,7 @@ If you are using v1.0.x and want to move to v1.2.x follow these steps:
   - Change `soomla::CCServiceManager::getInstance()->setCommonParams(commonParams);` to `soomla::CCSoomla::initialize("customSecret");`
   - Change `soomla::CCProfileService::initShared(profileParams);` to `soomla::CCSoomlaProfile::initialize(profileParams);`
   - Remove any `#include`s to missing header files, you only need `Cocos2dxProfile.h` for profile
-1. Remove any reference to `EventHandler`s and subscribing through Soomla `EventDispatcher`s, instead use the Cocos2d-x `EventDispatcher` to subscribe to events.
+1. Remove any reference to `EventHandler`s and subscribing through Soomla `EventDispatcher`s, instead use the Cocos2d-x `CCNotificationCenter` to subscribe to events.
 1. When in doubt follow the [cocos2dx-profile-example](https://github.com/soomla/cocos2dx-profile#example-project)
 
 Contribution

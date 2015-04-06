@@ -1,3 +1,10 @@
+### v1.2.0 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/cocos2dx-v2-v1.1.1...cocos2dx-v2-v1.2.0)
+
+**BREAKING API VERSION**
+
+* Features
+  * Replacing event handlers with custom events dispatched through Cocos2d-x facilities
+
 ### v1.1.1 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/cocos2dx-v2-v1.1.0...cocos2dx-v2-v1.1.1)
 
 * Changes

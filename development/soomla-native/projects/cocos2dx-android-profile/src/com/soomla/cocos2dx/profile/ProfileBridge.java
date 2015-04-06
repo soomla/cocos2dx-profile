@@ -242,12 +242,12 @@ public class ProfileBridge {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
                 String provider = params.getString("provider");
-                String pageName = params.getString("pageName");
+                String pageId = params.getString("pageId");
                 JSONObject rewardJson = params.optJSONObject("reward");
                 Reward reward = (rewardJson != null) ?
                         domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
                 SoomlaProfile.getInstance().like(ndkGlue.getActivityRef().get(), IProvider.Provider.getEnum(provider),
-                        pageName, reward);
+                pageId, reward);
             }
         });
 

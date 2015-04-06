@@ -64,7 +64,7 @@
                 id value = providerParams[key];
                 [parsedParams setObject:value forKey:@([UserProfileUtils providerStringToEnum:key])];
             }
-            
+
             [[SoomlaProfile getInstance] initialize:parsedParams];
         }
     }];
@@ -192,10 +192,10 @@
 
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::like" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];
-        NSString *pageName = [parameters objectForKey:@"pageName"];
+        NSString *pageId = [parameters objectForKey:@"pageId"];
         NSDictionary *rewardDict = [parameters objectForKey:@"reward"];
         Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
-        [[SoomlaProfile getInstance] like:[UserProfileUtils providerStringToEnum:provider] andPageName:pageName andReward:reward];
+        [[SoomlaProfile getInstance] like:[UserProfileUtils providerStringToEnum:provider] andPageId:pageId andReward:reward];
     }];
 
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::openAppRatingPage" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {

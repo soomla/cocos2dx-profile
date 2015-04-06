@@ -50,12 +50,12 @@ namespace soomla {
          The main constructor for CCSoomlaProfile
          */
         CCSoomlaProfile();
-        
+
         /**
          Initializes the CCSoomlaProfile
-         
+
          NOTE: must be called before any of its methods can be used
-         
+
          @param profileParams The parameters which are used to initialize
          the native ProfileBridge
          */
@@ -71,11 +71,11 @@ namespace soomla {
          @param soomlaError Any errors will be returned in this parameter
          */
         void login(CCProvider provider, CCReward *reward, CCError **soomlaError);
-        
+
         /**
          Logs a user into the given provider, upon successful login, the
          user will receive the supplied reward
-         
+
          @param provider The provider to log the user into
          @param reward The reward which will be granted to the user upon a
          successful login
@@ -122,11 +122,11 @@ namespace soomla {
          @param soomlaError Any errors will be returned in this parameter
          */
         void updateStatus(CCProvider provider, const char *status, CCReward *reward, CCError **soomlaError);
-        
+
         /**
          Updates the user's status on the provided provider. Upon a successful
          update, the user will receive the supplied reward.
-         
+
          @param provider The provider on which to update user's status
          @param status The text to update the user's status with
          @param reward The reward which will be granted to the user upon a
@@ -134,12 +134,12 @@ namespace soomla {
          @param soomlaError Any errors will be returned in this parameter
          */
         void updateStatus(CCProvider provider, const char *status, const char *payload, CCReward *reward, CCError **soomlaError);
-        
+
         /**
          Updates the user's status on the provided provider. Upon a successful
          update, the user will receive the supplied reward.
          Using provider's native dialogs (when available)
-         
+
          @param provider The provider on which to update user's status
          @param link The link that is shared
          @param reward The reward which will be granted to the user upon a
@@ -147,12 +147,12 @@ namespace soomla {
          @param soomlaError Any errors will be returned in this parameter
          */
         void updateStatusDialog(CCProvider provider, const char *link, CCReward *reward, CCError **soomlaError);
-        
+
         /**
          Updates the user's status on the provided provider. Upon a successful
          update, the user will receive the supplied reward.
          Using provider's native dialogs (when available)
-         
+
          @param provider The provider on which to update user's status
          @param link The link that is shared
          @param payload a String to receive when the function returns.
@@ -184,12 +184,12 @@ namespace soomla {
         void updateStory(CCProvider provider, const char *message, const char *name, const char *caption,
                 const char *description, const char *link, const char *picture,
                 CCReward *reward, CCError **soomlaError);
-        
+
         /**
          Updates a user's story on the provided provider. a Story is a more
          detailed status (very Facebook oriented). Upon a successful
          update, the user will receive the supplied reward.
-         
+
          @param provider The provider on which to update user's story
          @param message The main text which will appear in the story
          @param name The headline for the link which will be integrated in the
@@ -208,13 +208,13 @@ namespace soomla {
         void updateStory(CCProvider provider, const char *message, const char *name, const char *caption,
                          const char *description, const char *link, const char *picture,
                          const char *payload, CCReward *reward, CCError **soomlaError);
-        
+
         /**
          Updates a user's story on the provided provider. a Story is a more
          detailed status (very Facebook oriented). Upon a successful
          update, the user will receive the supplied reward.
          Using provider's native dialogs (when available)
-         
+
          @param provider The provider on which to update user's story
          @param name The headline for the link which will be integrated in the
          story
@@ -231,13 +231,13 @@ namespace soomla {
         void updateStoryDialog(CCProvider provider, const char *name, const char *caption,
                          const char *description, const char *link, const char *picture,
                          CCReward *reward, CCError **soomlaError);
-        
+
         /**
          Updates a user's story on the provided provider. a Story is a more
          detailed status (very Facebook oriented). Upon a successful
          update, the user will receive the supplied reward.
          Using provider's native dialogs (when available)
-         
+
          @param provider The provider on which to update user's story
          @param name The headline for the link which will be integrated in the
          story
@@ -269,11 +269,11 @@ namespace soomla {
          */
         void uploadImage(CCProvider provider, const char *message, const char *filePath,
                 CCReward *reward, CCError **soomlaError);
-        
+
         /**
          Uploads an image to the user's profile in the supplied provider.
          Upon a successful upload, the user will receive the supplied reward.
-         
+
          @param provider The provider on which to upload an image for the user
          @param filePath The full file-path to the image on the device which
          will be uploaded
@@ -297,12 +297,12 @@ namespace soomla {
          @param soomlaError Any errors will be returned in this parameter
          */
         void getContacts(CCProvider provider, CCReward *reward, CCError **soomlaError);
-        
+
         /**
          Retrieves a list of the user's contacts from the supplied provider,
          which also use this application. Upon a successful retrieval of
          contacts the user will be granted the supplied reward.
-         
+
          @param provider The provider on which to retrieve a list of contacts
          from
          @param payload a String to receive when the function returns.
@@ -324,12 +324,12 @@ namespace soomla {
          @param soomlaError Any errors will be returned in this parameter
          */
         void getFeed(CCProvider provider, CCReward *reward, CCError **soomlaError);
-        
+
         /**
          Retrieves a list of the user's feed entries from the supplied provider.
          Upon a successful retrieval of feed entries the user will be granted
          the supplied reward.
-         
+
          @param provider The provider on which to retrieve a list of feed
          entries
          @param payload a String to receive when the function returns.
@@ -352,12 +352,12 @@ namespace soomla {
          the supplied reward
 
          @param provider The provider on which to open the like page
-         @param pageName The name of the page to open
+         @param pageId The name of the page to open
          @param reward The reward which will be granted to the user upon a
          successful opening of the page
          @param soomlaError Any errors will be returned in this parameter
          */
-        void like(CCProvider provider, const char *pageName, CCReward *reward, CCError **soomlaError);
+        void like(CCProvider provider, const char *pageId, CCReward *reward, CCError **soomlaError);
 
         /**
          Utility method to open up the market application rating page

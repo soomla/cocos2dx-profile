@@ -43,16 +43,16 @@ namespace soomla {
     CCSoomlaProfile::CCSoomlaProfile() {
         mInited = false;
     }
-    
+
     void CCSoomlaProfile::initialize(cocos2d::CCDictionary *profileParams) {
-        
+
         if (CCSoomlaProfile::getInstance()->mInited) {
             CCSoomlaUtils::logError(TAG, "SoomlaProfile is already initialized. You can't initialize it twice!");
             return;
         }
-        
+
         CCProfileBridge::initShared(profileParams);
-        
+
         CCSoomlaProfile::getInstance()->mInited = true;
     }
 
@@ -62,7 +62,7 @@ namespace soomla {
     void CCSoomlaProfile::login(CCProvider provider, CCReward *reward, CCError **soomlaError) {
         this->login(provider, "", reward, soomlaError);
     }
-    
+
     void CCSoomlaProfile::login(CCProvider provider, const char *payload, CCReward *reward, CCError **soomlaError) {
         CC_ASSERT(mInited);
         CCDictionary *params = CCDictionary::create();
@@ -106,7 +106,7 @@ namespace soomla {
         SL_SAFE_CREATE_FROM_RETURN(CCUserProfile *, retValue, retParams);
         return retValue;
     }
-    
+
     ///
     /// Supported platforms: Facebook, Twitter, Google+
     ///
@@ -129,7 +129,7 @@ namespace soomla {
     void CCSoomlaProfile::updateStatus(CCProvider provider, const char *status, CCReward *reward, CCError **soomlaError) {
         this->updateStatus(provider, status, "", reward, soomlaError);
     }
-    
+
     ///
     /// Supported platforms: Facebook, Google+
     /// NOTE:
@@ -150,7 +150,7 @@ namespace soomla {
         }
         CCNdkBridge::callNative(params, soomlaError);
     }
-    
+
     void CCSoomlaProfile::updateStatusDialog(CCProvider provider, const char *link, CCReward *reward, CCError **soomlaError) {
         this->updateStatusDialog(provider, link, "", reward, soomlaError);
     }
@@ -180,13 +180,13 @@ namespace soomla {
         }
         CCNdkBridge::callNative(params, soomlaError);
     }
-    
+
     void CCSoomlaProfile::updateStory(CCProvider provider, const char *message, const char *name,
                                       const char *caption, const char *description, const char *link, const char *picture,
                                       CCReward *reward, CCError **soomlaError) {
         this->updateStory(provider, message, name, caption, description, link, picture, "", reward, soomlaError);
     }
-    
+
     ///
     /// Supported platforms: Facebook, Google+.
     /// Note:
@@ -197,7 +197,7 @@ namespace soomla {
     void CCSoomlaProfile::updateStoryDialog(CCProvider provider, const char *name,
                                       const char *caption, const char *description, const char *link, const char *picture,
                                       const char *payload, CCReward *reward, CCError **soomlaError) {
-        
+
         CC_ASSERT(mInited);
         CCDictionary *params = CCDictionary::create();
         params->setObject(CCString::create("CCSoomlaProfile::updateStoryDialog"), "method");
@@ -223,11 +223,11 @@ namespace soomla {
         }
         CCNdkBridge::callNative(params, soomlaError);
     }
-    
+
     void CCSoomlaProfile::updateStoryDialog(CCProvider provider, const char *name,
                                             const char *caption, const char *description, const char *link, const char *picture,
                                             CCReward *reward, CCError **soomlaError) {
-        
+
         this->updateStoryDialog(provider, name, caption, description, link, picture, "", reward, soomlaError);
     }
 
@@ -251,10 +251,10 @@ namespace soomla {
         }
         CCNdkBridge::callNative(params, soomlaError);
     }
-    
+
     void CCSoomlaProfile::uploadImage(CCProvider provider, const char *message, const char *filePath,
                                       CCReward *reward, CCError **soomlaError) {
-        
+
         this->uploadImage(provider, message, filePath, "", reward, soomlaError);
     }
 
@@ -265,7 +265,7 @@ namespace soomla {
     /// 2. Google+ - missing contact info: username, email, gender, bithday
     ///
     void CCSoomlaProfile::getContacts(CCProvider provider, const char *payload, CCReward *reward, CCError **soomlaError) {
-        
+
         CC_ASSERT(mInited);
         CCDictionary *params = CCDictionary::create();
         params->setObject(CCString::create("CCSoomlaProfile::getContacts"), "method");
@@ -276,12 +276,12 @@ namespace soomla {
         }
         CCNdkBridge::callNative(params, soomlaError);
     }
-    
+
     void CCSoomlaProfile::getContacts(CCProvider provider, CCReward *reward, CCError **soomlaError) {
 
         this->getContacts(provider, "", reward, soomlaError);
     }
-    
+
     ///
     /// Supported platforms: Facebook.
     ///
@@ -297,9 +297,9 @@ namespace soomla {
         }
         CCNdkBridge::callNative(params, soomlaError);
     }
-    
+
     void CCSoomlaProfile::getFeed(CCProvider provider, CCReward *reward, CCError **soomlaError) {
-        
+
         this->getFeed(provider, "", reward, soomlaError);
     }
 
@@ -317,18 +317,18 @@ namespace soomla {
         if (retValue != NULL) {
             return retValue->getValue();
         }
-        
+
         return false;
     }
 
     ///
     /// Supported platforms: Facebook, Twitter, Google+
     ///
-    void CCSoomlaProfile::like(CCProvider provider, const char *pageName, CCReward *reward, CCError **soomlaError) {
+    void CCSoomlaProfile::like(CCProvider provider, const char *pageId, CCReward *reward, CCError **soomlaError) {
         CC_ASSERT(mInited);
         CCDictionary *params = CCDictionary::create();
         params->setObject(CCString::create("CCSoomlaProfile::like"), "method");
-        params->setObject(CCString::create(pageName), "pageName");
+        params->setObject(CCString::create(pageId), "pageId");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
         if (reward) {
             params->setObject(reward->toDictionary(), "reward");

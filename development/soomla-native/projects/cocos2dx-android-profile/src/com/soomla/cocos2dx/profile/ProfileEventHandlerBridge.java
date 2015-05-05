@@ -247,6 +247,7 @@ public class ProfileEventHandlerBridge {
                     parameters.put("socialActionType", getContactsFailedEvent.SocialActionType.getValue());
                     parameters.put("errorDescription", getContactsFailedEvent.ErrorDescription);
                     parameters.put("payload", getContactsFailedEvent.Payload);
+                    parameters.put("fromStart", getContactsFailedEvent.FromStart);
                     NdkGlue.getInstance().sendMessageWithParameters(parameters);
                 } catch (JSONException e) {
                     throw new IllegalStateException(e);
@@ -272,6 +273,7 @@ public class ProfileEventHandlerBridge {
                     parameters.put("socialActionType", getContactsFinishedEvent.SocialActionType.getValue());
                     parameters.put("contacts", DomainHelper.getInstance().getJsonObjectListFromDomains(getContactsFinishedEvent.Contacts));
                     parameters.put("payload", getContactsFinishedEvent.Payload);
+                    parameters.put("hasNext", getContactsFinishedEvent.HasNext);
                     NdkGlue.getInstance().sendMessageWithParameters(parameters);
                 } catch (JSONException e) {
                     throw new IllegalStateException(e);
@@ -295,6 +297,7 @@ public class ProfileEventHandlerBridge {
                     parameters.put("method", ProfileConsts.EVENT_GET_CONTACTS_STARTED);
                     parameters.put("provider", getContactsStartedEvent.Provider.getValue());
                     parameters.put("socialActionType", getContactsStartedEvent.SocialActionType.getValue());
+                    parameters.put("fromStart", getContactsStartedEvent.FromStart);
                     parameters.put("payload", getContactsStartedEvent.Payload);
                     NdkGlue.getInstance().sendMessageWithParameters(parameters);
                 } catch (JSONException e) {

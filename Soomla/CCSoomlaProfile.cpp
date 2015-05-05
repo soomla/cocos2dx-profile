@@ -264,12 +264,12 @@ namespace soomla {
     /// 1. Twitter - missing contact info: email, gender, birthday.
     /// 2. Google+ - missing contact info: username, email, gender, bithday
     ///
-    void CCSoomlaProfile::getContacts(CCProvider provider, const char *payload, CCReward *reward, CCError **soomlaError) {
-
+    void CCSoomlaProfile::getContacts(CCProvider provider, bool fromStart, const char *payload, CCReward *reward, CCError **soomlaError) {
         CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCSoomlaProfile::getContacts"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
+        params->setObject(__Bool::create(fromStart), "fromStart");
         params->setObject(__String::create(payload), "payload");
         if (reward) {
             params->setObject(reward->toDictionary(), "reward");
@@ -279,7 +279,11 @@ namespace soomla {
 
     void CCSoomlaProfile::getContacts(CCProvider provider, CCReward *reward, CCError **soomlaError) {
 
-        this->getContacts(provider, "", reward, soomlaError);
+        this->getContacts(provider, false, "", reward, soomlaError);
+    }
+
+    void CCSoomlaProfile::getContacts(CCProvider provider, bool fromStart, CCReward *reward, CCError **soomlaError) {
+        this->getContacts(provider, fromStart, "", reward, soomlaError);
     }
 
     ///

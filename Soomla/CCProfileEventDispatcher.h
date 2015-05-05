@@ -140,7 +140,7 @@ namespace soomla {
          CCProfileConsts::DICT_ELEMENT_PAYLOAD - __String - an identification 
          String sent from the caller of the action.
          */
-        virtual void onGetContactsFailed(CCProvider provider, cocos2d::__String *message, cocos2d::__String *payload);
+        virtual void onGetContactsFailed(CCProvider provider, __String *message, __Bool *payload, __String *pString);
 
         /**
          Fired when the get contacts process from a provider has finished.
@@ -154,7 +154,7 @@ namespace soomla {
          CCProfileConsts::DICT_ELEMENT_PAYLOAD - __String - an identification 
          String sent from the caller of the action.
          */
-        virtual void onGetContactsFinished(CCProvider provider, cocos2d::__Array *contactsDict, cocos2d::__String *payload);
+        virtual void onGetContactsFinished(CCProvider provider, cocos2d::__Array *contactsDict, cocos2d::__String *payload, cocos2d::__Bool *hasNext);
 
         /**
          Fired when the get contacts process from a provider has started.
@@ -166,7 +166,7 @@ namespace soomla {
          CCProfileConsts::DICT_ELEMENT_PAYLOAD - __String - an identification 
          String sent from the caller of the action.
          */
-        virtual void onGetContactsStarted(CCProvider provider, cocos2d::__String *payload);
+        virtual void onGetContactsStarted(CCProvider provider, cocos2d::__Bool *fromStart, cocos2d::__String *payload);
 
         /**
          Fired when the get feed process from a provider has failed.

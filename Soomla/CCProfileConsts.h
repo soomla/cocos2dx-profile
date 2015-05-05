@@ -48,6 +48,8 @@ namespace soomla {
         
         static char const *DICT_ELEMENT_USER_PROFILE;
         static char const *DICT_ELEMENT_PROVIDER;
+        static char const *DICT_ELEMENT_FROM_START;
+        static char const *DICT_ELEMENT_HAS_NEXT;
         static char const *DICT_ELEMENT_PAYLOAD;
         static char const *DICT_ELEMENT_SOCIAL_ACTION_TYPE;
         static char const *DICT_ELEMENT_MESSAGE;

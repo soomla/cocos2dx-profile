@@ -36,7 +36,7 @@ namespace soomla {
     char const *CCProfileConsts::DICT_ELEMENT_PROVIDER = "provider";
     char const *CCProfileConsts::DICT_ELEMENT_PAYLOAD = "payload";
     char const *CCProfileConsts::DICT_ELEMENT_FROM_START = "fromStart";
-    char const *CCProfileConsts::DICT_ELEMENT_HAS_NEXT = "hasNext";
+    char const *CCProfileConsts::DICT_ELEMENT_HAS_MORE = "hasMore";
     char const *CCProfileConsts::DICT_ELEMENT_SOCIAL_ACTION_TYPE = "socialActiontype";
     char const *CCProfileConsts::DICT_ELEMENT_MESSAGE = "message";
     char const *CCProfileConsts::DICT_ELEMENT_CONTACTS = "contacts";

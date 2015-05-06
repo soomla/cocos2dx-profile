@@ -179,10 +179,11 @@
 
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::getFeed" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];
+        NSNumber *fromStart = [parameters objectForKey:@"fromStart"];
         NSString *payload = [parameters objectForKey:@"payload"];
         NSDictionary *rewardDict = [parameters objectForKey:@"reward"];
         Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
-        [[SoomlaProfile getInstance] getFeedWithProvider:[UserProfileUtils providerStringToEnum:provider] andPayload:payload andReward:reward];
+        [[SoomlaProfile getInstance] getFeedWithProvider:[UserProfileUtils providerStringToEnum:provider] andFromStart:[fromStart boolValue] andPayload:payload andReward:reward];
     }];
 
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::isLoggedIn" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
@@ -269,7 +270,7 @@
         id contacts = [notification.userInfo objectForKey:DICT_ELEMENT_CONTACTS];
         [parameters setObject:[[DomainHelper sharedDomainHelper] getDictListFromDomains:contacts] forKey:@"contacts"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PAYLOAD] forKey:@"payload"];
-        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_HAS_NEXT] forKey:@"hasNext"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_HAS_MORE] forKey:@"hasMore"];
     }];
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_GET_CONTACTS_STARTED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
         [parameters setObject:@"com.soomla.profile.events.social.GetContactsStartedEvent" forKey:@"method"];
@@ -284,6 +285,7 @@
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PROVIDER] forKey:@"provider"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_SOCIAL_ACTION_TYPE] forKey:@"socialActionType"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_MESSAGE] forKey:@"errorDescription"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_FROM_START] forKey:@"fromStart"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PAYLOAD] forKey:@"payload"];
     }];
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_GET_FEED_FINISHED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
@@ -292,11 +294,13 @@
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_SOCIAL_ACTION_TYPE] forKey:@"socialActionType"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_FEEDS] forKey:@"feed"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PAYLOAD] forKey:@"payload"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_HAS_MORE] forKey:@"hasMore"];
     }];
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_GET_FEED_STARTED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
         [parameters setObject:@"com.soomla.profile.events.social.GetFeedStartedEvent" forKey:@"method"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PROVIDER] forKey:@"provider"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_SOCIAL_ACTION_TYPE] forKey:@"socialActionType"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_FROM_START] forKey:@"fromStart"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PAYLOAD] forKey:@"payload"];
     }];
 

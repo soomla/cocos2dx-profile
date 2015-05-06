@@ -273,7 +273,7 @@ public class ProfileEventHandlerBridge {
                     parameters.put("socialActionType", getContactsFinishedEvent.SocialActionType.getValue());
                     parameters.put("contacts", DomainHelper.getInstance().getJsonObjectListFromDomains(getContactsFinishedEvent.Contacts));
                     parameters.put("payload", getContactsFinishedEvent.Payload);
-                    parameters.put("hasNext", getContactsFinishedEvent.HasNext);
+                    parameters.put("hasMore", getContactsFinishedEvent.HasMore);
                     NdkGlue.getInstance().sendMessageWithParameters(parameters);
                 } catch (JSONException e) {
                     throw new IllegalStateException(e);
@@ -323,6 +323,7 @@ public class ProfileEventHandlerBridge {
                     parameters.put("provider", getFeedFailedEvent.Provider.getValue());
                     parameters.put("socialActionType", getFeedFailedEvent.SocialActionType.getValue());
                     parameters.put("errorDescription", getFeedFailedEvent.ErrorDescription);
+                    parameters.put("fromStart", getFeedFailedEvent.FromStart);
                     parameters.put("payload", getFeedFailedEvent.Payload);
                     NdkGlue.getInstance().sendMessageWithParameters(parameters);
                 } catch (JSONException e) {
@@ -349,6 +350,7 @@ public class ProfileEventHandlerBridge {
                     parameters.put("socialActionType", getFeedFinishedEvent.SocialActionType.getValue());
                     parameters.put("feed", new JSONArray(getFeedFinishedEvent.Posts));
                     parameters.put("payload", getFeedFinishedEvent.Payload);
+                    parameters.put("hasMore", getFeedFinishedEvent.HasMore);
                     NdkGlue.getInstance().sendMessageWithParameters(parameters);
                 } catch (JSONException e) {
                     throw new IllegalStateException(e);
@@ -372,6 +374,7 @@ public class ProfileEventHandlerBridge {
                     parameters.put("method", ProfileConsts.EVENT_GET_FEED_STARTED);
                     parameters.put("provider", getFeedStartedEvent.Provider.getValue());
                     parameters.put("socialActionType", getFeedStartedEvent.SocialActionType.getValue());
+                    parameters.put("fromStart", getFeedStartedEvent.FromStart);
                     parameters.put("payload", getFeedStartedEvent.Payload);
                     NdkGlue.getInstance().sendMessageWithParameters(parameters);
                 } catch (JSONException e) {

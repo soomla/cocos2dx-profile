@@ -138,9 +138,10 @@
        @param provider The provider on which the get contacts process has
        failed
        @param errorDescription a Description of the reason for failure
+       @param fromFirst Should we reset pagination or request the next page
        @param payload an identification String sent from the caller of the action
        */
-      onGetContactsFailed: function (provider, errorDescription, payload) {
+      onGetContactsFailed: function (provider, errorDescription, fromFirst, payload) {
       },
 
       /**
@@ -148,16 +149,18 @@
        @param provider The provider on which the get contacts process finished
        @param contactsDict an Array of contacts represented by CCUserProfile
        @param payload an identification String sent from the caller of the action
+       @param hasMore if it has more in pagination
        */
-      onGetContactsFinished: function (provider, contactsDict, payload) {
+      onGetContactsFinished: function (provider, contactsDict, payload, hasMore) {
       },
 
       /**
        Called when the get contacts process from a provider has started
        @param provider The provider on which the get contacts process started
+       @param fromFirst Should we reset pagination or request the next page
        @param payload an identification String sent from the caller of the action
        */
-      onGetContactsStarted: function (provider, payload) {
+      onGetContactsStarted: function (provider, fromFirst, payload) {
       },
 
       /**
@@ -165,9 +168,10 @@
        @param provider The provider on which the get feed process has
        failed
        @param errorDescription a Description of the reason for failure
+       @param fromFirst Should we reset pagination or request the next page
        @param payload an identification String sent from the caller of the action
        */
-      onGetFeedFailed: function (provider, errorDescription, payload) {
+      onGetFeedFailed: function (provider, errorDescription, fromFirst, payload) {
       },
 
       /**
@@ -175,16 +179,18 @@
        @param provider The provider on which the get feed process finished
        @param feedList an Array of feed entries represented by __String
        @param payload an identification String sent from the caller of the action
+       @param hasMore if it has more in pagination
        */
-      onGetFeedFinished: function (provider, feedList, payload) {
+      onGetFeedFinished: function (provider, feedList, payload, hasMore) {
       },
 
       /**
        Called when the get feed process from a provider has started
        @param provider The provider on which the get feed process started
+       @param fromFirst Should we reset pagination or request the next page
        @param payload an identification String sent from the caller of the action
        */
-      onGetFeedStarted: function (provider, payload) {
+      onGetFeedStarted: function (provider, fromFirst, payload) {
       },
 
       /**
@@ -305,8 +311,9 @@
           var providerId = parameters.provider;
           var provider = Provider.findById(providerId);
           var errorDescription = parameters.errorDescription;
+          var fromStart = parameters.fromStart;
           var payload = parameters.payload;
-          Soomla.fireSoomlaEvent(parameters.method, [provider, errorDescription, payload]);
+          Soomla.fireSoomlaEvent(parameters.method, [provider, errorDescription, fromStart, payload]);
         }, this));
 
         eventDispatcher.registerEventHandler(ProfileConsts.EVENT_GET_CONTACTS_FINISHED, _.bind(function (parameters) {
@@ -314,22 +321,25 @@
           var provider = Provider.findById(providerId);
           var contacts = parameters.contacts;
           var payload = parameters.payload;
-          Soomla.fireSoomlaEvent(parameters.method, [provider, contacts, payload]);
+          var hasMore = parameters.hasMore;
+          Soomla.fireSoomlaEvent(parameters.method, [provider, contacts, payload, hasMore]);
         }, this));
 
         eventDispatcher.registerEventHandler(ProfileConsts.EVENT_GET_CONTACTS_STARTED, _.bind(function (parameters) {
           var providerId = parameters.provider;
           var provider = Provider.findById(providerId);
+          var fromStart = parameters.fromStart;
           var payload = parameters.payload;
-          Soomla.fireSoomlaEvent(parameters.method, [provider, payload]);
+          Soomla.fireSoomlaEvent(parameters.method, [provider, fromStart, payload]);
         }, this));
 
         eventDispatcher.registerEventHandler(ProfileConsts.EVENT_GET_FEED_FAILED, _.bind(function (parameters) {
           var providerId = parameters.provider;
           var provider = Provider.findById(providerId);
           var errorDescription = parameters.errorDescription;
+          var fromStart = parameters.fromStart;
           var payload = parameters.payload;
-          Soomla.fireSoomlaEvent(parameters.method, [provider, errorDescription, payload]);
+          Soomla.fireSoomlaEvent(parameters.method, [provider, errorDescription, fromStart, payload]);
         }, this));
 
         eventDispatcher.registerEventHandler(ProfileConsts.EVENT_GET_FEED_FINISHED, _.bind(function (parameters) {
@@ -337,14 +347,16 @@
           var provider = Provider.findById(providerId);
           var feed = parameters.feed;
           var payload = parameters.payload;
-          Soomla.fireSoomlaEvent(parameters.method, [provider, feed, payload]);
+          var hasMore = parameters.hasMore;
+          Soomla.fireSoomlaEvent(parameters.method, [provider, feed, payload, hasMore]);
         }, this));
 
         eventDispatcher.registerEventHandler(ProfileConsts.EVENT_GET_FEED_STARTED, _.bind(function (parameters) {
           var providerId = parameters.provider;
           var provider = Provider.findById(providerId);
+          var fromStart = parameters.fromStart;
           var payload = parameters.payload;
-          Soomla.fireSoomlaEvent(parameters.method, [provider, payload]);
+          Soomla.fireSoomlaEvent(parameters.method, [provider, fromStart, payload]);
         }, this));
 
         eventDispatcher.registerEventHandler(ProfileConsts.EVENT_SOCIAL_ACTION_FAILED, _.bind(function (parameters) {
@@ -552,11 +564,13 @@
 
       Soomla.callNative(toPassData, true);
     },
-    getContacts: function (provider, reward, payload) {
+    getContacts: function (provider, reward, fromFirst, payload) {
+      fromFirst = (fromFirst !== undefined ? fromFirst : false);
       var toPassData = {
         method: "CCSoomlaProfile::getContacts",
         provider: provider.key,
         reward: reward
+        fromFirst: fromFirst
       };
 
       if (payload) {
@@ -572,10 +586,12 @@
 
       Soomla.callNative(toPassData, true);
     },
-    getFeed: function (provider, reward, payload) {
+    getFeed: function (provider, reward, fromFirst, payload) {
+      fromFirst = (fromFirst !== undefined ? fromFirst : false);
       var toPassData = {
         method: "CCSoomlaProfile::getFeed",
-        provider: provider.key
+        provider: provider.key,
+        fromFirst: fromFirst
       };
 
       if (payload) {

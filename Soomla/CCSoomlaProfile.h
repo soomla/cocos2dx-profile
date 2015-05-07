@@ -290,6 +290,18 @@ namespace soomla {
          which also use this application. Upon a successful retrieval of
          contacts the user will be granted the supplied reward.
 
+         @param provider The provider on which to retrieve a list of contacts from
+         @param fromStart Should we reset pagination or request the next page
+         @param reward The reward which will be granted to the user upon a successful retrieval of contacts
+         @param soomlaError Any errors will be returned in this parameter
+         */
+        void getContacts(CCProvider provider, bool fromStart, CCReward *reward, CCError **soomlaError);
+
+        /**
+         Retrieves a list of the user's contacts from the supplied provider,
+         which also use this application. Upon a successful retrieval of
+         contacts the user will be granted the supplied reward.
+
          @param provider The provider on which to retrieve a list of contacts
          from
          @param reward The reward which will be granted to the user upon a
@@ -303,14 +315,14 @@ namespace soomla {
          which also use this application. Upon a successful retrieval of
          contacts the user will be granted the supplied reward.
 
-         @param provider The provider on which to retrieve a list of contacts
-         from
+         @param provider The provider on which to retrieve a list of contacts from
+         @param fromStart Should we reset pagination or request the next page
          @param payload a String to receive when the function returns.
          @param reward The reward which will be granted to the user upon a
          successful retrieval of contacts
          @param soomlaError Any errors will be returned in this parameter
          */
-        void getContacts(CCProvider provider, const char *payload, CCReward *reward, CCError **soomlaError);
+        void getContacts(CCProvider provider, bool fromStart, const char *payload, CCReward *reward, CCError **soomlaError);
 
         /**
          Retrieves a list of the user's feed entries from the supplied provider.
@@ -332,12 +344,27 @@ namespace soomla {
 
          @param provider The provider on which to retrieve a list of feed
          entries
+         @param fromStart Should we reset pagination or request the next page
+         @param reward The reward which will be granted to the user upon a
+         successful retrieval of feed
+         @param soomlaError Any errors will be returned in this parameter
+         */
+        void getFeed(CCProvider provider, bool fromStart, CCReward *reward, CCError **soomlaError);
+
+        /**
+         Retrieves a list of the user's feed entries from the supplied provider.
+         Upon a successful retrieval of feed entries the user will be granted
+         the supplied reward.
+
+         @param provider The provider on which to retrieve a list of feed
+         entries
+         @param fromStart Should we reset pagination or request the next page
          @param payload a String to receive when the function returns.
          @param reward The reward which will be granted to the user upon a
          successful retrieval of feed
          @param soomlaError Any errors will be returned in this parameter
          */
-        void getFeed(CCProvider provider, const char *payload, CCReward *reward, CCError **soomlaError);
+        void getFeed(CCProvider provider, bool fromStart, const char *payload, CCReward *reward, CCError **soomlaError);
 
         /**
          Checks if the user is logged into the supplied provider

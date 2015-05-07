@@ -209,11 +209,12 @@ public class ProfileBridge {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
                 String provider = params.getString("provider");
+                Boolean fromStart = params.getBoolean("fromStart");
                 String payload = params.getString("payload");
                 JSONObject rewardJson = params.optJSONObject("reward");
                 Reward reward = (rewardJson != null) ?
                         domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
-                SoomlaProfile.getInstance().getContacts(IProvider.Provider.getEnum(provider), payload, reward);
+                SoomlaProfile.getInstance().getContacts(IProvider.Provider.getEnum(provider), fromStart, payload, reward);
             }
         });
 
@@ -221,11 +222,12 @@ public class ProfileBridge {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
                 String provider = params.getString("provider");
+                Boolean fromStart = params.getBoolean("fromStart");
                 String payload = params.getString("payload");
                 JSONObject rewardJson = params.optJSONObject("reward");
                 Reward reward = (rewardJson != null) ?
                         domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
-                SoomlaProfile.getInstance().getFeed(IProvider.Provider.getEnum(provider), payload, reward);
+                SoomlaProfile.getInstance().getFeed(IProvider.Provider.getEnum(provider), fromStart, payload, reward);
             }
         });
 

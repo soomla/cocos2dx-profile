@@ -100,8 +100,9 @@ namespace soomla {
                 [this](__Dictionary *parameters) {
                     __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
                     __String *errorDescription = dynamic_cast<__String *>(parameters->objectForKey("errorDescription"));
+                    __Bool *fromStart = dynamic_cast<__Bool *>(parameters->objectForKey("fromStart"));
                     __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
-                    this->onGetContactsFailed(CCProvider(provider->getValue()), errorDescription, payload);
+                    this->onGetContactsFailed(CCProvider(provider->getValue()), errorDescription, fromStart, payload);
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_GET_CONTACTS_FINISHED,
@@ -109,14 +110,16 @@ namespace soomla {
                     __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
                     __Array *contacts = this->extractUserProfileArray(parameters->objectForKey("contacts"));
                     __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
-                    this->onGetContactsFinished(CCProvider(provider->getValue()), contacts, payload);
+                    __Bool *hasMore = dynamic_cast<__Bool *>(parameters->objectForKey("hasMore"));
+                    this->onGetContactsFinished(CCProvider(provider->getValue()), contacts, payload, hasMore);
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_GET_CONTACTS_STARTED,
                 [this](__Dictionary *parameters) {
                     __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
+                    __Bool *fromStart = dynamic_cast<__Bool *>(parameters->objectForKey("fromStart"));
                     __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
-                    this->onGetContactsStarted(CCProvider(provider->getValue()), payload);
+                    this->onGetContactsStarted(CCProvider(provider->getValue()), fromStart, payload);
                 });
         
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_GET_FEED_FAILED,
@@ -132,7 +135,8 @@ namespace soomla {
                     __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
                     __Array *feed = dynamic_cast<__Array *>(parameters->objectForKey("feed"));
                     __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
-                    this->onGetFeedFinished(CCProvider(provider->getValue()), feed, payload);
+                    __Bool *hasMore = dynamic_cast<__Bool *>(parameters->objectForKey("hasMore"));
+                    this->onGetFeedFinished(CCProvider(provider->getValue()), feed, payload, hasMore);
                 });
         
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_GET_FEED_STARTED,
@@ -246,29 +250,32 @@ namespace soomla {
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_LOGOUT_STARTED, eventData);
     }
 
-    void CCProfileEventDispatcher::onGetContactsFailed(CCProvider provider, cocos2d::__String *message, cocos2d::__String *payload) {
+    void CCProfileEventDispatcher::onGetContactsFailed(CCProvider provider, __String *message, __Bool *fromStart, __String *payload) {
         __Dictionary *eventData = __Dictionary::create();
         eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
         eventData->setObject(message, CCProfileConsts::DICT_ELEMENT_MESSAGE);
+        eventData->setObject(fromStart, CCProfileConsts::DICT_ELEMENT_FROM_START);
         eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
         
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_GET_CONTACTS_FAILED, eventData);
     }
 
-    void CCProfileEventDispatcher::onGetContactsFinished(CCProvider provider, cocos2d::__Array *contactsDict, cocos2d::__String *payload) {
+    void CCProfileEventDispatcher::onGetContactsFinished(CCProvider provider, cocos2d::__Array *contactsDict, cocos2d::__String *payload, cocos2d::__Bool *hasMore) {
         __Dictionary *eventData = __Dictionary::create();
         eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
         eventData->setObject(contactsDict, CCProfileConsts::DICT_ELEMENT_CONTACTS);
         eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
-        
+        eventData->setObject(hasMore, CCProfileConsts::DICT_ELEMENT_HAS_MORE);
+
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_GET_CONTACTS_FINISHED, eventData);
     }
 
-    void CCProfileEventDispatcher::onGetContactsStarted(CCProvider provider, cocos2d::__String *payload) {
+    void CCProfileEventDispatcher::onGetContactsStarted(CCProvider provider, cocos2d::__Bool *fromStart, cocos2d::__String *payload) {
         __Dictionary *eventData = __Dictionary::create();
         eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(fromStart, CCProfileConsts::DICT_ELEMENT_FROM_START);
         eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
-        
+
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_GET_CONTACTS_STARTED, eventData);
     }
 
@@ -281,12 +288,13 @@ namespace soomla {
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_GET_FEED_FAILED, eventData);
     }
 
-    void CCProfileEventDispatcher::onGetFeedFinished(CCProvider provider, cocos2d::__Array *feedList, cocos2d::__String *payload) {
+    void CCProfileEventDispatcher::onGetFeedFinished(CCProvider provider, cocos2d::__Array *feedList, cocos2d::__String *payload, cocos2d::__Bool *hasMore) {
         __Dictionary *eventData = __Dictionary::create();
         eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
         eventData->setObject(feedList, CCProfileConsts::DICT_ELEMENT_FEEDS);
         eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
-        
+        eventData->setObject(hasMore, CCProfileConsts::DICT_ELEMENT_HAS_MORE);
+
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_GET_FEED_FINISHED, eventData);
     }
 

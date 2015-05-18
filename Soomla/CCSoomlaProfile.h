@@ -124,6 +124,18 @@ namespace soomla {
         void updateStatus(CCProvider provider, const char *status, CCReward *reward, CCError **soomlaError);
 
         /**
+        Updates the user's status on the provided provider. Upon a successful
+        update, the user will receive the supplied reward.
+
+        @param provider The provider on which to update user's status
+        @param status The text to update the user's status with
+        @param reward The reward which will be granted to the user upon a successful update
+        @param showConfirmation If true, shows confirmation dialog before the action
+        @param soomlaError Any errors will be returned in this parameter
+        */
+        void updateStatus(CCProvider provider, const char *status, const char *payload, CCReward *reward, bool showConfirmation, CCError **soomlaError);
+
+        /**
          Updates the user's status on the provided provider. Upon a successful
          update, the user will receive the supplied reward.
 
@@ -213,6 +225,31 @@ namespace soomla {
          Updates a user's story on the provided provider. a Story is a more
          detailed status (very Facebook oriented). Upon a successful
          update, the user will receive the supplied reward.
+
+         @param provider The provider on which to update user's story
+         @param message The main text which will appear in the story
+         @param name The headline for the link which will be integrated in the
+         story
+         @param caption The sub-headline for the link which will be
+         integrated in the story
+         @param description The description for the link which will be
+         integrated in the story
+         @param link The link which will be integrated into the user's story
+         @param picture a Link to a picture which will be featured in the link
+         @param payload a String to receive when the function returns.
+         @param reward The reward which will be granted to the user upon a
+         successful update
+        @param showConfirmation If true, shows confirmation dialog before the action
+        @param soomlaError Any errors will be returned in this parameter
+         */
+        void updateStory(CCProvider provider, const char *message, const char *name, const char *caption,
+                         const char *description, const char *link, const char *picture,
+                         const char *payload, CCReward *reward, bool showConfirmation, CCError **soomlaError);
+
+        /**
+         Updates a user's story on the provided provider. a Story is a more
+         detailed status (very Facebook oriented). Upon a successful
+         update, the user will receive the supplied reward.
          Using provider's native dialogs (when available)
 
          @param provider The provider on which to update user's story
@@ -284,6 +321,22 @@ namespace soomla {
          */
         void uploadImage(CCProvider provider, const char *message, const char *filePath,
                          const char *payload, CCReward *reward, CCError **soomlaError);
+
+        /**
+         Uploads an image to the user's profile in the supplied provider.
+         Upon a successful upload, the user will receive the supplied reward.
+
+         @param provider The provider on which to upload an image for the user
+         @param filePath The full file-path to the image on the device which
+         will be uploaded
+         @param payload a String to receive when the function returns.
+         @param reward The reward which will be granted to the user upon a
+         successful upload
+         @param showConfirmation If true, shows confirmation dialog before the action
+         @param soomlaError Any errors will be returned in this parameter
+         */
+        void uploadImage(CCProvider provider, const char *message, const char *filePath,
+                         const char *payload, CCReward *reward, bool showConfirmation, CCError **soomlaError);
 
         /**
          Retrieves a list of the user's contacts from the supplied provider,

@@ -111,6 +111,13 @@ namespace soomla {
     /// Supported platforms: Facebook, Twitter, Google+
     ///
     void CCSoomlaProfile::updateStatus(CCProvider provider, const char *status, const char *payload, CCReward *reward, CCError **soomlaError) {
+        this->updateStatus(provider, status, "", reward, false, soomlaError);
+    }
+
+    ///
+    /// Supported platforms: Facebook, Twitter, Google+
+    ///
+    void CCSoomlaProfile::updateStatus(CCProvider provider, const char *status, const char *payload, CCReward *reward, bool showConfirmation, CCError **soomlaError) {
         CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCSoomlaProfile::updateStatus"), "method");
@@ -120,6 +127,7 @@ namespace soomla {
         if (reward) {
             params->setObject(reward->toDictionary(), "reward");
         }
+        params->setObject(__Bool::create(showConfirmation), "showConfirmation");
         CCNdkBridge::callNative(params, soomlaError);
     }
 
@@ -127,7 +135,7 @@ namespace soomla {
     /// Supported platforms: Facebook, Twitter, Google+
     ///
     void CCSoomlaProfile::updateStatus(CCProvider provider, const char *status, CCReward *reward, CCError **soomlaError) {
-        this->updateStatus(provider, status, "", reward, soomlaError);
+        this->updateStatus(provider, status, "", reward, false, soomlaError);
     }
 
     ///
@@ -164,6 +172,19 @@ namespace soomla {
             const char *caption, const char *description, const char *link, const char *picture,
             const char *payload, CCReward *reward, CCError **soomlaError) {
 
+        this->updateStory(provider, message, name, caption, description, link, picture, payload, reward, false, soomlaError);
+    }
+
+    void CCSoomlaProfile::updateStory(CCProvider provider, const char *message, const char *name,
+                                      const char *caption, const char *description, const char *link, const char *picture,
+                                      CCReward *reward, CCError **soomlaError) {
+        this->updateStory(provider, message, name, caption, description, link, picture, "", reward, soomlaError);
+    }
+
+
+
+    void CCSoomlaProfile::updateStory(CCProvider provider, const char *message, const char *name, const char *caption, const char *description, const char *link, const char *picture, const char *payload, CCReward *reward, bool showConfirmation, CCError **soomlaError) {
+
         CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCSoomlaProfile::updateStory"), "method");
@@ -178,13 +199,8 @@ namespace soomla {
         if (reward) {
             params->setObject(reward->toDictionary(), "reward");
         }
+        params->setObject(__Bool::create(showConfirmation), "showConfirmation");
         CCNdkBridge::callNative(params, soomlaError);
-    }
-
-    void CCSoomlaProfile::updateStory(CCProvider provider, const char *message, const char *name,
-                                      const char *caption, const char *description, const char *link, const char *picture,
-                                      CCReward *reward, CCError **soomlaError) {
-        this->updateStory(provider, message, name, caption, description, link, picture, "", reward, soomlaError);
     }
 
     ///
@@ -231,13 +247,18 @@ namespace soomla {
         this->updateStoryDialog(provider, name, caption, description, link, picture, "", reward, soomlaError);
     }
 
+    void CCSoomlaProfile::uploadImage(CCProvider provider, const char *message, const char *filePath,
+            const char *payload, CCReward *reward, CCError **soomlaError) {
+        this->uploadImage(provider, message, filePath, payload, reward, false, soomlaError);
+    }
+
     ///
     /// Supported platforms: Facebook, Twitter, Google+.
     /// Note:
     /// Google+ - not supported targetting Android.
     ///
     void CCSoomlaProfile::uploadImage(CCProvider provider, const char *message, const char *filePath,
-            const char *payload, CCReward *reward, CCError **soomlaError) {
+            const char *payload, CCReward *reward, bool showConfirmation, CCError **soomlaError) {
 
         CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
@@ -249,13 +270,14 @@ namespace soomla {
         if (reward) {
             params->setObject(reward->toDictionary(), "reward");
         }
+        params->setObject(__Bool::create(showConfirmation), "showConfirmation");
         CCNdkBridge::callNative(params, soomlaError);
     }
 
     void CCSoomlaProfile::uploadImage(CCProvider provider, const char *message, const char *filePath,
                                       CCReward *reward, CCError **soomlaError) {
 
-        this->uploadImage(provider, message, filePath, "", reward, soomlaError);
+        this->uploadImage(provider, message, filePath, "", reward, false, soomlaError);
     }
 
     ///

@@ -133,10 +133,16 @@ public class ProfileBridge {
                 String provider = params.getString("provider");
                 String status = params.getString("status");
                 String payload = params.getString("payload");
+                boolean showConfirmation = params.optBoolean("showConfirmation", false);
                 JSONObject rewardJson = params.optJSONObject("reward");
                 Reward reward = (rewardJson != null) ?
                         domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
-                SoomlaProfile.getInstance().updateStatus(IProvider.Provider.getEnum(provider), status, payload, reward);
+                SoomlaProfile.getInstance().updateStatus(
+                        IProvider.Provider.getEnum(provider),
+                        status,
+                        payload,
+                        reward,
+                        showConfirmation);
             }
         });
 
@@ -164,11 +170,12 @@ public class ProfileBridge {
                 String link = params.getString("link");
                 String picture = params.getString("picture");
                 String payload = params.getString("payload");
+                boolean showConfirmation = params.optBoolean("showConfirmation", false);
                 JSONObject rewardJson = params.optJSONObject("reward");
                 Reward reward = (rewardJson != null) ?
                         domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
                 SoomlaProfile.getInstance().updateStory(IProvider.Provider.getEnum(provider), message, name, caption,
-                        description, link, picture, payload, reward);
+                        description, link, picture, payload, reward, showConfirmation);
             }
         });
 
@@ -197,11 +204,12 @@ public class ProfileBridge {
                 String message = params.getString("message");
                 String filePath = params.getString("filePath");
                 String payload = params.getString("payload");
+                boolean showConfirmation = params.optBoolean("showConfirmation", false);
                 JSONObject rewardJson = params.optJSONObject("reward");
                 Reward reward = (rewardJson != null) ?
                         domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
                 SoomlaProfile.getInstance().uploadImage(IProvider.Provider.getEnum(provider), message, filePath,
-                        payload, reward);
+                        payload, reward, showConfirmation);
             }
         });
 

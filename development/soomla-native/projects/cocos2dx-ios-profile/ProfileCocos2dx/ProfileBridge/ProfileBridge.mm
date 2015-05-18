@@ -99,10 +99,13 @@
         NSString *payload = [parameters objectForKey:@"payload"];
         NSDictionary *rewardDict = [parameters objectForKey:@"reward"];
         Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
+        NSNumber *showConfirmation = [parameters objectForKey:@"showConfirmation"];
         [[SoomlaProfile getInstance] updateStatusWithProvider:[UserProfileUtils providerStringToEnum:provider]
                                                     andStatus:status
-                                                    andPayload:payload
-                                                    andReward:reward];
+                                                   andPayload:payload
+                                                    andReward:reward
+                                              andConfirmation:[showConfirmation boolValue]
+        ];
     }];
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::updateStatusDialog" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];
@@ -126,6 +129,7 @@
         NSString *payload = [parameters objectForKey:@"payload"];
         NSDictionary *rewardDict = [parameters objectForKey:@"reward"];
         Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
+        NSNumber *showConfirmation = [parameters objectForKey:@"showConfirmation"];
         [[SoomlaProfile getInstance] updateStoryWithProvider:[UserProfileUtils providerStringToEnum:provider]
                                                   andMessage:message
                                                      andName:name
@@ -134,7 +138,8 @@
                                                      andLink:link
                                                   andPicture:picture
                                                   andPayload:payload
-                                                   andReward:reward];
+                                                   andReward:reward
+                                         andShowConfirmation:[showConfirmation boolValue]];
     }];
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::updateStoryDialog" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];
@@ -162,11 +167,13 @@
         NSString *payload = [parameters objectForKey:@"payload"];
         NSDictionary *rewardDict = [parameters objectForKey:@"reward"];
         Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
+        NSNumber *showConfirmation = [parameters objectForKey:@"showConfirmation"];
         [[SoomlaProfile getInstance] uploadImageWithProvider:[UserProfileUtils providerStringToEnum:provider]
                                                   andMessage:message
                                                  andFilePath:filePath
                                                   andPayload:payload
-                                                   andReward:reward];
+                                                   andReward:reward
+                                         andShowConfirmation:[showConfirmation boolValue]];
     }];
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::getContacts" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];

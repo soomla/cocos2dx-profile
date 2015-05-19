@@ -443,6 +443,15 @@ namespace soomla {
          Utility method to open up the market application rating page
          */
         void openAppRatingPage(CCError **soomlaError);
+
+        /**
+        * Shares text and/or image using native sharing functionality of your target platform.
+        * @param text Text to share
+        * @param imageFilePath Path to an image file to share
+        * @param soomlaError Any errors will be returned in this parameter
+        */
+        void shareNatively(const char *text, const char *imageFilePath, CCError **soomlaError);
+
     };
 };
 

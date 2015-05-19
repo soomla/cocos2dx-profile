@@ -375,4 +375,15 @@ namespace soomla {
         params->setObject(__String::create("CCSoomlaProfile::openAppRatingPage"), "method");
         CCNdkBridge::callNative(params, soomlaError);
     }
+
+    void CCSoomlaProfile::shareNatively(char const *text, char const *imageFilePath, CCError **soomlaError) {
+        CC_ASSERT(mInited);
+        __Dictionary *params = __Dictionary::create();
+        params->setObject(__String::create("CCSoomlaProfile::shareNatively"), "method");
+        params->setObject(__String::create(text), "text");
+        if (imageFilePath) {
+            params->setObject(__String::create(imageFilePath), "imageFilePath");
+        }
+        CCNdkBridge::callNative(params, soomlaError);
+    }
 }

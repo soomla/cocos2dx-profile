@@ -211,6 +211,12 @@
         [[SoomlaProfile getInstance] openAppRatingPage];
     }];
 
+    [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::shareNatively" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
+        NSString *text = parameters[@"text"];
+        NSString *imageFilePath = parameters[@"imageFilePath"];
+        [[SoomlaProfile getInstance] shareNativelyWithText:text andImageFilePath:imageFilePath];
+    }];
+
     /* -= Exception handlers =- */
     void (^exceptionHandler)(NSException *, NSDictionary *, NSMutableDictionary *) = ^(NSException *exception, NSDictionary *parameters, NSMutableDictionary *retParameters) {
         [retParameters setObject: NSStringFromClass([exception class]) forKey: @"errorInfo"];

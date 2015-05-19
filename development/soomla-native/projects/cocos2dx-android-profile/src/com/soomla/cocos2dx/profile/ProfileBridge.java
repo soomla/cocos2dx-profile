@@ -257,7 +257,7 @@ public class ProfileBridge {
                 Reward reward = (rewardJson != null) ?
                         domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
                 SoomlaProfile.getInstance().like(ndkGlue.getActivityRef().get(), IProvider.Provider.getEnum(provider),
-                pageId, reward);
+                        pageId, reward);
             }
         });
 
@@ -265,6 +265,15 @@ public class ProfileBridge {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
                 SoomlaProfile.getInstance().openAppRatingPage(ndkGlue.getActivityRef().get().getApplicationContext());
+            }
+        });
+
+        ndkGlue.registerCallHandler("CCSoomlaProfile::shareNatively", new NdkGlue.CallHandler() {
+            @Override
+            public void handle(JSONObject params, JSONObject retParams) throws Exception {
+                String text = params.getString("text");
+                String imageFilePath = params.getString("imageFilePath");
+                SoomlaProfile.getInstance().shareNatively(text, imageFilePath);
             }
         });
 

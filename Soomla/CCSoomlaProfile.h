@@ -132,8 +132,9 @@ namespace soomla {
         @param reward The reward which will be granted to the user upon a successful update
         @param showConfirmation If true, shows confirmation dialog before the action
         @param soomlaError Any errors will be returned in this parameter
+        @param customMessage the message to show in the dialog
         */
-        void updateStatus(CCProvider provider, const char *status, const char *payload, CCReward *reward, bool showConfirmation, CCError **soomlaError);
+        void updateStatusWithConfirmation(CCProvider provider, const char *status, const char *payload, CCReward *reward, char const *customMessage, CCError **soomlaError);
 
         /**
          Updates the user's status on the provided provider. Upon a successful
@@ -239,12 +240,13 @@ namespace soomla {
          @param payload a String to receive when the function returns.
          @param reward The reward which will be granted to the user upon a
          successful update
-        @param showConfirmation If true, shows confirmation dialog before the action
-        @param soomlaError Any errors will be returned in this parameter
+         @param showConfirmation If true, shows confirmation dialog before the action
+         @param customMessage the message to show in the dialog
+         @param soomlaError Any errors will be returned in this parameter
          */
-        void updateStory(CCProvider provider, const char *message, const char *name, const char *caption,
-                         const char *description, const char *link, const char *picture,
-                         const char *payload, CCReward *reward, bool showConfirmation, CCError **soomlaError);
+        void updateStoryWithConfirmation(CCProvider provider, const char *message, const char *name, const char *caption,
+                const char *description, const char *link, const char *picture,
+                const char *payload, CCReward *reward, char const *customMessage, CCError **soomlaError);
 
         /**
          Updates a user's story on the provided provider. a Story is a more
@@ -333,10 +335,11 @@ namespace soomla {
          @param reward The reward which will be granted to the user upon a
          successful upload
          @param showConfirmation If true, shows confirmation dialog before the action
+         @param customMessage the message to show in the dialog
          @param soomlaError Any errors will be returned in this parameter
          */
-        void uploadImage(CCProvider provider, const char *message, const char *filePath,
-                         const char *payload, CCReward *reward, bool showConfirmation, CCError **soomlaError);
+        void uploadImageWithConfirmation(CCProvider provider, const char *message, const char *filePath,
+                const char *payload, CCReward *reward, char const *customMessage, CCError **soomlaError);
 
         /**
          Retrieves a list of the user's contacts from the supplied provider,
@@ -450,7 +453,7 @@ namespace soomla {
         * @param imageFilePath Path to an image file to share
         * @param soomlaError Any errors will be returned in this parameter
         */
-        void shareNatively(const char *text, const char *imageFilePath, CCError **soomlaError);
+        void multiShare(const char *text, const char *imageFilePath, CCError **soomlaError);
 
     };
 };

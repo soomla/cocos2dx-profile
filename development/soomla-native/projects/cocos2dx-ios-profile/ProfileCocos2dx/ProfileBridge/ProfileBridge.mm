@@ -94,18 +94,24 @@
         }
     }];
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::updateStatus" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
-        NSString *provider = [parameters objectForKey:@"provider"];
-        NSString *status = [parameters objectForKey:@"status"];
-        NSString *payload = [parameters objectForKey:@"payload"];
-        NSDictionary *rewardDict = [parameters objectForKey:@"reward"];
+        NSString *provider = parameters[@"provider"];
+        NSString *status = parameters[@"status"];
+        NSString *payload = parameters[@"payload"];
+        NSDictionary *rewardDict = parameters[@"reward"];
         Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
-        NSNumber *showConfirmation = [parameters objectForKey:@"showConfirmation"];
-        [[SoomlaProfile getInstance] updateStatusWithProvider:[UserProfileUtils providerStringToEnum:provider]
-                                                    andStatus:status
-                                                   andPayload:payload
-                                                    andReward:reward
-                                              andConfirmation:[showConfirmation boolValue]
-        ];
+        [[SoomlaProfile getInstance] updateStatusWithProvider:[UserProfileUtils providerStringToEnum:provider] andStatus:status andPayload:payload andReward:reward];
+    }];
+    [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::updateStatusWithConfirmation" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
+        NSString *provider = parameters[@"provider"];
+        NSString *status = parameters[@"status"];
+        NSString *payload = parameters[@"payload"];
+        NSDictionary *rewardDict = parameters[@"reward"];
+        Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
+        NSString *customMessage = parameters[@"customMessage"];
+        if (customMessage.length == 0) {
+            customMessage = nil;
+        }
+        [[SoomlaProfile getInstance] updateStatusWithProvider:[UserProfileUtils providerStringToEnum:provider] andStatus:status andPayload:payload andReward:reward andConfirmation:true andCustomMessage:customMessage];
     }];
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::updateStatusDialog" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];
@@ -119,17 +125,16 @@
                                                     andReward:reward];
     }];
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::updateStory" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
-        NSString *provider = [parameters objectForKey:@"provider"];
-        NSString *message = [parameters objectForKey:@"message"];
-        NSString *name = [parameters objectForKey:@"name"];
-        NSString *caption = [parameters objectForKey:@"caption"];
-        NSString *description = [parameters objectForKey:@"description"];
-        NSString *link = [parameters objectForKey:@"link"];
-        NSString *picture = [parameters objectForKey:@"picture"];
-        NSString *payload = [parameters objectForKey:@"payload"];
-        NSDictionary *rewardDict = [parameters objectForKey:@"reward"];
+        NSString *provider = parameters[@"provider"];
+        NSString *message = parameters[@"message"];
+        NSString *name = parameters[@"name"];
+        NSString *caption = parameters[@"caption"];
+        NSString *description = parameters[@"description"];
+        NSString *link = parameters[@"link"];
+        NSString *picture = parameters[@"picture"];
+        NSString *payload = parameters[@"payload"];
+        NSDictionary *rewardDict = parameters[@"reward"];
         Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
-        NSNumber *showConfirmation = [parameters objectForKey:@"showConfirmation"];
         [[SoomlaProfile getInstance] updateStoryWithProvider:[UserProfileUtils providerStringToEnum:provider]
                                                   andMessage:message
                                                      andName:name
@@ -139,7 +144,35 @@
                                                   andPicture:picture
                                                   andPayload:payload
                                                    andReward:reward
-                                         andShowConfirmation:[showConfirmation boolValue]];
+                                         andShowConfirmation:false
+                                            andCustomMessage:nil];
+    }];
+    [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::updateStoryWithConfirmation" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
+        NSString *provider = parameters[@"provider"];
+        NSString *message = parameters[@"message"];
+        NSString *name = parameters[@"name"];
+        NSString *caption = parameters[@"caption"];
+        NSString *description = parameters[@"description"];
+        NSString *link = parameters[@"link"];
+        NSString *picture = parameters[@"picture"];
+        NSString *payload = parameters[@"payload"];
+        NSDictionary *rewardDict = parameters[@"reward"];
+        Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
+        NSString *customMessage = parameters[@"customMessage"];
+        if (customMessage.length == 0) {
+            customMessage = nil;
+        }
+        [[SoomlaProfile getInstance] updateStoryWithProvider:[UserProfileUtils providerStringToEnum:provider]
+                                                  andMessage:message
+                                                     andName:name
+                                                  andCaption:caption
+                                              andDescription:description
+                                                     andLink:link
+                                                  andPicture:picture
+                                                  andPayload:payload
+                                                   andReward:reward
+                                         andShowConfirmation:true
+                                            andCustomMessage:customMessage];
     }];
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::updateStoryDialog" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];
@@ -161,19 +194,32 @@
                                                    andReward:reward];
     }];
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::uploadImage" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
-        NSString *provider = [parameters objectForKey:@"provider"];
-        NSString *message = [parameters objectForKey:@"message"];
-        NSString *filePath = [parameters objectForKey:@"filePath"];
-        NSString *payload = [parameters objectForKey:@"payload"];
-        NSDictionary *rewardDict = [parameters objectForKey:@"reward"];
+        NSString *provider = parameters[@"provider"];
+        NSString *message = parameters[@"message"];
+        NSString *filePath = parameters[@"filePath"];
+        NSString *payload = parameters[@"payload"];
+        NSDictionary *rewardDict = parameters[@"reward"];
         Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
-        NSNumber *showConfirmation = [parameters objectForKey:@"showConfirmation"];
+        [[SoomlaProfile getInstance] uploadImageWithProvider:[UserProfileUtils providerStringToEnum:provider] andMessage:message andFilePath:filePath andPayload:payload andReward:reward andConfirmation:false andCustomMessage:nil];
+    }];
+    [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::uploadImageWithConfirmation" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
+        NSString *provider = parameters[@"provider"];
+        NSString *message = parameters[@"message"];
+        NSString *filePath = parameters[@"filePath"];
+        NSString *payload = parameters[@"payload"];
+        NSDictionary *rewardDict = parameters[@"reward"];
+        Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
+        NSString *customMessage = parameters[@"customMessage"];
+        if (customMessage.length == 0) {
+            customMessage = nil;
+        }
         [[SoomlaProfile getInstance] uploadImageWithProvider:[UserProfileUtils providerStringToEnum:provider]
                                                   andMessage:message
                                                  andFilePath:filePath
                                                   andPayload:payload
                                                    andReward:reward
-                                         andShowConfirmation:[showConfirmation boolValue]];
+                                             andConfirmation:true
+                                            andCustomMessage:customMessage];
     }];
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::getContacts" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];
@@ -211,10 +257,10 @@
         [[SoomlaProfile getInstance] openAppRatingPage];
     }];
 
-    [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::shareNatively" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
+    [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::multiShare" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *text = parameters[@"text"];
         NSString *imageFilePath = parameters[@"imageFilePath"];
-        [[SoomlaProfile getInstance] shareNativelyWithText:text andImageFilePath:imageFilePath];
+        [[SoomlaProfile getInstance] multiShareWithText:text andImageFilePath:imageFilePath];
     }];
 
     /* -= Exception handlers =- */

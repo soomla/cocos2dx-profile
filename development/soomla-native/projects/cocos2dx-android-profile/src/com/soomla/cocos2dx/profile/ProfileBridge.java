@@ -133,7 +133,6 @@ public class ProfileBridge {
                 String provider = params.getString("provider");
                 String status = params.getString("status");
                 String payload = params.getString("payload");
-                boolean showConfirmation = params.optBoolean("showConfirmation", false);
                 JSONObject rewardJson = params.optJSONObject("reward");
                 Reward reward = (rewardJson != null) ?
                         domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
@@ -141,8 +140,27 @@ public class ProfileBridge {
                         IProvider.Provider.getEnum(provider),
                         status,
                         payload,
+                        reward);
+            }
+        });
+
+        ndkGlue.registerCallHandler("CCSoomlaProfile::updateStatusWithConfirmation", new NdkGlue.CallHandler() {
+            @Override
+            public void handle(JSONObject params, JSONObject retParams) throws Exception {
+                String provider = params.getString("provider");
+                String status = params.getString("status");
+                String payload = params.getString("payload");
+                String customMessage = params.optString("customMessage");
+                JSONObject rewardJson = params.optJSONObject("reward");
+                Reward reward = (rewardJson != null) ?
+                        domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
+                SoomlaProfile.getInstance().updateStatusWithConfirmation(
+                        IProvider.Provider.getEnum(provider),
+                        status,
+                        payload,
                         reward,
-                        showConfirmation);
+                        ndkGlue.getActivityRef().get(),
+                        customMessage);
             }
         });
 
@@ -170,12 +188,33 @@ public class ProfileBridge {
                 String link = params.getString("link");
                 String picture = params.getString("picture");
                 String payload = params.getString("payload");
-                boolean showConfirmation = params.optBoolean("showConfirmation", false);
                 JSONObject rewardJson = params.optJSONObject("reward");
                 Reward reward = (rewardJson != null) ?
                         domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
                 SoomlaProfile.getInstance().updateStory(IProvider.Provider.getEnum(provider), message, name, caption,
-                        description, link, picture, payload, reward, showConfirmation);
+                        description, link, picture, payload, reward);
+            }
+        });
+
+        ndkGlue.registerCallHandler("CCSoomlaProfile::updateStoryWithConfirmation", new NdkGlue.CallHandler() {
+            @Override
+            public void handle(JSONObject params, JSONObject retParams) throws Exception {
+                String provider = params.getString("provider");
+                String message = params.getString("message");
+                String name = params.getString("name");
+                String caption = params.getString("caption");
+                String description = params.getString("description");
+                String link = params.getString("link");
+                String picture = params.getString("picture");
+                String payload = params.getString("payload");
+                String customMessage = params.optString("customMessage");
+                JSONObject rewardJson = params.optJSONObject("reward");
+                Reward reward = (rewardJson != null) ?
+                        domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
+                SoomlaProfile.getInstance().updateStoryWithConfirmation(IProvider.Provider.getEnum(provider), message, name, caption,
+                        description, link, picture, payload, reward,
+                        ndkGlue.getActivityRef().get(),
+                        customMessage);
             }
         });
 
@@ -204,12 +243,30 @@ public class ProfileBridge {
                 String message = params.getString("message");
                 String filePath = params.getString("filePath");
                 String payload = params.getString("payload");
-                boolean showConfirmation = params.optBoolean("showConfirmation", false);
                 JSONObject rewardJson = params.optJSONObject("reward");
                 Reward reward = (rewardJson != null) ?
                         domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
                 SoomlaProfile.getInstance().uploadImage(IProvider.Provider.getEnum(provider), message, filePath,
-                        payload, reward, showConfirmation);
+                        payload, reward);
+            }
+        });
+
+        ndkGlue.registerCallHandler("CCSoomlaProfile::uploadImageWithConfirmation", new NdkGlue.CallHandler() {
+            @Override
+            public void handle(JSONObject params, JSONObject retParams) throws Exception {
+                String provider = params.getString("provider");
+                String message = params.getString("message");
+                String filePath = params.getString("filePath");
+                String payload = params.getString("payload");
+                String customMessage = params.optString("customMessage");
+                JSONObject rewardJson = params.optJSONObject("reward");
+                Reward reward = (rewardJson != null) ?
+                        domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
+                SoomlaProfile.getInstance().uploadImageWithConfirmation(IProvider.Provider.getEnum(provider), message, filePath,
+                        payload, reward,
+                        ndkGlue.getActivityRef().get(),
+                        customMessage);
+
             }
         });
 
@@ -268,12 +325,12 @@ public class ProfileBridge {
             }
         });
 
-        ndkGlue.registerCallHandler("CCSoomlaProfile::shareNatively", new NdkGlue.CallHandler() {
+        ndkGlue.registerCallHandler("CCSoomlaProfile::multiShare", new NdkGlue.CallHandler() {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
                 String text = params.getString("text");
                 String imageFilePath = params.getString("imageFilePath");
-                SoomlaProfile.getInstance().shareNatively(text, imageFilePath);
+                SoomlaProfile.getInstance().multiShare(text, imageFilePath);
             }
         });
 

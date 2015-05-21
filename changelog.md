@@ -1,3 +1,11 @@
+### v1.3.0 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.2.0...v1.3.0)
+
+* New Features
+  * Implemented Pagination for getContacts and getFeed
+  * Implemented multi-sharing (sharing with the native functionality of your target platform)
+  * Implemented methods to show confirmation dialog before some actions
+  * Supporting permissions param in FB
+
 ### v1.2.0 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.1.1...v1.2.0)
 
 **BREAKING API VERSION**

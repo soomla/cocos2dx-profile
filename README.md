@@ -38,8 +38,8 @@ The example project is still under development but it already has some important
 
 ####Pre baked zip:
 
-- [soomla-cocos2dx-core 1.2.0](http://library.soom.la/fetch/cocos2dx-core/1.2.0?cf=github)
-- [cocos2dx-profile 1.2.0](http://library.soom.la/fetch/cocos2dx-profile/1.2.0?cf=github)
+- [soomla-cocos2dx-core 1.2.1](http://library.soom.la/fetch/cocos2dx-core/1.2.1?cf=github)
+- [cocos2dx-profile 1.3.0](http://library.soom.la/fetch/cocos2dx-profile/1.2.1?cf=github)
 
 ## Getting Started (With pre-built libraries)
 
@@ -333,10 +333,10 @@ or, if you have repositories already cloned, fetch the submodules with this comm
 
 1. For Android: You can use our "sourced" modules for Android Studio (or IntelliJ IDEA) (`extensions/soomla-cocos2dx-core/development/Cocos2dxCoreFromSources.iml`, `extensions/cocos2dx-profile/development/Cocos2dxProfileFromSources.iml`), just include them to your project.
 
-## How to move from v1.0.x to v1.2.x?
+## How to move from v1.0.x to v1.2.x+?
 
-Version 1.2.x is all about making the integration process on iOS and Android easier.
-If you are using v1.0.x and want to move to v1.2.x follow these steps:
+From version 1.2.x it's all about making the integration process on iOS and Android easier.
+If you are using v1.0.x and want to move to v1.2.x+ follow these steps:
 
 1. Pull the latest version to your `extensions` folder
 1. Remove any Soomla-related code in iOS (`AppController.mm`) and Android (`Cocos2dxActivity`), especially code related to `ServiceManager` and any other `Service`s.

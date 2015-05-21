@@ -454,11 +454,12 @@
       });
       return retParams.return;
     },
-    updateStatus: function (provider, status, payload, reward) {
+    updateStatus: function (provider, status, payload, reward, showConfirmation) {
       var toPassData = {
         method: "CCSoomlaProfile::updateStatus",
         provider: provider.key,
-        status: status
+        status: status,
+        showConfirmation: showConfirmation
       };
 
       if (payload) {
@@ -494,7 +495,7 @@
 
       Soomla.callNative(toPassData, true);
     },
-    updateStory: function (provider, message, name, caption, description, link, picture, reward, payload) {
+    updateStory: function (provider, message, name, caption, description, link, picture, reward, payload, showConfirmation) {
       var toPassData = {
         method: "CCSoomlaProfile::updateStory",
         provider: provider.key,
@@ -503,7 +504,8 @@
         caption: caption,
         description: description,
         link: link,
-        picture: picture
+        picture: picture,
+        showConfirmation: showConfirmation
       };
 
       if (payload) {
@@ -543,12 +545,13 @@
 
       Soomla.callNative(toPassData, true);
     },
-    uploadImage: function (provider, message, filePath, reward, payload) {
+    uploadImage: function (provider, message, filePath, reward, payload, showConfirmation) {
       var toPassData = {
         method: "CCSoomlaProfile::uploadImage",
         provider: provider.key,
         message: message,
-        filePath: filePath
+        filePath: filePath,
+        showConfirmation: showConfirmation
       };
 
       if (payload) {
@@ -631,8 +634,22 @@
       Soomla.callNative({
         method: "CCSoomlaProfile::openAppRatingPage"
       });
+    },
+
+    /**
+     * Shares text and/or image using native sharing functionality of your target platform.
+     * @param text Text to share
+     * @param imageFilePath Path to an image file to share
+     */
+    shareNatively: function shareNatively(text, imageFilePath) {
+      var toPassData = {
+        method: "CCSoomlaProfile::shareNatively",
+        text: text,
+        imageFilePath: imageFilePath
+      };
+      Soomla.callNative(toPassData, true);
     }
-  });
+});
 
   SoomlaProfile.createShared = function (customParams) {
     var ret = new SoomlaProfile();

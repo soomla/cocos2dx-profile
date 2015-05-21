@@ -454,12 +454,32 @@
       });
       return retParams.return;
     },
-    updateStatus: function (provider, status, payload, reward, showConfirmation) {
+    updateStatus: function (provider, status, payload, reward) {
       var toPassData = {
         method: "CCSoomlaProfile::updateStatus",
         provider: provider.key,
+        status: status
+      };
+
+      if (payload) {
+        toPassData.payload = payload;
+      }
+      else {
+        toPassData.payload = "default";
+      }
+
+      if (reward) {
+        toPassData.reward = reward;
+      }
+
+      Soomla.callNative(toPassData, true);
+    },
+    updateStatusWithConfirmation: function (provider, status, payload, reward, customMessage) {
+      var toPassData = {
+        method: "CCSoomlaProfile::updateStatusWithConfirmation",
+        provider: provider.key,
         status: status,
-        showConfirmation: showConfirmation
+        customMessage: customMessage
       };
 
       if (payload) {
@@ -495,7 +515,7 @@
 
       Soomla.callNative(toPassData, true);
     },
-    updateStory: function (provider, message, name, caption, description, link, picture, reward, payload, showConfirmation) {
+    updateStory: function (provider, message, name, caption, description, link, picture, reward, payload) {
       var toPassData = {
         method: "CCSoomlaProfile::updateStory",
         provider: provider.key,
@@ -504,8 +524,33 @@
         caption: caption,
         description: description,
         link: link,
+        picture: picture
+      };
+
+      if (payload) {
+        toPassData.payload = payload;
+      }
+      else {
+        toPassData.payload = "default";
+      }
+
+      if (reward) {
+        toPassData.reward = reward;
+      }
+
+      Soomla.callNative(toPassData, true);
+    },
+    updateStoryWithConfirmation: function updateStoryWithConfirmation(provider, message, name, caption, description, link, picture, reward, payload, customMessage) {
+      var toPassData = {
+        method: "CCSoomlaProfile::updateStoryWithConfirmation",
+        provider: provider.key,
+        message: message,
+        name: name,
+        caption: caption,
+        description: description,
+        link: link,
         picture: picture,
-        showConfirmation: showConfirmation
+        customMessage: customMessage
       };
 
       if (payload) {
@@ -545,13 +590,34 @@
 
       Soomla.callNative(toPassData, true);
     },
-    uploadImage: function (provider, message, filePath, reward, payload, showConfirmation) {
+    uploadImage: function (provider, message, filePath, reward, payload) {
       var toPassData = {
         method: "CCSoomlaProfile::uploadImage",
         provider: provider.key,
         message: message,
+        filePath: filePath
+      };
+
+      if (payload) {
+        toPassData.payload = payload;
+      }
+      else {
+        toPassData.payload = "default";
+      }
+
+      if (reward) {
+        toPassData.reward = reward;
+      }
+
+      Soomla.callNative(toPassData, true);
+    },
+    uploadImageWithConfirmation: function uploadImageWithConfirmation(provider, message, filePath, reward, payload, customMessage) {
+      var toPassData = {
+        method: "CCSoomlaProfile::uploadImageWithConfirmation",
+        provider: provider.key,
+        message: message,
         filePath: filePath,
-        showConfirmation: showConfirmation
+        customMessage: customMessage
       };
 
       if (payload) {
@@ -641,7 +707,7 @@
      * @param text Text to share
      * @param imageFilePath Path to an image file to share
      */
-    shareNatively: function shareNatively(text, imageFilePath) {
+    multiShare: function multiShare(text, imageFilePath) {
       var toPassData = {
         method: "CCSoomlaProfile::shareNatively",
         text: text,

@@ -62,9 +62,14 @@
             NSMutableDictionary *parsedParams = [NSMutableDictionary dictionary];
             for (NSString* key in providerParams) {
                 id value = providerParams[key];
-                [parsedParams setObject:value forKey:@([UserProfileUtils providerStringToEnum:key])];
+                // if it's a provider params
+                if ([key isEqualToString:@"facebook"] || [key isEqualToString:@"google"]  || [key isEqualToString:@"twitter"]) {
+                    parsedParams[@([UserProfileUtils providerStringToEnum:key])] = value;
+                } else {
+                    parsedParams[key] = providerParams[key];
+                }
             }
-            
+
             [[SoomlaProfile getInstance] initialize:parsedParams];
         }
     }];

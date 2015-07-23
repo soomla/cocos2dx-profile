@@ -32,7 +32,6 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 
 /**
  * Profile defines all the glue between Cocos2dx-Profile and iOS Profile
@@ -91,9 +90,9 @@ public class ProfileBridge {
         ndkGlue.registerCallHandler("CCProfileBridge::init", new NdkGlue.CallHandler() {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
-                Map<Object, Object> profileParams = parseProviderParams(params.optJSONObject("params"));
+                HashMap<IProvider.Provider, HashMap<String, String>> providerParams = parseProviderParams(params.optJSONObject("params"));
                 SoomlaUtils.LogDebug("SOOMLA", "initialize is called from java!");
-                SoomlaProfile.getInstance().initialize(ndkGlue.getActivityRef().get(), profileParams);
+                SoomlaProfile.getInstance().initialize(providerParams);
             }
         });
 
@@ -347,17 +346,18 @@ public class ProfileBridge {
         ndkGlue.registerExceptionHandler(UserProfileNotFoundException.class.getName(), exceptionHandler);
     }
 
-    private Map<Object, Object> parseProviderParams(JSONObject sentParams) {
+    private HashMap<IProvider.Provider, HashMap<String, String>> parseProviderParams(JSONObject sentParams) {
         if (sentParams == null) {
             SoomlaUtils.LogDebug("SOOMLA", "no provider params were sent");
             return null;
         }
 
-        HashMap<Object, Object> result = new HashMap<>();
+        HashMap<IProvider.Provider, HashMap<String, String>> result = new HashMap<IProvider.Provider, HashMap<String, String>>();
+        Iterator keysIterator = sentParams.keys();
+        while (keysIterator.hasNext()) {
+            String providerStr = (String)keysIterator.next();
+            JSONObject paramsEntry = sentParams.optJSONObject(providerStr);
 
-        // iterate over providers to get their params
-        for (IProvider.Provider provider : IProvider.Provider.values()) {
-            JSONObject paramsEntry = sentParams.optJSONObject(provider.toString());
             if (paramsEntry != null) {
                 HashMap<String, String> currentProviderParams = new HashMap<String, String>();
                 Iterator innerKeysIterator = paramsEntry.keys();
@@ -367,11 +367,9 @@ public class ProfileBridge {
                     currentProviderParams.put(innerKey, innerValue);
                 }
 
-                result.put(provider, currentProviderParams);
+                result.put(IProvider.Provider.getEnum(providerStr), currentProviderParams);
             }
         }
-
-        result.put("autoLogin", sentParams.optBoolean("autoLogin"));
 
         return result;
     }

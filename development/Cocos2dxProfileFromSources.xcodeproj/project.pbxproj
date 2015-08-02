@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		372B78FA39B5241051CA85A1 /* ConfirmationDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = 372B76AA22D529BEC900F688 /* ConfirmationDialog.h */; };
-		372B7A74C005FEC46725B330 /* ConfirmationDialog.mm in Sources */ = {isa = PBXBuildFile; fileRef = 372B70CA6477F34A12C6EF41 /* ConfirmationDialog.mm */; };
+		372B7A74C005FEC46725B330 /* ConfirmationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 372B70CA6477F34A12C6EF41 /* ConfirmationDialog.m */; };
 		C0B3C5F3168C6D0C00161FAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B3C5F2168C6D0C00161FAA /* Foundation.framework */; };
 		F825C0F119B31D8100A2CABB /* ProfileBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = F825C0EF19B31D8100A2CABB /* ProfileBridge.h */; };
 		F825C0F219B31D8100A2CABB /* ProfileBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = F825C0F019B31D8100A2CABB /* ProfileBridge.mm */; };
@@ -83,7 +83,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		372B70CA6477F34A12C6EF41 /* ConfirmationDialog.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ConfirmationDialog.mm; sourceTree = "<group>"; };
+		372B70CA6477F34A12C6EF41 /* ConfirmationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmationDialog.m; sourceTree = "<group>"; };
 		372B76AA22D529BEC900F688 /* ConfirmationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmationDialog.h; sourceTree = "<group>"; };
 		C0B3C5EF168C6D0C00161FAA /* libCocos2dxProfileFromSources.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocos2dxProfileFromSources.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0B3C5F2168C6D0C00161FAA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -273,7 +273,7 @@
 				F825C17619B3209F00A2CABB /* UserProfileUtils.h */,
 				F825C17719B3209F00A2CABB /* UserProfileUtils.m */,
 				372B76AA22D529BEC900F688 /* ConfirmationDialog.h */,
-				372B70CA6477F34A12C6EF41 /* ConfirmationDialog.mm */,
+				372B70CA6477F34A12C6EF41 /* ConfirmationDialog.m */,
 			);
 			name = SoomlaiOSProfile;
 			path = "submodules/ios-profile/SoomlaiOSProfile";
@@ -511,7 +511,7 @@
 				F8DBEC8319BDB38D0093252C /* CCProfileEventDispatcher.cpp in Sources */,
 				F825C17C19B3209F00A2CABB /* PJSONConsts.m in Sources */,
 				F825C19519B3209F00A2CABB /* SocialActionUtils.m in Sources */,
-				372B7A74C005FEC46725B330 /* ConfirmationDialog.mm in Sources */,
+				372B7A74C005FEC46725B330 /* ConfirmationDialog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

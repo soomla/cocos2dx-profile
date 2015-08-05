@@ -41,6 +41,7 @@ namespace soomla {
         static char const *JSON_GENDER;
         static char const *JSON_LANGUAGE;
         static char const *JSON_BIRTHDAY;
+        static char const *JSON_EXTRA;
 
         static char const *JSON_JSON_TYPE_USER_PROFILE;
         

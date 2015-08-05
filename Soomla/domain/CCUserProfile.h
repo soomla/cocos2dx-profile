@@ -46,6 +46,7 @@ namespace soomla {
         SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::__String *, mGender, Gender, CCProfileConsts::JSON_GENDER);
         SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::__String *, mLanguage, Language, CCProfileConsts::JSON_LANGUAGE);
         SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::__String *, mBirthday, Birthday, CCProfileConsts::JSON_BIRTHDAY);
+        SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::__Dictionary *, mExtra, Extra, CCProfileConsts::JSON_EXTRA);
     public:
         /**
          Constructor
@@ -55,7 +56,7 @@ namespace soomla {
          */
         CCUserProfile() : CCDomain(), mProvider(NULL), mProfileId(NULL), mEmail(NULL) , mUsername(NULL),
                           mFirstName(NULL), mLastName(NULL), mAvatarLink(NULL), mLocation(NULL) ,
-                          mGender(NULL), mLanguage(NULL), mBirthday(NULL) {};
+                          mGender(NULL), mLanguage(NULL), mBirthday(NULL), mExtra(NULL) {};
 
         /**
          Creates an instance of CCUserProfile according to the information
@@ -73,6 +74,7 @@ namespace soomla {
          @param gender The user's gender
          @param language The user's language
          @param birthday The user's birth date
+         @param extra Additional info provided by SN
          */
         static CCUserProfile *create(
                 cocos2d::__String *provider,
@@ -85,7 +87,8 @@ namespace soomla {
                 cocos2d::__String *location,
                 cocos2d::__String *gender,
                 cocos2d::__String *language,
-                cocos2d::__String *birthday);
+                cocos2d::__String *birthday,
+                cocos2d::__Dictionary *extra);
 
         SL_CREATE_WITH_DICTIONARY(CCUserProfile);
 
@@ -104,6 +107,7 @@ namespace soomla {
          @param gender The user's gender
          @param language The user's language
          @param birthday The user's birth date
+         @param extra Additional info provided by SN
          */
         virtual bool init(
                 cocos2d::__String *provider,
@@ -116,7 +120,8 @@ namespace soomla {
                 cocos2d::__String *location,
                 cocos2d::__String *gender,
                 cocos2d::__String *language,
-                cocos2d::__String *birthday);
+                cocos2d::__String *birthday,
+                cocos2d::__Dictionary *extra);
 
         /**
          Initializes the class instance with information provided in a

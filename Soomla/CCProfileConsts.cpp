@@ -28,6 +28,7 @@ namespace soomla {
     char const *CCProfileConsts::JSON_GENDER = "gender";
     char const *CCProfileConsts::JSON_LANGUAGE = "language";
     char const *CCProfileConsts::JSON_BIRTHDAY = "birthday";
+    char const *CCProfileConsts::JSON_EXTRA = "extra";
 
     char const *CCProfileConsts::JSON_JSON_TYPE_USER_PROFILE = "UserProfile";
     

@@ -92,7 +92,7 @@ public class ProfileBridge {
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
                 HashMap<IProvider.Provider, HashMap<String, String>> providerParams = parseProviderParams(params.optJSONObject("params"));
                 SoomlaUtils.LogDebug("SOOMLA", "initialize is called from java!");
-                SoomlaProfile.getInstance().initialize(providerParams);
+                SoomlaProfile.getInstance().initialize(ndkGlue.getActivityRef().get(), providerParams);
             }
         });
 

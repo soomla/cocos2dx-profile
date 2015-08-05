@@ -30,9 +30,9 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library>
+      <library name="simple-fb">
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../build/android/simple.facebook-2.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../build/android/simple-fb-4.0.3.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -59,4 +59,3 @@
     </orderEntry>
   </component>
 </module>
-

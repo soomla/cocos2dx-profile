@@ -9,7 +9,7 @@ cd submodules/android-profile/SoomlaAndroidProfile
 ./build_all
 cd -
 cp -L submodules/android-profile/build/AndroidProfile.jar $build/
-cp -L submodules/android-profile/build/simple.facebook-2.1.jar $build/
+cp -L submodules/android-profile/build/simple-fb-4.0.3.jar $build/
 cp -L submodules/android-profile/build/AndroidProfileFacebook.jar $build/
 cp -L submodules/android-profile/build/AndroidProfileGoogle.jar $build/
 cp -L submodules/android-profile/build/AndroidProfileTwitter.jar $build/

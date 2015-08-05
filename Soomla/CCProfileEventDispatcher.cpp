@@ -51,30 +51,34 @@ namespace soomla {
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_LOGIN_CANCELLED,
                 [this](__Dictionary *parameters) {
                     __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
+                    __Bool *autoLogin = dynamic_cast<__Bool *>(parameters->objectForKey(CCProfileConsts::DICT_ELEMENT_AUTO_LOGIN));
                     __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
-                    this->onLoginCancelledEvent(CCProvider(provider->getValue()), payload);
+                    this->onLoginCancelled(CCProvider(provider->getValue()), autoLogin, payload);
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_LOGIN_FAILED,
                 [this](__Dictionary *parameters) {
                     __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
                     __String *errorDescription = dynamic_cast<__String *>(parameters->objectForKey("errorDescription"));
+                    __Bool *autoLogin = dynamic_cast<__Bool *>(parameters->objectForKey(CCProfileConsts::DICT_ELEMENT_AUTO_LOGIN));
                     __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
-                    this->onLoginFailed(CCProvider(provider->getValue()), errorDescription, payload);
+                    this->onLoginFailed(CCProvider(provider->getValue()), errorDescription, autoLogin, payload);
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_LOGIN_FINISHED,
                 [this](__Dictionary *parameters) {
                     CCUserProfile *userProfile = this->extractUserProfile(parameters->objectForKey("userProfile"));
+                    __Bool *autoLogin = dynamic_cast<__Bool *>(parameters->objectForKey(CCProfileConsts::DICT_ELEMENT_AUTO_LOGIN));
                     __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
-                    this->onLoginFinished(userProfile, payload);
+                    this->onLoginFinished(userProfile, autoLogin, payload);
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_LOGIN_STARTED,
                 [this](__Dictionary *parameters) {
                     __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
+                    __Bool *autoLogin = dynamic_cast<__Bool *>(parameters->objectForKey(CCProfileConsts::DICT_ELEMENT_AUTO_LOGIN));
                     __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
-                    this->onLoginStarted(CCProvider(provider->getValue()), payload);
+                    this->onLoginStarted(CCProvider(provider->getValue()), autoLogin, payload);
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_LOGOUT_FAILED,
@@ -203,29 +207,41 @@ namespace soomla {
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_USER_RATING);
     }
 
-    void CCProfileEventDispatcher::onLoginFailed(CCProvider provider, cocos2d::__String *message, cocos2d::__String *payload) {
+    void CCProfileEventDispatcher::onLoginFailed(CCProvider provider, cocos2d::__String *message, cocos2d::__Bool *autoLogin, cocos2d::__String *payload) {
         __Dictionary *eventData = __Dictionary::create();
         eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
         eventData->setObject(message, CCProfileConsts::DICT_ELEMENT_MESSAGE);
+        eventData->setObject(autoLogin, CCProfileConsts::DICT_ELEMENT_AUTO_LOGIN);
         eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
         
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_LOGIN_FAILED, eventData);
     }
 
-    void CCProfileEventDispatcher::onLoginFinished(CCUserProfile *userProfile, cocos2d::__String *payload) {
+    void CCProfileEventDispatcher::onLoginFinished(CCUserProfile *userProfile, cocos2d::__Bool *autoLogin, cocos2d::__String *payload) {
         __Dictionary *eventData = __Dictionary::create();
         eventData->setObject(userProfile, CCProfileConsts::DICT_ELEMENT_USER_PROFILE);
+        eventData->setObject(autoLogin, CCProfileConsts::DICT_ELEMENT_AUTO_LOGIN);
         eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
-        
+
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_LOGIN_FINISHED, eventData);
     }
 
-    void CCProfileEventDispatcher::onLoginStarted(CCProvider provider, cocos2d::__String *payload) {
+    void CCProfileEventDispatcher::onLoginStarted(CCProvider provider, cocos2d::__Bool *autoLogin, cocos2d::__String *payload) {
         __Dictionary *eventData = __Dictionary::create();
         eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(autoLogin, CCProfileConsts::DICT_ELEMENT_AUTO_LOGIN);
         eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
         
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_LOGIN_STARTED, eventData);
+    }
+
+    void CCProfileEventDispatcher::onLoginCancelled(CCProvider provider, cocos2d::__Bool *autoLogin, cocos2d::__String *payload) {
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(autoLogin, CCProfileConsts::DICT_ELEMENT_AUTO_LOGIN);
+        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
+
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_LOGIN_CANCELLED, eventData);
     }
 
     void CCProfileEventDispatcher::onLogoutFailed(CCProvider provider, cocos2d::__String *message) {
@@ -333,14 +349,6 @@ namespace soomla {
         eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
         
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_SOCIAL_ACTION_STARTED, eventData);
-    }
-
-    void CCProfileEventDispatcher::onLoginCancelledEvent(CCProvider provider, cocos2d::__String *payload) {
-        __Dictionary *eventData = __Dictionary::create();
-        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
-        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
-        
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_LOGIN_CANCELLED, eventData);
     }
 
     void CCProfileEventDispatcher::onUserProfileUpdatedEvent(CCUserProfile *userProfile) {

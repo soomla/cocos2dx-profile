@@ -108,6 +108,7 @@ public class ProfileEventHandlerBridge {
                     parameters.put("method", ProfileConsts.EVENT_AUTH_LOGIN_FAILED);
                     parameters.put("provider", loginFailedEvent.Provider.getValue());
                     parameters.put("errorDescription", loginFailedEvent.ErrorDescription);
+                    parameters.put("autoLogin", loginFailedEvent.AutoLogin);
                     parameters.put("payload", loginFailedEvent.Payload);
                     NdkGlue.getInstance().sendMessageWithParameters(parameters);
                 } catch (JSONException e) {
@@ -131,6 +132,7 @@ public class ProfileEventHandlerBridge {
                     JSONObject parameters = new JSONObject();
                     parameters.put("method", ProfileConsts.EVENT_AUTH_LOGIN_FINISHED);
                     parameters.put("userProfile", loginFinishedEvent.UserProfile.toJSONObject());
+                    parameters.put("autoLogin", loginFinishedEvent.AutoLogin);
                     parameters.put("payload", loginFinishedEvent.Payload);
                     NdkGlue.getInstance().sendMessageWithParameters(parameters);
                 } catch (JSONException e) {
@@ -154,6 +156,7 @@ public class ProfileEventHandlerBridge {
                     JSONObject parameters = new JSONObject();
                     parameters.put("method", ProfileConsts.EVENT_AUTH_LOGIN_STARTED);
                     parameters.put("provider", loginStartedEvent.Provider.getValue());
+                    parameters.put("autoLogin", loginStartedEvent.AutoLogin);
                     parameters.put("payload", loginStartedEvent.Payload);
                     NdkGlue.getInstance().sendMessageWithParameters(parameters);
                 } catch (JSONException e) {
@@ -472,6 +475,7 @@ public class ProfileEventHandlerBridge {
                     JSONObject parameters = new JSONObject();
                     parameters.put("method", ProfileConsts.EVENT_LOGIN_CANCELLED);
                     parameters.put("provider", loginCancelledEvent.Provider.getValue());
+                    parameters.put("autoLogin", loginCancelledEvent.AutoLogin);
                     parameters.put("payload", loginCancelledEvent.Payload);
                     NdkGlue.getInstance().sendMessageWithParameters(parameters);
                 } catch (JSONException e) {

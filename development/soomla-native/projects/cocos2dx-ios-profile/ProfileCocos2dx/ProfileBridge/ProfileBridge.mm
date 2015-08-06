@@ -278,26 +278,30 @@
         parameters[@"method"] = @"com.soomla.profile.events.UserRatingEvent";
     }];
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_LOGIN_CANCELLED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
-        [parameters setObject:@"com.soomla.profile.events.auth.LoginCancelledEvent" forKey:@"method"];
-        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PROVIDER] forKey:@"provider"];
-        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PAYLOAD] forKey:@"payload"];
+        parameters[@"method"] = @"com.soomla.profile.events.auth.LoginCancelledEvent";
+        parameters[@"provider"] = notification.userInfo[DICT_ELEMENT_PROVIDER];
+        parameters[DICT_ELEMENT_AUTO_LOGIN] = notification.userInfo[DICT_ELEMENT_AUTO_LOGIN];
+        parameters[@"payload"] = notification.userInfo[DICT_ELEMENT_PAYLOAD];
     }];
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_LOGIN_FAILED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
-        [parameters setObject:@"com.soomla.profile.events.auth.LoginFailedEvent" forKey:@"method"];
-        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PROVIDER] forKey:@"provider"];
-        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_MESSAGE] forKey:@"errorDescription"];
-        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PAYLOAD] forKey:@"payload"];
+        parameters[@"method"] = @"com.soomla.profile.events.auth.LoginFailedEvent";
+        parameters[@"provider"] = notification.userInfo[DICT_ELEMENT_PROVIDER];
+        parameters[@"errorDescription"] = notification.userInfo[DICT_ELEMENT_MESSAGE];
+        parameters[DICT_ELEMENT_AUTO_LOGIN] = notification.userInfo[DICT_ELEMENT_AUTO_LOGIN];
+        parameters[@"payload"] = notification.userInfo[DICT_ELEMENT_PAYLOAD];
     }];
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_LOGIN_FINISHED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
-        [parameters setObject:@"com.soomla.profile.events.auth.LoginFinishedEvent" forKey:@"method"];
-        id userProfile = [notification.userInfo objectForKey:DICT_ELEMENT_USER_PROFILE];
-        [parameters setObject:[userProfile toDictionary] forKey:@"userProfile"];
-        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PAYLOAD] forKey:@"payload"];
+        parameters[@"method"] = @"com.soomla.profile.events.auth.LoginFinishedEvent";
+        id userProfile = notification.userInfo[DICT_ELEMENT_USER_PROFILE];
+        parameters[@"userProfile"] = [userProfile toDictionary];
+        parameters[DICT_ELEMENT_AUTO_LOGIN] = notification.userInfo[DICT_ELEMENT_AUTO_LOGIN];
+        parameters[@"payload"] = notification.userInfo[DICT_ELEMENT_PAYLOAD];
     }];
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_LOGIN_STARTED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
-        [parameters setObject:@"com.soomla.profile.events.auth.LoginStartedEvent" forKey:@"method"];
-        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PROVIDER] forKey:@"provider"];
-        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PAYLOAD] forKey:@"payload"];
+        parameters[@"method"] = @"com.soomla.profile.events.auth.LoginStartedEvent";
+        parameters[@"provider"] = notification.userInfo[DICT_ELEMENT_PROVIDER];
+        parameters[DICT_ELEMENT_AUTO_LOGIN] = notification.userInfo[DICT_ELEMENT_AUTO_LOGIN];
+        parameters[@"payload"] = notification.userInfo[DICT_ELEMENT_PAYLOAD];
     }];
 
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_LOGOUT_FAILED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {

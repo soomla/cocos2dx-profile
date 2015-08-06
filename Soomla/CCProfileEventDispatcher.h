@@ -67,10 +67,12 @@ namespace soomla {
          which the login has failed.
          CCProfileConsts::DICT_ELEMENT_MESSAGE - __String - a Description of the 
          reason for failure.
-         CCProfileConsts::DICT_ELEMENT_PAYLOAD - __String - an identification 
+         CCProfileConsts::DICT_ELEMENT_USER_PROFILE - CCUserProfile - The user's
+         profile from the logged in provider.
+         CCProfileConsts::DICT_ELEMENT_PAYLOAD - __String - an identification
          String sent from the caller of the action.
          */
-        virtual void onLoginFailed(CCProvider provider, cocos2d::__String *message, cocos2d::__String *payload);
+        virtual void onLoginFailed(CCProvider provider, cocos2d::__String *message, cocos2d::__Bool *autoLogin, cocos2d::__String *payload);
 
         /**
          Fired when the login process finishes successfully.
@@ -82,7 +84,7 @@ namespace soomla {
          CCProfileConsts::DICT_ELEMENT_PAYLOAD - __String - an identification 
          String sent from the caller of the action.
          */
-        virtual void onLoginFinished(CCUserProfile *userProfile, cocos2d::__String *payload);
+        virtual void onLoginFinished(CCUserProfile *userProfile, cocos2d::__Bool *autoLogin, cocos2d::__String *payload);
 
         /**
          Fired when the login process to a provider has started.
@@ -91,10 +93,12 @@ namespace soomla {
          Event Data (__Dictionary):
          CCProfileConsts::DICT_ELEMENT_PROVIDER - __Integer - The provider on 
          where the login has started.
-         CCProfileConsts::DICT_ELEMENT_PAYLOAD - __String - an identification 
+         CCProfileConsts::DICT_ELEMENT_USER_PROFILE - CCUserProfile - The user's
+         profile from the logged in provider.
+         CCProfileConsts::DICT_ELEMENT_PAYLOAD - __String - an identification
          String sent from the caller of the action.
          */
-        virtual void onLoginStarted(CCProvider provider, cocos2d::__String *payload);
+        virtual void onLoginStarted(CCProvider provider, cocos2d::__Bool *autoLogin, cocos2d::__String *payload);
 
         /**
          Fired when the logout process from a provider has failed.
@@ -262,7 +266,7 @@ namespace soomla {
          CCProfileConsts::DICT_ELEMENT_PAYLOAD - __String - an identification 
          String sent from the caller of the action.
          */
-        virtual void onLoginCancelledEvent(CCProvider provider, cocos2d::__String *payload);
+        virtual void onLoginCancelled(CCProvider provider, cocos2d::__Bool *autoLogin, cocos2d::__String *payload);
         
         /**
          Fired when a user profile from a provider has been retrieved.

@@ -89,26 +89,38 @@
       /**
        Called when the login process to a provider has failed
        @param provider The provider on which the login has failed
+       @param autoLogin comes "true" if user login automatically
        @param errorDescription a Description of the reason for failure
        @param payload an identification String sent from the caller of the action
        */
-      onLoginFailed: function (provider, errorDescription, payload) {
+      onLoginFailed: function (provider, autoLogin, errorDescription, payload) {
       },
 
       /**
        Called when the login process finishes successfully
        @param userProfile The user's profile from the logged in provider
+       @param autoLogin comes "true" if user login automatically
        @param payload an identification String sent from the caller of the action
        */
-      onLoginFinished: function (userProfile, payload) {
+      onLoginFinished: function (userProfile, autoLogin, payload) {
       },
 
       /**
        Called when the login process to a provider has started
        @param provider The provider on where the login has started
+       @param autoLogin comes "true" if user login automatically
        @param payload an identification String sent from the caller of the action
        */
-      onLoginStarted: function (provider, payload) {
+      onLoginStarted: function (provider, autoLogin, payload) {
+      },
+
+      /**
+       Called the login process to a provider has been cancelled
+       @param provider The provider on which the login has failed
+       @param autoLogin comes "true" if user login automatically
+       @param payload an identification String sent from the caller of the action
+       */
+      onLoginCancelled: function (provider, autoLogin, payload) {
       },
 
       /**
@@ -222,14 +234,6 @@
       },
 
       /**
-       Called the login process to a provider has been cancelled
-       @param provider The provider on which the login has failed
-       @param payload an identification String sent from the caller of the action
-       */
-      onLoginCancelledEvent: function (provider, payload) {
-      },
-
-      /**
        Called when a user profile from a provider has been retrieved
        @param userProfile The user's profile which was updated
        */
@@ -263,29 +267,33 @@
         eventDispatcher.registerEventHandler(ProfileConsts.EVENT_LOGIN_CANCELLED, _.bind(function (parameters) {
           var providerId = parameters.provider;
           var provider = Provider.findById(providerId);
+          var autoLogin = parameters.autoLogin;
           var payload = parameters.payload;
-          Soomla.fireSoomlaEvent(parameters.method, [provider, payload]);
+          Soomla.fireSoomlaEvent(parameters.method, [provider, autoLogin, payload]);
         }, this));
 
         eventDispatcher.registerEventHandler(ProfileConsts.EVENT_LOGIN_FAILED, _.bind(function (parameters) {
           var providerId = parameters.provider;
           var provider = Provider.findById(providerId);
+          var autoLogin = parameters.autoLogin;
           var errorDescription = parameters.errorDescription;
           var payload = parameters.payload;
-          Soomla.fireSoomlaEvent(parameters.method, [provider, errorDescription, payload]);
+          Soomla.fireSoomlaEvent(parameters.method, [provider, errorDescription, autoLogin, payload]);
         }, this));
 
         eventDispatcher.registerEventHandler(ProfileConsts.EVENT_LOGIN_FINISHED, _.bind(function (parameters) {
           var userProfile = parameters.userProfile;
+          var autoLogin = parameters.autoLogin;
           var payload = parameters.payload;
-          Soomla.fireSoomlaEvent(parameters.method, [userProfile, payload]);
+          Soomla.fireSoomlaEvent(parameters.method, [userProfile, autoLogin, payload]);
         }, this));
 
         eventDispatcher.registerEventHandler(ProfileConsts.EVENT_LOGIN_STARTED, _.bind(function (parameters) {
           var providerId = parameters.provider;
           var provider = Provider.findById(providerId);
+          var autoLogin = parameters.autoLogin;
           var payload = parameters.payload;
-          Soomla.fireSoomlaEvent(parameters.method, [provider, payload]);
+          Soomla.fireSoomlaEvent(parameters.method, [provider, autoLogin, payload]);
         }, this));
 
         eventDispatcher.registerEventHandler(ProfileConsts.EVENT_LOGOUT_FAILED, _.bind(function (parameters) {

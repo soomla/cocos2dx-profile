@@ -6,7 +6,7 @@
   <property name="module.jdk.bin.cocos2dxandroidprofile" value="${jdk.bin.android}"/>
   <property name="module.jdk.classpath.cocos2dxandroidprofile" value="jdk.classpath.android"/>
 
-  <property name="compiler.args.cocos2dxandroidprofile" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  <property name="compiler.args.cocos2dxandroidprofile" value="-encoding UTF-8 -source 1.7 ${compiler.args}"/>
 
   <property name="cocos2dxandroidprofile.output.dir" value="${module.cocos2dxandroidprofile.basedir}/out/production/cocos2dxandroidprofile"/>
 

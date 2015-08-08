@@ -16,7 +16,8 @@
     location: null,
     gender: null,
     language: null,
-    birthday: null
+    birthday: null,
+    extra: null
   }, Soomla.Domain);
 
   var Provider = Soomla.Models.Provider = {

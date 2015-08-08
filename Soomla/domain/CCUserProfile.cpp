@@ -30,12 +30,13 @@ soomla::CCUserProfile *soomla::CCUserProfile::create(
         cocos2d::__String *location,
         cocos2d::__String *gender,
         cocos2d::__String *language,
-        cocos2d::__String *birthday) {
+        cocos2d::__String *birthday,
+        cocos2d::__Dictionary *extra) {
 
     CCUserProfile *ret = new CCUserProfile();
     if (ret->init(provider, profileId, email, username,
             firstName, lastName,
-            avatarLink, location, gender, language, birthday)) {
+            avatarLink, location, gender, language, birthday, extra)) {
         ret->autorelease();
     }
     else {
@@ -55,7 +56,8 @@ bool soomla::CCUserProfile::init(
         cocos2d::__String *location,
         cocos2d::__String *gender,
         cocos2d::__String *language,
-        cocos2d::__String *birthday) {
+        cocos2d::__String *birthday,
+        cocos2d::__Dictionary *extra) {
 
     setProvider(provider);
     setProfileId(profileId);
@@ -68,6 +70,7 @@ bool soomla::CCUserProfile::init(
     setGender(gender);
     setLanguage(language);
     setBirthday(birthday);
+    setExtra(extra);
 
     return true;
 }
@@ -84,6 +87,7 @@ bool soomla::CCUserProfile::initWithDictionary(cocos2d::__Dictionary *dict) {
     fillGenderFromDict(dict);
     fillLanguageFromDict(dict);
     fillBirthdayFromDict(dict);
+    fillExtraFromDict(dict);
 
     return true;
 }
@@ -102,6 +106,7 @@ cocos2d::__Dictionary *soomla::CCUserProfile::toDictionary() {
     putGenderToDict(dict);
     putLanguageToDict(dict);
     putBirthdayToDict(dict);
+    putExtraToDict(dict);
 
     return dict;
 }
@@ -118,4 +123,5 @@ soomla::CCUserProfile::~CCUserProfile() {
     CC_SAFE_RELEASE(mGender);
     CC_SAFE_RELEASE(mLanguage);
     CC_SAFE_RELEASE(mBirthday);
+    CC_SAFE_RELEASE(mExtra);
 }

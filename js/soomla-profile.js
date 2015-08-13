@@ -148,8 +148,7 @@
 
       /**
        Called when the get contacts process from a provider has failed
-       @param provider The provider on which the get contacts process has
-       failed
+       @param provider The provider on which the get contacts process has failed
        @param errorDescription a Description of the reason for failure
        @param fromFirst Should we reset pagination or request the next page
        @param payload an identification String sent from the caller of the action
@@ -178,8 +177,7 @@
 
       /**
        Called when the get feed process from a provider has failed
-       @param provider The provider on which the get feed process has
-       failed
+       @param provider The provider on which the get feed process has failed
        @param errorDescription a Description of the reason for failure
        @param fromFirst Should we reset pagination or request the next page
        @param payload an identification String sent from the caller of the action
@@ -213,7 +211,7 @@
        @param errorDescription a Description of the reason for failure
        @param payload an identification String sent from the caller of the action
        */
-      onSocialActionFailedEvent: function (provider, socialActionType, errorDescription, payload) {
+      onSocialActionFailed: function (provider, socialActionType, errorDescription, payload) {
       },
 
       /**
@@ -222,7 +220,7 @@
        @param socialActionType The social action which finished
        @param payload an identification String sent from the caller of the action
        */
-      onSocialActionFinishedEvent: function (provider, socialActionType, payload) {
+      onSocialActionFinished: function (provider, socialActionType, payload) {
       },
 
       /**
@@ -231,14 +229,14 @@
        @param socialActionType The social action which started
        @param payload an identification String sent from the caller of the action
        */
-      onSocialActionStartedEvent: function (provider, socialActionType, payload) {
+      onSocialActionStarted: function (provider, socialActionType, payload) {
       },
 
       /**
        Called when a user profile from a provider has been retrieved
        @param userProfile The user's profile which was updated
        */
-      onUserProfileUpdatedEvent: function (userProfile) {
+      onUserProfileUpdated: function (userProfile) {
       }
     });
   }();

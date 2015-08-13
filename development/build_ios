@@ -6,9 +6,6 @@ rm -rf $build
 mkdir -p $build
 mkdir -p $build_headers
 
-cd submodules/ios-profile
-./build_all
-cd -
 cp -L submodules/ios-profile/build/libSoomlaiOSProfile.a $build/
 cp -RL submodules/ios-profile/build/headers/SoomlaiOSProfile $build_headers/
 cp -RL submodules/ios-profile/build/ios-profile-facebook $build/

@@ -5,9 +5,6 @@ rm -rf $build
 mkdir -p $build
 
 # handle special case of build_all location for android-profile
-cd submodules/android-profile/SoomlaAndroidProfile
-./build_all
-cd -
 cp -L submodules/android-profile/build/AndroidProfile.jar $build/
 cp -L submodules/android-profile/build/simple-fb-4.0.3.jar $build/
 cp -L submodules/android-profile/build/AndroidProfileFacebook.jar $build/

@@ -1,3 +1,15 @@
+### v1.3.1 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.3.0...v1.3.1)
+
+* New Features
+  * Support extra params in UserProfile
+  * Support auto login
+
+* Changes
+  * Upgraded simple-facebook version
+
+* Fixes
+  * Add "autoLogin" field to LoginFinishedEvent
+
 ### v1.3.0 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.2.0...v1.3.0)
 
 * New Features

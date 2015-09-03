@@ -1,3 +1,8 @@
+### v1.3.2 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.3.1...v1.3.2)
+
+* Changes
+  * Updated submodules
+
 ### v1.3.1 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.3.0...v1.3.1)
 
 * New Features

@@ -3,17 +3,15 @@ set -e
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd $DIR
 
-paths=( "submodules/android-profile" "soomla-native/projects/cocos2dx-android-profile" )
 build=../build/android
 
 rm -rf $build
 mkdir -p $build
 
-for path in "${paths[@]}"
-do
-  $path/build_all
-  cp -RL $path/build/* $build/
-done
+soomla-native/projects/cocos2dx-android-profile/build_all
+
+cp -RL submodules/android-profile/build/* $build/
+cp -RL soomla-native/projects/cocos2dx-android-profile/build/* $build/
 
 # handle special case of build_all location for android-profile
 cp -L submodules/android-profile/build/AndroidProfile.jar $build/

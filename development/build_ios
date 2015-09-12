@@ -1,4 +1,9 @@
-paths=( "soomla-native/projects/cocos2dx-ios-profile" )
+#!/bin/sh
+set -e
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd $DIR
+
+paths=( "submodules/ios-profile" "soomla-native/projects/cocos2dx-ios-profile" )
 build=../build/ios
 build_headers=$build/headers
 
@@ -6,16 +11,16 @@ rm -rf $build
 mkdir -p $build
 mkdir -p $build_headers
 
+for path in "${paths[@]}"
+do
+  $path/build_all
+  cp -RL $path/build/* $build/
+done
+
 cp -L submodules/ios-profile/build/libSoomlaiOSProfile.a $build/
 cp -RL submodules/ios-profile/build/headers/SoomlaiOSProfile $build_headers/
 cp -RL submodules/ios-profile/build/ios-profile-facebook $build/
 cp -RL submodules/ios-profile/build/ios-profile-google $build/
 cp -RL submodules/ios-profile/build/ios-profile-twitter $build/
 
-for path in "${paths[@]}"
-do
-  cd $path
-  ./build_all
-  cd -
-  cp -RL $path/build/* $build/
-done
+cd - > /dev/null

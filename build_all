@@ -1,3 +1,4 @@
 #!/bin/sh
-cd development
-./build_all
+set -e
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+$DIR/development/build_all

@@ -1,2 +1,5 @@
-./build_android
-./build_ios
+#!/bin/sh
+set -e
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+$DIR/build_android
+$DIR/build_ios

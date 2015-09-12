@@ -1,8 +1,19 @@
-paths=( "soomla-native/projects/cocos2dx-android-profile" )
+#!/bin/sh
+set -e
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd $DIR
+
+paths=( "submodules/android-profile" "soomla-native/projects/cocos2dx-android-profile" )
 build=../build/android
 
 rm -rf $build
 mkdir -p $build
+
+for path in "${paths[@]}"
+do
+  $path/build_all
+  cp -RL $path/build/* $build/
+done
 
 # handle special case of build_all location for android-profile
 cp -L submodules/android-profile/build/AndroidProfile.jar $build/
@@ -14,10 +25,4 @@ cp -L submodules/android-profile/build/AndroidProfileTwitter.jar $build/
 cp -L submodules/android-profile/build/twitter4j-asyc-4.0.2.jar $build/
 cp -L submodules/android-profile/build/twitter4j-core-4.0.2.jar $build/
 
-for path in "${paths[@]}"
-do
-  cd $path
-  ./build_all
-  cd -
-  cp -RL $path/build/* $build/
-done
+cd - > /dev/null

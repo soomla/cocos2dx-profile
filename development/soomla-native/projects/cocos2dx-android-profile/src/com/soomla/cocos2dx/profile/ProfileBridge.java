@@ -90,9 +90,12 @@ public class ProfileBridge {
         ndkGlue.registerCallHandler("CCProfileBridge::init", new NdkGlue.CallHandler() {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
-                HashMap<IProvider.Provider, HashMap<String, String>> providerParams = parseProviderParams(params.optJSONObject("params"));
+                HashMap<IProvider.Provider, HashMap<String, String>> providerParams =
+                        parseProviderParams(params.optJSONObject("params"));
                 SoomlaUtils.LogDebug("SOOMLA", "initialize is called from java!");
-                SoomlaProfile.getInstance().initialize(ndkGlue.getActivityRef().get(), providerParams);
+                boolean retValue =
+                        SoomlaProfile.getInstance().initialize(ndkGlue.getActivityRef().get(), providerParams);
+                retParams.put("return", retValue);
             }
         });
 

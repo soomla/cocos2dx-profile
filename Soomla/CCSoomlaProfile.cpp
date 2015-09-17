@@ -41,19 +41,10 @@ namespace soomla {
     }
 
     CCSoomlaProfile::CCSoomlaProfile() {
-        mInited = false;
     }
 
     void CCSoomlaProfile::initialize(cocos2d::__Dictionary *profileParams) {
-
-        if (CCSoomlaProfile::getInstance()->mInited) {
-            CCSoomlaUtils::logError(TAG, "SoomlaProfile is already initialized. You can't initialize it twice!");
-            return;
-        }
-
         CCProfileBridge::initShared(profileParams);
-
-        CCSoomlaProfile::getInstance()->mInited = true;
     }
 
     ///
@@ -64,7 +55,6 @@ namespace soomla {
     }
 
     void CCSoomlaProfile::login(CCProvider provider, const char *payload, CCReward *reward, CCError **soomlaError) {
-        CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCSoomlaProfile::login"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
@@ -86,7 +76,6 @@ namespace soomla {
     /// Supported platforms: Facebook, Twitter, Google+
     ///
     void CCSoomlaProfile::logout(CCProvider provider, CCError **soomlaError) {
-        CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCSoomlaProfile::logout"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
@@ -98,7 +87,6 @@ namespace soomla {
     /// Missing user info for Twitter: email, gender, birthday.
     ///
     CCUserProfile *CCSoomlaProfile::getStoredUserProfile(CCProvider provider, CCError **soomlaError) {
-        CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCSoomlaProfile::getStoredUserProfile"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
@@ -111,7 +99,6 @@ namespace soomla {
     /// Supported platforms: Facebook, Twitter, Google+
     ///
     void CCSoomlaProfile::updateStatus(CCProvider provider, const char *status, const char *payload, CCReward *reward, CCError **soomlaError) {
-        CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCSoomlaProfile::updateStatus"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
@@ -127,7 +114,6 @@ namespace soomla {
     /// Supported platforms: Facebook, Twitter, Google+
     ///
     void CCSoomlaProfile::updateStatusWithConfirmation(CCProvider provider, const char *status, const char *payload, CCReward *reward, char const *customMessage, CCError **soomlaError) {
-        CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCSoomlaProfile::updateStatusWithConfirmation"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
@@ -156,7 +142,6 @@ namespace soomla {
     /// 2. Google+ uses dialogs by default.
     ///
     void CCSoomlaProfile::updateStatusDialog(CCProvider provider, const char *link, const char *payload, CCReward *reward, CCError **soomlaError) {
-        CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCSoomlaProfile::updateStatusDialog"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
@@ -183,8 +168,6 @@ namespace soomla {
             const char *caption, const char *description, const char *link, const char *picture,
             const char *payload, CCReward *reward, CCError **soomlaError) {
 
-
-        CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCSoomlaProfile::updateStory"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
@@ -211,7 +194,6 @@ namespace soomla {
 
     void CCSoomlaProfile::updateStoryWithConfirmation(CCProvider provider, const char *message, const char *name, const char *caption, const char *description, const char *link, const char *picture, const char *payload, CCReward *reward, char const *customMessage, CCError **soomlaError) {
 
-        CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCSoomlaProfile::updateStoryWithConfirmation"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
@@ -242,7 +224,6 @@ namespace soomla {
                                       const char *caption, const char *description, const char *link, const char *picture,
                                       const char *payload, CCReward *reward, CCError **soomlaError) {
 
-        CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCSoomlaProfile::updateStoryDialog"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
@@ -278,7 +259,6 @@ namespace soomla {
     void CCSoomlaProfile::uploadImage(CCProvider provider, const char *message, const char *filePath,
             const char *payload, CCReward *reward, CCError **soomlaError) {
 
-        CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCSoomlaProfile::uploadImage"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
@@ -299,7 +279,6 @@ namespace soomla {
     void CCSoomlaProfile::uploadImageWithConfirmation(CCProvider provider, const char *message, const char *filePath,
             const char *payload, CCReward *reward, char const *customMessage, CCError **soomlaError) {
 
-        CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCSoomlaProfile::uploadImageWithConfirmation"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
@@ -328,7 +307,6 @@ namespace soomla {
     /// 2. Google+ - missing contact info: username, email, gender, bithday
     ///
     void CCSoomlaProfile::getContacts(CCProvider provider, bool fromStart, const char *payload, CCReward *reward, CCError **soomlaError) {
-        CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCSoomlaProfile::getContacts"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
@@ -354,7 +332,6 @@ namespace soomla {
     ///
     void CCSoomlaProfile::getFeed(CCProvider provider, bool fromStart, const char *payload, CCReward *reward, CCError **soomlaError) {
 
-        CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCSoomlaProfile::getFeed"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
@@ -381,7 +358,6 @@ namespace soomla {
     /// Supported platforms: Facebook, Twitter, Google+
     ///
     bool CCSoomlaProfile::isLoggedIn(CCProvider provider, CCError **soomlaError) {
-        CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCSoomlaProfile::isLoggedIn"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
@@ -399,7 +375,6 @@ namespace soomla {
     /// Supported platforms: Facebook, Twitter, Google+
     ///
     void CCSoomlaProfile::like(CCProvider provider, const char *pageId, CCReward *reward, CCError **soomlaError) {
-        CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCSoomlaProfile::like"), "method");
         params->setObject(__String::create(pageId), "pageId");
@@ -411,14 +386,12 @@ namespace soomla {
     }
 
     void CCSoomlaProfile::openAppRatingPage(CCError **soomlaError) {
-        CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCSoomlaProfile::openAppRatingPage"), "method");
         CCNdkBridge::callNative(params, soomlaError);
     }
 
     void CCSoomlaProfile::multiShare(char const *text, char const *imageFilePath, CCError **soomlaError) {
-        CC_ASSERT(mInited);
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCSoomlaProfile::multiShare"), "method");
         params->setObject(__String::create(text), "text");

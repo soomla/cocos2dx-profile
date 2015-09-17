@@ -57,15 +57,16 @@
 
     /* -= Call handlers =- */
     [ndkGlue registerCallHandlerForKey:@"CCProfileBridge::init" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
-        NSDictionary *providerParams = [parameters objectForKey:@"params"];
+        NSDictionary *providerParams = parameters[@"params"];
         if (providerParams) {
             NSMutableDictionary *parsedParams = [NSMutableDictionary dictionary];
             for (NSString* key in providerParams) {
                 id value = providerParams[key];
-                [parsedParams setObject:value forKey:@([UserProfileUtils providerStringToEnum:key])];
+                parsedParams[@([UserProfileUtils providerStringToEnum:key])] = value;
             }
-            
-            [[SoomlaProfile getInstance] initialize:parsedParams];
+
+            BOOL res = [[SoomlaProfile getInstance] initialize:parsedParams];
+            retParameters[@"return"] = @(res);
         }
     }];
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::login" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {

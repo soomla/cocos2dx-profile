@@ -73,9 +73,19 @@ namespace soomla {
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCProfileBridge::init"), "method");
         params->setObject(profileParams, "params");
-        CCNdkBridge::callNative(params, nullptr);
 
-        return true;
+        CCError *error = NULL;
+        __Dictionary *retParams = (__Dictionary *) CCNdkBridge::callNative (params, &error);
+
+        if (error) {
+            CCSoomlaUtils::logError(TAG, __String::createWithFormat(
+                    "call init failed with error: %s", error->getInfo())->getCString());
+            return false;
+        }
+
+        SL_EXTRACT_FROM_RETURN(__Bool, ret, retParams);
+
+        return ret->getValue();
     }
     
     void CCProfileBridge::bindNative() {

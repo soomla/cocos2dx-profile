@@ -417,17 +417,15 @@
    * SoomlaProfile
    */
   var SoomlaProfile = Soomla.SoomlaProfile = Soomla.declareClass("SoomlaProfile", {
-    inited: false,
     init: function (customParams) {
       ProfileEventDispatcher.initShared();
 
-      Soomla.callNative({
+      var retParams = Soomla.callNative({
         method: "CCProfileBridge::init",
         params: customParams
       });
 
-      this.inited = true;
-      return true;
+      return retParams['return'];
     },
     login: function (provider, reward, payload) {
       var toPassData = {

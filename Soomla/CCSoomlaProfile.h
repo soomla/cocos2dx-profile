@@ -34,8 +34,6 @@ namespace soomla {
      access the native SoomlaProfile functionality.
 	 */
     class CCSoomlaProfile: public cocos2d::Ref {
-    private:
-        bool mInited;
     public:
 		/**
          Retrieves the singleton instance of CCSoomlaProfile

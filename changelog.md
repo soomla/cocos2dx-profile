@@ -1,3 +1,9 @@
+### v1.3.3 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.3.2...v1.3.3)
+
+* Changes
+  * Removed binaries and improved build scripts
+  * Added gson jar to android libs
+
 ### v1.3.2 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.3.1...v1.3.2)
 
 * Changes

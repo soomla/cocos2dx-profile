@@ -1,4 +1,11 @@
+#!/bin/sh
+set -e
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd $DIR
+
 rm -rf build
 mkdir build
 
 xcodebuild -configuration Release -sdk iphoneos -project Cocos2dXiOSProfile.xcodeproj -target Cocos2dXiOSProfile clean build CREATING_UNIVERSAL_DIR=$PWD/build
+
+cd - > /dev/null

@@ -43,6 +43,8 @@ namespace soomla {
     char const *CCProfileConsts::DICT_ELEMENT_MESSAGE = "message";
     char const *CCProfileConsts::DICT_ELEMENT_CONTACTS = "contacts";
     char const *CCProfileConsts::DICT_ELEMENT_FEEDS = "feeds";
+    char const *CCProfileConsts::DICT_ELEMENT_REQUEST_ID = "requestId";
+    char const *CCProfileConsts::DICT_ELEMENT_INVITED_IDS = "invitedIds";
     char const *CCProfileConsts::DICT_ELEMENT_REWARD = "reward";
 
     char const *CCProfileConsts::EVENT_PROFILE_INITIALIZED = "com.soomla.profile.events.ProfileInitializedEvent";
@@ -68,6 +70,11 @@ namespace soomla {
     char const *CCProfileConsts::EVENT_SOCIAL_ACTION_FAILED = "com.soomla.profile.events.social.SocialActionFailedEvent";
     char const *CCProfileConsts::EVENT_SOCIAL_ACTION_FINISHED = "com.soomla.profile.events.social.SocialActionFinishedEvent";
     char const *CCProfileConsts::EVENT_SOCIAL_ACTION_STARTED = "com.soomla.profile.events.social.SocialActionStartedEvent";
+
+    char const *CCProfileConsts::EVENT_INVITE_STARTED = "com.soomla.profile.events.social.InviteStartedEvent";
+    char const *CCProfileConsts::EVENT_INVITE_FINISHED = "com.soomla.profile.events.social.InviteFinishedEvent";
+    char const *CCProfileConsts::EVENT_INVITE_FAILED = "com.soomla.profile.events.social.InviteFailedEvent";
+    char const *CCProfileConsts::EVENT_INVITE_CANCELLED = "com.soomla.profile.events.social.InviteFailedEvent";
 
     char const *CCProfileConsts::EVENT_USER_PROFILE_UPDATED = "com.soomla.profile.events.UserProfileUpdatedEvent";
 

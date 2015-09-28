@@ -57,6 +57,8 @@ namespace soomla {
         static char const *DICT_ELEMENT_MESSAGE;
         static char const *DICT_ELEMENT_CONTACTS;
         static char const *DICT_ELEMENT_FEEDS;
+        static char const *DICT_ELEMENT_REQUEST_ID;
+        static char const *DICT_ELEMENT_INVITED_IDS;
         static char const *DICT_ELEMENT_REWARD;
 
         static char const *EVENT_PROFILE_INITIALIZED;
@@ -81,6 +83,11 @@ namespace soomla {
         static char const *EVENT_SOCIAL_ACTION_FAILED;
         static char const *EVENT_SOCIAL_ACTION_FINISHED;
         static char const *EVENT_SOCIAL_ACTION_STARTED;
+
+        static char const *EVENT_INVITE_STARTED;
+        static char const *EVENT_INVITE_FINISHED;
+        static char const *EVENT_INVITE_FAILED;
+        static char const *EVENT_INVITE_CANCELLED;
 
         static char const *EVENT_USER_PROFILE_UPDATED;
     };

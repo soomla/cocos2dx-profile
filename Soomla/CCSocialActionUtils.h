@@ -33,7 +33,8 @@ namespace soomla {
         UPDATE_STORY,
         UPLOAD_IMAGE,
         GET_CONTACTS,
-        GET_FEED
+        GET_FEED,
+        INVITE
     };
     
     /**

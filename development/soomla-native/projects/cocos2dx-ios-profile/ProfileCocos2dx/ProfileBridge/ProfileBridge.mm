@@ -242,8 +242,8 @@
 
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::invite" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];
-        NSNumber *inviteMessage = [parameters objectForKey:@"inviteMessage"];
-        NSNumber *dialogTitle = [parameters objectForKey:@"dialogTitle"];
+        NSString *inviteMessage = [parameters objectForKey:@"inviteMessage"];
+        NSString *dialogTitle = [parameters objectForKey:@"dialogTitle"];
         NSString *payload = [parameters objectForKey:@"payload"];
         NSDictionary *rewardDict = [parameters objectForKey:@"reward"];
         Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;

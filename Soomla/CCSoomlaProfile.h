@@ -451,7 +451,7 @@ namespace soomla {
          @param provider The provider to use
          @param inviteMessage a message will send to recipients.
         */
-        void invite(CCProvider provider, const char * inviteMessage);
+        void invite(CCProvider provider, const char * inviteMessage, CCError **soomlaError);
 
         /**
          Sends an invite.

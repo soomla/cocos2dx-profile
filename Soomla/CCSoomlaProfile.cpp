@@ -328,7 +328,7 @@ namespace soomla {
     }
 
     ///
-    /// Supported platforms: Facebook.
+    /// Supported platforms: Facebook, Twitter, Google+ (iOS only)
     ///
     void CCSoomlaProfile::getFeed(CCProvider provider, bool fromStart, const char *payload, CCReward *reward, CCError **soomlaError) {
 
@@ -352,6 +352,26 @@ namespace soomla {
     void CCSoomlaProfile::getFeed(CCProvider provider, bool fromStart, CCReward *reward, CCError **soomlaError) {
 
         this->getFeed(provider, fromStart, "", reward, soomlaError);
+    }
+
+    ///
+    /// Supported platforms: Facebook
+    ///
+    void CCSoomlaProfile::invite(CCProvider provider, const char * inviteMessage, const char * dialogTitle, const char * payload, CCReward * reward, CCError **soomlaError) {
+        __Dictionary *params = __Dictionary::create();
+        params->setObject(__String::create("CCSoomlaProfile::invite"), "method");
+        params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
+        params->setObject(__String::create(inviteMessage), "inviteMessage");
+        params->setObject(__String::create(dialogTitle), "dialogTitle");
+        params->setObject(__String::create(payload), "payload");
+        if (reward) {
+            params->setObject(reward->toDictionary(), "reward");
+        }
+        CCNdkBridge::callNative(params, soomlaError);
+    }
+
+    void CCSoomlaProfile::invite(CCProvider provider, const char * inviteMessage, CCError **soomlaError) {
+        this->invite(provider, inviteMessage, "", "", NULL, soomlaError);
     }
 
     ///

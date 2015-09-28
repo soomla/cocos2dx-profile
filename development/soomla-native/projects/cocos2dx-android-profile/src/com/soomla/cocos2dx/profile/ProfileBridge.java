@@ -299,6 +299,22 @@ public class ProfileBridge {
             }
         });
 
+        ndkGlue.registerCallHandler("CCSoomlaProfile::invite", new NdkGlue.CallHandler() {
+            @Override
+            public void handle(JSONObject params, JSONObject retParams) throws Exception {
+                String provider = params.getString("provider");
+                String inviteMessage = params.getString("inviteMessage");
+                String dialogTitle = params.getString("dialogTitle");
+                String payload = params.getString("payload");
+                JSONObject rewardJson = params.optJSONObject("reward");
+                Reward reward = (rewardJson != null) ?
+                        domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
+                SoomlaProfile.getInstance().invite(ndkGlue.getActivityRef().get(), IProvider.Provider.getEnum(provider),
+                        inviteMessage, dialogTitle, payload, reward);
+
+            }
+        });
+
         ndkGlue.registerCallHandler("CCSoomlaProfile::isLoggedIn", new NdkGlue.CallHandler() {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {

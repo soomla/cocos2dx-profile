@@ -508,6 +508,105 @@ public class ProfileEventHandlerBridge {
     }
 
     /**
+     * Called when an invitation on a provider has started
+     *
+     * @param inviteStartedEvent The event information
+     */
+    @Subscribe
+    public void onInviteStartedEvent(final InviteStartedEvent inviteStartedEvent) {
+        mGLThread.queueEvent(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject parameters = new JSONObject();
+                    parameters.put("method", ProfileConsts.EVENT_INVITE_STARTED);
+                    parameters.put("provider", inviteStartedEvent.Provider.getValue());
+                    parameters.put("socialActionType", inviteStartedEvent.SocialActionType.getValue());
+                    parameters.put("payload", inviteStartedEvent.Payload);
+                    NdkGlue.getInstance().sendMessageWithParameters(parameters);
+                } catch (JSONException e) {
+                    throw new IllegalStateException(e);
+                }
+            }
+        });
+    }
+
+    /**
+     * Called when an invitation on a provider has finished
+     *
+     * @param inviteFinishedEvent The event information
+     */
+    @Subscribe
+    public void onInviteFinishedEvent(final InviteFinishedEvent inviteFinishedEvent) {
+        mGLThread.queueEvent(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject parameters = new JSONObject();
+                    parameters.put("method", ProfileConsts.EVENT_INVITE_FINISHED);
+                    parameters.put("provider", inviteFinishedEvent.Provider.getValue());
+                    parameters.put("socialActionType", inviteFinishedEvent.SocialActionType.getValue());
+                    parameters.put("requestId", inviteFinishedEvent.RequestId);
+                    parameters.put("invitedIds", new JSONArray(inviteFinishedEvent.InvitedIds));
+                    parameters.put("payload", inviteFinishedEvent.Payload);
+                    NdkGlue.getInstance().sendMessageWithParameters(parameters);
+                } catch (JSONException e) {
+                    throw new IllegalStateException(e);
+                }
+            }
+        });
+    }
+
+    /**
+     * Called when an invitation on a provider has failed
+     *
+     * @param inviteFailedEvent The event information
+     */
+    @Subscribe
+    public void onInviteFailedEvent(final InviteFailedEvent inviteFailedEvent) {
+        mGLThread.queueEvent(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject parameters = new JSONObject();
+                    parameters.put("method", ProfileConsts.EVENT_INVITE_FAILED);
+                    parameters.put("provider", inviteFailedEvent.Provider.getValue());
+                    parameters.put("socialActionType", inviteFailedEvent.SocialActionType.getValue());
+                    parameters.put("errorDescription", inviteFailedEvent.ErrorDescription);
+                    parameters.put("payload", inviteFailedEvent.Payload);
+                    NdkGlue.getInstance().sendMessageWithParameters(parameters);
+                } catch (JSONException e) {
+                    throw new IllegalStateException(e);
+                }
+            }
+        });
+    }
+
+    /**
+     * Called when an invitation on a provider has cancelled
+     *
+     * @param inviteCancelledEvent The event information
+     */
+    @Subscribe
+    public void onInviteCancelledEvent(final InviteCancelledEvent inviteCancelledEvent) {
+        mGLThread.queueEvent(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject parameters = new JSONObject();
+                    parameters.put("method", ProfileConsts.EVENT_INVITE_CANCELLED);
+                    parameters.put("provider", inviteCancelledEvent.Provider.getValue());
+                    parameters.put("socialActionType", inviteCancelledEvent.SocialActionType.getValue());
+                    parameters.put("payload", inviteCancelledEvent.Payload);
+                    NdkGlue.getInstance().sendMessageWithParameters(parameters);
+                } catch (JSONException e) {
+                    throw new IllegalStateException(e);
+                }
+            }
+        });
+    }
+
+    /**
      * Sets the main GL surface of the application
      *
      * @param glSurfaceView The GL surface of the main activity

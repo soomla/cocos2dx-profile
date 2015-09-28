@@ -43,4 +43,8 @@ public class ProfileConsts {
     public static final String EVENT_SOCIAL_ACTION_STARTED = "com.soomla.profile.events.social.SocialActionStartedEvent";
     public static final String EVENT_LOGIN_CANCELLED = "com.soomla.profile.events.auth.LoginCancelledEvent";
     public static final String EVENT_USER_PROFILE_UPDATED = "com.soomla.profile.events.UserProfileUpdatedEvent";
+    public static final String EVENT_INVITE_STARTED = "com.soomla.profile.events.social.InviteStartedEvent";
+    public static final String EVENT_INVITE_FINISHED = "com.soomla.profile.events.social.InviteFinishedEvent";
+    public static final String EVENT_INVITE_FAILED = "com.soomla.profile.events.social.InviteFailedEvent";
+    public static final String EVENT_INVITE_CANCELLED = "com.soomla.profile.events.social.InviteStartedEvent";
 }

@@ -46,5 +46,5 @@ public class ProfileConsts {
     public static final String EVENT_INVITE_STARTED = "com.soomla.profile.events.social.InviteStartedEvent";
     public static final String EVENT_INVITE_FINISHED = "com.soomla.profile.events.social.InviteFinishedEvent";
     public static final String EVENT_INVITE_FAILED = "com.soomla.profile.events.social.InviteFailedEvent";
-    public static final String EVENT_INVITE_CANCELLED = "com.soomla.profile.events.social.InviteStartedEvent";
+    public static final String EVENT_INVITE_CANCELLED = "com.soomla.profile.events.social.InviteCancelledEvent";
 }

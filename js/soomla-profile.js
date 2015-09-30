@@ -42,7 +42,8 @@
     UPDATE_STORY: 1,
     UPLOAD_IMAGE: 2,
     GET_CONTACTS: 3,
-    GET_FEED: 4
+    GET_FEED: 4,
+    INVITE: 5
   };
 
   /**
@@ -67,7 +68,11 @@
     EVENT_SOCIAL_ACTION_FAILED: "com.soomla.profile.events.social.SocialActionFailedEvent",
     EVENT_SOCIAL_ACTION_FINISHED: "com.soomla.profile.events.social.SocialActionFinishedEvent",
     EVENT_SOCIAL_ACTION_STARTED: "com.soomla.profile.events.social.SocialActionStartedEvent",
-    EVENT_USER_PROFILE_UPDATED: "com.soomla.profile.events.UserProfileUpdatedEvent"
+    EVENT_USER_PROFILE_UPDATED: "com.soomla.profile.events.UserProfileUpdatedEvent",
+    EVENT_INVITE_STARTED: "com.soomla.profile.events.social.InviteStartedEvent",
+    EVENT_INVITE_FINISHED: "com.soomla.profile.events.social.InviteFinishedEvent",
+    EVENT_INVITE_FAILED: "com.soomla.profile.events.social.InviteFailedEvent",
+    EVENT_INVITE_CANCELLED: "com.soomla.profile.events.social.InviteCancelledEvent"
   };
 
   /**
@@ -233,6 +238,35 @@
       },
 
       /**
+       Called when an invitation on a provider has started
+       @param provider The provider on which the social action has started
+       @param socialActionType The social action which started (INVITE)
+       @param payload an identification String sent from the caller of the action
+       */
+       onInviteStarted: function (provider, socialActionType, payload) {
+       },
+
+       /**
+        Called when an invitation on a provider has finished
+        @param provider The provider on which the social action has finished
+        @param socialActionType The social action which finished (INVITE)
+        @param requestId identifier of created app request
+        @param invitedIds List of recipients of this request
+        @param payload an identification String sent from the caller of the action
+        */
+       onInviteFinished: function (provider, socialActionType, requestId, invitedIds, payload) {
+       },
+
+      /**
+       Called when an invitation on a provider has cancelled
+       @param provider The provider on which the social action has cancelled
+       @param socialActionType The social action which cancelled (INVITE)
+       @param payload an identification String sent from the caller of the action
+       */
+       onInviteCancelled: function (provider, socialActionType, payload) {
+       },
+
+      /**
        Called when a user profile from a provider has been retrieved
        @param userProfile The user's profile which was updated
        */
@@ -394,6 +428,41 @@
         eventDispatcher.registerEventHandler(ProfileConsts.EVENT_USER_PROFILE_UPDATED, _.bind(function (parameters) {
           var userProfile = parameters.userProfile;
           Soomla.fireSoomlaEvent(parameters.method, [userProfile]);
+        }, this));
+
+        eventDispatcher.registerEventHandler(ProfileConsts.EVENT_INVITE_STARTED, _.bind(function (parameters) {
+          var providerId = parameters.provider;
+          var provider = Provider.findById(providerId);
+          var socialActionType = parameters.socialActionType;
+          var payload = parameters.payload;
+          Soomla.fireSoomlaEvent(parameters.method, [provider, socialActionType, payload]);
+        }, this));
+
+        eventDispatcher.registerEventHandler(ProfileConsts.EVENT_INVITE_FINISHED, _.bind(function (parameters) {
+          var providerId = parameters.provider;
+          var provider = Provider.findById(providerId);
+          var socialActionType = parameters.socialActionType;
+          var requestId = parameters.requestId;
+          var invitedIds = parameters.invitedIds;
+          var payload = parameters.payload;
+          Soomla.fireSoomlaEvent(parameters.method, [provider, socialActionType, requestId, invitedIds, payload]);
+        }, this));
+
+        eventDispatcher.registerEventHandler(ProfileConsts.EVENT_INVITE_FAILED, _.bind(function (parameters) {
+          var providerId = parameters.provider;
+          var provider = Provider.findById(providerId);
+          var socialActionType = parameters.socialActionType;
+          var errorDescription = parameters.errorDescription;
+          var payload = parameters.payload;
+          Soomla.fireSoomlaEvent(parameters.method, [provider, socialActionType, errorDescription, payload]);
+        }, this));
+
+        eventDispatcher.registerEventHandler(ProfileConsts.EVENT_INVITE_CANCELLED, _.bind(function (parameters) {
+          var providerId = parameters.provider;
+          var provider = Provider.findById(providerId);
+          var socialActionType = parameters.socialActionType;
+          var payload = parameters.payload;
+          Soomla.fireSoomlaEvent(parameters.method, [provider, socialActionType, payload]);
         }, this));
 
         return true;
@@ -638,6 +707,26 @@
 
       Soomla.callNative(toPassData, true);
     },
+    uploadCurrentScreenshot: function (provider, title, message, payload, reward) {
+      var toPassData = {
+        method: "CCSoomlaProfile::uploadCurrentScreenshot",
+        provider: provider.key,
+        message: message
+      };
+
+      if (payload) {
+        toPassData.payload = payload;
+      }
+      else {
+        toPassData.payload = "default";
+      }
+
+      if (reward) {
+        toPassData.reward = reward;
+      }
+
+      Soomla.callNative(toPassData, true);
+    },
     getContacts: function (provider, reward, fromFirst, payload) {
       fromFirst = (fromFirst !== undefined ? fromFirst : false);
       var toPassData = {
@@ -667,6 +756,32 @@
         provider: provider.key,
         fromFirst: fromFirst
       };
+
+      if (payload) {
+        toPassData.payload = payload;
+      }
+      else {
+        toPassData.payload = "default";
+      }
+
+      if (reward) {
+        toPassData.reward = reward;
+      }
+
+      Soomla.callNative(toPassData, true);
+    },
+    invite: function (provider, inviteMessage, dialogTitle, payload, reward) {
+      var toPassData = {
+        method: "CCSoomlaProfile::invite",
+        provider: provider.key,
+        inviteMessage: inviteMessage
+      };
+
+      if (dialogTitle) {
+        toPassData.dialogTitle = dialogTitle;
+      } else {
+            toPassData.dialogTitle = "";
+      }
 
       if (payload) {
         toPassData.payload = payload;

@@ -39,7 +39,7 @@ The example project is still under development but it already has some important
 ####Pre baked zip:
 
 - [soomla-cocos2dx-core 1.2.3](http://library.soom.la/fetch/cocos2dx-core/1.2.3?cf=github)
-- [cocos2dx-profile 1.3.2](http://library.soom.la/fetch/cocos2dx-profile/1.3.2?cf=github)
+- [cocos2dx-profile 1.3.3](http://library.soom.la/fetch/cocos2dx-profile/1.3.3?cf=github)
 
 ## Getting Started (With pre-built libraries)
 
@@ -173,7 +173,7 @@ That's it! Now all you have to do is build your XCode project and run your game 
     - from `extensions/soomla-cocos2dx-core/build/android`
         1. SoomlaAndroidCore.jar
         2. Cocos2dxAndroidCore.jar
-        3. square-otto-1.3.2.jar
+        3. square-otto-1.3.3.jar
 
     - from `extensions/cocos2dx-profile/build/android`
         1. AndroidProfile.jar

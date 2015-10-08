@@ -181,6 +181,41 @@ namespace soomla {
                     this->onUserProfileUpdatedEvent(userProfile);
                 });
 
+        eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_INVITE_STARTED,
+                [this](__Dictionary *parameters) {
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
+                    __Integer *socialActionType = dynamic_cast<__Integer *>(parameters->objectForKey("socialActionType"));
+                    __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
+                    this->onInviteStartedEvent(CCProvider(provider->getValue()), CCSocialActionType(socialActionType->getValue()), payload);
+                });
+
+        eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_INVITE_FINISHED,
+                [this](__Dictionary *parameters) {
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
+                    __Integer *socialActionType = dynamic_cast<__Integer *>(parameters->objectForKey("socialActionType"));
+                    __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
+                    __String *requestId = dynamic_cast<__String *>(parameters->objectForKey("requestId"));;
+                    __Array *invitedIds = dynamic_cast<__Array *>(parameters->objectForKey("invitedIds"));
+                    this->onInviteFinishedEvent(CCProvider(provider->getValue()), CCSocialActionType(socialActionType->getValue()), requestId, invitedIds, payload);
+                });
+
+        eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_INVITE_FAILED,
+                [this](__Dictionary *parameters) {
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
+                    __Integer *socialActionType = dynamic_cast<__Integer *>(parameters->objectForKey("socialActionType"));
+                    __String *errorDescription = dynamic_cast<__String *>(parameters->objectForKey("errorDescription"));
+                    __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
+                    this->onInviteFailedEvent(CCProvider(provider->getValue()), CCSocialActionType(socialActionType->getValue()), errorDescription, payload);
+                });
+
+        eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_INVITE_CANCELLED,
+                [this](__Dictionary *parameters) {
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
+                    __Integer *socialActionType = dynamic_cast<__Integer *>(parameters->objectForKey("socialActionType"));
+                    __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
+                    this->onInviteCancelledEvent(CCProvider(provider->getValue()), CCSocialActionType(socialActionType->getValue()), payload);
+                });
+
         return true;
     }
 
@@ -356,5 +391,46 @@ namespace soomla {
         eventData->setObject(userProfile, CCProfileConsts::DICT_ELEMENT_USER_PROFILE);
         
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_USER_PROFILE_UPDATED, eventData);
+    }
+
+    void CCProfileEventDispatcher::onInviteStartedEvent(CCProvider provider, CCSocialActionType socialActionType, cocos2d::__String *payload) {
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(__Integer::create(socialActionType), CCProfileConsts::DICT_ELEMENT_SOCIAL_ACTION_TYPE);
+        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
+
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_INVITE_STARTED, eventData);
+    }
+
+    void CCProfileEventDispatcher::onInviteFinishedEvent(CCProvider provider, CCSocialActionType socialActionType,
+            cocos2d::__String *requestId, cocos2d::__Array *invitedIds, cocos2d::__String *payload) {
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(__Integer::create(socialActionType), CCProfileConsts::DICT_ELEMENT_SOCIAL_ACTION_TYPE);
+        eventData->setObject(requestId, CCProfileConsts::DICT_ELEMENT_REQUEST_ID);
+        eventData->setObject(invitedIds, CCProfileConsts::DICT_ELEMENT_INVITED_IDS);
+        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
+
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_INVITE_FINISHED, eventData);
+    }
+
+    void CCProfileEventDispatcher::onInviteFailedEvent(CCProvider provider, CCSocialActionType  socialActionType,
+            cocos2d::__String *message, cocos2d::__String *payload) {
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(__Integer::create(socialActionType), CCProfileConsts::DICT_ELEMENT_SOCIAL_ACTION_TYPE);
+        eventData->setObject(message, CCProfileConsts::DICT_ELEMENT_MESSAGE);
+        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
+
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_INVITE_FAILED, eventData);
+    }
+
+    void CCProfileEventDispatcher::onInviteCancelledEvent(CCProvider provider, CCSocialActionType  socialActionType, cocos2d::__String *payload) {
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(__Integer::create(socialActionType), CCProfileConsts::DICT_ELEMENT_SOCIAL_ACTION_TYPE);
+        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
+
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_INVITE_CANCELLED, eventData);
     }
 }

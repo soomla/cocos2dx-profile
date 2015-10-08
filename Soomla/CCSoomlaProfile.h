@@ -34,8 +34,6 @@ namespace soomla {
      access the native SoomlaProfile functionality.
 	 */
     class CCSoomlaProfile: public cocos2d::Ref {
-    private:
-        bool mInited;
     public:
 		/**
          Retrieves the singleton instance of CCSoomlaProfile
@@ -342,6 +340,30 @@ namespace soomla {
                 const char *payload, CCReward *reward, char const *customMessage, CCError **soomlaError);
 
         /**
+         Shares a current screenshot to the user's feed and grants the user a reward.
+
+         @param activity activity to use as context for the screenshot
+         @param provider The provider to use
+         @param message  A text that will accompany the image
+         @param title  A title of post
+        */
+        void uploadCurrentScreenshot(CCProvider provider, const char * title, const char * message, CCError **soomlaError);
+
+        /**
+         Shares a current screenshot to the user's feed and grants the user a reward.
+
+         @param activity activity to use as context for the screenshot
+         @param provider The provider to use
+         @param message  A text that will accompany the image
+         @param title  A title of post
+         @param payload  a String to receive when the function returns.
+         @param reward   The reward to give the user
+         @throws ProviderNotFoundException if the supplied provider is not
+                                           supported by the framework
+        */
+        void uploadCurrentScreenshot(CCProvider provider, const char * title, const char * message, const char * payload, CCReward * reward, CCError **soomlaError);
+
+        /**
          Retrieves a list of the user's contacts from the supplied provider,
          which also use this application. Upon a successful retrieval of
          contacts the user will be granted the supplied reward.
@@ -421,6 +443,27 @@ namespace soomla {
          @param soomlaError Any errors will be returned in this parameter
          */
         void getFeed(CCProvider provider, bool fromStart, const char *payload, CCReward *reward, CCError **soomlaError);
+
+        /**
+         Sends an invite.
+
+         @param activity The parent activity
+         @param provider The provider to use
+         @param inviteMessage a message will send to recipients.
+        */
+        void invite(CCProvider provider, const char * inviteMessage, CCError **soomlaError);
+
+        /**
+         Sends an invite.
+
+         @param activity The parent activity
+         @param provider The provider to use
+         @param inviteMessage a message will send to recipients.
+         @param dialogTitle a title of app request dialog.
+         @param payload  a String to receive when the function returns.
+         @param reward The reward to grant
+         */
+        void invite(CCProvider provider, const char * inviteMessage, const char * dialogTitle, const char * payload, CCReward * reward, CCError **soomlaError);
 
         /**
          Checks if the user is logged into the supplied provider

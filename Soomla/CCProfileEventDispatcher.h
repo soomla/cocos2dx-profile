@@ -278,6 +278,66 @@ namespace soomla {
          */
         virtual void onUserProfileUpdatedEvent(CCUserProfile *userProfile);
 
+        /**
+         Fired when a generic social action on a provider has started.
+
+         Event Name - CCProfileConsts::EVENT_INVITE_STARTED
+         Event Data (__Dictionary):
+         CCProfileConsts::DICT_ELEMENT_PROVIDER - __Integer - The provider on
+         which the invitation has started.
+         CCProfileConsts::DICT_ELEMENT_SOCIAL_ACTION_TYPE - __Integer - The social
+         action which started (INVITE in this case).
+         CCProfileConsts::DICT_ELEMENT_PAYLOAD - __String - an identification
+         String sent from the caller of the action.
+         */
+        virtual void onInviteStartedEvent(CCProvider provider, CCSocialActionType socialActionType, cocos2d::__String *payload);
+
+        /**
+         Fired when an invitation on a provider has finished.
+
+         Event Name - CCProfileConsts::EVENT_INVITE_FINISHED
+         Event Data (__Dictionary):
+         CCProfileConsts::DICT_ELEMENT_PROVIDER - __Integer - The provider on
+         which the invite has finished.
+         CCProfileConsts::DICT_ELEMENT_SOCIAL_ACTION_TYPE - __Integer - The social
+         action which finished (INVITE in this case).
+         CCProfileConsts::DICT_ELEMENT_REQUEST_ID - __String - identifier of created app request
+         CCProfileConsts::DICT_ELEMENT_INVITED_IDS - __Array - list of recipients of this request
+         CCProfileConsts::DICT_ELEMENT_PAYLOAD - __String - an identification
+         String sent from the caller of the action.
+         */
+        virtual void onInviteFinishedEvent(CCProvider provider, CCSocialActionType socialActionType, cocos2d::__String *requestId, cocos2d::__Array *invitedIds, cocos2d::__String *payload);
+
+        /**
+         Fired when an invitation on a provider has failed.
+
+         Event Name - CCProfileConsts::EVENT_INVITE_FAILED
+         Event Data (__Dictionary):
+         CCProfileConsts::DICT_ELEMENT_PROVIDER - __Integer - The provider on
+         which the social action has failed.
+         CCProfileConsts::DICT_ELEMENT_SOCIAL_ACTION_TYPE - __Integer - The social
+         action which failed.
+         CCProfileConsts::DICT_ELEMENT_MESSAGE - __String - a Description of
+         the reason for failure.
+         CCProfileConsts::DICT_ELEMENT_PAYLOAD - __String - an identification
+         String sent from the caller of the action.
+         */
+        virtual void onInviteFailedEvent(CCProvider provider, CCSocialActionType socialActionType, cocos2d::__String *message, cocos2d::__String *payload);
+
+        /**
+         Fired when an invitation on a provider has cancelled.
+
+         Event Name - CCProfileConsts::EVENT_INVITE_CANCELLED
+         Event Data (__Dictionary):
+         CCProfileConsts::DICT_ELEMENT_PROVIDER - __Integer - The provider on
+         which the social action has failed.
+         CCProfileConsts::DICT_ELEMENT_SOCIAL_ACTION_TYPE - __Integer - The social
+         action which failed.
+         CCProfileConsts::DICT_ELEMENT_PAYLOAD - __String - an identification
+         String sent from the caller of the action.
+         */
+        virtual void onInviteCancelledEvent(CCProvider provider, CCSocialActionType socialActionType, cocos2d::__String *payload);
+
     private:
         CCUserProfile *extractUserProfile(Ref *userProfileRef);
         cocos2d::__Array *extractUserProfileArray(Ref *userProfileDictArray);

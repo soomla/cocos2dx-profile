@@ -90,9 +90,12 @@ public class ProfileBridge {
         ndkGlue.registerCallHandler("CCProfileBridge::init", new NdkGlue.CallHandler() {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
-                HashMap<IProvider.Provider, HashMap<String, String>> providerParams = parseProviderParams(params.optJSONObject("params"));
+                HashMap<IProvider.Provider, HashMap<String, String>> providerParams =
+                        parseProviderParams(params.optJSONObject("params"));
                 SoomlaUtils.LogDebug("SOOMLA", "initialize is called from java!");
-                SoomlaProfile.getInstance().initialize(ndkGlue.getActivityRef().get(), providerParams);
+                boolean retValue =
+                        SoomlaProfile.getInstance().initialize(ndkGlue.getActivityRef().get(), providerParams);
+                retParams.put("return", retValue);
             }
         });
 
@@ -293,6 +296,22 @@ public class ProfileBridge {
                 Reward reward = (rewardJson != null) ?
                         domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
                 SoomlaProfile.getInstance().getFeed(IProvider.Provider.getEnum(provider), fromStart, payload, reward);
+            }
+        });
+
+        ndkGlue.registerCallHandler("CCSoomlaProfile::invite", new NdkGlue.CallHandler() {
+            @Override
+            public void handle(JSONObject params, JSONObject retParams) throws Exception {
+                String provider = params.getString("provider");
+                String inviteMessage = params.getString("inviteMessage");
+                String dialogTitle = params.getString("dialogTitle");
+                String payload = params.getString("payload");
+                JSONObject rewardJson = params.optJSONObject("reward");
+                Reward reward = (rewardJson != null) ?
+                        domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
+                SoomlaProfile.getInstance().invite(ndkGlue.getActivityRef().get(), IProvider.Provider.getEnum(provider),
+                        inviteMessage, dialogTitle, payload, reward);
+
             }
         });
 

@@ -258,6 +258,16 @@
        },
 
       /**
+       Called when an invitation on a provider has failed
+       @param provider The provider on which the invitation has failed
+       @param socialActionType The social action (INVITE) which failed
+       @param errorDescription a Description of the reason for failure
+       @param payload an identification String sent from the caller of the action
+       */
+      onInviteFailed: function (provider, socialActionType, errorDescription, payload) {
+      },
+
+      /**
        Called when an invitation on a provider has cancelled
        @param provider The provider on which the social action has cancelled
        @param socialActionType The social action which cancelled (INVITE)
@@ -732,7 +742,7 @@
       var toPassData = {
         method: "CCSoomlaProfile::getContacts",
         provider: provider.key,
-        reward: reward
+        reward: reward,
         fromFirst: fromFirst
       };
 

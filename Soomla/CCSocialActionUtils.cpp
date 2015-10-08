@@ -33,6 +33,8 @@ namespace soomla {
                  return __String::create("GET_CONTACTS");
              case GET_FEED:
                  return __String::create("GET_FEED");
+             case INVITE:
+                 return __String::create("INVITE");
              default:
                  break;
          }
@@ -55,6 +57,9 @@ namespace soomla {
         }
         else if (providerTypeString->compare("GET_FEED")) {
             return GET_FEED;
+        }
+        else if (providerTypeString->compare("INVITE")) {
+            return INVITE;
         }
         
         return (CCSocialActionType)-1;

@@ -240,6 +240,17 @@
         [[SoomlaProfile getInstance] getFeedWithProvider:[UserProfileUtils providerStringToEnum:provider] andFromStart:[fromStart boolValue] andPayload:payload andReward:reward];
     }];
 
+    [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::invite" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
+        NSString *provider = [parameters objectForKey:@"provider"];
+        NSString *inviteMessage = [parameters objectForKey:@"inviteMessage"];
+        NSString *dialogTitle = [parameters objectForKey:@"dialogTitle"];
+        NSString *payload = [parameters objectForKey:@"payload"];
+        NSDictionary *rewardDict = [parameters objectForKey:@"reward"];
+        Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
+        [[SoomlaProfile getInstance] inviteWithProvider:[UserProfileUtils providerStringToEnum:provider] inviteMessage:inviteMessage
+                                            dialogTitle:dialogTitle payload:payload andReward:reward];
+    }];
+
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::isLoggedIn" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];
         BOOL result = [[SoomlaProfile getInstance] isLoggedInWithProvider:[UserProfileUtils providerStringToEnum:provider]];
@@ -392,6 +403,34 @@
         [parameters setObject:@"com.soomla.profile.events.UserProfileUpdatedEvent" forKey:@"method"];
         UserProfile *userProfile = [notification.userInfo objectForKey:DICT_ELEMENT_USER_PROFILE];
         [parameters setObject:[userProfile toDictionary] forKey:@"userProfile"];
+    }];
+
+    [ndkGlue registerCallbackHandlerForKey:EVENT_UP_INVITE_STARTED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
+        [parameters setObject:@"com.soomla.profile.events.social.InviteStartedEvent" forKey:@"method"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PROVIDER] forKey:@"provider"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_SOCIAL_ACTION_TYPE] forKey:@"socialActionType"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PAYLOAD] forKey:@"payload"];
+    }];
+    [ndkGlue registerCallbackHandlerForKey:EVENT_UP_INVITE_FINISHED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
+        [parameters setObject:@"com.soomla.profile.events.social.InviteFinishedEvent" forKey:@"method"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PROVIDER] forKey:@"provider"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_SOCIAL_ACTION_TYPE] forKey:@"socialActionType"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_REQUEST_ID] forKey:@"requestId"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_INVITED_LIST] forKey:@"invitedIds"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PAYLOAD] forKey:@"payload"];
+    }];
+    [ndkGlue registerCallbackHandlerForKey:EVENT_UP_INVITE_FAILED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
+        [parameters setObject:@"com.soomla.profile.events.social.InviteFailedEvent" forKey:@"method"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PROVIDER] forKey:@"provider"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_SOCIAL_ACTION_TYPE] forKey:@"socialActionType"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_MESSAGE] forKey:@"errorDescription"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PAYLOAD] forKey:@"payload"];
+    }];
+    [ndkGlue registerCallbackHandlerForKey:EVENT_UP_INVITE_CANCELLED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
+        [parameters setObject:@"com.soomla.profile.events.social.InviteCancelledEvent" forKey:@"method"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PROVIDER] forKey:@"provider"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_SOCIAL_ACTION_TYPE] forKey:@"socialActionType"];
+        [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PAYLOAD] forKey:@"payload"];
     }];
 }
 

@@ -36,10 +36,15 @@ The example project is still under development but it already has some important
 
 ## Download
 
-####Pre baked zip:
+#### Pre baked zip:
 
-- [soomla-cocos2dx-core 1.2.3](http://library.soom.la/fetch/cocos2dx-core/1.2.3?cf=github)
-- [cocos2dx-profile 1.3.3](http://library.soom.la/fetch/cocos2dx-profile/1.3.3?cf=github)
+- The latest [soomla-cocos2dx-core](http://library.soom.la/fetch/cocos2dx-core/latest?cf=github) release
+- The latest [cocos2dx-profile](http://library.soom.la/fetch/cocos2dx-profile/latest?cf=github) release
+
+#### From sources:
+ - Clone this repository;
+ - Run `./build_all` from project directory;
+ - Take created binaries from `build` directory and use it!
 
 ## Getting Started (With pre-built libraries)
 

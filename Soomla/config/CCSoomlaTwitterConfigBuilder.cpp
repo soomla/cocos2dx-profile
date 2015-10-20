@@ -7,10 +7,16 @@
 
 using namespace soomla;
 
+CCProvider CCSoomlaTwitterConfigBuilder::getProvider() {
+    return CCProvider::TWITTER;
+}
+
+CCSoomlaTwitterConfigBuilder::CCSoomlaTwitterConfigBuilder()
+        : CCSoomlaProfileSNConfigBuilder() {
+}
+
 CCSoomlaTwitterConfigBuilder *CCSoomlaTwitterConfigBuilder::create() {
-    CCSoomlaTwitterConfigBuilder *instance = new CCSoomlaTwitterConfigBuilder();
-    instance->autorelease();
-    return instance;
+    return new CCSoomlaTwitterConfigBuilder();
 }
 
 CCSoomlaTwitterConfigBuilder *CCSoomlaTwitterConfigBuilder::setConsumerKey(const char *consumerKey) {

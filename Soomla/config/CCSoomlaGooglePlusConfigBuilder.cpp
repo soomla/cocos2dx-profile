@@ -7,10 +7,16 @@
 
 using namespace soomla;
 
+CCProvider CCSoomlaGooglePlusConfigBuilder::getProvider() {
+    return CCProvider::GOOGLE;
+}
+
+CCSoomlaGooglePlusConfigBuilder::CCSoomlaGooglePlusConfigBuilder()
+        : CCSoomlaProfileSNConfigBuilder() {
+}
+
 CCSoomlaGooglePlusConfigBuilder *CCSoomlaGooglePlusConfigBuilder::create() {
-    CCSoomlaGooglePlusConfigBuilder *instance = new CCSoomlaGooglePlusConfigBuilder();
-    instance->autorelease();
-    return instance;
+    return new CCSoomlaGooglePlusConfigBuilder();
 }
 
 CCSoomlaGooglePlusConfigBuilder *CCSoomlaGooglePlusConfigBuilder::setClientId(const char *clientId) {

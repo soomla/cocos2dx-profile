@@ -11,7 +11,8 @@
 namespace soomla {
     class CCSoomlaFacebookConfigBuilder : public CCSoomlaProfileSNConfigBuilder {
     public:
-        static const CCProvider provider = CCProvider::FACEBOOK;
+        CCSoomlaFacebookConfigBuilder();
+        CCProvider getProvider();
         static CCSoomlaFacebookConfigBuilder *create();
         CCSoomlaFacebookConfigBuilder *setPermissions(const char *permissions);
     };

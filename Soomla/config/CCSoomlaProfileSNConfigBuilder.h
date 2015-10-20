@@ -12,7 +12,8 @@
 namespace soomla {
     class CCSoomlaProfileSNConfigBuilder : public CCSoomlaConfigBuilder {
     public:
-        static const CCProvider provider;
+        CCSoomlaProfileSNConfigBuilder();
+        virtual CCProvider getProvider() = 0;
         static CCSoomlaProfileSNConfigBuilder *create();
         CCSoomlaProfileSNConfigBuilder *enableAutoLogin(bool enabled);
     };

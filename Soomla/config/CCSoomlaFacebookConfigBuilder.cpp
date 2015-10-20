@@ -7,10 +7,16 @@
 
 using namespace soomla;
 
+CCProvider CCSoomlaFacebookConfigBuilder::getProvider() {
+    return CCProvider::FACEBOOK;
+}
+
+CCSoomlaFacebookConfigBuilder::CCSoomlaFacebookConfigBuilder()
+        : CCSoomlaProfileSNConfigBuilder() {
+}
+
 CCSoomlaFacebookConfigBuilder *CCSoomlaFacebookConfigBuilder::create() {
-    CCSoomlaFacebookConfigBuilder *instance = new CCSoomlaFacebookConfigBuilder();
-    instance->autorelease();
-    return instance;
+    return new CCSoomlaFacebookConfigBuilder();
 }
 
 CCSoomlaFacebookConfigBuilder *CCSoomlaFacebookConfigBuilder::setPermissions(const char *permissions) {

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		372B78FA39B5241051CA85A1 /* ConfirmationDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = 372B76AA22D529BEC900F688 /* ConfirmationDialog.h */; };
 		372B7B54F26F1D741A8F1016 /* ConfirmationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 372B71302414218C55DC3183 /* ConfirmationDialog.m */; };
+		44D8C2AA1BD663830067EABB /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D8C2A81BD663830067EABB /* FBSDKCoreKit.framework */; settings = {ASSET_TAGS = (); }; };
+		44D8C2AB1BD663830067EABB /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D8C2A91BD663830067EABB /* FBSDKShareKit.framework */; settings = {ASSET_TAGS = (); }; };
 		B2FA803D83176205B55C4220 /* CCSoomlaGooglePlusConfigBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA8D47FCDEB19184549C5A /* CCSoomlaGooglePlusConfigBuilder.h */; };
 		B2FA8188EDBA365BB94FF2DA /* CCSoomlaProfileSNConfigBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA88CFBDBF818AB944E2DB /* CCSoomlaProfileSNConfigBuilder.h */; };
 		B2FA8238838D81E9DEB19FE3 /* CCSoomlaFacebookConfigBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA8E75B8D6CD724D942C02 /* CCSoomlaFacebookConfigBuilder.h */; };
@@ -95,6 +97,9 @@
 /* Begin PBXFileReference section */
 		372B71302414218C55DC3183 /* ConfirmationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmationDialog.m; sourceTree = "<group>"; };
 		372B76AA22D529BEC900F688 /* ConfirmationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmationDialog.h; sourceTree = "<group>"; };
+		44D8C2A71BD663830067EABB /* FacebookSDKStrings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKStrings.bundle; path = "submodules/ios-profile/social-providers/ios-profile-facebook/FacebookSDKStrings.bundle"; sourceTree = "<group>"; };
+		44D8C2A81BD663830067EABB /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "submodules/ios-profile/social-providers/ios-profile-facebook/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
+		44D8C2A91BD663830067EABB /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "submodules/ios-profile/social-providers/ios-profile-facebook/FBSDKShareKit.framework"; sourceTree = "<group>"; };
 		B2FA806B76E091A100B75956 /* CCSoomlaProfileConfigBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSoomlaProfileConfigBuilder.cpp; sourceTree = "<group>"; };
 		B2FA812AC6A6CDF7762A31D9 /* CCSoomlaFacebookConfigBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSoomlaFacebookConfigBuilder.cpp; sourceTree = "<group>"; };
 		B2FA873292912963C9799904 /* CCSoomlaTwitterConfigBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSoomlaTwitterConfigBuilder.cpp; sourceTree = "<group>"; };
@@ -193,8 +198,10 @@
 				F82F0C471A13776800D1B34A /* MediaPlayer.framework in Frameworks */,
 				F82F0C481A13776800D1B34A /* Security.framework in Frameworks */,
 				F82F0C491A13776800D1B34A /* Social.framework in Frameworks */,
+				44D8C2AB1BD663830067EABB /* FBSDKShareKit.framework in Frameworks */,
 				F82F0C4A1A13776800D1B34A /* Twitter.framework in Frameworks */,
 				F82F0C4B1A13776800D1B34A /* UIKit.framework in Frameworks */,
+				44D8C2AA1BD663830067EABB /* FBSDKCoreKit.framework in Frameworks */,
 				F82F0C351A13773100D1B34A /* GooglePlus.framework in Frameworks */,
 				F82F0C371A13773100D1B34A /* GoogleOpenSource.framework in Frameworks */,
 				C0B3C5F3168C6D0C00161FAA /* Foundation.framework in Frameworks */,
@@ -225,6 +232,9 @@
 		C0B3C5E4168C6D0C00161FAA = {
 			isa = PBXGroup;
 			children = (
+				44D8C2A71BD663830067EABB /* FacebookSDKStrings.bundle */,
+				44D8C2A81BD663830067EABB /* FBSDKCoreKit.framework */,
+				44D8C2A91BD663830067EABB /* FBSDKShareKit.framework */,
 				F8DBEC6D19BDB38D0093252C /* Soomla */,
 				F825C0ED19B31D8100A2CABB /* ProfileCocos2dx */,
 				F825C14919B3209F00A2CABB /* SoomlaiOSProfile */,
@@ -625,6 +635,7 @@
 					"$(PROJECT_DIR)/submodules/ios-profile",
 					"$(PROJECT_DIR)/submodules/ios-profile/social-providers/ios-profile-facebook/libs",
 					"$(PROJECT_DIR)/submodules/ios-profile/social-providers/ios-profile-google/libs",
+					"$(PROJECT_DIR)/submodules/ios-profile/social-providers/ios-profile-facebook",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
@@ -670,6 +681,7 @@
 					"$(PROJECT_DIR)/submodules/ios-profile",
 					"$(PROJECT_DIR)/submodules/ios-profile/social-providers/ios-profile-facebook/libs",
 					"$(PROJECT_DIR)/submodules/ios-profile/social-providers/ios-profile-google/libs",
+					"$(PROJECT_DIR)/submodules/ios-profile/social-providers/ios-profile-facebook",
 				);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

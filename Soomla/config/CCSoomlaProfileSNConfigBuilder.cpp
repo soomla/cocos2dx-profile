@@ -7,10 +7,8 @@
 
 using namespace soomla;
 
-CCSoomlaProfileSNConfigBuilder *CCSoomlaProfileSNConfigBuilder::create() {
-    CCSoomlaProfileSNConfigBuilder *instance = new CCSoomlaProfileSNConfigBuilder();
-    instance->autorelease();
-    return instance;
+CCSoomlaProfileSNConfigBuilder::CCSoomlaProfileSNConfigBuilder()
+        : CCSoomlaConfigBuilder() {
 }
 
 CCSoomlaProfileSNConfigBuilder *CCSoomlaProfileSNConfigBuilder::enableAutoLogin(bool enabled) {

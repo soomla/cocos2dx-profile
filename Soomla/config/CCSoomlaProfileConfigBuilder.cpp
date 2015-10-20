@@ -7,13 +7,14 @@
 
 using namespace soomla;
 
+CCSoomlaProfileConfigBuilder::CCSoomlaProfileConfigBuilder()
+        : CCSoomlaConfigBuilder() {
+}
 
 CCSoomlaProfileConfigBuilder *CCSoomlaProfileConfigBuilder::create() {
-    CCSoomlaProfileConfigBuilder *instance = new CCSoomlaProfileConfigBuilder();
-    instance->autorelease();
-    return instance;
+    return new CCSoomlaProfileConfigBuilder();
 }
 
 CCSoomlaProfileConfigBuilder* CCSoomlaProfileConfigBuilder::setSocialProviderConfiguration(CCSoomlaProfileSNConfigBuilder *snConfig) {
-    return this->appendConfigParameter(CCUserProfileUtils::providerEnumToString(snConfig->provider)->getCString(), snConfig->build()) ? this : NULL;
+    return this->appendConfigParameter(CCUserProfileUtils::providerEnumToString(snConfig->getProvider())->getCString(), snConfig->build()) ? this : NULL;
 }

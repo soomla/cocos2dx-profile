@@ -11,7 +11,8 @@
 namespace soomla {
     class CCSoomlaGooglePlusConfigBuilder : public CCSoomlaProfileSNConfigBuilder {
     public:
-        static const CCProvider provider = CCProvider::GOOGLE;
+        CCSoomlaGooglePlusConfigBuilder();
+        CCProvider getProvider();
         static CCSoomlaGooglePlusConfigBuilder *create();
         CCSoomlaGooglePlusConfigBuilder *setClientId(const char *clientId);
     };

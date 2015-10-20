@@ -11,7 +11,8 @@
 namespace soomla {
     class CCSoomlaTwitterConfigBuilder : public CCSoomlaProfileSNConfigBuilder {
     public:
-        static const CCProvider provider = CCProvider::TWITTER;
+        CCSoomlaTwitterConfigBuilder();
+        CCProvider getProvider();
         static CCSoomlaTwitterConfigBuilder *create();
         CCSoomlaTwitterConfigBuilder *setConsumerKey(const char *consumerKey);
         CCSoomlaTwitterConfigBuilder *setConsumerSecret(const char *setConsumerSecret);

@@ -15,6 +15,6 @@ CCSoomlaProfileConfigBuilder *CCSoomlaProfileConfigBuilder::create() {
     return new CCSoomlaProfileConfigBuilder();
 }
 
-CCSoomlaProfileConfigBuilder* CCSoomlaProfileConfigBuilder::setSocialProviderConfiguration(CCSoomlaProfileSNConfigBuilder *snConfig) {
+CCSoomlaProfileConfigBuilder* CCSoomlaProfileConfigBuilder::addSocialProviderConfiguration(CCSoomlaProfileSNConfigBuilder *snConfig) {
     return this->appendConfigParameter(CCUserProfileUtils::providerEnumToString(snConfig->getProvider())->getCString(), snConfig->build()) ? this : NULL;
 }

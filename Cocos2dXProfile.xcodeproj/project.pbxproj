@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B2FA81516F9A23902AD79AED /* CCSoomlaProfileConfigBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA8C7483B54635480B44E5 /* CCSoomlaProfileConfigBuilder.h */; };
+		B2FA8CDFA137DFF1A68E67D9 /* CCSoomlaProfileConfigBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2FA898560B9F1CE7E7CF336 /* CCSoomlaProfileConfigBuilder.cpp */; };
 		C0B3C5F3168C6D0C00161FAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B3C5F2168C6D0C00161FAA /* Foundation.framework */; };
 		F825C0C619B31C2D00A2CABB /* libCocos2dXiOSProfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F825C0C519B31C2D00A2CABB /* libCocos2dXiOSProfile.a */; };
 		F825C0C819B31C3C00A2CABB /* libSoomlaiOSProfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F825C0C719B31C3C00A2CABB /* libSoomlaiOSProfile.a */; };
@@ -28,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B2FA898560B9F1CE7E7CF336 /* CCSoomlaProfileConfigBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSoomlaProfileConfigBuilder.cpp; sourceTree = "<group>"; };
+		B2FA8C7483B54635480B44E5 /* CCSoomlaProfileConfigBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSoomlaProfileConfigBuilder.h; sourceTree = "<group>"; };
 		C0B3C5EF168C6D0C00161FAA /* libCocos2dXProfile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocos2dXProfile.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0B3C5F2168C6D0C00161FAA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F825C0C519B31C2D00A2CABB /* libCocos2dXiOSProfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCocos2dXiOSProfile.a; path = build/ios/libCocos2dXiOSProfile.a; sourceTree = "<group>"; };
@@ -107,6 +111,8 @@
 				F8DBEC5819BDB34D0093252C /* CCUserProfileUtils.h */,
 				F8DBEC5919BDB34D0093252C /* Cocos2dxProfile.h */,
 				F8DBEC5A19BDB34D0093252C /* domain */,
+				B2FA898560B9F1CE7E7CF336 /* CCSoomlaProfileConfigBuilder.cpp */,
+				B2FA8C7483B54635480B44E5 /* CCSoomlaProfileConfigBuilder.h */,
 			);
 			path = Soomla;
 			sourceTree = "<group>";
@@ -135,6 +141,7 @@
 				F8DBEC6A19BDB34D0093252C /* Cocos2dxProfile.h in Headers */,
 				F8DBEC5E19BDB34D0093252C /* CCProfileConsts.h in Headers */,
 				F8DBEC6719BDB34D0093252C /* CCSocialActionUtils.h in Headers */,
+				B2FA81516F9A23902AD79AED /* CCSoomlaProfileConfigBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +204,7 @@
 				F8DBEC5D19BDB34D0093252C /* CCProfileConsts.cpp in Sources */,
 				F84F252519C86C5300DB0905 /* CCSoomlaProfile.cpp in Sources */,
 				F8DBEC6B19BDB34D0093252C /* CCUserProfile.cpp in Sources */,
+				B2FA8CDFA137DFF1A68E67D9 /* CCSoomlaProfileConfigBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

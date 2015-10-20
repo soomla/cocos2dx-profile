@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		372B78FA39B5241051CA85A1 /* ConfirmationDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = 372B76AA22D529BEC900F688 /* ConfirmationDialog.h */; };
 		372B7B54F26F1D741A8F1016 /* ConfirmationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 372B71302414218C55DC3183 /* ConfirmationDialog.m */; };
+		B2FA81E451D54C6D6FB18189 /* CCSoomlaProfileConfigBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2FA8E72BA613CB43866A9E7 /* CCSoomlaProfileConfigBuilder.cpp */; };
+		B2FA8AFA1FC4AB7FCD468845 /* CCSoomlaProfileConfigBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA804E12A348A8E937BFD8 /* CCSoomlaProfileConfigBuilder.h */; };
 		C0B3C5F3168C6D0C00161FAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B3C5F2168C6D0C00161FAA /* Foundation.framework */; };
 		F825C0F119B31D8100A2CABB /* ProfileBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = F825C0EF19B31D8100A2CABB /* ProfileBridge.h */; };
 		F825C0F219B31D8100A2CABB /* ProfileBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = F825C0F019B31D8100A2CABB /* ProfileBridge.mm */; };
@@ -85,6 +87,8 @@
 /* Begin PBXFileReference section */
 		372B71302414218C55DC3183 /* ConfirmationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmationDialog.m; sourceTree = "<group>"; };
 		372B76AA22D529BEC900F688 /* ConfirmationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmationDialog.h; sourceTree = "<group>"; };
+		B2FA804E12A348A8E937BFD8 /* CCSoomlaProfileConfigBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSoomlaProfileConfigBuilder.h; sourceTree = "<group>"; };
+		B2FA8E72BA613CB43866A9E7 /* CCSoomlaProfileConfigBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSoomlaProfileConfigBuilder.cpp; sourceTree = "<group>"; };
 		C0B3C5EF168C6D0C00161FAA /* libCocos2dxProfileFromSources.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocos2dxProfileFromSources.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0B3C5F2168C6D0C00161FAA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F825C0EF19B31D8100A2CABB /* ProfileBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileBridge.h; sourceTree = "<group>"; };
@@ -378,6 +382,8 @@
 				F8DBEC7A19BDB38D0093252C /* CCUserProfileUtils.h */,
 				F8DBEC7B19BDB38D0093252C /* Cocos2dxProfile.h */,
 				F8DBEC7C19BDB38D0093252C /* domain */,
+				B2FA8E72BA613CB43866A9E7 /* CCSoomlaProfileConfigBuilder.cpp */,
+				B2FA804E12A348A8E937BFD8 /* CCSoomlaProfileConfigBuilder.h */,
 			);
 			name = Soomla;
 			path = ../Soomla;
@@ -433,6 +439,7 @@
 				F82F0C2F1A1376DD00D1B34A /* SoomlaGooglePlus.h in Headers */,
 				F825C19619B3209F00A2CABB /* SocialController.h in Headers */,
 				372B78FA39B5241051CA85A1 /* ConfirmationDialog.h in Headers */,
+				B2FA8AFA1FC4AB7FCD468845 /* CCSoomlaProfileConfigBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,6 +519,7 @@
 				F825C17C19B3209F00A2CABB /* PJSONConsts.m in Sources */,
 				F825C19519B3209F00A2CABB /* SocialActionUtils.m in Sources */,
 				372B7B54F26F1D741A8F1016 /* ConfirmationDialog.m in Sources */,
+				B2FA81E451D54C6D6FB18189 /* CCSoomlaProfileConfigBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

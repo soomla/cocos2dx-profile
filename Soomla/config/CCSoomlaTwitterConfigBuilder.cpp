@@ -7,6 +7,12 @@
 
 using namespace soomla;
 
+CCSoomlaTwitterConfigBuilder *CCSoomlaTwitterConfigBuilder::create() {
+    CCSoomlaTwitterConfigBuilder *instance = new CCSoomlaTwitterConfigBuilder();
+    instance->autorelease();
+    return instance;
+}
+
 CCSoomlaTwitterConfigBuilder *CCSoomlaTwitterConfigBuilder::setConsumerKey(const char *consumerKey) {
     return this->appendConfigParameter("consumerKey", cocos2d::__String::create(consumerKey)) ? this : NULL;
 }

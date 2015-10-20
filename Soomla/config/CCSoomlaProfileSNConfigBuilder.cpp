@@ -7,6 +7,12 @@
 
 using namespace soomla;
 
+CCSoomlaProfileSNConfigBuilder *CCSoomlaProfileSNConfigBuilder::create() {
+    CCSoomlaProfileSNConfigBuilder *instance = new CCSoomlaProfileSNConfigBuilder();
+    instance->autorelease();
+    return instance;
+}
+
 CCSoomlaProfileSNConfigBuilder *CCSoomlaProfileSNConfigBuilder::enableAutoLogin(bool enabled) {
     return this->appendConfigParameter("autoLogin", cocos2d::__Bool::create(enabled)) ? this : NULL;
 }

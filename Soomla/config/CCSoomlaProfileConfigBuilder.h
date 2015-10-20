@@ -12,6 +12,7 @@
 namespace soomla {
     class CCSoomlaProfileConfigBuilder : public CCSoomlaConfigBuilder {
     public:
+        static CCSoomlaProfileConfigBuilder *create();
         CCSoomlaProfileConfigBuilder *setSocialProviderConfiguration(CCSoomlaProfileSNConfigBuilder *snConfig);
     };
 }

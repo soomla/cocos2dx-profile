@@ -7,6 +7,12 @@
 
 using namespace soomla;
 
+CCSoomlaFacebookConfigBuilder *CCSoomlaFacebookConfigBuilder::create() {
+    CCSoomlaFacebookConfigBuilder *instance = new CCSoomlaFacebookConfigBuilder();
+    instance->autorelease();
+    return instance;
+}
+
 CCSoomlaFacebookConfigBuilder *CCSoomlaFacebookConfigBuilder::setPermissions(const char *permissions) {
     return this->appendConfigParameter("permissions", cocos2d::__String::create(permissions)) ? this : NULL;
 }

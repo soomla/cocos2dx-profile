@@ -7,6 +7,12 @@
 
 using namespace soomla;
 
+CCSoomlaGooglePlusConfigBuilder *CCSoomlaGooglePlusConfigBuilder::create() {
+    CCSoomlaGooglePlusConfigBuilder *instance = new CCSoomlaGooglePlusConfigBuilder();
+    instance->autorelease();
+    return instance;
+}
+
 CCSoomlaGooglePlusConfigBuilder *CCSoomlaGooglePlusConfigBuilder::setClientId(const char *clientId) {
     return this->appendConfigParameter("clientId", cocos2d::__String::create(clientId)) ? this : NULL;
 }

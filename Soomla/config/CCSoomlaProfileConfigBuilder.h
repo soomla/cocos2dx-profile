@@ -6,9 +6,13 @@
 #ifndef COCOS2DXPROFILE_CCSOOMLAPROFILECONFIGBUILDER_H
 #define COCOS2DXPROFILE_CCSOOMLAPROFILECONFIGBUILDER_H
 
+#include "CCSoomlaConfigBuilder.h"
+#include "CCSoomlaProfileSNConfigBuilder.h"
+
 namespace soomla {
     class CCSoomlaProfileConfigBuilder : public CCSoomlaConfigBuilder {
-
+    public:
+        CCSoomlaProfileConfigBuilder *setSocialProviderConfiguration(CCSoomlaProfileSNConfigBuilder *snConfig);
     };
 }
 

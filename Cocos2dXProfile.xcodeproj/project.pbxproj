@@ -7,8 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B2FA81516F9A23902AD79AED /* CCSoomlaProfileConfigBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA8C7483B54635480B44E5 /* CCSoomlaProfileConfigBuilder.h */; };
-		B2FA8CDFA137DFF1A68E67D9 /* CCSoomlaProfileConfigBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2FA898560B9F1CE7E7CF336 /* CCSoomlaProfileConfigBuilder.cpp */; };
+		B2FA80CFA392B8D6108F54E1 /* CCSoomlaFacebookConfigBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA8826F12BC85DE7522845 /* CCSoomlaFacebookConfigBuilder.h */; };
+		B2FA834DE7B2AEA39D307381 /* CCSoomlaTwitterConfigBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA87192807259B9DBCFC07 /* CCSoomlaTwitterConfigBuilder.h */; };
+		B2FA848D4D186E92B7FD4777 /* CCSoomlaProfileConfigBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA8C4AE53AF4E04C44DA7E /* CCSoomlaProfileConfigBuilder.h */; };
+		B2FA85CA9480B16483D2E77E /* CCSoomlaFacebookConfigBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2FA8F0B9BF9F2CAEEF867B4 /* CCSoomlaFacebookConfigBuilder.cpp */; };
+		B2FA866D6A8FE370960A0A6C /* CCSoomlaProfileConfigBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2FA8D5ACEF05523FEE31203 /* CCSoomlaProfileConfigBuilder.cpp */; };
+		B2FA891A76CE1F5B1A7C8016 /* CCSoomlaTwitterConfigBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2FA88E8CD770C79323833D3 /* CCSoomlaTwitterConfigBuilder.cpp */; };
+		B2FA8C0A9AB09293E16CE77C /* CCSoomlaProfileSNConfigBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA8B5B7308666C43A6BDCB /* CCSoomlaProfileSNConfigBuilder.h */; };
+		B2FA8CA9E699BEA99CB2DE85 /* CCSoomlaGooglePlusConfigBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2FA8A60CE88AD4C0D1449BE /* CCSoomlaGooglePlusConfigBuilder.cpp */; };
+		B2FA8CF011A324050C25F388 /* CCSoomlaProfileSNConfigBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2FA87870668CA5839BD7792 /* CCSoomlaProfileSNConfigBuilder.cpp */; };
+		B2FA8F25315C07883D57201B /* CCSoomlaGooglePlusConfigBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA8C145DB6141C935884E8 /* CCSoomlaGooglePlusConfigBuilder.h */; };
 		C0B3C5F3168C6D0C00161FAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B3C5F2168C6D0C00161FAA /* Foundation.framework */; };
 		F825C0C619B31C2D00A2CABB /* libCocos2dXiOSProfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F825C0C519B31C2D00A2CABB /* libCocos2dXiOSProfile.a */; };
 		F825C0C819B31C3C00A2CABB /* libSoomlaiOSProfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F825C0C719B31C3C00A2CABB /* libSoomlaiOSProfile.a */; };
@@ -30,8 +38,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B2FA898560B9F1CE7E7CF336 /* CCSoomlaProfileConfigBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSoomlaProfileConfigBuilder.cpp; sourceTree = "<group>"; };
-		B2FA8C7483B54635480B44E5 /* CCSoomlaProfileConfigBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSoomlaProfileConfigBuilder.h; sourceTree = "<group>"; };
+		B2FA87192807259B9DBCFC07 /* CCSoomlaTwitterConfigBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSoomlaTwitterConfigBuilder.h; sourceTree = "<group>"; };
+		B2FA87870668CA5839BD7792 /* CCSoomlaProfileSNConfigBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSoomlaProfileSNConfigBuilder.cpp; sourceTree = "<group>"; };
+		B2FA8826F12BC85DE7522845 /* CCSoomlaFacebookConfigBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSoomlaFacebookConfigBuilder.h; sourceTree = "<group>"; };
+		B2FA88E8CD770C79323833D3 /* CCSoomlaTwitterConfigBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSoomlaTwitterConfigBuilder.cpp; sourceTree = "<group>"; };
+		B2FA8A60CE88AD4C0D1449BE /* CCSoomlaGooglePlusConfigBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSoomlaGooglePlusConfigBuilder.cpp; sourceTree = "<group>"; };
+		B2FA8B5B7308666C43A6BDCB /* CCSoomlaProfileSNConfigBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSoomlaProfileSNConfigBuilder.h; sourceTree = "<group>"; };
+		B2FA8C145DB6141C935884E8 /* CCSoomlaGooglePlusConfigBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSoomlaGooglePlusConfigBuilder.h; sourceTree = "<group>"; };
+		B2FA8C4AE53AF4E04C44DA7E /* CCSoomlaProfileConfigBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSoomlaProfileConfigBuilder.h; sourceTree = "<group>"; };
+		B2FA8D5ACEF05523FEE31203 /* CCSoomlaProfileConfigBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSoomlaProfileConfigBuilder.cpp; sourceTree = "<group>"; };
+		B2FA8F0B9BF9F2CAEEF867B4 /* CCSoomlaFacebookConfigBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSoomlaFacebookConfigBuilder.cpp; sourceTree = "<group>"; };
 		C0B3C5EF168C6D0C00161FAA /* libCocos2dXProfile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocos2dXProfile.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0B3C5F2168C6D0C00161FAA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F825C0C519B31C2D00A2CABB /* libCocos2dXiOSProfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCocos2dXiOSProfile.a; path = build/ios/libCocos2dXiOSProfile.a; sourceTree = "<group>"; };
@@ -67,6 +83,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B2FA8A1B9D7E96EAF807B74F /* config */ = {
+			isa = PBXGroup;
+			children = (
+				B2FA8D5ACEF05523FEE31203 /* CCSoomlaProfileConfigBuilder.cpp */,
+				B2FA8C4AE53AF4E04C44DA7E /* CCSoomlaProfileConfigBuilder.h */,
+				B2FA87870668CA5839BD7792 /* CCSoomlaProfileSNConfigBuilder.cpp */,
+				B2FA8B5B7308666C43A6BDCB /* CCSoomlaProfileSNConfigBuilder.h */,
+				B2FA8F0B9BF9F2CAEEF867B4 /* CCSoomlaFacebookConfigBuilder.cpp */,
+				B2FA8826F12BC85DE7522845 /* CCSoomlaFacebookConfigBuilder.h */,
+				B2FA88E8CD770C79323833D3 /* CCSoomlaTwitterConfigBuilder.cpp */,
+				B2FA87192807259B9DBCFC07 /* CCSoomlaTwitterConfigBuilder.h */,
+				B2FA8A60CE88AD4C0D1449BE /* CCSoomlaGooglePlusConfigBuilder.cpp */,
+				B2FA8C145DB6141C935884E8 /* CCSoomlaGooglePlusConfigBuilder.h */,
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
 		C0B3C5E4168C6D0C00161FAA = {
 			isa = PBXGroup;
 			children = (
@@ -111,8 +144,7 @@
 				F8DBEC5819BDB34D0093252C /* CCUserProfileUtils.h */,
 				F8DBEC5919BDB34D0093252C /* Cocos2dxProfile.h */,
 				F8DBEC5A19BDB34D0093252C /* domain */,
-				B2FA898560B9F1CE7E7CF336 /* CCSoomlaProfileConfigBuilder.cpp */,
-				B2FA8C7483B54635480B44E5 /* CCSoomlaProfileConfigBuilder.h */,
+				B2FA8A1B9D7E96EAF807B74F /* config */,
 			);
 			path = Soomla;
 			sourceTree = "<group>";
@@ -141,7 +173,11 @@
 				F8DBEC6A19BDB34D0093252C /* Cocos2dxProfile.h in Headers */,
 				F8DBEC5E19BDB34D0093252C /* CCProfileConsts.h in Headers */,
 				F8DBEC6719BDB34D0093252C /* CCSocialActionUtils.h in Headers */,
-				B2FA81516F9A23902AD79AED /* CCSoomlaProfileConfigBuilder.h in Headers */,
+				B2FA848D4D186E92B7FD4777 /* CCSoomlaProfileConfigBuilder.h in Headers */,
+				B2FA8C0A9AB09293E16CE77C /* CCSoomlaProfileSNConfigBuilder.h in Headers */,
+				B2FA80CFA392B8D6108F54E1 /* CCSoomlaFacebookConfigBuilder.h in Headers */,
+				B2FA834DE7B2AEA39D307381 /* CCSoomlaTwitterConfigBuilder.h in Headers */,
+				B2FA8F25315C07883D57201B /* CCSoomlaGooglePlusConfigBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,7 +240,11 @@
 				F8DBEC5D19BDB34D0093252C /* CCProfileConsts.cpp in Sources */,
 				F84F252519C86C5300DB0905 /* CCSoomlaProfile.cpp in Sources */,
 				F8DBEC6B19BDB34D0093252C /* CCUserProfile.cpp in Sources */,
-				B2FA8CDFA137DFF1A68E67D9 /* CCSoomlaProfileConfigBuilder.cpp in Sources */,
+				B2FA866D6A8FE370960A0A6C /* CCSoomlaProfileConfigBuilder.cpp in Sources */,
+				B2FA8CF011A324050C25F388 /* CCSoomlaProfileSNConfigBuilder.cpp in Sources */,
+				B2FA85CA9480B16483D2E77E /* CCSoomlaFacebookConfigBuilder.cpp in Sources */,
+				B2FA891A76CE1F5B1A7C8016 /* CCSoomlaTwitterConfigBuilder.cpp in Sources */,
+				B2FA8CA9E699BEA99CB2DE85 /* CCSoomlaGooglePlusConfigBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

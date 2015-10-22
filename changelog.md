@@ -1,3 +1,11 @@
+### v1.4.0 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.3.3...v1.4.0)
+
+* New Features
+  * Implemented uploadCurrentScreenshot and invite
+
+* Fixes
+  * Crash when calling SoomlaProfile.login from within OnSoomlaProfileInitialized
+
 ### v1.3.3 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.3.2...v1.3.3)
 
 * Changes

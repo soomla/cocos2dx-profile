@@ -38,8 +38,7 @@ The example project is still under development but it already has some important
 
 #### Pre baked zip:
 
-- The latest [soomla-cocos2dx-core](http://library.soom.la/fetch/cocos2dx-core/latest?cf=github) release
-- The latest [cocos2dx-profile](http://library.soom.la/fetch/cocos2dx-profile/latest?cf=github) release
+- [cocos2dx-profile 1.4.0](http://library.soom.la/fetch/cocos2dx-profile/1.4.0?cf=github)
 
 #### From sources:
  - Clone this repository;

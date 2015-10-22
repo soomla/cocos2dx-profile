@@ -15,12 +15,12 @@ cp -RL soomla-native/projects/cocos2dx-android-profile/build/* $build/
 
 # handle special case of build_all location for android-profile
 cp -L submodules/android-profile/build/AndroidProfile.jar $build/
-cp -L submodules/android-profile/build/simple-fb-4.0.3.jar $build/
-cp -L submodules/android-profile/build/gson-1.7.2.jar $build/
+cp -L submodules/android-profile/build/simple-fb-*.jar $build/
+cp -L submodules/android-profile/build/gson-*.jar $build/
 cp -L submodules/android-profile/build/AndroidProfileFacebook.jar $build/
 cp -L submodules/android-profile/build/AndroidProfileGoogle.jar $build/
 cp -L submodules/android-profile/build/AndroidProfileTwitter.jar $build/
-cp -L submodules/android-profile/build/twitter4j-asyc-4.0.2.jar $build/
-cp -L submodules/android-profile/build/twitter4j-core-4.0.2.jar $build/
+cp -L submodules/android-profile/build/twitter4j-asyc-*.jar $build/
+cp -L submodules/android-profile/build/twitter4j-core-*.jar $build/
 
 cd - > /dev/null

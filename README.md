@@ -41,8 +41,8 @@ The example project is still under development but it already has some important
 - [cocos2dx-profile 1.4.0](http://library.soom.la/fetch/cocos2dx-profile/1.4.0?cf=github)
 
 #### From sources:
- - Clone this repository recursively: `git clone --recursive https://github.com/soomla/cocos2dx-profile.git`;
- - Run `./build_all` from project directory;
+ - Clone this repository recursively: `git clone --recursive https://github.com/soomla/cocos2dx-profile.git`
+ - Run `./build_all` from project directory
  - Take created binaries from `build` directory and use it!
 
 ## Getting Started (With pre-built libraries)

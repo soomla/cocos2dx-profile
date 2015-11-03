@@ -84,6 +84,21 @@ namespace soomla {
 
     ///
     /// Supported platforms: Facebook, Twitter, Google+
+    ///
+    void CCSoomlaProfile::logoutFromAllProviders(CCError **soomlaError) {
+        for (unsigned int providerInt = 0; providerInt < CCProvider::PROVIDER_TERM; providerInt++) {
+            __String *providerStr = CCUserProfileUtils::providerEnumToString((CCProvider)providerInt);
+            if (providerStr != NULL) {
+                __Dictionary *params = __Dictionary::create();
+                params->setObject(__String::create("CCSoomlaProfile::logout"), "method");
+                params->setObject(providerStr, "provider");
+                CCNdkBridge::callNative(params, soomlaError);
+            }
+        }
+    }
+
+    ///
+    /// Supported platforms: Facebook, Twitter, Google+
     /// Missing user info for Twitter: email, gender, birthday.
     ///
     CCUserProfile *CCSoomlaProfile::getStoredUserProfile(CCProvider provider, CCError **soomlaError) {

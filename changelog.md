@@ -1,3 +1,8 @@
+### v1.5.0 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.4.0...v1.5.0)
+
+* Changes
+  * Added builder classes for initialization params
+
 ### v1.4.0 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.3.3...v1.4.0)
 
 * New Features

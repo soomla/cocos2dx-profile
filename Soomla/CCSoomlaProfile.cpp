@@ -86,15 +86,9 @@ namespace soomla {
     /// Supported platforms: Facebook, Twitter, Google+
     ///
     void CCSoomlaProfile::logoutFromAllProviders(CCError **soomlaError) {
-        for (unsigned int providerInt = 0; providerInt < CCProvider::PROVIDER_TERM; providerInt++) {
-            __String *providerStr = CCUserProfileUtils::providerEnumToString((CCProvider)providerInt);
-            if (providerStr != NULL) {
-                __Dictionary *params = __Dictionary::create();
-                params->setObject(__String::create("CCSoomlaProfile::logout"), "method");
-                params->setObject(providerStr, "provider");
-                CCNdkBridge::callNative(params, soomlaError);
-            }
-        }
+        __Dictionary *params = __Dictionary::create();
+        params->setObject(__String::create("CCSoomlaProfile::logoutFromAllProviders"), "method");
+        CCNdkBridge::callNative(params, soomlaError);
     }
 
     ///

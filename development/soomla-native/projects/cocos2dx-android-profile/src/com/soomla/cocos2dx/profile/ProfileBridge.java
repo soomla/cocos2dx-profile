@@ -119,6 +119,13 @@ public class ProfileBridge {
             }
         });
 
+        ndkGlue.registerCallHandler("CCSoomlaProfile::logoutFromAllProviders", new NdkGlue.CallHandler() {
+            @Override
+            public void handle(JSONObject params, JSONObject retParams) throws Exception {
+                SoomlaProfile.getInstance().logoutFromAllProviders();
+            }
+        });
+
         ndkGlue.registerCallHandler("CCSoomlaProfile::getStoredUserProfile", new NdkGlue.CallHandler() {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {

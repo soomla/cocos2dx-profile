@@ -31,13 +31,8 @@ namespace soomla {
     enum CCProvider {
         FACEBOOK = 0,
         GOOGLE = 2,
-        TWITTER = 5,
-        //there is the first way to terminate providers list iteration
-        PROVIDER_TERM = 6
+        TWITTER = 5
     };
-
-    //there is the second way to terminate providers list iteration
-    //uint TOP_PROVIDERCOUNT_BOUND = 6;
 
     /**
      @class CCUserProfileUtils

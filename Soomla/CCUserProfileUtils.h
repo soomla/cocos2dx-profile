@@ -33,7 +33,7 @@ namespace soomla {
         GOOGLE = 2,
         TWITTER = 5
     };
-    
+
     /**
      @class CCUserProfileUtils
      @brief a Utility class which helps convert CCProvider from/to __String

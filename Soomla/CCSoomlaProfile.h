@@ -100,6 +100,13 @@ namespace soomla {
         void logout(CCProvider provider, CCError **soomlaError);
 
         /**
+         Logs the user out of all available providers.
+
+         @param soomlaError Any errors will be returned in this parameter
+         */
+        void logoutFromAllProviders(CCError **soomlaError);
+
+        /**
          Fetches the user's profile for the given provider from the local
          device storage
 

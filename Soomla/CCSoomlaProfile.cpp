@@ -84,6 +84,15 @@ namespace soomla {
 
     ///
     /// Supported platforms: Facebook, Twitter, Google+
+    ///
+    void CCSoomlaProfile::logoutFromAllProviders(CCError **soomlaError) {
+        __Dictionary *params = __Dictionary::create();
+        params->setObject(__String::create("CCSoomlaProfile::logoutFromAllProviders"), "method");
+        CCNdkBridge::callNative(params, soomlaError);
+    }
+
+    ///
+    /// Supported platforms: Facebook, Twitter, Google+
     /// Missing user info for Twitter: email, gender, birthday.
     ///
     CCUserProfile *CCSoomlaProfile::getStoredUserProfile(CCProvider provider, CCError **soomlaError) {

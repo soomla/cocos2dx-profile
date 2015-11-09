@@ -85,6 +85,9 @@
         NSString *provider = [parameters objectForKey:@"provider"];
         [[SoomlaProfile getInstance] logoutWithProvider:[UserProfileUtils providerStringToEnum:provider]];
     }];
+    [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::logoutFromAllProviders" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
+        [[SoomlaProfile getInstance] logoutFromAllProviders];
+    }];
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::getStoredUserProfile" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = [parameters objectForKey:@"provider"];
         UserProfile *userProfile = [[SoomlaProfile getInstance] getStoredUserProfileWithProvider:

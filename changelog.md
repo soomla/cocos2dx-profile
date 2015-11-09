@@ -1,3 +1,8 @@
+### v1.5.1 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.5.0...v1.5.1)
+
+* Features
+  * Add `logoutFromAllProviders` method to `SoomlaProfile`
+
 ### v1.5.0 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.4.0...v1.5.0)
 
 * Changes

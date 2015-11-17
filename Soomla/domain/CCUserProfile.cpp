@@ -87,7 +87,9 @@ bool soomla::CCUserProfile::initWithDictionary(cocos2d::__Dictionary *dict) {
     fillGenderFromDict(dict);
     fillLanguageFromDict(dict);
     fillBirthdayFromDict(dict);
-    fillExtraFromDict(dict);
+    if (dynamic_cast<cocos2d::__Dictionary *>(dict->objectForKey(CCProfileConsts::JSON_EXTRA))) {
+        fillExtraFromDict(dict);
+    }
 
     return true;
 }

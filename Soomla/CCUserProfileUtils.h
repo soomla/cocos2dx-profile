@@ -32,6 +32,9 @@ namespace soomla {
         FACEBOOK = 0,
         GOOGLE = 2,
         TWITTER = 5
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+        , GAME_CENTER = 13
+#endif
     };
 
     /**

@@ -31,6 +31,11 @@ namespace soomla {
              case TWITTER:
                  return __String::create("twitter");
                  break;
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+             case GAME_CENTER:
+                 return __String::create("gameCenter");
+             break;
+#endif
              default:
                  break;
          }
@@ -48,6 +53,11 @@ namespace soomla {
         else if (actionTypeString->compare("twitter")) {
             return TWITTER;
         }
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+        else if (actionTypeString->compare("gameCenter")) {
+            return GAME_CENTER;
+        }
+#endif
         
         return (CCProvider)-1;
     }

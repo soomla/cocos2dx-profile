@@ -28,7 +28,6 @@ namespace soomla {
         CCSoomlaGameCenterConfigBuilder();
         CCProvider getProvider();
         static CCSoomlaGameCenterConfigBuilder *create();
-        CCSoomlaGameCenterConfigBuilder *setPermissions(const char *permissions);
     };
 }
 #endif

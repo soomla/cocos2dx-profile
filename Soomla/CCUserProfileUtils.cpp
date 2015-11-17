@@ -31,6 +31,9 @@ namespace soomla {
              case TWITTER:
                  return __String::create("twitter");
                  break;
+             case GAME_CENTER:
+                 return __String::create("gameCenter");
+             break;
              default:
                  break;
          }
@@ -47,6 +50,9 @@ namespace soomla {
         }
         else if (actionTypeString->compare("twitter")) {
             return TWITTER;
+        }
+        else if (actionTypeString->compare("gameCenter")) {
+            return GAME_CENTER;
         }
         
         return (CCProvider)-1;

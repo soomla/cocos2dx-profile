@@ -258,9 +258,9 @@ namespace soomla {
                     CCLeaderboard *leaderboard = new CCLeaderboard();
                     leaderboard->initWithDictionary(dynamic_cast<__Dictionary *>(parameters->objectForKey("leaderboard")));
                     __Array *scores = this->extractScoreArray(parameters->objectForKey("scores"));
-                    __Bool *fromStart = dynamic_cast<__Bool *>(parameters->objectForKey("fromStart"));
+                    __Bool *hasMore = dynamic_cast<__Bool *>(parameters->objectForKey("hasMore"));
                     __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
-                    this->onGetScoresFinishedEvent(CCProvider(provider->getValue()), leaderboard, scores, fromStart, payload);
+                    this->onGetScoresFinishedEvent(CCProvider(provider->getValue()), leaderboard, scores, hasMore, payload);
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_UP_GET_SCORES_FAILED,

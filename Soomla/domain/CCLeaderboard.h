@@ -31,7 +31,7 @@ namespace soomla {
          @param provider The origin of this CCLeaderboard, meaning the originating
          social network (defined in CCProvider)
          */
-        static CCLeaderboard *create(cocos2d::__String *provider);
+        static CCLeaderboard *create(cocos2d::__String *id, cocos2d::__String *provider);
 
         SL_CREATE_WITH_DICTIONARY(CCLeaderboard);
 
@@ -41,7 +41,7 @@ namespace soomla {
          @param provider The origin of this CCLeaderboard, meaning the originating
          social network (defined in CCProvider)
          */
-        virtual bool init(cocos2d::__String *provider);
+        virtual bool init(cocos2d::__String *id, cocos2d::__String *provider);
 
         /**
          Initializes the class instance with information provided in a
@@ -56,6 +56,8 @@ namespace soomla {
          (see SL_SYNTHESIZE_RETAIN_WITH_DICT macros above)
          */
         virtual cocos2d::__Dictionary *toDictionary();
+        
+        virtual char const * getType() const;
 
         /**
          Destructor for the leaderboard

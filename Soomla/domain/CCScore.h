@@ -69,6 +69,8 @@ namespace soomla {
          (see SL_SYNTHESIZE_RETAIN_WITH_DICT macros above)
          */
         virtual cocos2d::__Dictionary *toDictionary();
+        
+        virtual char const * getType() const;
 
         /**
          Destructor for the score

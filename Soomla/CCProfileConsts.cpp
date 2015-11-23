@@ -98,7 +98,7 @@ namespace soomla {
 
     char const *CCProfileConsts::EVENT_UP_REPORT_SCORE_STARTED = "com.soomla.profile.events.social.ReportScoreStartedEvent";
     char const *CCProfileConsts::EVENT_UP_REPORT_SCORE_FINISHED = "com.soomla.profile.events.social.ReportScoreFinishedEvent";
-    char const *CCProfileConsts::EVENT_UP_REPORT_SCORE_FAILED = "com.soomla.profile.events.social.ReportScoreFinishedEvent";
+    char const *CCProfileConsts::EVENT_UP_REPORT_SCORE_FAILED = "com.soomla.profile.events.social.ReportScoreFailedEvent";
 
     char const *CCProfileConsts::EVENT_USER_PROFILE_UPDATED = "com.soomla.profile.events.UserProfileUpdatedEvent";
 

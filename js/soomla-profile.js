@@ -20,10 +20,28 @@
     extra: null
   }, Soomla.Domain);
 
+  /**
+    * Leaderboard
+    */
+  var Leaderboard = Soomla.Models.Leaderboard = Soomla.declareClass("Leaderboard", {
+      provider: null,
+  }, Soomla.SoomlaEntity);
+
+   /**
+    * Score
+    */
+  var Score = Soomla.Models.Score = Soomla.declareClass("Score", {
+      leaderboard: null,
+      rank: null,
+      player: null,
+      value: null,
+  }, Soomla.SoomlaEntity);
+
   var Provider = Soomla.Models.Provider = {
     FACEBOOK: {id: 0, key: 'facebook'},
     GOOGLE: {id: 2, key: 'google'},
-    TWITTER: {id: 5, key: 'twitter'}
+    TWITTER: {id: 5, key: 'twitter'},
+    GAME_CENTER: {id: 13, key: 'gameCenter'}
   };
 
   Provider.findById = function (id) {
@@ -72,7 +90,19 @@
     EVENT_INVITE_STARTED: "com.soomla.profile.events.social.InviteStartedEvent",
     EVENT_INVITE_FINISHED: "com.soomla.profile.events.social.InviteFinishedEvent",
     EVENT_INVITE_FAILED: "com.soomla.profile.events.social.InviteFailedEvent",
-    EVENT_INVITE_CANCELLED: "com.soomla.profile.events.social.InviteCancelledEvent"
+    EVENT_INVITE_CANCELLED: "com.soomla.profile.events.social.InviteCancelledEvent",
+
+    EVENT_GET_LEADERBOARDS_STARTED: "com.soomla.profile.events.social.GetLeaderboardsStartedEvent",
+    EVENT_GET_LEADERBOARDS_FINISHED: "com.soomla.profile.events.social.GetLeaderboardsFinishedEvent",
+    EVENT_GET_LEADERBOARDS_FAILED: "com.soomla.profile.events.social.GetLeaderboardsFailedEvent",
+
+    EVENT_GET_SCORES_STARTED: "com.soomla.profile.events.social.GetScoresStartedEvent",
+    EVENT_GET_SCORES_FINISHED: "com.soomla.profile.events.social.GetScoresFinishedEvent",
+    EVENT_GET_SCORES_FAILED: "com.soomla.profile.events.social.GetScoresFailedEvent",
+
+    EVENT_REPORT_SCORE_STARTED: "com.soomla.profile.events.social.ReportScoreStartedEvent",
+    EVENT_REPORT_SCORE_FINISHED: "com.soomla.profile.events.social.ReportScoreFinishedEvent",
+    EVENT_REPORT_SCORE_FAILED: "com.soomla.profile.events.social.ReportScoreFailedEvent",
   };
 
   /**
@@ -276,6 +306,33 @@
        onInviteCancelled: function (provider, socialActionType, payload) {
        },
 
+       onGetLeaderboardsStarted: function(provider, payload) {
+       },
+
+       onGetLeaderboardsFinished: function(provider, leaderboards, payload) {
+       },
+
+       onGetLeaderboardsFailed: function(provider, message, payload) {
+       },
+
+       onGetScoresStarted: function(provider, fromStart, payload) {
+       },
+
+       onGetScoresFinished: function(provider, scores, hasMore, payload) {
+       },
+
+       onGetScoresFailed: function(provider, fromStart, message, payload) {
+       },
+
+       onReportScoreStarted: function(provider, leaderboard, payload) {
+       },
+
+       onReportScoreFinished: function(provider, leaderboard, score, payload) {
+       },
+
+       onReportScoreFailed: function(provider, leaderboard, message, payload) {
+       },
+
       /**
        Called when a user profile from a provider has been retrieved
        @param userProfile The user's profile which was updated
@@ -473,6 +530,85 @@
           var socialActionType = parameters.socialActionType;
           var payload = parameters.payload;
           Soomla.fireSoomlaEvent(parameters.method, [provider, socialActionType, payload]);
+        }, this));
+
+        eventDispatcher.registerEventHandler(ProfileConsts.EVENT_GET_LEADERBOARDS_FAILED, _.bind(function (parameters) {
+          var providerId = parameters.provider;
+          var provider = Provider.findById(providerId);
+          var errorDescription = parameters.errorDescription;
+          var payload = parameters.payload;
+          Soomla.fireSoomlaEvent(parameters.method, [provider, errorDescription, payload]);
+        }, this));
+
+        eventDispatcher.registerEventHandler(ProfileConsts.EVENT_GET_LEADERBOARDS_FINISHED, _.bind(function (parameters) {
+          var providerId = parameters.provider;
+          var provider = Provider.findById(providerId);
+          var leaderboards = parameters.leaderboards;
+          var payload = parameters.payload;
+          Soomla.fireSoomlaEvent(parameters.method, [provider, leaderboards, payload]);
+        }, this));
+
+        eventDispatcher.registerEventHandler(ProfileConsts.EVENT_GET_LEADERBOARDS_FAILED, _.bind(function (parameters) {
+          var providerId = parameters.provider;
+          var provider = Provider.findById(providerId);
+          var payload = parameters.payload;
+          Soomla.fireSoomlaEvent(parameters.method, [provider, payload]);
+        }, this));
+
+        eventDispatcher.registerEventHandler(ProfileConsts.EVENT_GET_SCORES_FAILED, _.bind(function (parameters) {
+          var providerId = parameters.provider;
+          var provider = Provider.findById(providerId);
+          var errorDescription = parameters.errorDescription;
+          var leaderboard = parameters.leaderboard;
+          var fromStart = parameters.fromStart;
+          var payload = parameters.payload;
+          Soomla.fireSoomlaEvent(parameters.method, [provider, leaderboard, errorDescription, fromStart, payload]);
+        }, this));
+
+        eventDispatcher.registerEventHandler(ProfileConsts.EVENT_GET_SCORES_FINISHED, _.bind(function (parameters) {
+          var providerId = parameters.provider;
+          var provider = Provider.findById(providerId);
+          var scores = parameters.scores;
+          var leaderboard = parameters.leaderboard;
+          var payload = parameters.payload;
+          var hasMore = parameters.hasMore;
+          Soomla.fireSoomlaEvent(parameters.method, [provider, leaderboard, scores, payload, hasMore]);
+        }, this));
+
+        eventDispatcher.registerEventHandler(ProfileConsts.EVENT_GET_SCORES_STARTED, _.bind(function (parameters) {
+          var providerId = parameters.provider;
+          var provider = Provider.findById(providerId);
+          var fromStart = parameters.fromStart;
+          var leaderboard = parameters.leaderboard;
+          var payload = parameters.payload;
+          Soomla.fireSoomlaEvent(parameters.method, [provider, leaderboard, fromStart, payload]);
+        }, this));
+
+        eventDispatcher.registerEventHandler(ProfileConsts.EVENT_REPORT_SCORE_FAILED, _.bind(function (parameters) {
+          var providerId = parameters.provider;
+          var provider = Provider.findById(providerId);
+          var errorDescription = parameters.errorDescription;
+          var leaderboard = parameters.leaderboard;
+          var payload = parameters.payload;
+          Soomla.fireSoomlaEvent(parameters.method, [provider, leaderboard, errorDescription, payload]);
+        }, this));
+
+        eventDispatcher.registerEventHandler(ProfileConsts.EVENT_REPORT_SCORE_FINISHED, _.bind(function (parameters) {
+          var providerId = parameters.provider;
+          var provider = Provider.findById(providerId);
+          var score = parameters.score;
+          var leaderboard = parameters.leaderboard;
+          var payload = parameters.payload;
+          Soomla.fireSoomlaEvent(parameters.method, [provider, leaderboard, score, payload]);
+        }, this));
+
+        eventDispatcher.registerEventHandler(ProfileConsts.EVENT_REPORT_SCORE_STARTED, _.bind(function (parameters) {
+          var providerId = parameters.provider;
+          var provider = Provider.findById(providerId);
+          var fromStart = parameters.fromStart;
+          var leaderboard = parameters.leaderboard;
+          var payload = parameters.payload;
+          Soomla.fireSoomlaEvent(parameters.method, [provider, leaderboard, payload]);
         }, this));
 
         return true;
@@ -830,6 +966,71 @@
       Soomla.callNative({
         method: "CCSoomlaProfile::openAppRatingPage"
       });
+    },
+    getLeaderboards: function (provider, reward, payload) {
+      var toPassData = {
+        method: "CCSoomlaProfile::getLeaderboards",
+        provider: provider.key,
+        reward: reward
+      };
+
+      if (payload) {
+        toPassData.payload = payload;
+      }
+      else {
+        toPassData.payload = "default";
+      }
+
+      if (reward) {
+        toPassData.reward = reward;
+      }
+
+      Soomla.callNative(toPassData, true);
+    },
+    getScores: function (provider, leaderboard, reward, fromFirst, payload) {
+      fromFirst = (fromFirst !== undefined ? fromFirst : false);
+      var toPassData = {
+        method: "CCSoomlaProfile::getScores",
+        provider: provider.key,
+        reward: reward,
+        leaderboard: leaderboard,
+        fromFirst: fromFirst
+      };
+
+      if (payload) {
+        toPassData.payload = payload;
+      }
+      else {
+        toPassData.payload = "default";
+      }
+
+      if (reward) {
+        toPassData.reward = reward;
+      }
+
+      Soomla.callNative(toPassData, true);
+    },
+    reportScore: function (provider, leaderboard, score, reward, payload) {
+      var toPassData = {
+        method: "CCSoomlaProfile::reportScore",
+        provider: provider.key,
+        leaderboard: leaderboard,
+        score: score,
+        reward: reward
+      };
+
+      if (payload) {
+        toPassData.payload = payload;
+      }
+      else {
+        toPassData.payload = "default";
+      }
+
+      if (reward) {
+        toPassData.reward = reward;
+      }
+
+      Soomla.callNative(toPassData, true);
     },
 
     /**

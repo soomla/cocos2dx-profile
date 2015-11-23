@@ -57,7 +57,7 @@ namespace soomla {
         virtual cocos2d::__Dictionary *toDictionary();
 
         /**
-         Destructor for the user profile
+         Destructor for the leaderboard
          */
         virtual ~CCLeaderboard();
     };

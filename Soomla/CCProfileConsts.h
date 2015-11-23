@@ -43,6 +43,13 @@ namespace soomla {
         static char const *JSON_BIRTHDAY;
         static char const *JSON_EXTRA;
 
+        static char const *JSON_REWARD;
+
+        static char const *JSON_USER_PROFILE;
+        static char const *JSON_LEADERBOARD;
+        static char const *JSON_SCORE_VALUE;
+        static char const *JSON_SCORE_RANK;
+
         static char const *JSON_JSON_TYPE_USER_PROFILE;
         
         /** Events **/

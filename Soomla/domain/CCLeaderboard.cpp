@@ -4,3 +4,40 @@
 //
 
 #include "CCLeaderboard.h"
+
+soomla::CCLeaderboard *soomla::CCLeaderboard::create(cocos2d::__String *provider) {
+
+    CCLeaderboard *ret = new CCLeaderboard();
+    if (ret->init(provider)) {
+        ret->autorelease();
+    }
+    else {
+        CC_SAFE_DELETE(ret);
+    }
+    return ret;
+}
+
+bool soomla::CCLeaderboard::init(cocos2d::__String *provider) {
+
+    setProvider(provider);
+
+    return true;
+}
+
+bool soomla::CCLeaderboard::initWithDictionary(cocos2d::__Dictionary *dict) {
+    fillProviderFromDict(dict);
+
+    return true;
+}
+
+cocos2d::__Dictionary *soomla::CCLeaderboard::toDictionary() {
+    cocos2d::__Dictionary* dict = cocos2d::__Dictionary::create();
+
+    putProviderToDict(dict);
+
+    return dict;
+}
+
+soomla::CCLeaderboard::~CCLeaderboard() {
+    CC_SAFE_RELEASE(mProvider);
+}

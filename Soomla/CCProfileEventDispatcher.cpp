@@ -219,9 +219,8 @@ namespace soomla {
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_UP_GET_LEADERBOARDS_STARTED,
                 [this](__Dictionary *parameters) {
                     __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
-                    __Bool *fromStart = dynamic_cast<__Bool *>(parameters->objectForKey("fromStart"));
                     __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
-                    this->onGetLeaderboardsStartedEvent(CCProvider(provider->getValue()), fromStart, payload);
+                    this->onGetLeaderboardsStartedEvent(CCProvider(provider->getValue()), payload);
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_UP_GET_LEADERBOARDS_FINISHED,
@@ -229,17 +228,15 @@ namespace soomla {
                     __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
                     __Array *leaderboards = this->extractLeaderboardArray(parameters->objectForKey("leaderboards"));
                     __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
-                    __Bool *hasMore = dynamic_cast<__Bool *>(parameters->objectForKey("hasMore"));
-                    this->onGetLeaderboardsFinishedEvent(CCProvider(provider->getValue()), leaderboards, hasMore, payload);
+                    this->onGetLeaderboardsFinishedEvent(CCProvider(provider->getValue()), leaderboards, payload);
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_UP_GET_LEADERBOARDS_FAILED,
                 [this](__Dictionary *parameters) {
                     __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
                     __String *errorDescription = dynamic_cast<__String *>(parameters->objectForKey("errorDescription"));
-                    __Bool *fromStart = dynamic_cast<__Bool *>(parameters->objectForKey("fromStart"));
                     __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
-                    this->onGetLeaderboardsFailedEvent(CCProvider(provider->getValue()), fromStart, errorDescription, payload);
+                    this->onGetLeaderboardsFailedEvent(CCProvider(provider->getValue()), errorDescription, payload);
                 });
 
         eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_UP_GET_SCORES_STARTED,
@@ -534,29 +531,26 @@ namespace soomla {
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_INVITE_CANCELLED, eventData);
     }
 
-    void CCProfileEventDispatcher::onGetLeaderboardsStartedEvent(CCProvider provider, cocos2d::__Bool *fromStart, cocos2d::__String *payload) {
+    void CCProfileEventDispatcher::onGetLeaderboardsStartedEvent(CCProvider provider, cocos2d::__String *payload) {
         __Dictionary *eventData = __Dictionary::create();
         eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
-        eventData->setObject(fromStart, CCProfileConsts::DICT_ELEMENT_FROM_START);
         eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
 
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_UP_GET_LEADERBOARDS_STARTED, eventData);
     }
 
-    void CCProfileEventDispatcher::onGetLeaderboardsFinishedEvent(CCProvider provider, cocos2d::__Array *leaderboards, cocos2d::__Bool *hasMore, cocos2d::__String *payload) {
+    void CCProfileEventDispatcher::onGetLeaderboardsFinishedEvent(CCProvider provider, cocos2d::__Array *leaderboards, cocos2d::__String *payload) {
         __Dictionary *eventData = __Dictionary::create();
         eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
         eventData->setObject(leaderboards, CCProfileConsts::DICT_ELEMENT_LEADERBOARDS);
         eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
-        eventData->setObject(hasMore, CCProfileConsts::DICT_ELEMENT_HAS_MORE);
 
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_UP_GET_LEADERBOARDS_FINISHED, eventData);
     }
 
-    void CCProfileEventDispatcher::onGetLeaderboardsFailedEvent(CCProvider provider, cocos2d::__Bool *fromStart, cocos2d::__String *message, cocos2d::__String *payload) {
+    void CCProfileEventDispatcher::onGetLeaderboardsFailedEvent(CCProvider provider, cocos2d::__String *message, cocos2d::__String *payload) {
         __Dictionary *eventData = __Dictionary::create();
         eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
-        eventData->setObject(fromStart, CCProfileConsts::DICT_ELEMENT_FROM_START);
         eventData->setObject(message, CCProfileConsts::DICT_ELEMENT_MESSAGE);
         eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
 

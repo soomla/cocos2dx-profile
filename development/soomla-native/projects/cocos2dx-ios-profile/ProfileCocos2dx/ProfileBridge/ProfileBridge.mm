@@ -294,11 +294,10 @@
 
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::getLeaderboards" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
         NSString *provider = parameters[@"provider"];
-        NSNumber *fromStart = parameters[@"fromStart"];
         NSString *payload = parameters[@"payload"];
         NSDictionary *rewardDict = parameters[@"reward"];
         Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
-        [[SoomlaProfile getInstance] getLeaderboardsWithProvider:[UserProfileUtils providerStringToEnum:provider] fromStart:[fromStart boolValue] payload:payload andReward:reward];
+        [[SoomlaProfile getInstance] getLeaderboardsWithProvider:[UserProfileUtils providerStringToEnum:provider] payload:payload andReward:reward];
     }];
 
     [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::getScores" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
@@ -485,7 +484,6 @@
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_GET_LEADERBOARDS_STARTED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
         parameters[@"method"] = @"com.soomla.profile.events.social.GetLeaderboardsStartedEvent";
         parameters[@"provider"] = notification.userInfo[DICT_ELEMENT_PROVIDER];
-        parameters[@"fromStart"] = notification.userInfo[DICT_ELEMENT_FROM_START];
         parameters[@"payload"] = notification.userInfo[DICT_ELEMENT_PAYLOAD];
     }];
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_GET_LEADERBOARDS_FINISHED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
@@ -494,13 +492,11 @@
         id leaderboards = notification.userInfo[DICT_ELEMENT_LEADERBOARDS];
         parameters[@"leaderboards"] = [[DomainHelper sharedDomainHelper] getDictListFromDomains:leaderboards];
         parameters[@"payload"] = notification.userInfo[DICT_ELEMENT_PAYLOAD];
-        parameters[@"hasMore"] = notification.userInfo[DICT_ELEMENT_HAS_MORE];
     }];
     [ndkGlue registerCallbackHandlerForKey:EVENT_UP_GET_LEADERBOARDS_FAILED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
         parameters[@"method"] = @"com.soomla.profile.events.social.GetLeaderboardsFailedEvent";
         parameters[@"provider"] = notification.userInfo[DICT_ELEMENT_PROVIDER];
         parameters[@"errorDescription"] = notification.userInfo[DICT_ELEMENT_MESSAGE];
-        parameters[@"fromStart"] = notification.userInfo[DICT_ELEMENT_FROM_START];
         parameters[@"payload"] = notification.userInfo[DICT_ELEMENT_PAYLOAD];
     }];
 

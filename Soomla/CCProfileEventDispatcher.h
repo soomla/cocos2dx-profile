@@ -340,11 +340,11 @@ namespace soomla {
          */
         virtual void onInviteCancelledEvent(CCProvider provider, CCSocialActionType socialActionType, cocos2d::__String *payload);
 
-        virtual void onGetLeaderboardsStartedEvent(CCProvider provider, cocos2d::__Bool *fromStart, cocos2d::__String *payload);
+        virtual void onGetLeaderboardsStartedEvent(CCProvider provider, cocos2d::__String *payload);
 
-        virtual void onGetLeaderboardsFinishedEvent(CCProvider provider, cocos2d::__Array *leaderboards, cocos2d::__Bool *hasMore, cocos2d::__String *payload);
+        virtual void onGetLeaderboardsFinishedEvent(CCProvider provider, cocos2d::__Array *leaderboards, cocos2d::__String *payload);
 
-        virtual void onGetLeaderboardsFailedEvent(CCProvider provider, cocos2d::__Bool *fromStart, cocos2d::__String *message, cocos2d::__String *payload);
+        virtual void onGetLeaderboardsFailedEvent(CCProvider provider, cocos2d::__String *message, cocos2d::__String *payload);
 
         virtual void onGetScoresStartedEvent(CCProvider provider, CCLeaderboard *leaderboard, cocos2d::__Bool *fromStart, cocos2d::__String *payload);
 

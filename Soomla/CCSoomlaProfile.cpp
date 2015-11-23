@@ -455,14 +455,9 @@ namespace soomla {
     }
 
     void CCSoomlaProfile::getLeaderboards(CCProvider provider, const char *payload, CCReward *reward, CCError **soomlaError) {
-        this->getLeaderboards(provider, false, payload, reward, soomlaError);
-    }
-
-    void CCSoomlaProfile::getLeaderboards(CCProvider provider, bool fromStart, const char *payload, CCReward *reward, CCError **soomlaError) {
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCSoomlaProfile::getLeaderboards"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
-        params->setObject(__Bool::create(fromStart), "fromStart");
         params->setObject(__String::create(payload), "payload");
         if (reward) {
             params->setObject(reward->toDictionary(), "reward");

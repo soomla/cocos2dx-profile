@@ -506,8 +506,6 @@ namespace soomla {
         */
         void multiShare(const char *text, const char *imageFilePath, CCError **soomlaError);
 
-        void getLeaderboards(CCProvider provider, bool fromStart, const char *payload, CCReward *reward, CCError **soomlaError);
-
         void getLeaderboards(CCProvider provider, const char *payload, CCReward *reward, CCError **soomlaError);
 
         void getScores(CCProvider provider, CCLeaderboard *leaderboard, bool fromStart, const char *payload, CCReward *reward, CCError **soomlaError);

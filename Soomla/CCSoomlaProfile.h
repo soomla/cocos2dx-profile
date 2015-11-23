@@ -24,6 +24,7 @@
 #include "CCUserProfile.h"
 #include "CCSocialActionUtils.h"
 #include "CCUserProfileUtils.h"
+#include "CCLeaderboard.h"
 
 namespace soomla {
 	/**
@@ -505,6 +506,15 @@ namespace soomla {
         */
         void multiShare(const char *text, const char *imageFilePath, CCError **soomlaError);
 
+        void getLeaderboards(CCProvider provider, bool fromStart, const char *payload, CCReward *reward, CCError **soomlaError);
+
+        void getLeaderboards(CCProvider provider, const char *payload, CCReward *reward, CCError **soomlaError);
+
+        void getScores(CCProvider provider, CCLeaderboard *leaderboard, bool fromStart, const char *payload, CCReward *reward, CCError **soomlaError);
+
+        void getScores(CCProvider provider, CCLeaderboard *leaderboard, const char *payload, CCReward *reward, CCError **soomlaError);
+
+        void reportScore(CCProvider provider, CCLeaderboard *leaderboard, unsigned int score, const char *payload, CCReward *reward, CCError **soomlaError);
     };
 };
 

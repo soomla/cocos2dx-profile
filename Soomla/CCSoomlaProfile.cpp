@@ -453,4 +453,50 @@ namespace soomla {
         }
         CCNdkBridge::callNative(params, soomlaError);
     }
+
+    void CCSoomlaProfile::getLeaderboards(CCProvider provider, const char *payload, CCReward *reward, CCError **soomlaError) {
+        this->getLeaderboards(provider, false, payload, reward, soomlaError);
+    }
+
+    void CCSoomlaProfile::getLeaderboards(CCProvider provider, bool fromStart, const char *payload, CCReward *reward, CCError **soomlaError) {
+        __Dictionary *params = __Dictionary::create();
+        params->setObject(__String::create("CCSoomlaProfile::getLeaderboards"), "method");
+        params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
+        params->setObject(__Bool::create(fromStart), "fromStart");
+        params->setObject(__String::create(payload), "payload");
+        if (reward) {
+            params->setObject(reward->toDictionary(), "reward");
+        }
+        CCNdkBridge::callNative(params, soomlaError);
+    }
+
+    void CCSoomlaProfile::getScores(CCProvider provider, CCLeaderboard *leaderboard, const char *payload, CCReward *reward, CCError **soomlaError) {
+        this->getScores(provider, leaderboard, false, payload, reward, soomlaError);
+    }
+
+    void CCSoomlaProfile::getScores(CCProvider provider, CCLeaderboard *leaderboard, bool fromStart, const char *payload, CCReward *reward, CCError **soomlaError) {
+        __Dictionary *params = __Dictionary::create();
+        params->setObject(__String::create("CCSoomlaProfile::getScores"), "method");
+        params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
+        params->setObject(__Bool::create(fromStart), "fromStart");
+        params->setObject(leaderboard->toDictionary(), "leaderboard");
+        params->setObject(__String::create(payload), "payload");
+        if (reward) {
+            params->setObject(reward->toDictionary(), "reward");
+        }
+        CCNdkBridge::callNative(params, soomlaError);
+    }
+
+    void CCSoomlaProfile::reportScore(CCProvider provider, CCLeaderboard *leaderboard, unsigned int score, const char *payload, CCReward *reward, CCError **soomlaError) {
+        __Dictionary *params = __Dictionary::create();
+        params->setObject(__String::create("CCSoomlaProfile::reportScore"), "method");
+        params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
+        params->setObject(__Integer::create(score), "score");
+        params->setObject(leaderboard->toDictionary(), "leaderboard");
+        params->setObject(__String::create(payload), "payload");
+        if (reward) {
+            params->setObject(reward->toDictionary(), "reward");
+        }
+        CCNdkBridge::callNative(params, soomlaError);
+    }
 }

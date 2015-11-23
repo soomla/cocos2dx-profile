@@ -20,7 +20,7 @@ namespace soomla {
         SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::__Integer *, mRank, Rank, CCProfileConsts::JSON_SCORE_RANK);
         SL_SYNTHESIZE_RETAIN_WITH_DICT(soomla::CCUserProfile *, mPlayer, Player, CCProfileConsts::JSON_USER_PROFILE);
         SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::__Integer *, mValue, Value, CCProfileConsts::JSON_SCORE_VALUE);
-
+    public:
         /**
          Constructor
 

@@ -21,6 +21,8 @@
 #include "CCUserProfile.h"
 #include "CCSocialActionUtils.h"
 #include "CCUserProfileUtils.h"
+#include "CCLeaderboard.h"
+#include "CCScore.h"
 
 namespace soomla {
 
@@ -338,9 +340,29 @@ namespace soomla {
          */
         virtual void onInviteCancelledEvent(CCProvider provider, CCSocialActionType socialActionType, cocos2d::__String *payload);
 
+        virtual void onGetLeaderboardsStartedEvent(CCProvider provider, cocos2d::__Bool *fromStart, cocos2d::__String *payload);
+
+        virtual void onGetLeaderboardsFinishedEvent(CCProvider provider, cocos2d::__Array *leaderboards, cocos2d::__Bool *hasMore, cocos2d::__String *payload);
+
+        virtual void onGetLeaderboardsFailedEvent(CCProvider provider, cocos2d::__Bool *fromStart, cocos2d::__String *message, cocos2d::__String *payload);
+
+        virtual void onGetScoresStartedEvent(CCProvider provider, CCLeaderboard *leaderboard, cocos2d::__Bool *fromStart, cocos2d::__String *payload);
+
+        virtual void onGetScoresFinishedEvent(CCProvider provider, CCLeaderboard *leaderboard, cocos2d::__Array *scores, cocos2d::__Bool *hasMore, cocos2d::__String *payload);
+
+        virtual void onGetScoresFailedEvent(CCProvider provider, CCLeaderboard *leaderboard, cocos2d::__Bool *fromStart, cocos2d::__String *message, cocos2d::__String *payload);
+
+        virtual void onReportScoreStartedEvent(CCProvider provider, CCLeaderboard *leaderboard, cocos2d::__String *payload);
+
+        virtual void onReportScoreFinishedEvent(CCProvider provider, CCLeaderboard *leaderboard, CCScore *score, cocos2d::__String *payload);
+
+        virtual void onReportScoreFailedEvent(CCProvider provider, CCLeaderboard *leaderboard, cocos2d::__String *message, cocos2d::__String *payload);
+
     private:
         CCUserProfile *extractUserProfile(Ref *userProfileRef);
         cocos2d::__Array *extractUserProfileArray(Ref *userProfileDictArray);
+        cocos2d::__Array *extractLeaderboardArray(Ref *leaderboardDictArray);
+        cocos2d::__Array *extractScoreArray(Ref *scoreDictArray);
     };
 };
 

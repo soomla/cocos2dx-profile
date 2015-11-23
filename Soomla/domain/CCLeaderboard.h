@@ -15,6 +15,7 @@ namespace soomla {
     class CCLeaderboard : public CCSoomlaEntity {
         SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::__String *, mProvider, Provider, CCProfileConsts::JSON_PROVIDER);
 
+    public:
         /**
          Constructor
 

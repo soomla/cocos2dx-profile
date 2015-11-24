@@ -44,6 +44,8 @@ public class ProfileBridge {
 
     private static ProfileBridge INSTANCE = null;
 
+    private static String TAG = "SOOMLA Profile Cocos2dx Bridge";
+
     /**
      * Retrieves the singleton instance of the bridge
      *
@@ -357,6 +359,27 @@ public class ProfileBridge {
                 String text = params.getString("text");
                 String imageFilePath = params.getString("imageFilePath");
                 SoomlaProfile.getInstance().multiShare(text, imageFilePath);
+            }
+        });
+
+        ndkGlue.registerCallHandler("CCSoomlaProfile::getLeaderboards", new NdkGlue.CallHandler() {
+            @Override
+            public void handle(JSONObject params, JSONObject retParams) throws Exception {
+                SoomlaUtils.LogError(TAG, "Leaderboards receiving isn't supported in Android yet.");
+            }
+        });
+
+        ndkGlue.registerCallHandler("CCSoomlaProfile::getScores", new NdkGlue.CallHandler() {
+            @Override
+            public void handle(JSONObject params, JSONObject retParams) throws Exception {
+                SoomlaUtils.LogError(TAG, "Scores receiving isn't supported in Android yet.");
+            }
+        });
+
+        ndkGlue.registerCallHandler("CCSoomlaProfile::reportScore", new NdkGlue.CallHandler() {
+            @Override
+            public void handle(JSONObject params, JSONObject retParams) throws Exception {
+                SoomlaUtils.LogError(TAG, "Score reporting isn't supported in Android yet.");
             }
         });
 

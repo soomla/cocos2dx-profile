@@ -30,7 +30,14 @@ namespace soomla {
     char const *CCProfileConsts::JSON_BIRTHDAY = "birthday";
     char const *CCProfileConsts::JSON_EXTRA = "extra";
 
+    char const *CCProfileConsts::JSON_USER_PROFILE = "userProfile";
+    char const *CCProfileConsts::JSON_LEADERBOARD = "leaderboard";
+    char const *CCProfileConsts::JSON_SCORE_VALUE = "scoreValue";
+    char const *CCProfileConsts::JSON_SCORE_RANK = "scoreRank";
+
     char const *CCProfileConsts::JSON_JSON_TYPE_USER_PROFILE = "UserProfile";
+    char const *CCProfileConsts::JSON_JSON_TYPE_LEADERBOARD = "Leaderboard";
+    char const *CCProfileConsts::JSON_JSON_TYPE_SCORE = "Score";
     
     
     char const *CCProfileConsts::DICT_ELEMENT_USER_PROFILE = "userProfile";
@@ -46,6 +53,11 @@ namespace soomla {
     char const *CCProfileConsts::DICT_ELEMENT_REQUEST_ID = "requestId";
     char const *CCProfileConsts::DICT_ELEMENT_INVITED_IDS = "invitedIds";
     char const *CCProfileConsts::DICT_ELEMENT_REWARD = "reward";
+
+    char const *CCProfileConsts::DICT_ELEMENT_LEADERBOARDS = "leaderboards";
+    char const *CCProfileConsts::DICT_ELEMENT_LEADERBOARD = "leaderboard";
+    char const *CCProfileConsts::DICT_ELEMENT_SCORES = "scores";
+    char const *CCProfileConsts::DICT_ELEMENT_SCORE = "score";
 
     char const *CCProfileConsts::EVENT_PROFILE_INITIALIZED = "com.soomla.profile.events.ProfileInitializedEvent";
     char const *CCProfileConsts::EVENT_USER_RATING = "com.soomla.profile.events.UserRatingEvent";
@@ -75,6 +87,18 @@ namespace soomla {
     char const *CCProfileConsts::EVENT_INVITE_FINISHED = "com.soomla.profile.events.social.InviteFinishedEvent";
     char const *CCProfileConsts::EVENT_INVITE_FAILED = "com.soomla.profile.events.social.InviteFailedEvent";
     char const *CCProfileConsts::EVENT_INVITE_CANCELLED = "com.soomla.profile.events.social.InviteFailedEvent";
+
+    char const *CCProfileConsts::EVENT_UP_GET_LEADERBOARDS_STARTED = "com.soomla.profile.events.social.GetLeaderboardsStartedEvent";
+    char const *CCProfileConsts::EVENT_UP_GET_LEADERBOARDS_FINISHED = "com.soomla.profile.events.social.GetLeaderboardsFinishedEvent";
+    char const *CCProfileConsts::EVENT_UP_GET_LEADERBOARDS_FAILED = "com.soomla.profile.events.social.GetLeaderboardsFailedEvent";
+
+    char const *CCProfileConsts::EVENT_UP_GET_SCORES_STARTED = "com.soomla.profile.events.social.GetScoresStartedEvent";
+    char const *CCProfileConsts::EVENT_UP_GET_SCORES_FINISHED = "com.soomla.profile.events.social.GetScoresFinishedEvent";
+    char const *CCProfileConsts::EVENT_UP_GET_SCORES_FAILED = "com.soomla.profile.events.social.GetScoresFailedEvent";
+
+    char const *CCProfileConsts::EVENT_UP_REPORT_SCORE_STARTED = "com.soomla.profile.events.social.ReportScoreStartedEvent";
+    char const *CCProfileConsts::EVENT_UP_REPORT_SCORE_FINISHED = "com.soomla.profile.events.social.ReportScoreFinishedEvent";
+    char const *CCProfileConsts::EVENT_UP_REPORT_SCORE_FAILED = "com.soomla.profile.events.social.ReportScoreFailedEvent";
 
     char const *CCProfileConsts::EVENT_USER_PROFILE_UPDATED = "com.soomla.profile.events.UserProfileUpdatedEvent";
 

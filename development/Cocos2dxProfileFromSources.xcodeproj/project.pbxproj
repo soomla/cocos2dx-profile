@@ -9,8 +9,28 @@
 /* Begin PBXBuildFile section */
 		372B78FA39B5241051CA85A1 /* ConfirmationDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = 372B76AA22D529BEC900F688 /* ConfirmationDialog.h */; };
 		372B7B54F26F1D741A8F1016 /* ConfirmationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 372B71302414218C55DC3183 /* ConfirmationDialog.m */; };
-		44D8C2AA1BD663830067EABB /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D8C2A81BD663830067EABB /* FBSDKCoreKit.framework */; settings = {ASSET_TAGS = (); }; };
-		44D8C2AB1BD663830067EABB /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D8C2A91BD663830067EABB /* FBSDKShareKit.framework */; settings = {ASSET_TAGS = (); }; };
+		449B5B1A1C0395FB00077A40 /* CCLeaderboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 449B5B161C0395FB00077A40 /* CCLeaderboard.cpp */; };
+		449B5B1B1C0395FB00077A40 /* CCLeaderboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 449B5B171C0395FB00077A40 /* CCLeaderboard.h */; };
+		449B5B1C1C0395FB00077A40 /* CCScore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 449B5B181C0395FB00077A40 /* CCScore.cpp */; };
+		449B5B1D1C0395FB00077A40 /* CCScore.h in Headers */ = {isa = PBXBuildFile; fileRef = 449B5B191C0395FB00077A40 /* CCScore.h */; };
+		449B5B281C03968500077A40 /* Leaderboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 449B5B201C03968500077A40 /* Leaderboard.h */; };
+		449B5B291C03968500077A40 /* Leaderboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 449B5B211C03968500077A40 /* Leaderboard.m */; };
+		449B5B2A1C03968500077A40 /* Score.h in Headers */ = {isa = PBXBuildFile; fileRef = 449B5B221C03968500077A40 /* Score.h */; };
+		449B5B2B1C03968500077A40 /* Score.m in Sources */ = {isa = PBXBuildFile; fileRef = 449B5B231C03968500077A40 /* Score.m */; };
+		449B5B2C1C03968500077A40 /* IGameServicesCallbacks.h in Headers */ = {isa = PBXBuildFile; fileRef = 449B5B241C03968500077A40 /* IGameServicesCallbacks.h */; };
+		449B5B2D1C03968500077A40 /* IGameServicesProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 449B5B251C03968500077A40 /* IGameServicesProvider.h */; };
+		449B5B2E1C03968500077A40 /* GameServicesController.h in Headers */ = {isa = PBXBuildFile; fileRef = 449B5B261C03968500077A40 /* GameServicesController.h */; };
+		449B5B2F1C03968500077A40 /* GameServicesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 449B5B271C03968500077A40 /* GameServicesController.m */; };
+		449B5B371C0396A500077A40 /* Leaderboard+GameCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 449B5B311C0396A500077A40 /* Leaderboard+GameCenter.h */; };
+		449B5B381C0396A500077A40 /* Leaderboard+GameCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 449B5B321C0396A500077A40 /* Leaderboard+GameCenter.m */; };
+		449B5B391C0396A500077A40 /* Score+GameCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 449B5B331C0396A500077A40 /* Score+GameCenter.h */; };
+		449B5B3A1C0396A600077A40 /* Score+GameCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 449B5B341C0396A500077A40 /* Score+GameCenter.m */; };
+		449B5B3B1C0396A600077A40 /* SoomlaGameCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 449B5B351C0396A500077A40 /* SoomlaGameCenter.h */; };
+		449B5B3C1C0396A600077A40 /* SoomlaGameCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 449B5B361C0396A500077A40 /* SoomlaGameCenter.m */; };
+		449B5B3F1C0399DA00077A40 /* CCSoomlaGameCenterConfigBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 449B5B3D1C0399DA00077A40 /* CCSoomlaGameCenterConfigBuilder.cpp */; };
+		449B5B401C0399DA00077A40 /* CCSoomlaGameCenterConfigBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 449B5B3E1C0399DA00077A40 /* CCSoomlaGameCenterConfigBuilder.h */; };
+		44D8C2AA1BD663830067EABB /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D8C2A81BD663830067EABB /* FBSDKCoreKit.framework */; };
+		44D8C2AB1BD663830067EABB /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D8C2A91BD663830067EABB /* FBSDKShareKit.framework */; };
 		B2FA803D83176205B55C4220 /* CCSoomlaGooglePlusConfigBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA8D47FCDEB19184549C5A /* CCSoomlaGooglePlusConfigBuilder.h */; };
 		B2FA8188EDBA365BB94FF2DA /* CCSoomlaProfileSNConfigBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA88CFBDBF818AB944E2DB /* CCSoomlaProfileSNConfigBuilder.h */; };
 		B2FA8238838D81E9DEB19FE3 /* CCSoomlaFacebookConfigBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA8E75B8D6CD724D942C02 /* CCSoomlaFacebookConfigBuilder.h */; };
@@ -97,6 +117,26 @@
 /* Begin PBXFileReference section */
 		372B71302414218C55DC3183 /* ConfirmationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmationDialog.m; sourceTree = "<group>"; };
 		372B76AA22D529BEC900F688 /* ConfirmationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmationDialog.h; sourceTree = "<group>"; };
+		449B5B161C0395FB00077A40 /* CCLeaderboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCLeaderboard.cpp; sourceTree = "<group>"; };
+		449B5B171C0395FB00077A40 /* CCLeaderboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLeaderboard.h; sourceTree = "<group>"; };
+		449B5B181C0395FB00077A40 /* CCScore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCScore.cpp; sourceTree = "<group>"; };
+		449B5B191C0395FB00077A40 /* CCScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCScore.h; sourceTree = "<group>"; };
+		449B5B201C03968500077A40 /* Leaderboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Leaderboard.h; sourceTree = "<group>"; };
+		449B5B211C03968500077A40 /* Leaderboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Leaderboard.m; sourceTree = "<group>"; };
+		449B5B221C03968500077A40 /* Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Score.h; sourceTree = "<group>"; };
+		449B5B231C03968500077A40 /* Score.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Score.m; sourceTree = "<group>"; };
+		449B5B241C03968500077A40 /* IGameServicesCallbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGameServicesCallbacks.h; sourceTree = "<group>"; };
+		449B5B251C03968500077A40 /* IGameServicesProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGameServicesProvider.h; sourceTree = "<group>"; };
+		449B5B261C03968500077A40 /* GameServicesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameServicesController.h; sourceTree = "<group>"; };
+		449B5B271C03968500077A40 /* GameServicesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameServicesController.m; sourceTree = "<group>"; };
+		449B5B311C0396A500077A40 /* Leaderboard+GameCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Leaderboard+GameCenter.h"; sourceTree = "<group>"; };
+		449B5B321C0396A500077A40 /* Leaderboard+GameCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Leaderboard+GameCenter.m"; sourceTree = "<group>"; };
+		449B5B331C0396A500077A40 /* Score+GameCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Score+GameCenter.h"; sourceTree = "<group>"; };
+		449B5B341C0396A500077A40 /* Score+GameCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Score+GameCenter.m"; sourceTree = "<group>"; };
+		449B5B351C0396A500077A40 /* SoomlaGameCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoomlaGameCenter.h; sourceTree = "<group>"; };
+		449B5B361C0396A500077A40 /* SoomlaGameCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoomlaGameCenter.m; sourceTree = "<group>"; };
+		449B5B3D1C0399DA00077A40 /* CCSoomlaGameCenterConfigBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSoomlaGameCenterConfigBuilder.cpp; sourceTree = "<group>"; };
+		449B5B3E1C0399DA00077A40 /* CCSoomlaGameCenterConfigBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSoomlaGameCenterConfigBuilder.h; sourceTree = "<group>"; };
 		44D8C2A71BD663830067EABB /* FacebookSDKStrings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKStrings.bundle; path = "submodules/ios-profile/social-providers/ios-profile-facebook/FacebookSDKStrings.bundle"; sourceTree = "<group>"; };
 		44D8C2A81BD663830067EABB /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "submodules/ios-profile/social-providers/ios-profile-facebook/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
 		44D8C2A91BD663830067EABB /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "submodules/ios-profile/social-providers/ios-profile-facebook/FBSDKShareKit.framework"; sourceTree = "<group>"; };
@@ -212,9 +252,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		449B5B1E1C03968500077A40 /* game-services */ = {
+			isa = PBXGroup;
+			children = (
+				449B5B1F1C03968500077A40 /* domain */,
+				449B5B241C03968500077A40 /* IGameServicesCallbacks.h */,
+				449B5B251C03968500077A40 /* IGameServicesProvider.h */,
+			);
+			path = "game-services";
+			sourceTree = "<group>";
+		};
+		449B5B1F1C03968500077A40 /* domain */ = {
+			isa = PBXGroup;
+			children = (
+				449B5B201C03968500077A40 /* Leaderboard.h */,
+				449B5B211C03968500077A40 /* Leaderboard.m */,
+				449B5B221C03968500077A40 /* Score.h */,
+				449B5B231C03968500077A40 /* Score.m */,
+			);
+			path = domain;
+			sourceTree = "<group>";
+		};
+		449B5B301C0396A500077A40 /* SoomlaiOSProfileGameCenter */ = {
+			isa = PBXGroup;
+			children = (
+				449B5B311C0396A500077A40 /* Leaderboard+GameCenter.h */,
+				449B5B321C0396A500077A40 /* Leaderboard+GameCenter.m */,
+				449B5B331C0396A500077A40 /* Score+GameCenter.h */,
+				449B5B341C0396A500077A40 /* Score+GameCenter.m */,
+				449B5B351C0396A500077A40 /* SoomlaGameCenter.h */,
+				449B5B361C0396A500077A40 /* SoomlaGameCenter.m */,
+			);
+			name = SoomlaiOSProfileGameCenter;
+			path = "submodules/ios-profile/social-providers/ios-profile-gamecenter/SoomlaiOSProfileGameCenter";
+			sourceTree = "<group>";
+		};
 		B2FA8C590CC016682D8A9BC4 /* config */ = {
 			isa = PBXGroup;
 			children = (
+				449B5B3D1C0399DA00077A40 /* CCSoomlaGameCenterConfigBuilder.cpp */,
+				449B5B3E1C0399DA00077A40 /* CCSoomlaGameCenterConfigBuilder.h */,
 				B2FA87BD5E90991BFCB103BC /* CCSoomlaProfileConfigBuilder.h */,
 				B2FA8E799C34C56E51E5A086 /* CCSoomlaTwitterConfigBuilder.h */,
 				B2FA8E75B8D6CD724D942C02 /* CCSoomlaFacebookConfigBuilder.h */,
@@ -232,6 +309,7 @@
 		C0B3C5E4168C6D0C00161FAA = {
 			isa = PBXGroup;
 			children = (
+				449B5B301C0396A500077A40 /* SoomlaiOSProfileGameCenter */,
 				44D8C2A71BD663830067EABB /* FacebookSDKStrings.bundle */,
 				44D8C2A81BD663830067EABB /* FBSDKCoreKit.framework */,
 				44D8C2A91BD663830067EABB /* FBSDKShareKit.framework */,
@@ -298,6 +376,9 @@
 		F825C14919B3209F00A2CABB /* SoomlaiOSProfile */ = {
 			isa = PBXGroup;
 			children = (
+				449B5B1E1C03968500077A40 /* game-services */,
+				449B5B261C03968500077A40 /* GameServicesController.h */,
+				449B5B271C03968500077A40 /* GameServicesController.m */,
 				F8F3875A1A2C9EFA00EEA2E2 /* ProfileEventHandling.m */,
 				F8F3875B1A2C9EFA00EEA2E2 /* ProfileEventHandling.h */,
 				F825C14A19B3209F00A2CABB /* auth */,
@@ -434,6 +515,10 @@
 		F8DBEC7C19BDB38D0093252C /* domain */ = {
 			isa = PBXGroup;
 			children = (
+				449B5B161C0395FB00077A40 /* CCLeaderboard.cpp */,
+				449B5B171C0395FB00077A40 /* CCLeaderboard.h */,
+				449B5B181C0395FB00077A40 /* CCScore.cpp */,
+				449B5B191C0395FB00077A40 /* CCScore.h */,
 				F8DBEC7D19BDB38D0093252C /* CCUserProfile.cpp */,
 				F8DBEC7E19BDB38D0093252C /* CCUserProfile.h */,
 			);
@@ -447,6 +532,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				449B5B2A1C03968500077A40 /* Score.h in Headers */,
 				F87488211A0007F9005952C9 /* SoomlaFacebook.h in Headers */,
 				F825C19019B3209F00A2CABB /* ProviderLoader.h in Headers */,
 				F8DBEC8B19BDB38D0093252C /* CCUserProfileUtils.h in Headers */,
@@ -455,32 +541,42 @@
 				F825C17819B3209F00A2CABB /* IAuthProvider.h in Headers */,
 				F825C18C19B3209F00A2CABB /* ProviderNotFoundException.h in Headers */,
 				F825C19419B3209F00A2CABB /* SocialActionUtils.h in Headers */,
+				449B5B2C1C03968500077A40 /* IGameServicesCallbacks.h in Headers */,
 				F8DBEC8419BDB38D0093252C /* CCProfileEventDispatcher.h in Headers */,
+				449B5B3B1C0396A600077A40 /* SoomlaGameCenter.h in Headers */,
+				449B5B401C0399DA00077A40 /* CCSoomlaGameCenterConfigBuilder.h in Headers */,
 				F825C19D19B3209F00A2CABB /* UserProfileUtils.h in Headers */,
 				F825C19819B3209F00A2CABB /* SoomlaiOSProfile-Prefix.pch in Headers */,
 				F825C18119B3209F00A2CABB /* IProvider.h in Headers */,
 				F825C18E19B3209F00A2CABB /* UserProfileNotFoundException.h in Headers */,
+				449B5B371C0396A500077A40 /* Leaderboard+GameCenter.h in Headers */,
 				F825C19919B3209F00A2CABB /* SoomlaProfile.h in Headers */,
+				449B5B281C03968500077A40 /* Leaderboard.h in Headers */,
 				F8DBEC8019BDB38D0093252C /* CCProfileConsts.h in Headers */,
 				F82F0C311A1376DD00D1B34A /* SoomlaiOSProfileGoogle.pch in Headers */,
 				F8F3875D1A2C9EFA00EEA2E2 /* ProfileEventHandling.h in Headers */,
 				F8DBEC8919BDB38D0093252C /* CCSocialActionUtils.h in Headers */,
 				F825C17F19B3209F00A2CABB /* UserProfileStorage.h in Headers */,
 				F825C19319B3209F00A2CABB /* SocialCallbacks.h in Headers */,
+				449B5B1D1C0395FB00077A40 /* CCScore.h in Headers */,
 				F84F251E19C86BFD00DB0905 /* CCSoomlaProfile.h in Headers */,
 				F82F0C2C1A1376DD00D1B34A /* SoomlaiOSProfileTwitter.pch in Headers */,
 				F825C0F119B31D8100A2CABB /* ProfileBridge.h in Headers */,
 				F825C19219B3209F00A2CABB /* ISocialProvider.h in Headers */,
+				449B5B1B1C0395FB00077A40 /* CCLeaderboard.h in Headers */,
 				F825C17919B3209F00A2CABB /* AuthController.h in Headers */,
 				F8BBDC8E1AB1D16600FD9403 /* CCProfileBridgeBinderIos.h in Headers */,
 				F825C18A19B3209F00A2CABB /* UserProfile.h in Headers */,
+				449B5B2E1C03968500077A40 /* GameServicesController.h in Headers */,
 				F8DBEC8C19BDB38D0093252C /* Cocos2dxProfile.h in Headers */,
 				F87488231A0007F9005952C9 /* SoomlaiOSProfileFacebook.pch in Headers */,
+				449B5B2D1C03968500077A40 /* IGameServicesProvider.h in Headers */,
 				F825C17B19B3209F00A2CABB /* PJSONConsts.h in Headers */,
 				F8DBEC8719BDB38D0093252C /* CCProfileBridge.h in Headers */,
 				F82F0C2F1A1376DD00D1B34A /* SoomlaGooglePlus.h in Headers */,
 				F825C19619B3209F00A2CABB /* SocialController.h in Headers */,
 				372B78FA39B5241051CA85A1 /* ConfirmationDialog.h in Headers */,
+				449B5B391C0396A500077A40 /* Score+GameCenter.h in Headers */,
 				B2FA8B2FCD6EC631D97A2199 /* CCSoomlaProfileConfigBuilder.h in Headers */,
 				B2FA868EBDD858CB013C571B /* CCSoomlaTwitterConfigBuilder.h in Headers */,
 				B2FA8238838D81E9DEB19FE3 /* CCSoomlaFacebookConfigBuilder.h in Headers */,
@@ -544,9 +640,13 @@
 				F8BBDC8F1AB1D16600FD9403 /* CCProfileBridgeBinderIos.mm in Sources */,
 				F82F0C301A1376DD00D1B34A /* SoomlaGooglePlus.m in Sources */,
 				F8DBEC8D19BDB38D0093252C /* CCUserProfile.cpp in Sources */,
+				449B5B1A1C0395FB00077A40 /* CCLeaderboard.cpp in Sources */,
 				F825C18019B3209F00A2CABB /* UserProfileStorage.m in Sources */,
+				449B5B381C0396A500077A40 /* Leaderboard+GameCenter.m in Sources */,
 				F8DBEC7F19BDB38D0093252C /* CCProfileConsts.cpp in Sources */,
 				F825C19A19B3209F00A2CABB /* SoomlaProfile.m in Sources */,
+				449B5B3F1C0399DA00077A40 /* CCSoomlaGameCenterConfigBuilder.cpp in Sources */,
+				449B5B291C03968500077A40 /* Leaderboard.m in Sources */,
 				F825C19119B3209F00A2CABB /* ProviderLoader.m in Sources */,
 				F82F0C2E1A1376DD00D1B34A /* SoomlaTwitter.m in Sources */,
 				F8DBEC8619BDB38D0093252C /* CCProfileBridge.cpp in Sources */,
@@ -558,17 +658,22 @@
 				F8DBEC8819BDB38D0093252C /* CCSocialActionUtils.cpp in Sources */,
 				F825C18D19B3209F00A2CABB /* ProviderNotFoundException.m in Sources */,
 				F825C19719B3209F00A2CABB /* SocialController.m in Sources */,
+				449B5B3C1C0396A600077A40 /* SoomlaGameCenter.m in Sources */,
 				F8F3875C1A2C9EFA00EEA2E2 /* ProfileEventHandling.m in Sources */,
 				F825C18B19B3209F00A2CABB /* UserProfile.m in Sources */,
 				F84F251D19C86BFD00DB0905 /* CCSoomlaProfile.cpp in Sources */,
 				F8DBEC8319BDB38D0093252C /* CCProfileEventDispatcher.cpp in Sources */,
+				449B5B2B1C03968500077A40 /* Score.m in Sources */,
 				F825C17C19B3209F00A2CABB /* PJSONConsts.m in Sources */,
+				449B5B3A1C0396A600077A40 /* Score+GameCenter.m in Sources */,
 				F825C19519B3209F00A2CABB /* SocialActionUtils.m in Sources */,
 				372B7B54F26F1D741A8F1016 /* ConfirmationDialog.m in Sources */,
 				B2FA8FFB5FBDC3CB65889700 /* CCSoomlaProfileConfigBuilder.cpp in Sources */,
+				449B5B2F1C03968500077A40 /* GameServicesController.m in Sources */,
 				B2FA87058A2AA6C7ED580E31 /* CCSoomlaTwitterConfigBuilder.cpp in Sources */,
 				B2FA8474B79CDDDCF4DD9051 /* CCSoomlaFacebookConfigBuilder.cpp in Sources */,
 				B2FA82C5108E05555759CDDB /* CCSoomlaProfileSNConfigBuilder.cpp in Sources */,
+				449B5B1C1C0395FB00077A40 /* CCScore.cpp in Sources */,
 				B2FA8470C138B94F421AC9CC /* CCSoomlaGooglePlusConfigBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

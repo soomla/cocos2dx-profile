@@ -43,7 +43,16 @@ namespace soomla {
         static char const *JSON_BIRTHDAY;
         static char const *JSON_EXTRA;
 
+        static char const *JSON_REWARD;
+
+        static char const *JSON_USER_PROFILE;
+        static char const *JSON_LEADERBOARD;
+        static char const *JSON_SCORE_VALUE;
+        static char const *JSON_SCORE_RANK;
+
         static char const *JSON_JSON_TYPE_USER_PROFILE;
+        static char const *JSON_JSON_TYPE_LEADERBOARD;
+        static char const *JSON_JSON_TYPE_SCORE;
         
         /** Events **/
         
@@ -60,6 +69,10 @@ namespace soomla {
         static char const *DICT_ELEMENT_REQUEST_ID;
         static char const *DICT_ELEMENT_INVITED_IDS;
         static char const *DICT_ELEMENT_REWARD;
+        static char const *DICT_ELEMENT_LEADERBOARDS;
+        static char const *DICT_ELEMENT_LEADERBOARD;
+        static char const *DICT_ELEMENT_SCORES;
+        static char const *DICT_ELEMENT_SCORE;
 
         static char const *EVENT_PROFILE_INITIALIZED;
         static char const *EVENT_USER_RATING;
@@ -88,6 +101,18 @@ namespace soomla {
         static char const *EVENT_INVITE_FINISHED;
         static char const *EVENT_INVITE_FAILED;
         static char const *EVENT_INVITE_CANCELLED;
+
+        static char const *EVENT_UP_GET_LEADERBOARDS_STARTED;
+        static char const *EVENT_UP_GET_LEADERBOARDS_FINISHED;
+        static char const *EVENT_UP_GET_LEADERBOARDS_FAILED;
+
+        static char const *EVENT_UP_GET_SCORES_STARTED;
+        static char const *EVENT_UP_GET_SCORES_FINISHED;
+        static char const *EVENT_UP_GET_SCORES_FAILED;
+
+        static char const *EVENT_UP_REPORT_SCORE_STARTED;
+        static char const *EVENT_UP_REPORT_SCORE_FINISHED;
+        static char const *EVENT_UP_REPORT_SCORE_FAILED;
 
         static char const *EVENT_USER_PROFILE_UPDATED;
     };

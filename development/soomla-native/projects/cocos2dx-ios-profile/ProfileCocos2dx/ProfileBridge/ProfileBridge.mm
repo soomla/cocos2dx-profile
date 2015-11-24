@@ -7,6 +7,8 @@
 #import "ProfileEventHandling.h"
 #import "ProviderNotFoundException.h"
 #import "UserProfile.h"
+#import "Leaderboard.h"
+#import "Score.h"
 #import "DomainHelper.h"
 #import "UserProfileNotFoundException.h"
 
@@ -49,6 +51,18 @@
                                       withClassName:NSStringFromClass([UserProfile class])
                                            andBlock:^id(NSDictionary *dict) {
                                                return [[UserProfile alloc] initWithDictionary:dict];
+                                           }];
+
+    [[DomainHelper sharedDomainHelper] registerType:(NSString *)@"Leaderboard"
+                                      withClassName:NSStringFromClass([Leaderboard class])
+                                           andBlock:^id(NSDictionary *dict) {
+                                               return [[Leaderboard alloc] initWithDictionary:dict];
+                                           }];
+
+    [[DomainHelper sharedDomainHelper] registerType:(NSString *)@"Score"
+                                      withClassName:NSStringFromClass([Score class])
+                                           andBlock:^id(NSDictionary *dict) {
+                                               return [[Score alloc] initWithDictionary:dict];
                                            }];
 }
 
@@ -278,6 +292,36 @@
         [[SoomlaProfile getInstance] multiShareWithText:text andImageFilePath:imageFilePath];
     }];
 
+    [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::getLeaderboards" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
+        NSString *provider = parameters[@"provider"];
+        NSString *payload = parameters[@"payload"];
+        NSDictionary *rewardDict = parameters[@"reward"];
+        Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
+        [[SoomlaProfile getInstance] getLeaderboardsWithProvider:[UserProfileUtils providerStringToEnum:provider] payload:payload andReward:reward];
+    }];
+
+    [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::getScores" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
+        NSString *provider = parameters[@"provider"];
+        NSDictionary *leaderboardDict = parameters[@"leaderboard"];
+        Leaderboard *leaderboard = leaderboardDict ? [[DomainFactory sharedDomainFactory] createWithDict:leaderboardDict] : nil;
+        NSNumber *fromStart = parameters[@"fromStart"];
+        NSString *payload = parameters[@"payload"];
+        NSDictionary *rewardDict = parameters[@"reward"];
+        Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
+        [[SoomlaProfile getInstance] getScoresWithProvider:[UserProfileUtils providerStringToEnum:provider] forLeaderboard:leaderboard fromStart:fromStart.boolValue payload:payload andReward:reward];
+    }];
+
+    [ndkGlue registerCallHandlerForKey:@"CCSoomlaProfile::reportScore" withBlock:^(NSDictionary *parameters, NSMutableDictionary *retParameters) {
+        NSString *provider = parameters[@"provider"];
+        NSDictionary *leaderboardDict = parameters[@"leaderboard"];
+        Leaderboard *leaderboard = leaderboardDict ? [[DomainFactory sharedDomainFactory] createWithDict:leaderboardDict] : nil;
+        NSNumber *score = parameters[@"score"];
+        NSString *payload = parameters[@"payload"];
+        NSDictionary *rewardDict = parameters[@"reward"];
+        Reward *reward = rewardDict ? [[DomainFactory sharedDomainFactory] createWithDict:rewardDict] : nil;
+        [[SoomlaProfile getInstance] reportScoreWithProvider:[UserProfileUtils providerStringToEnum:provider] score:score forLeaderboard:leaderboard payload:payload andReward:reward];
+    }];
+
     /* -= Exception handlers =- */
     void (^exceptionHandler)(NSException *, NSDictionary *, NSMutableDictionary *) = ^(NSException *exception, NSDictionary *parameters, NSMutableDictionary *retParameters) {
         [retParameters setObject: NSStringFromClass([exception class]) forKey: @"errorInfo"];
@@ -434,6 +478,73 @@
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PROVIDER] forKey:@"provider"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_SOCIAL_ACTION_TYPE] forKey:@"socialActionType"];
         [parameters setObject:[notification.userInfo objectForKey:DICT_ELEMENT_PAYLOAD] forKey:@"payload"];
+    }];
+
+
+    [ndkGlue registerCallbackHandlerForKey:EVENT_UP_GET_LEADERBOARDS_STARTED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
+        parameters[@"method"] = @"com.soomla.profile.events.social.GetLeaderboardsStartedEvent";
+        parameters[@"provider"] = notification.userInfo[DICT_ELEMENT_PROVIDER];
+        parameters[@"payload"] = notification.userInfo[DICT_ELEMENT_PAYLOAD];
+    }];
+    [ndkGlue registerCallbackHandlerForKey:EVENT_UP_GET_LEADERBOARDS_FINISHED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
+        parameters[@"method"] = @"com.soomla.profile.events.social.GetLeaderboardsFinishedEvent";
+        parameters[@"provider"] = notification.userInfo[DICT_ELEMENT_PROVIDER];
+        id leaderboards = notification.userInfo[DICT_ELEMENT_LEADERBOARDS];
+        parameters[@"leaderboards"] = [[DomainHelper sharedDomainHelper] getDictListFromDomains:leaderboards];
+        parameters[@"payload"] = notification.userInfo[DICT_ELEMENT_PAYLOAD];
+    }];
+    [ndkGlue registerCallbackHandlerForKey:EVENT_UP_GET_LEADERBOARDS_FAILED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
+        parameters[@"method"] = @"com.soomla.profile.events.social.GetLeaderboardsFailedEvent";
+        parameters[@"provider"] = notification.userInfo[DICT_ELEMENT_PROVIDER];
+        parameters[@"errorDescription"] = notification.userInfo[DICT_ELEMENT_MESSAGE];
+        parameters[@"payload"] = notification.userInfo[DICT_ELEMENT_PAYLOAD];
+    }];
+
+    [ndkGlue registerCallbackHandlerForKey:EVENT_UP_GET_SCORES_STARTED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
+        parameters[@"method"] = @"com.soomla.profile.events.social.GetScoresStartedEvent";
+        parameters[@"provider"] = notification.userInfo[DICT_ELEMENT_PROVIDER];
+        parameters[@"leaderboard"] = ((Leaderboard *)notification.userInfo[DICT_ELEMENT_LEADERBOARD]).toDictionary;
+        parameters[@"fromStart"] = notification.userInfo[DICT_ELEMENT_FROM_START];
+        parameters[@"payload"] = notification.userInfo[DICT_ELEMENT_PAYLOAD];
+    }];
+    [ndkGlue registerCallbackHandlerForKey:EVENT_UP_GET_SCORES_FINISHED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
+        parameters[@"method"] = @"com.soomla.profile.events.social.GetScoresFinishedEvent";
+        parameters[@"provider"] = notification.userInfo[DICT_ELEMENT_PROVIDER];
+        parameters[@"leaderboard"] = ((Leaderboard *)notification.userInfo[DICT_ELEMENT_LEADERBOARD]).toDictionary;
+        id scores = notification.userInfo[DICT_ELEMENT_SCORES];
+        parameters[@"scores"] = [[DomainHelper sharedDomainHelper] getDictListFromDomains:scores];
+        parameters[@"payload"] = notification.userInfo[DICT_ELEMENT_PAYLOAD];
+        parameters[@"hasMore"] = notification.userInfo[DICT_ELEMENT_HAS_MORE];
+    }];
+    [ndkGlue registerCallbackHandlerForKey:EVENT_UP_GET_SCORES_FAILED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
+        parameters[@"method"] = @"com.soomla.profile.events.social.GetScoresFailedEvent";
+        parameters[@"provider"] = notification.userInfo[DICT_ELEMENT_PROVIDER];
+        parameters[@"leaderboard"] = ((Leaderboard *)notification.userInfo[DICT_ELEMENT_LEADERBOARD]).toDictionary;
+        parameters[@"errorDescription"] = notification.userInfo[DICT_ELEMENT_MESSAGE];
+        parameters[@"fromStart"] = notification.userInfo[DICT_ELEMENT_FROM_START];
+        parameters[@"payload"] = notification.userInfo[DICT_ELEMENT_PAYLOAD];
+    }];
+
+    [ndkGlue registerCallbackHandlerForKey:EVENT_UP_REPORT_SCORE_STARTED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
+        parameters[@"method"] = @"com.soomla.profile.events.social.ReportScoreStartedEvent";
+        parameters[@"provider"] = notification.userInfo[DICT_ELEMENT_PROVIDER];
+        parameters[@"leaderboard"] = ((Leaderboard *)notification.userInfo[DICT_ELEMENT_LEADERBOARD]).toDictionary;
+        parameters[@"payload"] = notification.userInfo[DICT_ELEMENT_PAYLOAD];
+    }];
+    [ndkGlue registerCallbackHandlerForKey:EVENT_UP_REPORT_SCORE_FINISHED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
+        parameters[@"method"] = @"com.soomla.profile.events.social.ReportScoreFinishedEvent";
+        parameters[@"provider"] = notification.userInfo[DICT_ELEMENT_PROVIDER];
+        parameters[@"leaderboard"] = ((Leaderboard *)notification.userInfo[DICT_ELEMENT_LEADERBOARD]).toDictionary;
+        parameters[@"score"] = ((Score *)notification.userInfo[DICT_ELEMENT_SCORE]).toDictionary;
+        parameters[@"payload"] = notification.userInfo[DICT_ELEMENT_PAYLOAD];
+        parameters[@"hasMore"] = notification.userInfo[DICT_ELEMENT_HAS_MORE];
+    }];
+    [ndkGlue registerCallbackHandlerForKey:EVENT_UP_REPORT_SCORE_FAILED withBlock:^(NSNotification *notification, NSMutableDictionary *parameters) {
+        parameters[@"method"] = @"com.soomla.profile.events.social.ReportScoreFailedEvent";
+        parameters[@"provider"] = notification.userInfo[DICT_ELEMENT_PROVIDER];
+        parameters[@"leaderboard"] = notification.userInfo[DICT_ELEMENT_LEADERBOARD];
+        parameters[@"errorDescription"] = notification.userInfo[DICT_ELEMENT_MESSAGE];
+        parameters[@"payload"] = notification.userInfo[DICT_ELEMENT_PAYLOAD];
     }];
 }
 

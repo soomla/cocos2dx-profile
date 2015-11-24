@@ -24,7 +24,7 @@ namespace soomla {
         /**
          Constructor
 
-         Main constructor for the leaderboard which nullifies all information
+         Main constructor for the score which nullifies all information
          in the class
          */
         CCScore() : CCSoomlaEntity(), mLeaderboard(NULL), mRank(NULL), mPlayer(NULL), mValue(NULL) {};
@@ -33,8 +33,10 @@ namespace soomla {
          Creates an instance of CCScore according to the information
          provided
 
-         @param provider The origin of this CCLeaderboard, meaning the originating
-         social network (defined in CCProvider)
+         @param leaderboard A leaderboard containing this score
+         @param rank Score position in the leaderboard
+         @param player Owner of this score
+         @param value Value of this score
          */
         static CCScore *create(
                 soomla::CCLeaderboard *leaderboard,
@@ -47,8 +49,10 @@ namespace soomla {
         /**
          Initializes the class instance with the provided information
 
-         @param provider The origin of this CCLeaderboard, meaning the originating
-         social network (defined in CCProvider)
+         @param leaderboard A leaderboard containing this score
+         @param rank Score position in the leaderboard
+         @param player Owner of this score
+         @param value Value of this score
          */
         virtual bool init(
                 soomla::CCLeaderboard *leaderboard,

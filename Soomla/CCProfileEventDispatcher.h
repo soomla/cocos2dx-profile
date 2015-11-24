@@ -340,22 +340,136 @@ namespace soomla {
          */
         virtual void onInviteCancelledEvent(CCProvider provider, CCSocialActionType socialActionType, cocos2d::__String *payload);
 
+        /**
+         Fired when the get leaderboards process from a provider has started.
+
+         Event Name - CCProfileConsts::EVENT_GET_LEADERBOARDS_STARTED
+         Event Data (__Dictionary):
+         CCProfileConsts::DICT_ELEMENT_PROVIDER - __Integer - The provider on
+         which the get leaderboards process started.
+         CCProfileConsts::DICT_ELEMENT_PAYLOAD - __String - an identification
+         String sent from the caller of the action.
+         */
         virtual void onGetLeaderboardsStartedEvent(CCProvider provider, cocos2d::__String *payload);
 
+       /**
+        Fired when the get leaderboards process from a provider has finished.
+
+        Event Name - CCProfileConsts::EVENT_GET_LEADERBOARDS_FINISHED
+        Event Data (__Dictionary):
+        CCProfileConsts::DICT_ELEMENT_PROVIDER - __Integer - The provider on
+        which the get leaderboards process finished.
+        CCProfileConsts::DICT_ELEMENT_LEADERBOARDS - __Array - an Array of leaderboards
+        represented by provider.
+        CCProfileConsts::DICT_ELEMENT_PAYLOAD - __String - an identification
+        String sent from the caller of the action.
+        */
         virtual void onGetLeaderboardsFinishedEvent(CCProvider provider, cocos2d::__Array *leaderboards, cocos2d::__String *payload);
 
+        /**
+         Fired when the get leaderboards process from a provider has failed.
+
+         Event Name - CCProfileConsts::EVENT_GET_LEADERBOARDS_FAILED
+         Event Data (__Dictionary):
+         CCProfileConsts::DICT_ELEMENT_PROVIDER - __Integer - The provider on
+         which the get leaderboards process has failed.
+         CCProfileConsts::DICT_ELEMENT_MESSAGE - __String - a Description of the
+         reason for failure.
+         CCProfileConsts::DICT_ELEMENT_PAYLOAD - __String - an identification
+         String sent from the caller of the action.
+         */
         virtual void onGetLeaderboardsFailedEvent(CCProvider provider, cocos2d::__String *message, cocos2d::__String *payload);
 
+        /**
+         Fired when the get scores process from a provider has started.
+
+         Event Name - CCProfileConsts::EVENT_GET_SCORES_STARTED
+         Event Data (__Dictionary):
+         CCProfileConsts::DICT_ELEMENT_PROVIDER - __Integer - The provider on
+         which the get scores process started.
+         CCProfileConsts::DICT_ELEMENT_LEADERBOARD - CCLeaderboard - The leaderboard
+         scores fetched from
+         CCProfileConsts::DICT_ELEMENT_PAYLOAD - __String - an identification
+         String sent from the caller of the action.
+         */
         virtual void onGetScoresStartedEvent(CCProvider provider, CCLeaderboard *leaderboard, cocos2d::__Bool *fromStart, cocos2d::__String *payload);
 
+       /**
+        Fired when the get scores process from a provider has finished.
+
+        Event Name - CCProfileConsts::EVENT_GET_SCORES_FINISHED
+        Event Data (__Dictionary):
+        CCProfileConsts::DICT_ELEMENT_PROVIDER - __Integer - The provider on
+        which the get scores process finished.
+        CCProfileConsts::DICT_ELEMENT_LEADERBOARD - CCLeaderboard - The leaderboard
+         scores fetched from
+        CCProfileConsts::DICT_ELEMENT_SCORES - __Array - an Array of scores
+         represented by leaderboard.
+        CCProfileConsts::DICT_ELEMENT_PAYLOAD - __String - an identification
+        String sent from the caller of the action.
+        */
         virtual void onGetScoresFinishedEvent(CCProvider provider, CCLeaderboard *leaderboard, cocos2d::__Array *scores, cocos2d::__Bool *hasMore, cocos2d::__String *payload);
 
+        /**
+         Fired when the get scores process from a provider has failed.
+
+         Event Name - CCProfileConsts::EVENT_GET_SCORES_FAILED
+         Event Data (__Dictionary):
+         CCProfileConsts::DICT_ELEMENT_PROVIDER - __Integer - The provider on
+         which the get scores process has failed.
+         CCProfileConsts::DICT_ELEMENT_LEADERBOARD - CCLeaderboard - The leaderboard
+         scores fetched from
+         CCProfileConsts::DICT_ELEMENT_MESSAGE - __String - a Description of the
+         reason for failure.
+         CCProfileConsts::DICT_ELEMENT_PAYLOAD - __String - an identification
+         String sent from the caller of the action.
+         */
         virtual void onGetScoresFailedEvent(CCProvider provider, CCLeaderboard *leaderboard, cocos2d::__Bool *fromStart, cocos2d::__String *message, cocos2d::__String *payload);
 
+        /**
+         Fired when the score reporting process from a provider has started.
+
+         Event Name - CCProfileConsts::EVENT_REPORT_SCORE_STARTED
+         Event Data (__Dictionary):
+         CCProfileConsts::DICT_ELEMENT_PROVIDER - __Integer - The provider on
+         which the score reporting process started.
+         CCProfileConsts::DICT_ELEMENT_LEADERBOARD - CCLeaderboard - The leaderboard
+         score reports to
+         CCProfileConsts::DICT_ELEMENT_PAYLOAD - __String - an identification
+         String sent from the caller of the action.
+         */
         virtual void onReportScoreStartedEvent(CCProvider provider, CCLeaderboard *leaderboard, cocos2d::__String *payload);
 
+       /**
+        Fired when the score reporting process from a provider has finished.
+
+        Event Name - CCProfileConsts::EVENT_REPORT_SCORE_FINISHED
+        Event Data (__Dictionary):
+        CCProfileConsts::DICT_ELEMENT_PROVIDER - __Integer - The provider on
+        which the score reporting process finished.
+        CCProfileConsts::DICT_ELEMENT_LEADERBOARD - CCLeaderboard - The leaderboard
+         scores fetched from
+        CCProfileConsts::DICT_ELEMENT_SCORE - CCScore - New score as a result of
+         reporting
+        CCProfileConsts::DICT_ELEMENT_PAYLOAD - __String - an identification
+        String sent from the caller of the action.
+        */
         virtual void onReportScoreFinishedEvent(CCProvider provider, CCLeaderboard *leaderboard, CCScore *score, cocos2d::__String *payload);
 
+        /**
+         Fired when the score reporting process from a provider has failed.
+
+         Event Name - CCProfileConsts::EVENT_REPORT_SCORE_FAILED
+         Event Data (__Dictionary):
+         CCProfileConsts::DICT_ELEMENT_PROVIDER - __Integer - The provider on
+         which the score reporting process has failed.
+         CCProfileConsts::DICT_ELEMENT_LEADERBOARD - CCLeaderboard - The leaderboard
+         score reports to
+         CCProfileConsts::DICT_ELEMENT_MESSAGE - __String - a Description of the
+         reason for failure.
+         CCProfileConsts::DICT_ELEMENT_PAYLOAD - __String - an identification
+         String sent from the caller of the action.
+         */
         virtual void onReportScoreFailedEvent(CCProvider provider, CCLeaderboard *leaderboard, cocos2d::__String *message, cocos2d::__String *payload);
 
     private:

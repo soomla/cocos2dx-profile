@@ -306,30 +306,90 @@
        onInviteCancelled: function (provider, socialActionType, payload) {
        },
 
+      /**
+       Called when the get leaderboards process from a provider has started
+       @param provider The provider on which the get leaderboards process started
+       @param payload an identification String sent from the caller of the action
+       */
        onGetLeaderboardsStarted: function(provider, payload) {
        },
 
+      /**
+       Called when the get leaderboards process from a provider has finished
+       @param provider The provider on which the get leaderboards process finished
+       @param leaderboards an Array of leaderboards represented by provider
+       @param payload an identification String sent from the caller of the action
+       */
        onGetLeaderboardsFinished: function(provider, leaderboards, payload) {
        },
 
+      /**
+       Called when the get leaderboards process from a provider has failed
+       @param provider The provider on which the get leaderboards process has failed
+       @param message a Description of the reason for failure
+       @param payload an identification String sent from the caller of the action
+       */
        onGetLeaderboardsFailed: function(provider, message, payload) {
        },
 
-       onGetScoresStarted: function(provider, fromStart, payload) {
+      /**
+       Called when the get scores process from a provider has started
+       @param provider The provider on which the get scores process started
+       @param leaderboard The leaderboard scores fetched from
+       @param fromStart Should we reset pagination or request the next page
+       @param payload an identification String sent from the caller of the action
+       */
+       onGetScoresStarted: function(provider, leaderboard, fromStart, payload) {
        },
 
-       onGetScoresFinished: function(provider, scores, hasMore, payload) {
+      /**
+       Called when the get contacts process from a provider has finished
+       @param provider The provider on which the get contacts process finished
+       @param leaderboard The leaderboard scores fetched from
+       @param scores an Array of scores represented by Leaderboard
+       @param hasMore if it has more in pagination
+       @param payload an identification String sent from the caller of the action
+       */
+       onGetScoresFinished: function(provider, leaderboard, scores, hasMore, payload) {
        },
 
-       onGetScoresFailed: function(provider, fromStart, message, payload) {
+      /**
+       Called when the get contacts process from a provider has failed
+       @param provider The provider on which the get contacts process has failed
+       @param leaderboard The leaderboard scores fetched from
+       @param fromStart Should we reset pagination or request the next page
+       @param message a Description of the reason for failure
+       @param payload an identification String sent from the caller of the action
+       */
+       onGetScoresFailed: function(provider, leaderboard, fromStart, message, payload) {
        },
 
+      /**
+       Called when the get scores process from a provider has started
+       @param provider The provider on which the get scores process started
+       @param leaderboard The leaderboard score reported to
+       @param payload an identification String sent from the caller of the action
+       */
        onReportScoreStarted: function(provider, leaderboard, payload) {
        },
 
+      /**
+       Called when the get contacts process from a provider has finished
+       @param provider The provider on which the get contacts process finished
+       @param leaderboard The leaderboard score reported to
+       @param score A new score instance as a result of reporting
+       @param payload an identification String sent from the caller of the action
+       */
        onReportScoreFinished: function(provider, leaderboard, score, payload) {
        },
 
+      /**
+       Called when the get contacts process from a provider has failed
+       @param provider The provider on which the get contacts process has failed
+       @param leaderboard The leaderboard score reported to
+       @param message a Description of the reason for failure
+       @param payload an identification String sent from the caller of the action
+       */
        onReportScoreFailed: function(provider, leaderboard, message, payload) {
        },
 

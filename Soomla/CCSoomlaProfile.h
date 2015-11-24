@@ -506,12 +506,51 @@ namespace soomla {
         */
         void multiShare(const char *text, const char *imageFilePath, CCError **soomlaError);
 
+        /**
+        * Fetches the game's scores list from specified leaderboard
+
+        * @param provider The provider to use
+        * @param leaderboard Leaderboard containing desired scores list
+        * @param fromStart Should we reset pagination or request the next page
+        * @param payload a String to receive when the function returns.
+        * @param reward The reward to grant
+        * @param soomlaError Any errors will be returned in this parameter
+        */
         void getLeaderboards(CCProvider provider, const char *payload, CCReward *reward, CCError **soomlaError);
 
+        /**
+        * Fetches the game's scores list from specified leaderboard
+
+        * @param provider The provider to use
+        * @param leaderboard Leaderboard containing desired scores list
+        * @param fromStart Should we reset pagination or request the next page
+        * @param payload a String to receive when the function returns.
+        * @param soomlaError Any errors will be returned in this parameter
+        */
         void getScores(CCProvider provider, CCLeaderboard *leaderboard, bool fromStart, const char *payload, CCReward *reward, CCError **soomlaError);
 
+        /**
+        * Fetches the game's scores list from specified leaderboard
+
+        * @param provider The provider to use
+        * @param leaderboard Leaderboard containing desired scores list
+        * @param payload a String to receive when the function returns.
+        * @param reward The reward to grant
+        * @exception ProviderNotFoundException if the provider is not supported
+        * @param soomlaError Any errors will be returned in this parameter
+        */
         void getScores(CCProvider provider, CCLeaderboard *leaderboard, const char *payload, CCReward *reward, CCError **soomlaError);
 
+        /**
+        * Reports scores for specified leaderboard
+
+        * @param provider The provider to use
+        * @param score Value to report
+        * @param leaderboard Target leaderboard
+        * @param payload a String to receive when the function returns.
+        * @param reward The reward to grant
+        * @param soomlaError Any errors will be returned in this parameter
+        */
         void reportScore(CCProvider provider, CCLeaderboard *leaderboard, unsigned int score, const char *payload, CCReward *reward, CCError **soomlaError);
     };
 };

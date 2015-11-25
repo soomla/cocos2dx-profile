@@ -30,6 +30,7 @@ namespace soomla {
     char const *CCProfileConsts::JSON_BIRTHDAY = "birthday";
     char const *CCProfileConsts::JSON_EXTRA = "extra";
 
+    char const *CCProfileConsts::JSON_IDENTIFIER = "identifier";
     char const *CCProfileConsts::JSON_USER_PROFILE = "userProfile";
     char const *CCProfileConsts::JSON_LEADERBOARD = "leaderboard";
     char const *CCProfileConsts::JSON_SCORE_VALUE = "scoreValue";

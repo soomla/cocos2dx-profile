@@ -14,7 +14,7 @@
 
 namespace soomla {
     class CCLeaderboard : public CCDomain {
-        SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::__String*, mId, Id, CCCoreConsts::JSON_ITEM_ITEM_ID);
+        SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::__String*, mId, Id, CCProfileConsts::JSON_IDENTIFIER);
         SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::__String *, mProvider, Provider, CCProfileConsts::JSON_PROVIDER);
 
     public:

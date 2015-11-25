@@ -45,6 +45,7 @@ namespace soomla {
 
         static char const *JSON_REWARD;
 
+        static char const *JSON_IDENTIFIER;
         static char const *JSON_USER_PROFILE;
         static char const *JSON_LEADERBOARD;
         static char const *JSON_SCORE_VALUE;

@@ -28,7 +28,7 @@ bool soomla::CCScore::init(soomla::CCLeaderboard *leaderboard, cocos2d::__Intege
 }
 
 bool soomla::CCScore::initWithDictionary(cocos2d::__Dictionary *dict) {
-    CCSoomlaEntity::initWithDictionary(dict);
+    CCDomain::initWithDictionary(dict);
 
     mLeaderboard = new CCLeaderboard();
     mLeaderboard->initWithDictionary((cocos2d::__Dictionary *)dict->objectForKey(CCProfileConsts::JSON_LEADERBOARD));
@@ -44,7 +44,7 @@ bool soomla::CCScore::initWithDictionary(cocos2d::__Dictionary *dict) {
 }
 
 cocos2d::__Dictionary *soomla::CCScore::toDictionary() {
-    cocos2d::__Dictionary* dict = CCSoomlaEntity::toDictionary();
+    cocos2d::__Dictionary* dict = CCDomain::toDictionary();
 
     dict->setObject(mLeaderboard->toDictionary(), CCProfileConsts::JSON_LEADERBOARD);
     putRankToDict(dict);
@@ -52,10 +52,6 @@ cocos2d::__Dictionary *soomla::CCScore::toDictionary() {
     putValueToDict(dict);
 
     return dict;
-}
-
-const char * soomla::CCScore::getType() const {
-    return "Score";
 }
 
 soomla::CCScore::~CCScore() {

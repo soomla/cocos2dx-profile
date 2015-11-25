@@ -27,22 +27,18 @@ bool soomla::CCLeaderboard::init(cocos2d::__String *id, cocos2d::__String *provi
 
 
 bool soomla::CCLeaderboard::initWithDictionary(cocos2d::__Dictionary *dict) {
-    CCSoomlaEntity::initWithDictionary(dict);
+    CCDomain::initWithDictionary(dict);
     fillProviderFromDict(dict);
 
     return true;
 }
 
 cocos2d::__Dictionary *soomla::CCLeaderboard::toDictionary() {
-    cocos2d::__Dictionary* dict = CCSoomlaEntity::toDictionary();
+    cocos2d::__Dictionary* dict = CCDomain::toDictionary();
 
     putProviderToDict(dict);
 
     return dict;
-}
-
-const char * soomla::CCLeaderboard::getType() const {
-    return "Leaderboard";
 }
 
 soomla::CCLeaderboard::~CCLeaderboard() {

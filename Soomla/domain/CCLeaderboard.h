@@ -9,10 +9,12 @@
 #include "cocos2d.h"
 #include "CCSoomlaMacros.h"
 #include "CCProfileConsts.h"
-#include "CCSoomlaEntity.h"
+#include "CCCoreConsts.h"
+#include "CCDomain.h"
 
 namespace soomla {
-    class CCLeaderboard : public CCSoomlaEntity {
+    class CCLeaderboard : public CCDomain {
+        SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::__String*, mId, Id, CCCoreConsts::JSON_ITEM_ITEM_ID);
         SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::__String *, mProvider, Provider, CCProfileConsts::JSON_PROVIDER);
 
     public:
@@ -22,7 +24,7 @@ namespace soomla {
          Main constructor for the leaderboard which nullifies all information
          in the class
          */
-        CCLeaderboard() : CCSoomlaEntity(), mProvider(NULL) {};
+        CCLeaderboard() : CCDomain(), mProvider(NULL) {};
 
         /**
          Creates an instance of CCLeaderboard according to the information
@@ -56,8 +58,6 @@ namespace soomla {
          (see SL_SYNTHESIZE_RETAIN_WITH_DICT macros above)
          */
         virtual cocos2d::__Dictionary *toDictionary();
-        
-        virtual char const * getType() const;
 
         /**
          Destructor for the leaderboard

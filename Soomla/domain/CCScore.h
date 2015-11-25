@@ -9,12 +9,12 @@
 #include "cocos2d.h"
 #include "CCSoomlaMacros.h"
 #include "CCProfileConsts.h"
-#include "CCSoomlaEntity.h"
+#include "CCDomain.h"
 #include "CCLeaderboard.h"
 #include "CCUserProfile.h"
 
 namespace soomla {
-    class CCScore : public CCSoomlaEntity {
+    class CCScore : public CCDomain {
         SL_SYNTHESIZE_RETAIN_WITH_DICT(soomla::CCLeaderboard *, mLeaderboard, Leaderboard, CCProfileConsts::JSON_LEADERBOARD);
 
         SL_SYNTHESIZE_RETAIN_WITH_DICT(cocos2d::__Integer *, mRank, Rank, CCProfileConsts::JSON_SCORE_RANK);
@@ -27,7 +27,7 @@ namespace soomla {
          Main constructor for the score which nullifies all information
          in the class
          */
-        CCScore() : CCSoomlaEntity(), mLeaderboard(NULL), mRank(NULL), mPlayer(NULL), mValue(NULL) {};
+        CCScore() : CCDomain(), mLeaderboard(NULL), mRank(NULL), mPlayer(NULL), mValue(NULL) {};
 
         /**
          Creates an instance of CCScore according to the information
@@ -73,8 +73,6 @@ namespace soomla {
          (see SL_SYNTHESIZE_RETAIN_WITH_DICT macros above)
          */
         virtual cocos2d::__Dictionary *toDictionary();
-        
-        virtual char const * getType() const;
 
         /**
          Destructor for the score

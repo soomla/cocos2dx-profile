@@ -1,3 +1,8 @@
+### v1.7.0 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.6.0...v1.7.0)
+
+* New Features
+  * Added Leaderboards to GameCenter
+
 ### v1.6.0 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.5.1...v1.6.0)
 
 * New Features

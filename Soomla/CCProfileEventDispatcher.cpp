@@ -216,6 +216,91 @@ namespace soomla {
                     this->onInviteCancelledEvent(CCProvider(provider->getValue()), CCSocialActionType(socialActionType->getValue()), payload);
                 });
 
+        eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_UP_GET_LEADERBOARDS_STARTED,
+                [this](__Dictionary *parameters) {
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
+                    __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
+                    this->onGetLeaderboardsStartedEvent(CCProvider(provider->getValue()), payload);
+                });
+
+        eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_UP_GET_LEADERBOARDS_FINISHED,
+                [this](__Dictionary *parameters) {
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
+                    __Array *leaderboards = this->extractLeaderboardArray(parameters->objectForKey("leaderboards"));
+                    __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
+                    this->onGetLeaderboardsFinishedEvent(CCProvider(provider->getValue()), leaderboards, payload);
+                });
+
+        eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_UP_GET_LEADERBOARDS_FAILED,
+                [this](__Dictionary *parameters) {
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
+                    __String *errorDescription = dynamic_cast<__String *>(parameters->objectForKey("errorDescription"));
+                    __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
+                    this->onGetLeaderboardsFailedEvent(CCProvider(provider->getValue()), errorDescription, payload);
+                });
+
+        eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_UP_GET_SCORES_STARTED,
+                [this](__Dictionary *parameters) {
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
+                    CCLeaderboard *leaderboard = new CCLeaderboard();
+                    leaderboard->initWithDictionary(dynamic_cast<__Dictionary *>(parameters->objectForKey("leaderboard")));
+                    __Bool *fromStart = dynamic_cast<__Bool *>(parameters->objectForKey("fromStart"));
+                    __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
+                    this->onGetScoresStartedEvent(CCProvider(provider->getValue()), leaderboard, fromStart, payload);
+                });
+
+        eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_UP_GET_SCORES_FINISHED,
+                [this](__Dictionary *parameters) {
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
+                    CCLeaderboard *leaderboard = new CCLeaderboard();
+                    leaderboard->initWithDictionary(dynamic_cast<__Dictionary *>(parameters->objectForKey("leaderboard")));
+                    __Array *scores = this->extractScoreArray(parameters->objectForKey("scores"));
+                    __Bool *hasMore = dynamic_cast<__Bool *>(parameters->objectForKey("hasMore"));
+                    __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
+                    this->onGetScoresFinishedEvent(CCProvider(provider->getValue()), leaderboard, scores, hasMore, payload);
+                });
+
+        eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_UP_GET_SCORES_FAILED,
+                [this](__Dictionary *parameters) {
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
+                    CCLeaderboard *leaderboard = new CCLeaderboard();
+                    leaderboard->initWithDictionary(dynamic_cast<__Dictionary *>(parameters->objectForKey("leaderboard")));
+                    __String *errorDescription = dynamic_cast<__String *>(parameters->objectForKey("errorDescription"));
+                    __Bool *fromStart = dynamic_cast<__Bool *>(parameters->objectForKey("fromStart"));
+                    __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
+                    this->onGetScoresFailedEvent(CCProvider(provider->getValue()), leaderboard, fromStart, errorDescription, payload);
+                });
+
+        eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_UP_REPORT_SCORE_STARTED,
+                [this](__Dictionary *parameters) {
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
+                    CCLeaderboard *leaderboard = new CCLeaderboard();
+                    leaderboard->initWithDictionary(dynamic_cast<__Dictionary *>(parameters->objectForKey("leaderboard")));
+                    __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
+                    this->onReportScoreStartedEvent(CCProvider(provider->getValue()), leaderboard, payload);
+                });
+
+        eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_UP_REPORT_SCORE_FINISHED,
+                [this](__Dictionary *parameters) {
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
+                    CCLeaderboard *leaderboard = new CCLeaderboard();
+                    leaderboard->initWithDictionary(dynamic_cast<__Dictionary *>(parameters->objectForKey("leaderboard")));
+                    CCScore *score = new CCScore();
+                    score->initWithDictionary(dynamic_cast<__Dictionary *>(parameters->objectForKey("score")));
+                    __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
+                    this->onReportScoreFinishedEvent(CCProvider(provider->getValue()), leaderboard, score, payload);
+                });
+
+        eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_UP_REPORT_SCORE_FAILED,
+                [this](__Dictionary *parameters) {
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
+                    CCLeaderboard *leaderboard = new CCLeaderboard();
+                    leaderboard->initWithDictionary(dynamic_cast<__Dictionary *>(parameters->objectForKey("leaderboard")));
+                    __String *errorDescription = dynamic_cast<__String *>(parameters->objectForKey("errorDescription"));
+                    __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
+                    this->onReportScoreFailedEvent(CCProvider(provider->getValue()), leaderboard, errorDescription, payload);
+                });
+
         return true;
     }
 
@@ -232,6 +317,18 @@ namespace soomla {
         __Array *contactsDict = dynamic_cast<__Array *>(userProfileDictArray);
         CC_ASSERT(contactsDict);
         return CCDomainHelper::getInstance()->getDomainsFromDictArray(contactsDict, CCProfileConsts::JSON_JSON_TYPE_USER_PROFILE);
+    }
+
+    __Array *CCProfileEventDispatcher::extractLeaderboardArray(Ref *leaderboardDictArray) {
+        __Array *leaderboardDict = dynamic_cast<__Array *>(leaderboardDictArray);
+        CC_ASSERT(leaderboardDict);
+        return CCDomainHelper::getInstance()->getDomainsFromDictArray(leaderboardDict, CCProfileConsts::JSON_JSON_TYPE_LEADERBOARD);
+    }
+
+    __Array *CCProfileEventDispatcher::extractScoreArray(Ref *scoreDictArray) {
+        __Array *scoreDict = dynamic_cast<__Array *>(scoreDictArray);
+        CC_ASSERT(scoreDict);
+        return CCDomainHelper::getInstance()->getDomainsFromDictArray(scoreDict, CCProfileConsts::JSON_JSON_TYPE_SCORE);
     }
 
     void CCProfileEventDispatcher::onProfileInitialized() {
@@ -432,5 +529,92 @@ namespace soomla {
         eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
 
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_INVITE_CANCELLED, eventData);
+    }
+
+    void CCProfileEventDispatcher::onGetLeaderboardsStartedEvent(CCProvider provider, cocos2d::__String *payload) {
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
+
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_UP_GET_LEADERBOARDS_STARTED, eventData);
+    }
+
+    void CCProfileEventDispatcher::onGetLeaderboardsFinishedEvent(CCProvider provider, cocos2d::__Array *leaderboards, cocos2d::__String *payload) {
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(leaderboards, CCProfileConsts::DICT_ELEMENT_LEADERBOARDS);
+        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
+
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_UP_GET_LEADERBOARDS_FINISHED, eventData);
+    }
+
+    void CCProfileEventDispatcher::onGetLeaderboardsFailedEvent(CCProvider provider, cocos2d::__String *message, cocos2d::__String *payload) {
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(message, CCProfileConsts::DICT_ELEMENT_MESSAGE);
+        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
+
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_UP_GET_LEADERBOARDS_FAILED, eventData);
+    }
+
+    void CCProfileEventDispatcher::onGetScoresStartedEvent(CCProvider provider, CCLeaderboard *leaderboard, cocos2d::__Bool *fromStart, cocos2d::__String *payload) {
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(leaderboard, CCProfileConsts::DICT_ELEMENT_LEADERBOARD);
+        eventData->setObject(fromStart, CCProfileConsts::DICT_ELEMENT_FROM_START);
+        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
+
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_UP_GET_SCORES_STARTED, eventData);
+    }
+
+    void CCProfileEventDispatcher::onGetScoresFinishedEvent(CCProvider provider, CCLeaderboard *leaderboard, cocos2d::__Array *scores, cocos2d::__Bool *hasMore, cocos2d::__String *payload) {
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(leaderboard, CCProfileConsts::DICT_ELEMENT_LEADERBOARD);
+        eventData->setObject(scores, CCProfileConsts::DICT_ELEMENT_SCORES);
+        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
+        eventData->setObject(hasMore, CCProfileConsts::DICT_ELEMENT_HAS_MORE);
+
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_UP_GET_SCORES_FINISHED, eventData);
+    }
+
+    void CCProfileEventDispatcher::onGetScoresFailedEvent(CCProvider provider, CCLeaderboard *leaderboard, cocos2d::__Bool *fromStart, cocos2d::__String *message, cocos2d::__String *payload) {
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(leaderboard, CCProfileConsts::DICT_ELEMENT_LEADERBOARD);
+        eventData->setObject(fromStart, CCProfileConsts::DICT_ELEMENT_FROM_START);
+        eventData->setObject(message, CCProfileConsts::DICT_ELEMENT_MESSAGE);
+        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
+
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_UP_GET_SCORES_FAILED, eventData);
+    }
+
+    void CCProfileEventDispatcher::onReportScoreStartedEvent(CCProvider provider, CCLeaderboard *leaderboard, cocos2d::__String *payload) {
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(leaderboard, CCProfileConsts::DICT_ELEMENT_LEADERBOARD);
+        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
+
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_UP_REPORT_SCORE_STARTED, eventData);
+    }
+
+    void CCProfileEventDispatcher::onReportScoreFinishedEvent(CCProvider provider, CCLeaderboard *leaderboard, CCScore *score, cocos2d::__String *payload) {
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(leaderboard, CCProfileConsts::DICT_ELEMENT_LEADERBOARD);
+        eventData->setObject(score, CCProfileConsts::DICT_ELEMENT_SCORE);
+        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
+
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_UP_REPORT_SCORE_FINISHED, eventData);
+    }
+
+    void CCProfileEventDispatcher::onReportScoreFailedEvent(CCProvider provider, CCLeaderboard *leaderboard, cocos2d::__String *message, cocos2d::__String *payload) {
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(leaderboard, CCProfileConsts::DICT_ELEMENT_LEADERBOARD);
+        eventData->setObject(message, CCProfileConsts::DICT_ELEMENT_MESSAGE);
+        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
+
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_UP_REPORT_SCORE_FAILED, eventData);
     }
 }

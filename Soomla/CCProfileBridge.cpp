@@ -69,6 +69,10 @@ namespace soomla {
 
         CCDomainFactory::getInstance()->registerCreator(CCProfileConsts::JSON_JSON_TYPE_USER_PROFILE,
                 &CCUserProfile::createWithDictionary);
+        CCDomainFactory::getInstance()->registerCreator(CCProfileConsts::JSON_JSON_TYPE_LEADERBOARD,
+                &CCLeaderboard::createWithDictionary);
+        CCDomainFactory::getInstance()->registerCreator(CCProfileConsts::JSON_JSON_TYPE_SCORE,
+                &CCScore::createWithDictionary);
         
         __Dictionary *params = __Dictionary::create();
         params->setObject(__String::create("CCProfileBridge::init"), "method");

@@ -551,7 +551,7 @@ namespace soomla {
         * @param reward The reward to grant
         * @param soomlaError Any errors will be returned in this parameter
         */
-        void reportScore(CCProvider provider, CCLeaderboard *leaderboard, unsigned int score, const char *payload, CCReward *reward, CCError **soomlaError);
+        void submitScore(CCProvider provider, CCLeaderboard *leaderboard, unsigned int score, const char *payload, CCReward *reward, CCError **soomlaError);
     };
 };
 

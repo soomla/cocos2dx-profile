@@ -376,7 +376,7 @@ public class ProfileBridge {
             }
         });
 
-        ndkGlue.registerCallHandler("CCSoomlaProfile::reportScore", new NdkGlue.CallHandler() {
+        ndkGlue.registerCallHandler("CCSoomlaProfile::submitScore", new NdkGlue.CallHandler() {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
                 SoomlaUtils.LogError(TAG, "Score reporting isn't supported in Android yet.");

@@ -427,7 +427,7 @@ namespace soomla {
         virtual void onGetScoresFailedEvent(CCProvider provider, CCLeaderboard *leaderboard, cocos2d::__Bool *fromStart, cocos2d::__String *message, cocos2d::__String *payload);
 
         /**
-         Fired when the score reporting process from a provider has started.
+         Fired when the score submitting process from a provider has started.
 
          Event Name - CCProfileConsts::EVENT_REPORT_SCORE_STARTED
          Event Data (__Dictionary):
@@ -438,10 +438,10 @@ namespace soomla {
          CCProfileConsts::DICT_ELEMENT_PAYLOAD - __String - an identification
          String sent from the caller of the action.
          */
-        virtual void onReportScoreStartedEvent(CCProvider provider, CCLeaderboard *leaderboard, cocos2d::__String *payload);
+        virtual void onSubmitScoreStartedEvent(CCProvider provider, CCLeaderboard *leaderboard, cocos2d::__String *payload);
 
        /**
-        Fired when the score reporting process from a provider has finished.
+        Fired when the score submitting process from a provider has finished.
 
         Event Name - CCProfileConsts::EVENT_REPORT_SCORE_FINISHED
         Event Data (__Dictionary):
@@ -454,10 +454,10 @@ namespace soomla {
         CCProfileConsts::DICT_ELEMENT_PAYLOAD - __String - an identification
         String sent from the caller of the action.
         */
-        virtual void onReportScoreFinishedEvent(CCProvider provider, CCLeaderboard *leaderboard, CCScore *score, cocos2d::__String *payload);
+        virtual void onSubmitScoreFinishedEvent(CCProvider provider, CCLeaderboard *leaderboard, CCScore *score, cocos2d::__String *payload);
 
         /**
-         Fired when the score reporting process from a provider has failed.
+         Fired when the score submitting process from a provider has failed.
 
          Event Name - CCProfileConsts::EVENT_REPORT_SCORE_FAILED
          Event Data (__Dictionary):
@@ -470,7 +470,7 @@ namespace soomla {
          CCProfileConsts::DICT_ELEMENT_PAYLOAD - __String - an identification
          String sent from the caller of the action.
          */
-        virtual void onReportScoreFailedEvent(CCProvider provider, CCLeaderboard *leaderboard, cocos2d::__String *message, cocos2d::__String *payload);
+        virtual void onSubmitScoreFailedEvent(CCProvider provider, CCLeaderboard *leaderboard, cocos2d::__String *message, cocos2d::__String *payload);
 
     private:
         CCUserProfile *extractUserProfile(Ref *userProfileRef);

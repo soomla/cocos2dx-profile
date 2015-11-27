@@ -111,9 +111,9 @@ namespace soomla {
         static char const *EVENT_UP_GET_SCORES_FINISHED;
         static char const *EVENT_UP_GET_SCORES_FAILED;
 
-        static char const *EVENT_UP_REPORT_SCORE_STARTED;
-        static char const *EVENT_UP_REPORT_SCORE_FINISHED;
-        static char const *EVENT_UP_REPORT_SCORE_FAILED;
+        static char const *EVENT_UP_SUBMIT_SCORE_STARTED;
+        static char const *EVENT_UP_SUBMIT_SCORE_FINISHED;
+        static char const *EVENT_UP_SUBMIT_SCORE_FAILED;
 
         static char const *EVENT_USER_PROFILE_UPDATED;
     };

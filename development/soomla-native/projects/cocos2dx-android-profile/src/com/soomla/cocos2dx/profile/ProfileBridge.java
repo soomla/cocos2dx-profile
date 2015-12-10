@@ -24,6 +24,7 @@ import com.soomla.cocos2dx.common.NdkGlue;
 import com.soomla.profile.SoomlaProfile;
 import com.soomla.profile.domain.IProvider;
 import com.soomla.profile.domain.UserProfile;
+import com.soomla.profile.domain.gameservices.*;
 import com.soomla.profile.exceptions.ProviderNotFoundException;
 import com.soomla.profile.exceptions.UserProfileNotFoundException;
 import com.soomla.rewards.Reward;
@@ -365,21 +366,56 @@ public class ProfileBridge {
         ndkGlue.registerCallHandler("CCSoomlaProfile::getLeaderboards", new NdkGlue.CallHandler() {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
-                SoomlaUtils.LogError(TAG, "Leaderboards receiving isn't supported in Android yet.");
+                String provider = params.getString("provider");
+                String payload = params.getString("payload");
+                JSONObject rewardJson = params.optJSONObject("reward");
+                Reward reward = (rewardJson != null) ?
+                        domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
+                SoomlaProfile.getInstance().getLeaderboards(IProvider.Provider.getEnum(provider), payload, reward);
             }
         });
 
         ndkGlue.registerCallHandler("CCSoomlaProfile::getScores", new NdkGlue.CallHandler() {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
-                SoomlaUtils.LogError(TAG, "Scores receiving isn't supported in Android yet.");
+                String provider = params.getString("provider");
+                Boolean fromStart = params.getBoolean("fromStart");
+                JSONObject leaderboardJson = params.optJSONObject("leaderboard");
+                Leaderboard from = (leaderboardJson!= null) ?
+                        domainFactory.<Leaderboard>createWithJsonObject(leaderboardJson) : null;
+                String payload = params.getString("payload");
+                JSONObject rewardJson = params.optJSONObject("reward");
+                Reward reward = (rewardJson != null) ?
+                        domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
+                SoomlaProfile.getInstance().getScores(IProvider.Provider.getEnum(provider), from, fromStart, payload, reward);
             }
         });
 
         ndkGlue.registerCallHandler("CCSoomlaProfile::submitScore", new NdkGlue.CallHandler() {
             @Override
             public void handle(JSONObject params, JSONObject retParams) throws Exception {
-                SoomlaUtils.LogError(TAG, "Score reporting isn't supported in Android yet.");
+                String provider = params.getString("provider");
+                JSONObject leaderboardJson = params.optJSONObject("leaderboard");
+                Leaderboard to = (leaderboardJson!= null) ?
+                        domainFactory.<Leaderboard>createWithJsonObject(leaderboardJson) : null;
+                long value = params.getLong("score");
+                String payload = params.getString("payload");
+                JSONObject rewardJson = params.optJSONObject("reward");
+                Reward reward = (rewardJson != null) ?
+                        domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
+                SoomlaProfile.getInstance().submitScore(IProvider.Provider.getEnum(provider), to, value, payload, reward);
+            }
+        });
+
+        ndkGlue.registerCallHandler("CCSoomlaProfile::showLeaderboards", new NdkGlue.CallHandler() {
+            @Override
+            public void handle(JSONObject params, JSONObject retParams) throws Exception {
+                String provider = params.getString("provider");
+                String payload = params.getString("payload");
+                JSONObject rewardJson = params.optJSONObject("reward");
+                Reward reward = (rewardJson != null) ?
+                        domainFactory.<Reward>createWithJsonObject(rewardJson) : null;
+                SoomlaProfile.getInstance().showLeaderboards(IProvider.Provider.getEnum(provider), ndkGlue.getActivityRef().get(), payload, reward);
             }
         });
 

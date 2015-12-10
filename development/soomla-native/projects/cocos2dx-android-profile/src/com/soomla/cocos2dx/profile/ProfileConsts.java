@@ -47,4 +47,14 @@ public class ProfileConsts {
     public static final String EVENT_INVITE_FINISHED = "com.soomla.profile.events.social.InviteFinishedEvent";
     public static final String EVENT_INVITE_FAILED = "com.soomla.profile.events.social.InviteFailedEvent";
     public static final String EVENT_INVITE_CANCELLED = "com.soomla.profile.events.social.InviteCancelledEvent";
+    public static final String EVENT_GET_LEADERBOARDS_STARTED = "com.soomla.profile.events.social.GetLeaderboardsStartedEvent";
+    public static final String EVENT_GET_LEADERBOARDS_FINISHED = "com.soomla.profile.events.social.GetLeaderboardsFinishedEvent";
+    public static final String EVENT_GET_LEADERBOARDS_FAILED = "com.soomla.profile.events.social.GetLeaderboardsFailedEvent";
+    public static final String EVENT_GET_SCORES_STARTED = "com.soomla.profile.events.social.GetScoresStartedEvent";
+    public static final String EVENT_GET_SCORES_FINISHED = "com.soomla.profile.events.social.GetScoresFinishedEvent";
+    public static final String EVENT_GET_SCORES_FAILED = "com.soomla.profile.events.social.GetScoresFailedEvent";
+    public static final String EVENT_SUBMIT_SCORE_STARTED = "com.soomla.profile.events.social.SubmitScoreStartedEvent";
+    public static final String EVENT_SUBMIT_SCORE_FINISHED = "com.soomla.profile.events.social.SubmitScoreFinishedEvent";
+    public static final String EVENT_SUBMIT_SCORE_FAILED = "com.soomla.profile.events.social.SubmitScoreFailedEvent";
+    public static final String EVENT_SHOW_LEADERBOARDS = "com.soomla.profile.events.social.ShowLeaderboardsEvent";
 }

@@ -300,6 +300,12 @@ namespace soomla {
                     __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
                     this->onSubmitScoreFailedEvent(CCProvider(provider->getValue()), leaderboard, errorDescription, payload);
                 });
+        eventDispatcher->registerEventHandler(CCProfileConsts::EVENT_UP_SHOW_LEADERBOARDS,
+                [this](__Dictionary *parameters) {
+                    __Integer* provider = dynamic_cast<__Integer *>(parameters->objectForKey("provider"));
+                    __String *payload = dynamic_cast<__String *>(parameters->objectForKey("payload"));
+                    this->onShowLeaderboardsEvent(CCProvider(provider->getValue()), payload);
+                });
 
         return true;
     }
@@ -616,5 +622,13 @@ namespace soomla {
         eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
 
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_UP_SUBMIT_SCORE_FAILED, eventData);
+    }
+
+    void CCProfileEventDispatcher::onShowLeaderboardsEvent(CCProvider provider, cocos2d::__String *payload) {
+        __Dictionary *eventData = __Dictionary::create();
+        eventData->setObject(__Integer::create(provider), CCProfileConsts::DICT_ELEMENT_PROVIDER);
+        eventData->setObject(payload, CCProfileConsts::DICT_ELEMENT_PAYLOAD);
+
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CCProfileConsts::EVENT_UP_SHOW_LEADERBOARDS, eventData);
     }
 }

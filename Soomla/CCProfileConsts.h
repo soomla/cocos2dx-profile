@@ -46,6 +46,8 @@ namespace soomla {
         static char const *JSON_REWARD;
 
         static char const *JSON_IDENTIFIER;
+        static char const JSON_ICON_URL;
+        static char const JSON_NAME;
         static char const *JSON_USER_PROFILE;
         static char const *JSON_LEADERBOARD;
         static char const *JSON_SCORE_VALUE;
@@ -114,6 +116,8 @@ namespace soomla {
         static char const *EVENT_UP_SUBMIT_SCORE_STARTED;
         static char const *EVENT_UP_SUBMIT_SCORE_FINISHED;
         static char const *EVENT_UP_SUBMIT_SCORE_FAILED;
+
+        static char const *EVENT_UP_SHOW_LEADERBOARDS;
 
         static char const *EVENT_USER_PROFILE_UPDATED;
     };

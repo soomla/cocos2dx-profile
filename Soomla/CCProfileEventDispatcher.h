@@ -472,6 +472,18 @@ namespace soomla {
          */
         virtual void onSubmitScoreFailedEvent(CCProvider provider, CCLeaderboard *leaderboard, cocos2d::__String *message, cocos2d::__String *payload);
 
+        /**
+         Fired when native dialog with leaderboards is shown
+
+         Event Name - CCProfileConsts::EVENT_SHOW_LEADERBOARDS
+         Event Data (__Dictionary):
+         CCProfileConsts::DICT_ELEMENT_PROVIDER - __Integer - The provider on
+         which native leaderboards dialog is shown.
+         CCProfileConsts::DICT_ELEMENT_PAYLOAD - __String - an identification
+         String sent from the caller of the action.
+         */
+        virtual void onShowLeaderboardsEvent(CCProvider provider, cocos2d::__String *payload);
+
     private:
         CCUserProfile *extractUserProfile(Ref *userProfileRef);
         cocos2d::__Array *extractUserProfileArray(Ref *userProfileDictArray);

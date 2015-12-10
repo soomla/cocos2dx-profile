@@ -552,6 +552,16 @@ namespace soomla {
         * @param soomlaError Any errors will be returned in this parameter
         */
         void submitScore(CCProvider provider, CCLeaderboard *leaderboard, unsigned int score, const char *payload, CCReward *reward, CCError **soomlaError);
+
+        /**
+        * Opens native dialog displaying leaderboards list
+
+        * @param provider The provider to use
+        * @param payload a String to receive when the function returns.
+        * @param reward The reward to grant
+        * @param soomlaError Any errors will be returned in this parameter
+        */
+        void showLeaderboards(CCProvider provider, const char *payload, CCReward *reward, CCError **soomlaError);
     };
 };
 

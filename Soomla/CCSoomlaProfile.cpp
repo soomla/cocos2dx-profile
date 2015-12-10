@@ -494,4 +494,15 @@ namespace soomla {
         }
         CCNdkBridge::callNative(params, soomlaError);
     }
+
+    void CCSoomlaProfile::showLeaderboards(CCProvider provider, const char *payload, CCReward *reward, CCError **soomlaError) {
+        __Dictionary *params = __Dictionary::create();
+        params->setObject(__String::create("CCSoomlaProfile::showLeaderboards"), "method");
+        params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
+        params->setObject(__String::create(payload), "payload");
+        if (reward) {
+            params->setObject(reward->toDictionary(), "reward");
+        }
+        CCNdkBridge::callNative(params, soomlaError);
+    }
 }

@@ -27,14 +27,13 @@ bool soomla::CCLeaderboard::init(cocos2d::__String *id, cocos2d::__String *provi
 
 
 bool soomla::CCLeaderboard::initWithDictionary(cocos2d::__Dictionary *dict) {
-    CCDomain::initWithDictionary(dict);
     fillProviderFromDict(dict);
 
     return true;
 }
 
 cocos2d::__Dictionary *soomla::CCLeaderboard::toDictionary() {
-    cocos2d::__Dictionary* dict = CCDomain::toDictionary();
+    cocos2d::__Dictionary* dict = cocos2d::__Dictionary::create();
 
     putProviderToDict(dict);
 

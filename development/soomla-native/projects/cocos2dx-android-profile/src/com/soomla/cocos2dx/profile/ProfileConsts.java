@@ -23,6 +23,8 @@ package com.soomla.cocos2dx.profile;
  */
 public class ProfileConsts {
     public static final String JSON_JSON_TYPE_USER_PROFILE = "UserProfile";
+    public static final String JSON_JSON_TYPE_LEADERBOARD = "Leaderboard";
+    public static final String JSON_JSON_TYPE_SCORE = "Score";
 
     public static final String EVENT_UP_PROFILE_INITIALIZED = "com.soomla.profile.events.ProfileInitializedEvent";
     public static final String EVENT_UP_USER_RATING = "com.soomla.profile.events.UserRatingEvent";

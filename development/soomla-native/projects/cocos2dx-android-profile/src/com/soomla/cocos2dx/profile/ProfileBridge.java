@@ -88,6 +88,28 @@ public class ProfileBridge {
             }
         });
 
+        domainFactory.registerCreator(ProfileConsts.JSON_JSON_TYPE_LEADERBOARD, new DomainFactory.Creator<Leaderboard>() {
+            @Override
+            public Leaderboard create(JSONObject jsonObject) {
+                try {
+                    return new Leaderboard(jsonObject);
+                } catch (JSONException e) {
+                    throw new IllegalStateException(e);
+                }
+            }
+        });
+
+        domainFactory.registerCreator(ProfileConsts.JSON_JSON_TYPE_SCORE, new DomainFactory.Creator<Score>() {
+            @Override
+            public Score create(JSONObject jsonObject) {
+                try {
+                    return new Score(jsonObject);
+                } catch (JSONException e) {
+                    throw new IllegalStateException(e);
+                }
+            }
+        });
+
         final NdkGlue ndkGlue = NdkGlue.getInstance();
 
         ndkGlue.registerCallHandler("CCProfileBridge::init", new NdkGlue.CallHandler() {

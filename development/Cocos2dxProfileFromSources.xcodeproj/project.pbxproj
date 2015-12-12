@@ -19,8 +19,6 @@
 		449B5B2B1C03968500077A40 /* Score.m in Sources */ = {isa = PBXBuildFile; fileRef = 449B5B231C03968500077A40 /* Score.m */; };
 		449B5B2C1C03968500077A40 /* IGameServicesCallbacks.h in Headers */ = {isa = PBXBuildFile; fileRef = 449B5B241C03968500077A40 /* IGameServicesCallbacks.h */; };
 		449B5B2D1C03968500077A40 /* IGameServicesProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 449B5B251C03968500077A40 /* IGameServicesProvider.h */; };
-		449B5B2E1C03968500077A40 /* GameServicesController.h in Headers */ = {isa = PBXBuildFile; fileRef = 449B5B261C03968500077A40 /* GameServicesController.h */; };
-		449B5B2F1C03968500077A40 /* GameServicesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 449B5B271C03968500077A40 /* GameServicesController.m */; };
 		449B5B371C0396A500077A40 /* Leaderboard+GameCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 449B5B311C0396A500077A40 /* Leaderboard+GameCenter.h */; };
 		449B5B381C0396A500077A40 /* Leaderboard+GameCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 449B5B321C0396A500077A40 /* Leaderboard+GameCenter.m */; };
 		449B5B391C0396A500077A40 /* Score+GameCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 449B5B331C0396A500077A40 /* Score+GameCenter.h */; };
@@ -29,8 +27,12 @@
 		449B5B3C1C0396A600077A40 /* SoomlaGameCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 449B5B361C0396A500077A40 /* SoomlaGameCenter.m */; };
 		449B5B3F1C0399DA00077A40 /* CCSoomlaGameCenterConfigBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 449B5B3D1C0399DA00077A40 /* CCSoomlaGameCenterConfigBuilder.cpp */; };
 		449B5B401C0399DA00077A40 /* CCSoomlaGameCenterConfigBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 449B5B3E1C0399DA00077A40 /* CCSoomlaGameCenterConfigBuilder.h */; };
-		44D8C2AA1BD663830067EABB /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D8C2A81BD663830067EABB /* FBSDKCoreKit.framework */; };
-		44D8C2AB1BD663830067EABB /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D8C2A91BD663830067EABB /* FBSDKShareKit.framework */; };
+		44B3179C1C19EC8D00A98D79 /* Leaderboard+GPGS.h in Headers */ = {isa = PBXBuildFile; fileRef = 44B317981C19EC8D00A98D79 /* Leaderboard+GPGS.h */; };
+		44B3179D1C19EC8D00A98D79 /* Leaderboard+GPGS.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B317991C19EC8D00A98D79 /* Leaderboard+GPGS.m */; };
+		44B3179E1C19EC8D00A98D79 /* Score+GPGS.h in Headers */ = {isa = PBXBuildFile; fileRef = 44B3179A1C19EC8D00A98D79 /* Score+GPGS.h */; };
+		44B3179F1C19EC8D00A98D79 /* Score+GPGS.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B3179B1C19EC8D00A98D79 /* Score+GPGS.m */; };
+		44B317B31C19ECFE00A98D79 /* ProviderManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 44B317B11C19ECFE00A98D79 /* ProviderManager.h */; };
+		44B317B41C19ECFE00A98D79 /* ProviderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B317B21C19ECFE00A98D79 /* ProviderManager.m */; };
 		B2FA803D83176205B55C4220 /* CCSoomlaGooglePlusConfigBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA8D47FCDEB19184549C5A /* CCSoomlaGooglePlusConfigBuilder.h */; };
 		B2FA8188EDBA365BB94FF2DA /* CCSoomlaProfileSNConfigBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA88CFBDBF818AB944E2DB /* CCSoomlaProfileSNConfigBuilder.h */; };
 		B2FA8238838D81E9DEB19FE3 /* CCSoomlaFacebookConfigBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA8E75B8D6CD724D942C02 /* CCSoomlaFacebookConfigBuilder.h */; };
@@ -45,8 +47,6 @@
 		F825C0F119B31D8100A2CABB /* ProfileBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = F825C0EF19B31D8100A2CABB /* ProfileBridge.h */; };
 		F825C0F219B31D8100A2CABB /* ProfileBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = F825C0F019B31D8100A2CABB /* ProfileBridge.mm */; };
 		F825C17819B3209F00A2CABB /* IAuthProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = F825C14B19B3209F00A2CABB /* IAuthProvider.h */; };
-		F825C17919B3209F00A2CABB /* AuthController.h in Headers */ = {isa = PBXBuildFile; fileRef = F825C14C19B3209F00A2CABB /* AuthController.h */; };
-		F825C17A19B3209F00A2CABB /* AuthController.m in Sources */ = {isa = PBXBuildFile; fileRef = F825C14D19B3209F00A2CABB /* AuthController.m */; };
 		F825C17B19B3209F00A2CABB /* PJSONConsts.h in Headers */ = {isa = PBXBuildFile; fileRef = F825C14F19B3209F00A2CABB /* PJSONConsts.h */; };
 		F825C17C19B3209F00A2CABB /* PJSONConsts.m in Sources */ = {isa = PBXBuildFile; fileRef = F825C15019B3209F00A2CABB /* PJSONConsts.m */; };
 		F825C17F19B3209F00A2CABB /* UserProfileStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = F825C15319B3209F00A2CABB /* UserProfileStorage.h */; };
@@ -58,14 +58,10 @@
 		F825C18D19B3209F00A2CABB /* ProviderNotFoundException.m in Sources */ = {isa = PBXBuildFile; fileRef = F825C16419B3209F00A2CABB /* ProviderNotFoundException.m */; };
 		F825C18E19B3209F00A2CABB /* UserProfileNotFoundException.h in Headers */ = {isa = PBXBuildFile; fileRef = F825C16519B3209F00A2CABB /* UserProfileNotFoundException.h */; };
 		F825C18F19B3209F00A2CABB /* UserProfileNotFoundException.m in Sources */ = {isa = PBXBuildFile; fileRef = F825C16619B3209F00A2CABB /* UserProfileNotFoundException.m */; };
-		F825C19019B3209F00A2CABB /* ProviderLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = F825C16719B3209F00A2CABB /* ProviderLoader.h */; };
-		F825C19119B3209F00A2CABB /* ProviderLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F825C16819B3209F00A2CABB /* ProviderLoader.m */; };
 		F825C19219B3209F00A2CABB /* ISocialProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = F825C16A19B3209F00A2CABB /* ISocialProvider.h */; };
 		F825C19319B3209F00A2CABB /* SocialCallbacks.h in Headers */ = {isa = PBXBuildFile; fileRef = F825C16B19B3209F00A2CABB /* SocialCallbacks.h */; };
 		F825C19419B3209F00A2CABB /* SocialActionUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = F825C16C19B3209F00A2CABB /* SocialActionUtils.h */; };
 		F825C19519B3209F00A2CABB /* SocialActionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F825C16D19B3209F00A2CABB /* SocialActionUtils.m */; };
-		F825C19619B3209F00A2CABB /* SocialController.h in Headers */ = {isa = PBXBuildFile; fileRef = F825C16E19B3209F00A2CABB /* SocialController.h */; };
-		F825C19719B3209F00A2CABB /* SocialController.m in Sources */ = {isa = PBXBuildFile; fileRef = F825C16F19B3209F00A2CABB /* SocialController.m */; };
 		F825C19819B3209F00A2CABB /* SoomlaiOSProfile-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = F825C17119B3209F00A2CABB /* SoomlaiOSProfile-Prefix.pch */; };
 		F825C19919B3209F00A2CABB /* SoomlaProfile.h in Headers */ = {isa = PBXBuildFile; fileRef = F825C17219B3209F00A2CABB /* SoomlaProfile.h */; };
 		F825C19A19B3209F00A2CABB /* SoomlaProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = F825C17319B3209F00A2CABB /* SoomlaProfile.m */; };
@@ -127,8 +123,6 @@
 		449B5B231C03968500077A40 /* Score.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Score.m; sourceTree = "<group>"; };
 		449B5B241C03968500077A40 /* IGameServicesCallbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGameServicesCallbacks.h; sourceTree = "<group>"; };
 		449B5B251C03968500077A40 /* IGameServicesProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGameServicesProvider.h; sourceTree = "<group>"; };
-		449B5B261C03968500077A40 /* GameServicesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameServicesController.h; sourceTree = "<group>"; };
-		449B5B271C03968500077A40 /* GameServicesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameServicesController.m; sourceTree = "<group>"; };
 		449B5B311C0396A500077A40 /* Leaderboard+GameCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Leaderboard+GameCenter.h"; sourceTree = "<group>"; };
 		449B5B321C0396A500077A40 /* Leaderboard+GameCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Leaderboard+GameCenter.m"; sourceTree = "<group>"; };
 		449B5B331C0396A500077A40 /* Score+GameCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Score+GameCenter.h"; sourceTree = "<group>"; };
@@ -137,9 +131,12 @@
 		449B5B361C0396A500077A40 /* SoomlaGameCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoomlaGameCenter.m; sourceTree = "<group>"; };
 		449B5B3D1C0399DA00077A40 /* CCSoomlaGameCenterConfigBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSoomlaGameCenterConfigBuilder.cpp; sourceTree = "<group>"; };
 		449B5B3E1C0399DA00077A40 /* CCSoomlaGameCenterConfigBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSoomlaGameCenterConfigBuilder.h; sourceTree = "<group>"; };
-		44D8C2A71BD663830067EABB /* FacebookSDKStrings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKStrings.bundle; path = "submodules/ios-profile/social-providers/ios-profile-facebook/FacebookSDKStrings.bundle"; sourceTree = "<group>"; };
-		44D8C2A81BD663830067EABB /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "submodules/ios-profile/social-providers/ios-profile-facebook/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
-		44D8C2A91BD663830067EABB /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "submodules/ios-profile/social-providers/ios-profile-facebook/FBSDKShareKit.framework"; sourceTree = "<group>"; };
+		44B317981C19EC8D00A98D79 /* Leaderboard+GPGS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Leaderboard+GPGS.h"; path = "GPGS Categories/Leaderboard+GPGS.h"; sourceTree = "<group>"; };
+		44B317991C19EC8D00A98D79 /* Leaderboard+GPGS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Leaderboard+GPGS.m"; path = "GPGS Categories/Leaderboard+GPGS.m"; sourceTree = "<group>"; };
+		44B3179A1C19EC8D00A98D79 /* Score+GPGS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Score+GPGS.h"; path = "GPGS Categories/Score+GPGS.h"; sourceTree = "<group>"; };
+		44B3179B1C19EC8D00A98D79 /* Score+GPGS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Score+GPGS.m"; path = "GPGS Categories/Score+GPGS.m"; sourceTree = "<group>"; };
+		44B317B11C19ECFE00A98D79 /* ProviderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderManager.h; sourceTree = "<group>"; };
+		44B317B21C19ECFE00A98D79 /* ProviderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderManager.m; sourceTree = "<group>"; };
 		B2FA806B76E091A100B75956 /* CCSoomlaProfileConfigBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSoomlaProfileConfigBuilder.cpp; sourceTree = "<group>"; };
 		B2FA812AC6A6CDF7762A31D9 /* CCSoomlaFacebookConfigBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSoomlaFacebookConfigBuilder.cpp; sourceTree = "<group>"; };
 		B2FA873292912963C9799904 /* CCSoomlaTwitterConfigBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSoomlaTwitterConfigBuilder.cpp; sourceTree = "<group>"; };
@@ -155,8 +152,6 @@
 		F825C0EF19B31D8100A2CABB /* ProfileBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileBridge.h; sourceTree = "<group>"; };
 		F825C0F019B31D8100A2CABB /* ProfileBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ProfileBridge.mm; sourceTree = "<group>"; };
 		F825C14B19B3209F00A2CABB /* IAuthProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAuthProvider.h; sourceTree = "<group>"; };
-		F825C14C19B3209F00A2CABB /* AuthController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthController.h; sourceTree = "<group>"; };
-		F825C14D19B3209F00A2CABB /* AuthController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthController.m; sourceTree = "<group>"; };
 		F825C14F19B3209F00A2CABB /* PJSONConsts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJSONConsts.h; sourceTree = "<group>"; };
 		F825C15019B3209F00A2CABB /* PJSONConsts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJSONConsts.m; sourceTree = "<group>"; };
 		F825C15319B3209F00A2CABB /* UserProfileStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileStorage.h; sourceTree = "<group>"; };
@@ -168,14 +163,10 @@
 		F825C16419B3209F00A2CABB /* ProviderNotFoundException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderNotFoundException.m; sourceTree = "<group>"; };
 		F825C16519B3209F00A2CABB /* UserProfileNotFoundException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileNotFoundException.h; sourceTree = "<group>"; };
 		F825C16619B3209F00A2CABB /* UserProfileNotFoundException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileNotFoundException.m; sourceTree = "<group>"; };
-		F825C16719B3209F00A2CABB /* ProviderLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderLoader.h; sourceTree = "<group>"; };
-		F825C16819B3209F00A2CABB /* ProviderLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderLoader.m; sourceTree = "<group>"; };
 		F825C16A19B3209F00A2CABB /* ISocialProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISocialProvider.h; sourceTree = "<group>"; };
 		F825C16B19B3209F00A2CABB /* SocialCallbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialCallbacks.h; sourceTree = "<group>"; };
 		F825C16C19B3209F00A2CABB /* SocialActionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialActionUtils.h; sourceTree = "<group>"; };
 		F825C16D19B3209F00A2CABB /* SocialActionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialActionUtils.m; sourceTree = "<group>"; };
-		F825C16E19B3209F00A2CABB /* SocialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialController.h; sourceTree = "<group>"; };
-		F825C16F19B3209F00A2CABB /* SocialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialController.m; sourceTree = "<group>"; };
 		F825C17019B3209F00A2CABB /* SoomlaiOSProfile-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SoomlaiOSProfile-Info.plist"; sourceTree = "<group>"; };
 		F825C17119B3209F00A2CABB /* SoomlaiOSProfile-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SoomlaiOSProfile-Prefix.pch"; sourceTree = "<group>"; };
 		F825C17219B3209F00A2CABB /* SoomlaProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoomlaProfile.h; sourceTree = "<group>"; };
@@ -238,10 +229,8 @@
 				F82F0C471A13776800D1B34A /* MediaPlayer.framework in Frameworks */,
 				F82F0C481A13776800D1B34A /* Security.framework in Frameworks */,
 				F82F0C491A13776800D1B34A /* Social.framework in Frameworks */,
-				44D8C2AB1BD663830067EABB /* FBSDKShareKit.framework in Frameworks */,
 				F82F0C4A1A13776800D1B34A /* Twitter.framework in Frameworks */,
 				F82F0C4B1A13776800D1B34A /* UIKit.framework in Frameworks */,
-				44D8C2AA1BD663830067EABB /* FBSDKCoreKit.framework in Frameworks */,
 				F82F0C351A13773100D1B34A /* GooglePlus.framework in Frameworks */,
 				F82F0C371A13773100D1B34A /* GoogleOpenSource.framework in Frameworks */,
 				C0B3C5F3168C6D0C00161FAA /* Foundation.framework in Frameworks */,
@@ -309,13 +298,10 @@
 		C0B3C5E4168C6D0C00161FAA = {
 			isa = PBXGroup;
 			children = (
-				449B5B301C0396A500077A40 /* SoomlaiOSProfileGameCenter */,
-				44D8C2A71BD663830067EABB /* FacebookSDKStrings.bundle */,
-				44D8C2A81BD663830067EABB /* FBSDKCoreKit.framework */,
-				44D8C2A91BD663830067EABB /* FBSDKShareKit.framework */,
 				F8DBEC6D19BDB38D0093252C /* Soomla */,
 				F825C0ED19B31D8100A2CABB /* ProfileCocos2dx */,
 				F825C14919B3209F00A2CABB /* SoomlaiOSProfile */,
+				449B5B301C0396A500077A40 /* SoomlaiOSProfileGameCenter */,
 				F874881D1A0007F9005952C9 /* SoomlaiOSProfileFacebook */,
 				F82F0C281A1376DD00D1B34A /* SoomlaiOSProfileGoogle */,
 				F82F0C241A1376DD00D1B34A /* SoomlaiOSProfileTwitter */,
@@ -376,24 +362,18 @@
 		F825C14919B3209F00A2CABB /* SoomlaiOSProfile */ = {
 			isa = PBXGroup;
 			children = (
+				44B317B11C19ECFE00A98D79 /* ProviderManager.h */,
+				44B317B21C19ECFE00A98D79 /* ProviderManager.m */,
 				449B5B1E1C03968500077A40 /* game-services */,
-				449B5B261C03968500077A40 /* GameServicesController.h */,
-				449B5B271C03968500077A40 /* GameServicesController.m */,
 				F8F3875A1A2C9EFA00EEA2E2 /* ProfileEventHandling.m */,
 				F8F3875B1A2C9EFA00EEA2E2 /* ProfileEventHandling.h */,
 				F825C14A19B3209F00A2CABB /* auth */,
-				F825C14C19B3209F00A2CABB /* AuthController.h */,
-				F825C14D19B3209F00A2CABB /* AuthController.m */,
 				F825C14E19B3209F00A2CABB /* data */,
 				F825C15519B3209F00A2CABB /* domain */,
 				F825C16219B3209F00A2CABB /* exceptions */,
-				F825C16719B3209F00A2CABB /* ProviderLoader.h */,
-				F825C16819B3209F00A2CABB /* ProviderLoader.m */,
 				F825C16919B3209F00A2CABB /* social */,
 				F825C16C19B3209F00A2CABB /* SocialActionUtils.h */,
 				F825C16D19B3209F00A2CABB /* SocialActionUtils.m */,
-				F825C16E19B3209F00A2CABB /* SocialController.h */,
-				F825C16F19B3209F00A2CABB /* SocialController.m */,
 				F825C17019B3209F00A2CABB /* SoomlaiOSProfile-Info.plist */,
 				F825C17119B3209F00A2CABB /* SoomlaiOSProfile-Prefix.pch */,
 				F825C17219B3209F00A2CABB /* SoomlaProfile.h */,
@@ -470,6 +450,10 @@
 		F82F0C281A1376DD00D1B34A /* SoomlaiOSProfileGoogle */ = {
 			isa = PBXGroup;
 			children = (
+				44B317981C19EC8D00A98D79 /* Leaderboard+GPGS.h */,
+				44B317991C19EC8D00A98D79 /* Leaderboard+GPGS.m */,
+				44B3179A1C19EC8D00A98D79 /* Score+GPGS.h */,
+				44B3179B1C19EC8D00A98D79 /* Score+GPGS.m */,
 				F82F0C291A1376DD00D1B34A /* SoomlaGooglePlus.h */,
 				F82F0C2A1A1376DD00D1B34A /* SoomlaGooglePlus.m */,
 				F82F0C2B1A1376DD00D1B34A /* SoomlaiOSProfileGoogle.pch */,
@@ -534,7 +518,7 @@
 			files = (
 				449B5B2A1C03968500077A40 /* Score.h in Headers */,
 				F87488211A0007F9005952C9 /* SoomlaFacebook.h in Headers */,
-				F825C19019B3209F00A2CABB /* ProviderLoader.h in Headers */,
+				44B3179E1C19EC8D00A98D79 /* Score+GPGS.h in Headers */,
 				F8DBEC8B19BDB38D0093252C /* CCUserProfileUtils.h in Headers */,
 				F82F0C2D1A1376DD00D1B34A /* SoomlaTwitter.h in Headers */,
 				F8DBEC8E19BDB38D0093252C /* CCUserProfile.h in Headers */,
@@ -564,19 +548,18 @@
 				F825C0F119B31D8100A2CABB /* ProfileBridge.h in Headers */,
 				F825C19219B3209F00A2CABB /* ISocialProvider.h in Headers */,
 				449B5B1B1C0395FB00077A40 /* CCLeaderboard.h in Headers */,
-				F825C17919B3209F00A2CABB /* AuthController.h in Headers */,
 				F8BBDC8E1AB1D16600FD9403 /* CCProfileBridgeBinderIos.h in Headers */,
 				F825C18A19B3209F00A2CABB /* UserProfile.h in Headers */,
-				449B5B2E1C03968500077A40 /* GameServicesController.h in Headers */,
 				F8DBEC8C19BDB38D0093252C /* Cocos2dxProfile.h in Headers */,
 				F87488231A0007F9005952C9 /* SoomlaiOSProfileFacebook.pch in Headers */,
 				449B5B2D1C03968500077A40 /* IGameServicesProvider.h in Headers */,
 				F825C17B19B3209F00A2CABB /* PJSONConsts.h in Headers */,
 				F8DBEC8719BDB38D0093252C /* CCProfileBridge.h in Headers */,
 				F82F0C2F1A1376DD00D1B34A /* SoomlaGooglePlus.h in Headers */,
-				F825C19619B3209F00A2CABB /* SocialController.h in Headers */,
 				372B78FA39B5241051CA85A1 /* ConfirmationDialog.h in Headers */,
 				449B5B391C0396A500077A40 /* Score+GameCenter.h in Headers */,
+				44B317B31C19ECFE00A98D79 /* ProviderManager.h in Headers */,
+				44B3179C1C19EC8D00A98D79 /* Leaderboard+GPGS.h in Headers */,
 				B2FA8B2FCD6EC631D97A2199 /* CCSoomlaProfileConfigBuilder.h in Headers */,
 				B2FA868EBDD858CB013C571B /* CCSoomlaTwitterConfigBuilder.h in Headers */,
 				B2FA8238838D81E9DEB19FE3 /* CCSoomlaFacebookConfigBuilder.h in Headers */,
@@ -647,17 +630,15 @@
 				F825C19A19B3209F00A2CABB /* SoomlaProfile.m in Sources */,
 				449B5B3F1C0399DA00077A40 /* CCSoomlaGameCenterConfigBuilder.cpp in Sources */,
 				449B5B291C03968500077A40 /* Leaderboard.m in Sources */,
-				F825C19119B3209F00A2CABB /* ProviderLoader.m in Sources */,
 				F82F0C2E1A1376DD00D1B34A /* SoomlaTwitter.m in Sources */,
 				F8DBEC8619BDB38D0093252C /* CCProfileBridge.cpp in Sources */,
-				F825C17A19B3209F00A2CABB /* AuthController.m in Sources */,
 				F825C19E19B3209F00A2CABB /* UserProfileUtils.m in Sources */,
 				F825C18F19B3209F00A2CABB /* UserProfileNotFoundException.m in Sources */,
 				F825C0F219B31D8100A2CABB /* ProfileBridge.mm in Sources */,
 				F8DBEC8A19BDB38D0093252C /* CCUserProfileUtils.cpp in Sources */,
 				F8DBEC8819BDB38D0093252C /* CCSocialActionUtils.cpp in Sources */,
 				F825C18D19B3209F00A2CABB /* ProviderNotFoundException.m in Sources */,
-				F825C19719B3209F00A2CABB /* SocialController.m in Sources */,
+				44B3179D1C19EC8D00A98D79 /* Leaderboard+GPGS.m in Sources */,
 				449B5B3C1C0396A600077A40 /* SoomlaGameCenter.m in Sources */,
 				F8F3875C1A2C9EFA00EEA2E2 /* ProfileEventHandling.m in Sources */,
 				F825C18B19B3209F00A2CABB /* UserProfile.m in Sources */,
@@ -669,8 +650,9 @@
 				F825C19519B3209F00A2CABB /* SocialActionUtils.m in Sources */,
 				372B7B54F26F1D741A8F1016 /* ConfirmationDialog.m in Sources */,
 				B2FA8FFB5FBDC3CB65889700 /* CCSoomlaProfileConfigBuilder.cpp in Sources */,
-				449B5B2F1C03968500077A40 /* GameServicesController.m in Sources */,
 				B2FA87058A2AA6C7ED580E31 /* CCSoomlaTwitterConfigBuilder.cpp in Sources */,
+				44B317B41C19ECFE00A98D79 /* ProviderManager.m in Sources */,
+				44B3179F1C19EC8D00A98D79 /* Score+GPGS.m in Sources */,
 				B2FA8474B79CDDDCF4DD9051 /* CCSoomlaFacebookConfigBuilder.cpp in Sources */,
 				B2FA82C5108E05555759CDDB /* CCSoomlaProfileSNConfigBuilder.cpp in Sources */,
 				449B5B1C1C0395FB00077A40 /* CCScore.cpp in Sources */,

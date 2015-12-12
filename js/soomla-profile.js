@@ -103,6 +103,8 @@
     EVENT_REPORT_SCORE_STARTED: "com.soomla.profile.events.social.ReportScoreStartedEvent",
     EVENT_REPORT_SCORE_FINISHED: "com.soomla.profile.events.social.ReportScoreFinishedEvent",
     EVENT_REPORT_SCORE_FAILED: "com.soomla.profile.events.social.ReportScoreFailedEvent",
+
+    EVENT_SHOW_LEADERBOARDS: "com.soomla.profile.events.social.ShowLeaderboardsEvent"
   };
 
   /**
@@ -394,6 +396,14 @@
        },
 
       /**
+       Called when native leaderboards dialog is shown
+       @param provider The provider on which the get contacts process has failed
+       @param payload an identification String sent from the caller of the action
+       */
+       onShowLeaderboards: function(provider, payload) {
+       },
+
+      /**
        Called when a user profile from a provider has been retrieved
        @param userProfile The user's profile which was updated
        */
@@ -670,6 +680,13 @@
           var payload = parameters.payload;
           Soomla.fireSoomlaEvent(parameters.method, [provider, leaderboard, payload]);
         }, this));
+
+        eventDispatcher.registerEventHandler(ProfileConsts.EVENT_SHOW_LEADERBOARDS, _.bind(function (parameters) {
+                  var providerId = parameters.provider;
+                  var provider = Provider.findById(providerId);
+                  var payload = parameters.payload;
+                  Soomla.fireSoomlaEvent(parameters.method, [provider, leaderboard, payload]);
+                }, this));
 
         return true;
       }
@@ -1070,9 +1087,9 @@
 
       Soomla.callNative(toPassData, true);
     },
-    reportScore: function (provider, leaderboard, score, reward, payload) {
+    submitScore: function (provider, leaderboard, score, reward, payload) {
       var toPassData = {
-        method: "CCSoomlaProfile::reportScore",
+        method: "CCSoomlaProfile::submitScore",
         provider: provider.key,
         leaderboard: leaderboard,
         score: score,
@@ -1092,6 +1109,26 @@
 
       Soomla.callNative(toPassData, true);
     },
+    showLeaderboards: function (provider, reward, payload) {
+          var toPassData = {
+            method: "CCSoomlaProfile::showLeaderboards",
+            provider: provider.key,
+            reward: reward
+          };
+
+          if (payload) {
+            toPassData.payload = payload;
+          }
+          else {
+            toPassData.payload = "default";
+          }
+
+          if (reward) {
+            toPassData.reward = reward;
+          }
+
+          Soomla.callNative(toPassData, true);
+        },
 
     /**
      * Shares text and/or image using native sharing functionality of your target platform.

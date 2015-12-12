@@ -33,3 +33,7 @@ CCSoomlaGooglePlusConfigBuilder *CCSoomlaGooglePlusConfigBuilder::create() {
 CCSoomlaGooglePlusConfigBuilder *CCSoomlaGooglePlusConfigBuilder::setClientId(const char *clientId) {
     return this->appendConfigParameter("clientId", cocos2d::__String::create(clientId)) ? this : NULL;
 }
+
+CCSoomlaGooglePlusConfigBuilder *CCSoomlaGooglePlusConfigBuilder::enableGameServices(bool enableGameServices) {
+    return this->appendConfigParameter("enableGameServices", cocos2d::__Bool::create(enableGameServices)) ? this : NULL;
+}

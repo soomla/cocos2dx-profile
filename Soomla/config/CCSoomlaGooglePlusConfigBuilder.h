@@ -26,6 +26,7 @@ namespace soomla {
         CCProvider getProvider();
         static CCSoomlaGooglePlusConfigBuilder *create();
         CCSoomlaGooglePlusConfigBuilder *setClientId(const char *clientId);
+        CCSoomlaGooglePlusConfigBuilder *enableGameServices(bool enableGameServices);
     };
 }
 

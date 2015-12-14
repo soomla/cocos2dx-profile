@@ -20,5 +20,6 @@ cp -RL submodules/ios-profile/build/headers/SoomlaiOSProfile $build_headers/
 cp -RL submodules/ios-profile/build/ios-profile-facebook $build/
 cp -RL submodules/ios-profile/build/ios-profile-google $build/
 cp -RL submodules/ios-profile/build/ios-profile-twitter $build/
+cp -RL submodules/ios-profile/build/ios-profile-gamecenter $build/
 
 cd - > /dev/null

@@ -24,8 +24,10 @@ import com.soomla.cocos2dx.common.NdkGlue;
 import com.soomla.profile.events.ProfileInitializedEvent;
 import com.soomla.profile.events.UserProfileUpdatedEvent;
 import com.soomla.profile.events.UserRatingEvent;
+import com.soomla.profile.domain.gameservices.*;
 import com.soomla.profile.events.auth.*;
 import com.soomla.profile.events.social.*;
+import com.soomla.profile.events.gameservices.*;
 import com.squareup.otto.Subscribe;
 
 import org.json.JSONArray;
@@ -598,6 +600,201 @@ public class ProfileEventHandlerBridge {
                     parameters.put("provider", inviteCancelledEvent.Provider.getValue());
                     parameters.put("socialActionType", inviteCancelledEvent.SocialActionType.getValue());
                     parameters.put("payload", inviteCancelledEvent.Payload);
+                    NdkGlue.getInstance().sendMessageWithParameters(parameters);
+                } catch (JSONException e) {
+                    throw new IllegalStateException(e);
+                }
+            }
+        });
+    }
+
+    @Subscribe
+    public void onGetLeaderboardsStartedEvent(final GetLeaderboardsStartedEvent getLeaderboardsStartedEvent) {
+        mGLThread.queueEvent(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject parameters = new JSONObject();
+                    parameters.put("method", ProfileConsts.EVENT_GET_LEADERBOARDS_STARTED);
+                    parameters.put("provider", getLeaderboardsStartedEvent.Provider.getValue());
+                    parameters.put("payload", getLeaderboardsStartedEvent.Payload);
+                    NdkGlue.getInstance().sendMessageWithParameters(parameters);
+                } catch (JSONException e) {
+                    throw new IllegalStateException(e);
+                }
+            }
+        });
+    }
+
+    @Subscribe
+    public void onGetLeaderboardsFinishedEvent(final GetLeaderboardsFinishedEvent getLeaderboardsFinishedEvent) {
+        mGLThread.queueEvent(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject parameters = new JSONObject();
+                    parameters.put("method", ProfileConsts.EVENT_GET_LEADERBOARDS_FINISHED);
+                    parameters.put("provider", getLeaderboardsFinishedEvent.Provider.getValue());
+                    parameters.put("leaderboards", DomainHelper.getInstance().getJsonObjectListFromDomains(getLeaderboardsFinishedEvent.Leaderboards));
+                    parameters.put("payload", getLeaderboardsFinishedEvent.Payload);
+                    NdkGlue.getInstance().sendMessageWithParameters(parameters);
+                } catch (JSONException e) {
+                    throw new IllegalStateException(e);
+                }
+            }
+        });
+    }
+
+    @Subscribe
+    public void onGetLeaderboardsFailedEvent(final GetLeaderboardsFailedEvent getLeaderboardsFailedEvent) {
+        mGLThread.queueEvent(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject parameters = new JSONObject();
+                    parameters.put("method", ProfileConsts.EVENT_GET_LEADERBOARDS_FAILED);
+                    parameters.put("provider", getLeaderboardsFailedEvent.Provider.getValue());
+                    parameters.put("errorDescription", getLeaderboardsFailedEvent.ErrorDescription);
+                    parameters.put("payload", getLeaderboardsFailedEvent.Payload);
+                    NdkGlue.getInstance().sendMessageWithParameters(parameters);
+                } catch (JSONException e) {
+                    throw new IllegalStateException(e);
+                }
+            }
+        });
+    }
+
+    @Subscribe
+    public void onGetScoresStartedEvent(final GetScoresStartedEvent getScoresStartedEvent) {
+        mGLThread.queueEvent(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject parameters = new JSONObject();
+                    parameters.put("method", ProfileConsts.EVENT_GET_SCORES_STARTED);
+                    parameters.put("provider", getScoresStartedEvent.Provider.getValue());
+                    parameters.put("leaderboard", getScoresStartedEvent.Leaderboard.toJSONObject());
+                    parameters.put("fromStart", getScoresStartedEvent.FromStart);
+                    parameters.put("payload", getScoresStartedEvent.Payload);
+                    NdkGlue.getInstance().sendMessageWithParameters(parameters);
+                } catch (JSONException e) {
+                    throw new IllegalStateException(e);
+                }
+            }
+        });
+    }
+
+    @Subscribe
+    public void onGetScoresFinishedEvent(final GetScoresFinishedEvent getScoresFinishedEvent) {
+        mGLThread.queueEvent(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject parameters = new JSONObject();
+                    parameters.put("method", ProfileConsts.EVENT_GET_SCORES_FINISHED);
+                    parameters.put("provider", getScoresFinishedEvent.Provider.getValue());
+                    parameters.put("leaderboard", getScoresFinishedEvent.Leaderboard.toJSONObject());
+                    parameters.put("scores", DomainHelper.getInstance().getJsonObjectListFromDomains(getScoresFinishedEvent.Scores));
+                    parameters.put("payload", getScoresFinishedEvent.Payload);
+                    parameters.put("hasMore", getScoresFinishedEvent.HasMore);
+                    NdkGlue.getInstance().sendMessageWithParameters(parameters);
+                } catch (JSONException e) {
+                    throw new IllegalStateException(e);
+                }
+            }
+        });
+    }
+
+    @Subscribe
+    public void onGetScoresFailedEvent(final GetScoresFailedEvent getScoresFailedEvent) {
+        mGLThread.queueEvent(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject parameters = new JSONObject();
+                    parameters.put("method", ProfileConsts.EVENT_GET_SCORES_FAILED);
+                    parameters.put("provider", getScoresFailedEvent.Provider.getValue());
+                    parameters.put("leaderboard", getScoresFailedEvent.Leaderboard.toJSONObject());
+                    parameters.put("fromStart", getScoresFailedEvent.FromStart);
+                    parameters.put("errorDescription", getScoresFailedEvent.ErrorDescription);
+                    parameters.put("payload", getScoresFailedEvent.Payload);
+                    NdkGlue.getInstance().sendMessageWithParameters(parameters);
+                } catch (JSONException e) {
+                    throw new IllegalStateException(e);
+                }
+            }
+        });
+    }
+
+    @Subscribe
+    public void onSubmitScoreStartedEvent(final SubmitScoreStartedEvent submitScoreStartedEvent) {
+        mGLThread.queueEvent(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject parameters = new JSONObject();
+                    parameters.put("method", ProfileConsts.EVENT_SUBMIT_SCORE_STARTED);
+                    parameters.put("provider", submitScoreStartedEvent.Provider.getValue());
+                    parameters.put("leaderboard", submitScoreStartedEvent.Leaderboard.toJSONObject());
+                    parameters.put("payload", submitScoreStartedEvent.Payload);
+                    NdkGlue.getInstance().sendMessageWithParameters(parameters);
+                } catch (JSONException e) {
+                    throw new IllegalStateException(e);
+                }
+            }
+        });
+    }
+
+    @Subscribe
+    public void onSubmitScoreFinishedEvent(final SubmitScoreFinishedEvent submitScoreFinishedEvent) {
+        mGLThread.queueEvent(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject parameters = new JSONObject();
+                    parameters.put("method", ProfileConsts.EVENT_SUBMIT_SCORE_FINISHED);
+                    parameters.put("provider", submitScoreFinishedEvent.Provider.getValue());
+                    parameters.put("leaderboard", submitScoreFinishedEvent.Leaderboard.toJSONObject());
+                    parameters.put("score", submitScoreFinishedEvent.Score.toJSONObject());
+                    parameters.put("payload", submitScoreFinishedEvent.Payload);
+                    NdkGlue.getInstance().sendMessageWithParameters(parameters);
+                } catch (JSONException e) {
+                    throw new IllegalStateException(e);
+                }
+            }
+        });
+    }
+
+    @Subscribe
+    public void onSubmitScoreFailedEvent(final SubmitScoreFailedEvent submitScoreFailedEvent) {
+        mGLThread.queueEvent(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject parameters = new JSONObject();
+                    parameters.put("method", ProfileConsts.EVENT_SUBMIT_SCORE_FAILED);
+                    parameters.put("provider", submitScoreFailedEvent.Provider.getValue());
+                    parameters.put("leaderboard", submitScoreFailedEvent.Leaderboard.toJSONObject());
+                    parameters.put("errorDescription", submitScoreFailedEvent.ErrorDescription);
+                    parameters.put("payload", submitScoreFailedEvent.Payload);
+                    NdkGlue.getInstance().sendMessageWithParameters(parameters);
+                } catch (JSONException e) {
+                    throw new IllegalStateException(e);
+                }
+            }
+        });
+    }
+
+    @Subscribe
+    public void onShowLeaderboardsEvent(final ShowLeaderboardsEvent showLeaderboardsEvent) {
+        mGLThread.queueEvent(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject parameters = new JSONObject();
+                    parameters.put("method", ProfileConsts.EVENT_SHOW_LEADERBOARDS);
+                    parameters.put("provider", showLeaderboardsEvent.Provider.getValue());
+                    parameters.put("payload", showLeaderboardsEvent.Payload);
                     NdkGlue.getInstance().sendMessageWithParameters(parameters);
                 } catch (JSONException e) {
                     throw new IllegalStateException(e);

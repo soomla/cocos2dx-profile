@@ -482,12 +482,23 @@ namespace soomla {
         CCNdkBridge::callNative(params, soomlaError);
     }
 
-    void CCSoomlaProfile::reportScore(CCProvider provider, CCLeaderboard *leaderboard, unsigned int score, const char *payload, CCReward *reward, CCError **soomlaError) {
+    void CCSoomlaProfile::submitScore(CCProvider provider, CCLeaderboard *leaderboard, unsigned int score, const char *payload, CCReward *reward, CCError **soomlaError) {
         __Dictionary *params = __Dictionary::create();
-        params->setObject(__String::create("CCSoomlaProfile::reportScore"), "method");
+        params->setObject(__String::create("CCSoomlaProfile::submitScore"), "method");
         params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
         params->setObject(__Integer::create(score), "score");
         params->setObject(leaderboard->toDictionary(), "leaderboard");
+        params->setObject(__String::create(payload), "payload");
+        if (reward) {
+            params->setObject(reward->toDictionary(), "reward");
+        }
+        CCNdkBridge::callNative(params, soomlaError);
+    }
+
+    void CCSoomlaProfile::showLeaderboards(CCProvider provider, const char *payload, CCReward *reward, CCError **soomlaError) {
+        __Dictionary *params = __Dictionary::create();
+        params->setObject(__String::create("CCSoomlaProfile::showLeaderboards"), "method");
+        params->setObject(CCUserProfileUtils::providerEnumToString(provider), "provider");
         params->setObject(__String::create(payload), "payload");
         if (reward) {
             params->setObject(reward->toDictionary(), "reward");

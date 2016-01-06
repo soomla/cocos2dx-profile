@@ -38,7 +38,7 @@ The example project is still under development but it already has some important
 
 #### Pre baked zip:
 
-- [cocos2dx-profile 1.7.0](http://library.soom.la/fetch/cocos2dx-profile/1.7.0?cf=github)
+- [cocos2dx-profile 1.8.0](http://library.soom.la/fetch/cocos2dx-profile/1.8.0?cf=github)
 
 #### From sources:
  - Clone this repository recursively: `git clone --recursive https://github.com/soomla/cocos2dx-profile.git`

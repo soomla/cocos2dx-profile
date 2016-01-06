@@ -1,3 +1,12 @@
+### v1.8.0 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.7.0...v1.8.0)
+
+* New Features
+  * Added `showLeaderboards` method
+  * Added `enableGameServices` parameters into G+ builder
+
+* Changes
+  * Changed reportScoreWithProvider to submitScoreForProvider
+
 ### v1.7.0 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.6.0...v1.7.0)
 
 * New Features

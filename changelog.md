@@ -1,3 +1,8 @@
+### v1.8.1 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.8.0...v1.8.1)
+
+* Changes
+  * Removed binaries from repo
+
 ### v1.8.0 [view commit logs](https://github.com/soomla/cocos2dx-profile/compare/v1.7.0...v1.8.0)
 
 * New Features

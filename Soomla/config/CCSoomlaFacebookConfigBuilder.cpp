@@ -30,6 +30,10 @@ CCSoomlaFacebookConfigBuilder *CCSoomlaFacebookConfigBuilder::create() {
     return new CCSoomlaFacebookConfigBuilder();
 }
 
+CCSoomlaFacebookConfigBuilder *CCSoomlaFacebookConfigBuilder::enableAutoLogin(bool enabled) {
+    return (CCSoomlaFacebookConfigBuilder *)CCSoomlaProfileSNConfigBuilder::enableAutoLogin(enabled);
+}
+
 CCSoomlaFacebookConfigBuilder *CCSoomlaFacebookConfigBuilder::setPermissions(const char *permissions) {
     return this->appendConfigParameter("permissions", cocos2d::__String::create(permissions)) ? this : NULL;
 }

@@ -30,6 +30,10 @@ CCSoomlaTwitterConfigBuilder *CCSoomlaTwitterConfigBuilder::create() {
     return new CCSoomlaTwitterConfigBuilder();
 }
 
+CCSoomlaTwitterConfigBuilder *CCSoomlaTwitterConfigBuilder::enableAutoLogin(bool enabled) {
+    return (CCSoomlaTwitterConfigBuilder *)CCSoomlaProfileSNConfigBuilder::enableAutoLogin(enabled);
+}
+
 CCSoomlaTwitterConfigBuilder *CCSoomlaTwitterConfigBuilder::setConsumerKey(const char *consumerKey) {
     return this->appendConfigParameter("consumerKey", cocos2d::__String::create(consumerKey)) ? this : NULL;
 }

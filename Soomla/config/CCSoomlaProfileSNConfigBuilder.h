@@ -26,7 +26,7 @@ namespace soomla {
         CCSoomlaProfileSNConfigBuilder();
         virtual CCProvider getProvider() = 0;
         static CCSoomlaProfileSNConfigBuilder *create();
-        CCSoomlaProfileSNConfigBuilder *enableAutoLogin(bool enabled);
+        virtual CCSoomlaProfileSNConfigBuilder *enableAutoLogin(bool enabled);
     };
 }
 

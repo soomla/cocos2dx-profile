@@ -30,6 +30,10 @@ CCSoomlaGooglePlusConfigBuilder *CCSoomlaGooglePlusConfigBuilder::create() {
     return new CCSoomlaGooglePlusConfigBuilder();
 }
 
+CCSoomlaGooglePlusConfigBuilder *CCSoomlaGooglePlusConfigBuilder::enableAutoLogin(bool enabled) {
+    return (CCSoomlaGooglePlusConfigBuilder *)CCSoomlaProfileSNConfigBuilder::enableAutoLogin(enabled);
+}
+
 CCSoomlaGooglePlusConfigBuilder *CCSoomlaGooglePlusConfigBuilder::setClientId(const char *clientId) {
     return this->appendConfigParameter("clientId", cocos2d::__String::create(clientId)) ? this : NULL;
 }

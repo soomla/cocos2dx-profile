@@ -25,6 +25,7 @@ namespace soomla {
         CCSoomlaTwitterConfigBuilder();
         CCProvider getProvider();
         static CCSoomlaTwitterConfigBuilder *create();
+        CCSoomlaTwitterConfigBuilder *enableAutoLogin(bool enabled);
         CCSoomlaTwitterConfigBuilder *setConsumerKey(const char *consumerKey);
         CCSoomlaTwitterConfigBuilder *setConsumerSecret(const char *setConsumerSecret);
     };

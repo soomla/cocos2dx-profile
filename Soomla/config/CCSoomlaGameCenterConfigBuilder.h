@@ -27,6 +27,7 @@ namespace soomla {
     public:
         CCSoomlaGameCenterConfigBuilder();
         CCProvider getProvider();
+        CCSoomlaGameCenterConfigBuilder *enableAutoLogin(bool enabled);
         static CCSoomlaGameCenterConfigBuilder *create();
     };
 }

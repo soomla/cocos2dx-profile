@@ -33,4 +33,8 @@ CCSoomlaGameCenterConfigBuilder *CCSoomlaGameCenterConfigBuilder::create() {
     return new CCSoomlaGameCenterConfigBuilder();
 }
 
+CCSoomlaGameCenterConfigBuilder *CCSoomlaGameCenterConfigBuilder::enableAutoLogin(bool enabled) {
+    return (CCSoomlaGameCenterConfigBuilder *)CCSoomlaProfileSNConfigBuilder::enableAutoLogin(enabled);
+}
+
 #endif

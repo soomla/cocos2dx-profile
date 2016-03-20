@@ -25,6 +25,7 @@ namespace soomla {
         CCSoomlaFacebookConfigBuilder();
         CCProvider getProvider();
         static CCSoomlaFacebookConfigBuilder *create();
+        CCSoomlaFacebookConfigBuilder *enableAutoLogin(bool enabled);
         CCSoomlaFacebookConfigBuilder *setPermissions(const char *permissions);
     };
 }
